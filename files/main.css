@@ -860,10 +860,10 @@ header .contacts {width: calc(100% - 225px - 225px - 48px);display: flex;flex-wr
 .mainnav ul li a.active {color: #DF5642;}
 header .mainnav__list {max-height: 24px;overflow: hidden;}
 .mainnav .overflowMenu {display: none;}
-.mainnav .overflowMenu.opened {display: block;position: absolute;margin-top: 1rem;padding: 1rem;right: 0;border-radius: 20px;background-color: #FFFFFF;box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.09);z-index: 11;}
-.overflowMenu li {display: block;}
-.overflowMenu li + li {margin-top: 0.75rem;}
-.opened .mainnav__more a {color: #64b93a;}
+.mainnav .overflowMenu.opened {height: auto;display: block;position: absolute;padding: 1rem;right: 0;background-color: #FFFFFF;border: 1px solid #ecdfd4;z-index: 11;}
+.mainnav .overflowMenu li {display: block;}
+.mainnav .overflowMenu li + li {margin-top: 1rem;}
+.opened .mainnav__more a {color: #DF5642;}
 /* Поиск */
 .search__form {position: relative;display: flex;align-items: center;}
 .search__input {max-width: 240px;padding-right: 4rem;border-top: 0;border-bottom: 0;border-color: #ecdfd4;}
