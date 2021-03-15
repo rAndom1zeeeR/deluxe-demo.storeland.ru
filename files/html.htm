@@ -125,6 +125,173 @@
 		</div>
 	</header>
 	
+	<div id="menu">
+		<div class="container">
+			<div class="inner">
+				<!--Каталог-->
+				<div class="catalog--icon"><span>Каталог</span></div>
+				<!--Меню-->
+				<nav class="mainnav" itemscope itemtype="https://schema.org/SiteNavigationElement">
+					<ul class="mainnav__list">
+						{% FOR menu %}
+						{% FOR header %}
+						{% FOR links %}
+						<li><a href="{menu.header.links.URL}" class="mainnav__link {% IF menu.header.links.SELECTED %}active{%ENDIF%}" title="{% IF menu.header.links.TITLE %}{menu.header.links.TITLE}{% ELSE%}{menu.header.links.NAME}{% ENDIF %}" itemprop="url"><span itemprop="name">{menu.header.links.NAME}</span></a></li>
+						{% ENDFOR %}
+						{% ENDFOR %}
+						{% ENDFOR %}
+					</ul>
+					<ul class="overflowMenu"></ul>
+				</nav>
+				<!-- Поиск -->
+				<div class="search" itemscope itemtype="https://schema.org/WebSite">
+					<link itemprop="url" href="{INDEX_PAGE_URL}"/>
+					<form class="search__form" action="{QUICK_SEARCH_URL}" method="get" title="Поиск по магазину" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
+						<meta itemprop="target" content="{SEARCH_URL}?q={{EMPTY}q}" />
+						<input type="hidden" name="goods_search_field_id" value="0" />
+						<input type="text" name="q" value="{FORM_SEARCH_Q}" class="search__input" placeholder="Искать" autocomplete="off" itemprop="query-input" />
+						<button type="submit" class="search__submit" title="Искать"><i class="icon-search"></i></button>
+						<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+						<div class="search__reset"><i class="icon-close"></i></div>
+					</form>
+					<div id="search__result" style="display: none;">
+						<div class="inner">
+							<div class="result__category"></div>
+							<div class="result__goods"></div>
+							<div class="result__showAll button">все результаты</div>
+						</div>
+					</div>
+				</div>
+				<!-- Избр, Срав, ЛК -->
+				<div id="addto">
+					<!-- Войти -->
+					<div class="login dropdown">
+						<a href="{USER_LOGIN_URL}" class="addto__label dropdown__open login__icon" title="Личный кабинет" data-open="login">
+							<i class="icon-user"></i>
+							<span>Войти</span>
+						</a>
+						<div id="addtoLogin" class="addto__login dropdown__content" data-open="login">
+							<div class="addto__title">Личный кабинет</div>
+							{% IF CLIENT_IS_LOGIN %}
+							<!-- ЛК для авторизованных пользователей -->
+							<div class="mainnav__links">
+								<a href="{USER_SETTINGS_URL}" title="Личный кабинет" rel="nofollow"><span>Мой кабинет</span></a>
+								<a href="{USER_HISTORY_LIST_URL}" title="История заказов" rel="nofollow"><span>История</span></a>
+								<a href="{FAVORITES_URL}" title="Избранные товары" rel="nofollow"><span>Избранное</span></a>
+								{% IF SETTINGS_COMPARE_DISABLE=0 %}<a href="{COMPARE_URL}" title="Сравнение" rel="nofollow">Сравнение</a>{% ENDIF %}
+								<a href="{USER_LOGOUT_URL}" title="Выход" rel="nofollow"><span>Выход</span></a>
+							</div>
+							{% ELSE %}
+							<!-- Форма входа и регистрации -->
+							<form action="{USER_LOGIN_URL}" method="post" class="form__client">
+								<input type="hidden" name="hash" value="{HASH}" />
+								<input type="hidden" name="from" value="{FROM}" />
+								<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
+								{ANTISPAM_CODE}
+								<div class="form__list">
+									<div class="form__fields">
+										<label class="required">Электронная почта <em>*</em></label>
+										<input type="email" name="form[sites_client_mail]" value="{FORM_SITES_CLIENT_MAIL}" maxlength="255" class="form__input sites_client_mail email" placeholder="Email" required/>
+									</div>
+									<div class="form__fields">
+										<label class="required">Пароль: <em>*</em></label>
+										<input type="password" name="form[sites_client_pass]" value="{FORM_SITES_CLIENT_PASS}" maxlength="50" minlength="6" class="form__input sites_client_pass" placeholder="Пароль" onkeyup="checkCapsWarning(event)" onfocus="checkCapsWarning(event)" onblur="removeCapsWarning()" required/>
+										{% IFNOT user_agent_ie %}
+										<div class="showPassBlock"><a href="#" rel="Скрыть пароль" class="showPass">Показать пароль</a></div>
+										{% ENDIF %}
+										<div id="capslock">
+											<div><i class="icon-warning"></i></div>
+											<div><strong>Caps Lock включен.</strong></div>
+											<div>Пароль может быть введен неверно.</div>
+										</div>
+									</div>
+								</div>
+								<div class="client__buttons addto__buttons">
+									<button type="submit" name="send" class="button" title="Войти">Войти</button>
+									<a href="{USER_REGISTER_URL}" class="button">Зарегистрироваться</a>
+								</div>
+							</form>
+							{% ENDIF %}
+						</div>
+					</div>
+					<!-- Сравнение -->
+					{% IFNOT MOD_LNAME = compare && SETTINGS_COMPARE_DISABLE=0 %}
+					<div class="compare dropdown {% IF COMPARE_GOODS_COUNT > 0 %}hasItems{% ENDIF %}">
+						<a href="{COMPARE_URL}" class="addto__label dropdown__open compare__icon" title="Сравнение" data-open="compare">
+							<i class="icon-compare"></i>
+							<span>Сравнение</span>
+							<span class="compare__count" data-count="{COMPARE_GOODS_COUNT}">{COMPARE_GOODS_COUNT}</span>
+						</a>
+						<div id="addtoCompare" class="addto__compare dropdown__content" data-open="compare">
+							<div class="addto__title">В Сравнении</div>
+							<div class="addto__items">
+								{% FOR compare_goods %}
+								<div class="addto__item" data-id="{compare_goods.ID}">
+									<a href="{compare_goods.URL}" title="{compare_goods.NAME}" class="addto__image"><img src="{% IF compare_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{compare_goods.IMAGE_ICON}{% ENDIF %}" class="goods-image-icon" /></a>
+									<div class="addto__shop">
+										<!-- Название -->
+										<a href="{compare_goods.URL}" class="addto__name" title="{compare_goods.NAME}"><span>{compare_goods.NAME}</span></a>
+										<!-- Цена -->
+										<div class="addto__price {CURRENCY_CHAR_CODE}">
+											<div class="price__now">{compare_goods.MIN_PRICE_NOW | money_format}</div>
+											<!-- Удаление -->
+											<a href="{COMPARE_DELETE_URL}?id={compare_goods.MIN_PRICE_NOW_ID}" data-goods-mod-id="{compare_goods.MIN_PRICE_NOW_ID}" class="addto__remove remove" title="Убрать товар из списка сравнения" onclick="removeFromCompare($(this))"><span>Удалить</span></a>
+										</div>
+									</div>
+								</div>
+								{% ENDFOR %}
+							</div>
+							<div class="addto__empty">
+								<div class="addto__title">Ваш список сравнения пуст</div>
+								<a href="{CATALOG_URL}" class="button addto__close" title="Продолжить покупки">Продолжить покупки</a>
+							</div>
+							<div class="addto__buttons">
+								<a href="{COMPARE_RESET_URL}" onclick="removeFromCompareAll($(this))" class="button button2 removeAll" title="Очистить список сравнения"><span>Очистить сравнение</span></a>
+								<a href="{COMPARE_URL}" class="button" title="Перейти к Сравнению">Перейти к Сравнению</a>
+							</div>
+						</div>
+					</div>
+					{% ENDIF %}
+					<!-- Избранное -->
+					<div class="favorites dropdown {% IF FAVORITES_GOODS_COUNT > 0 %}hasItems{% ENDIF %}">
+						<a href="{FAVORITES_URL}" class="addto__label dropdown__open favorites__icon" title="Избранное" data-open="favorites">
+							<i class="icon-favorites"></i>
+							<span>Избранное</span>
+							<span class="favorites__count" data-count="{FAVORITES_GOODS_COUNT}">{FAVORITES_GOODS_COUNT}</span>
+						</a>
+						<div id="addtoFavorites" class="addto__favorites dropdown__content" data-open="favorites">
+							<div class="addto__title">В Избранном</div>
+							<div class="addto__items">
+								{% FOR favorites_goods %}
+								<div class="addto__item" data-id="{favorites_goods.ID}">
+									<a href="{favorites_goods.URL}" title="{favorites_goods.NAME}" class="addto__image"><img src="{% IF favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{favorites_goods.IMAGE_ICON}{% ENDIF %}" class="goods-image-icon" /></a>
+									<div class="addto__shop">
+										<!-- Название -->
+										<a href="{favorites_goods.URL}" class="addto__name" title="{favorites_goods.NAME}">{favorites_goods.NAME}</a>
+										<!-- Цена -->
+										<div class="addto__price {CURRENCY_CHAR_CODE}">
+											<div class="price__now">{favorites_goods.MIN_PRICE_NOW | money_format}</div>
+											<!-- Удаление -->
+											<a href="{FAVORITES_DELETE_URL}?id={favorites_goods.MIN_PRICE_NOW_ID}" data-goods-mod-id="{favorites_goods.MIN_PRICE_NOW_ID}" class="addto__remove remove" title="Убрать товар из списка избранного" onclick="removeFromFavorites($(this))"><span>Удалить</span></a>
+										</div>
+									</div>
+								</div>
+								{% ENDFOR %}
+							</div>
+							<div class="addto__empty">
+								<div class="addto__title">Ваш список избранного пуст</div>
+								<a href="{CATALOG_URL}" class="button addto__close" title="Продолжить покупки">Продолжить покупки</a>
+							</div>
+							<div class="addto__buttons">
+								<a href="{FAVORITES_RESET_URL}" onclick="removeFromFavoritesAll($(this))" class="button button2 removeAll" title="Очистить список Избранного"><span>Очистить Избранное</span></a>
+								<a href="{FAVORITES_URL}" class="button" title="Перейти к Избранному">Перейти к Избранному</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	
 	
 	<!-- Модальные окна -->
@@ -255,7 +422,6 @@
 {% ENDIF %}
 <!-- Стили магазина -->
 <link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}animate.css?design=THEMENAME"/>
-<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}jquery.formstyler.css?design=THEMENAME"/>
 <!-- Скрипты магазина -->
 <script type="text/javascript" src="{ASSETS_JS_PATH}forall.js?design=THEMENAME"></script>
 <script type="text/javascript" src="{ASSETS_JS_PATH}main.js?design=THEMENAME"></script>

@@ -3316,7 +3316,7 @@ function openMenu() {
 
 // Дополнительные пункты меню в шапке Перенос пунктов меню
 function mainnavHeader(){
-  let mainnav = $('header .menu .mainnav');
+  let mainnav = $('#menu .mainnav');
   let overMenuExist = mainnav.find('.overflowMenu li').length;
   if(overMenuExist){
     mainnav.find('.overflowMenu li').removeClass('mainnav__replaced');
@@ -3511,6 +3511,7 @@ $(document).ready(function(){
   priceDiff();
   monthNames();
   viewed();
+  mainnavHeader();
   // Стили для новых селектов
   /*$('.select').styler();*/
   // Ленивая загрузка

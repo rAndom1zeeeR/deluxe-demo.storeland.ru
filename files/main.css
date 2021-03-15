@@ -86,7 +86,7 @@ h6 {font-size: 0.875rem;}
 Вспомогательные классы
 *******************************************************************************/
 a {color: #231803;text-decoration:none;cursor:pointer;transition: all 0.3s ease;outline:0;}
-a:hover, a:active {color: #df5642;outline:0;text-decoration:none;}
+a:hover, a:active {color: #DF5642;outline:0;text-decoration:none;}
 img {max-width: 100%;height: auto;vertical-align: middle;border: 0;}
 p {margin: 0 0 1rem 0;line-height: 1.3;}
 ol.unstyled, ul.unstyled {margin: 0;padding: 0;list-style: none;list-style-position: inside;}
@@ -127,14 +127,14 @@ input.square:checked, .CompareCheckbox:checked, input.square:hover, .CompareChec
 input.square[disabled] {background-color: #ecdfd4;border-color: #ecdfd4;cursor: default;}
 input[disabled] + label {cursor: default;color: #ecdfd4;}
 /* Текст в не активном инпуте TODO*/
-::-webkit-input-placeholder {color: #929292;}
+/*::-webkit-input-placeholder {color: #929292;}
 ::-moz-placeholder          {color: #929292;}
 :-moz-placeholder           {color: #929292;}
 :-ms-input-placeholder      {color: #929292;}
 :focus::-webkit-input-placeholder {color: #000000;transition: opacity .3s ease;}
 :focus::-moz-placeholder          {color: #000000;transition: opacity .3s ease;}
 :focus:-moz-placeholder           {color: #000000;transition: opacity .3s ease;}
-:focus:-ms-input-placeholder      {color: #000000;transition: opacity .3s ease;}
+:focus:-ms-input-placeholder      {color: #000000;transition: opacity .3s ease;}*/
 /* Ошибка в инпуте */
 input.error, textarea.error {border-color: red;}
 input.error::-webkit-input-placeholder {color: red;}
@@ -154,8 +154,8 @@ label.error:after {content: ' ';position: absolute;top: -7px;left: 0.875rem;widt
 /******************************************************************************
 Кнопки
 *******************************************************************************/
-.button, button, .paymentFormSubmitLink, .paymentFormTbodySubmitButton {font-family: 'M PLUS Rounded 1c', sans-serif;color: #ffffff;background: #ffb38e;box-shadow: none;padding: 0 2rem;line-height: 50px;font-size: 1rem;font-weight: 400;text-transform: uppercase;border-width: 1px;border-style: solid;border-color: #000000;border-radius: 0;overflow: visible;text-align: center;margin: 0;outline: 0;cursor: pointer;white-space: nowrap;text-shadow: none;backface-visibility: hidden;transform: translateZ(0);-webkit-appearance: none;-moz-appearance: none;appearance: none;display: inline-block;position: relative;transition: all 0.3s ease;}
-.button:hover, .button.active, button:hover, button.active, .paymentFormSubmitLink:hover, .paymentFormTbodySubmitButton:hover {color: #ffffff;background-color: #df5642;box-shadow: none;}
+.button, button, .paymentFormSubmitLink, .paymentFormTbodySubmitButton {font-family: 'M PLUS Rounded 1c', sans-serif;color: #ffffff;background: #ffb38e;box-shadow: none;padding: 0 2rem;line-height: 50px;font-size: 1rem;font-weight: 400;text-transform: uppercase;border-width: 1px;border-style: solid;border-color: #ffb38e;border-radius: 0;overflow: visible;text-align: center;margin: 0;outline: 0;cursor: pointer;white-space: nowrap;text-shadow: none;backface-visibility: hidden;transform: translateZ(0);-webkit-appearance: none;-moz-appearance: none;appearance: none;display: inline-block;position: relative;transition: all 0.3s ease;}
+.button:hover, .button.active, button:hover, button.active, .paymentFormSubmitLink:hover, .paymentFormTbodySubmitButton:hover {color: #ffffff;background-color: #DF5642;box-shadow: none;}
 .button2 {color: #231803;background: #fff4f2;border-color: #fff4f2;}
 .button2:hover, .button2.active {color: #ffffff;background: #ffb38e;border-color: #facfb8;}
 .button5 {color: #ffb38e;background: transparent;border: 0;border-radius: 0;box-shadow: none;text-transform: none;line-height: 1;padding: 0;}
@@ -845,6 +845,68 @@ header .contacts {width: calc(100% - 225px - 225px - 48px);display: flex;flex-wr
 .cart .header__block--content {width: calc(100% - 60px);}
 .cart__count {position: absolute;top: 0;right: -40px;font-size: 14px;color: #231803;background-color: #FED8C3;width: 40px;height: 25px;line-height: 25px;text-align: center;}
 .cartSumNow {font-size: 1rem;font-weight: 400;}
+
+
+/*** Меню ***/
+#menu {background: #FFFFFF;}
+#menu .inner {align-items: flex-end;position: relative;}
+/* Каталог */
+.catalog--icon {width: 140px;height: 60px;font-size: 18px;color: #FFFFFF;background-color: #DF5642;display: flex;align-items: center;justify-content: center;}
+/* Меню */
+.mainnav {width: 608px;position: relative;}
+.mainnav ul {margin: 0;padding: 0 1rem;list-style: none;overflow: hidden;height: 50px;display: flex;align-items: center;flex-wrap: nowrap;}
+.mainnav ul li {display: inline-block;}
+.mainnav ul li a {padding: 0 .75rem;display: block;white-space: nowrap;}
+.mainnav ul li a.active {color: #DF5642;}
+header .mainnav__list {max-height: 24px;overflow: hidden;}
+.mainnav .overflowMenu {display: none;}
+.mainnav .overflowMenu.opened {display: block;position: absolute;margin-top: 1rem;padding: 1rem;right: 0;border-radius: 20px;background-color: #FFFFFF;box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.09);z-index: 11;}
+.overflowMenu li {display: block;}
+.overflowMenu li + li {margin-top: 0.75rem;}
+.opened .mainnav__more a {color: #64b93a;}
+/* Поиск */
+.search__form {position: relative;display: flex;align-items: center;}
+.search__input {max-width: 240px;padding-right: 4rem;border-top: 0;border-bottom: 0;border-color: #ecdfd4;}
+.search__submit {color: #231803;font-size: 24px;padding: 0 1rem;position: absolute;top: 0;right: 0;background-color: transparent;border: 0;}
+.search__reset {display: none;align-items: center;position: absolute;left: 0.5rem;top: 0;height: 100%;cursor: pointer;font-size: 12px;}
+.search__filled .search__reset {display: flex;}
+.search__loading .lds-ring {display: block;}
+.lds-ring {display: none;position: absolute;right: 3.5rem;width: 1rem;height: 1rem;}
+.lds-ring div {border: 2px solid #DF5642;border-color: #DF5642 transparent transparent transparent;display: block;position: absolute;width: 1rem;height: 1rem;margin: 0;border-radius: 50%;animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;}
+.lds-ring div:nth-child(1) {animation-delay: -0.45s;}
+.lds-ring div:nth-child(2) {animation-delay: -0.3s;}
+.lds-ring div:nth-child(3) {animation-delay: -0.15s;}
+@keyframes lds-ring {
+0% {transform: rotate(0deg);}
+100% {transform: rotate(360deg);}
+}
+/** Поисковая выдача **/
+#search__result {display: none;width: 100%;max-height: 410px;position: absolute;right: 0;margin-top: 1rem;padding: 1rem;border: 1px solid #ecdfd4;background: #FFFFFF;overflow-y: auto;z-index: 3;}
+#search__result .inner {display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-wrap: wrap;-webkit-flex-wrap: wrap;flex-wrap: wrap;-ms-flex-align: stretch;-webkit-align-items: stretch;-webkit-box-align: stretch;align-items: stretch;flex-direction: column;}
+#search__result .result__item {display: none;width: 100%;line-height: 20px;padding: 10px 0;}
+#search__result .result__item:nth-child(-n+6) {display: block;}
+#search__result .result__item a {display: flex;align-items: center;flex-wrap: wrap;font-size: 1rem;}
+#search__result .result__item a.active {color: #DF5642;}
+#search__result .result__item .result__image {width: 40px;margin-right: 20px;text-align: center;}
+#search__result .result__item .result__name {width: calc(100% - 60px);}
+#search__result .result__item img {max-width: 40px;max-height: 40px;}
+#search__result .result__goods {width: 100%;flex-grow: 1;padding: 0 1rem;}
+#search__result .result__category {width: 100%;flex-grow: 1;padding: 0 1rem 1rem 1rem;margin-bottom: 1rem;border-bottom: 1px solid #ecdfd4;}
+#search__result .result__category .result__image {display: none;}
+#search__result .result__category .result__name {width: 100%;}
+#search__result .result__category a {font-weight: bold;}
+#search__result .result__showAll {margin: 1rem auto 0;width: 200px;display: inline-block;}
+#search__result::-webkit-scrollbar {width: 0.5rem;height: 0;}
+#search__result::-webkit-scrollbar-thumb {border-radius: 0.5rem;background-color: #DF5642;}
+#search__result::-webkit-scrollbar-track {border-radius: 0.5rem;background-color: #ecdfd4;}
+
+
+
+#addto {padding-left: 1rem;height: 50px;display: flex;flex-wrap: wrap;align-items: center;}
+#addto > div {padding: 0 .5rem;}
+#addto .addto__label span {display: none;}
+#addto .addto__label i {font-size: 28px;}
+
 
 
 

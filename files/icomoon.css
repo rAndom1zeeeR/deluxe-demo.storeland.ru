@@ -103,7 +103,7 @@
 .icon-calendar:before {
   content: "\e919";
 }
-.icon-cancel:before {
+.icon-close:before {
   content: "\e91a";
 }
 .icon-cart:before {
@@ -127,7 +127,7 @@
 .icon-filter:before {
   content: "\e921";
 }
-.icon-heart:before {
+.icon-favorites:before {
   content: "\e922";
 }
 .icon-information:before {
