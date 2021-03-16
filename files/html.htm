@@ -292,7 +292,49 @@
 			</div>
 		</div>
 	</div>
+	<!-- Главная страница -->
+	{% IF index_page %}
+	<!-- Слайдшоу -->
+	<div id="slideshow">
+		<div class="container">
+			<div class="preloader"><div class="loading"></div></div>
+			<!-- Слайдер -->
+			<div class="slider owl-carousel">
+				<div class="slider__item lozad" data-background-image="{ASSETS_IMAGES_PATH}slide_1.jpg?design=THEMENAME" data-slide="1">
+					<div class="slider__inner">
+						<div class="slider__content">
+							<div class="slider__subtitle"><span>Создаем атмосферу праздника</span></div>
+							<a href="{CATALOG_URL}" class="slider__title"><span>Тематическими подушками</span></a>
+							<a href="{CATALOG_URL}" class="slider__button" title="Подробнее"><span>Подробнее</span></a>
+							<div class="owl-nav"></div>
+						</div>
+					</div>
+				</div>
+				<div class="slider__item lozad" data-background-image="{ASSETS_IMAGES_PATH}slide_2.jpg?design=THEMENAME" data-slide="1">
+					<div class="slider__inner">
+						<div class="slider__content">
+							<div class="slider__subtitle"><span>Качественные, яркие и мягкие</span></div>
+							<a href="{CATALOG_URL}" class="slider__title"><span>Комплекты в кроватку</span></a>
+							<a href="{CATALOG_URL}" class="slider__button" title="Подробнее"><span>Подробнее</span></a>
+							<div class="owl-nav"></div>
+						</div>
+					</div>
+				</div>
+				<div class="slider__item lozad" data-background-image="{ASSETS_IMAGES_PATH}slide_3.jpg?design=THEMENAME" data-slide="1">
+					<div class="slider__inner">
+						<div class="slider__content">
+							<div class="slider__subtitle"><span>Ивановская распродажа</span></div>
+							<a href="{CATALOG_URL}" class="slider__title"><span>Постельного белья</span></a>
+							<a href="{CATALOG_URL}" class="slider__button" title="Подробнее"><span>Подробнее</span></a>
+							<div class="owl-nav"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	
+	{% ENDIF index_page %}
 	
 	<!-- Модальные окна -->
 	<noindex>
