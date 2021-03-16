@@ -2795,7 +2795,7 @@ function coupons() {
 // Функция показать больше для Каталога на главной странице
 function pdtCatalog() {
   $('#catalog .owl-carousel').owlCarousel({
-    items: 3,
+    items: 4,
     margin: 32,
     loop: false,
     rewind: true,
@@ -2803,7 +2803,7 @@ function pdtCatalog() {
     nav: true,
     navContainer: '#catalog .owl-nav',
     navText: [ , ],
-    dots: false,
+    dots: true,
     autoHeight: false,
     autoHeightClass: 'owl-height',
     autoplay: false,
@@ -2817,11 +2817,11 @@ function pdtCatalog() {
     responsive: {
       0:{items:1},
       320:{items:1},
-      481:{items:1},
+      481:{items:2},
       641:{items:2},
-      768:{items:2},
+      768:{items:3},
       992:{items:3},
-      1200:{items:3}
+      1200:{items:4}
     }
   });
 }

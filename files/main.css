@@ -196,8 +196,8 @@ label.error:after {content: ' ';position: absolute;top: -7px;left: 0.875rem;widt
 .owl-nav.disabled {display: none;}
 /*** Навигация точками ***/
 .owl-dots {text-align: center;/*margin-top: 1rem;display: none;*/}
-.owl-dots .owl-dot {margin: 1rem .5rem;width: 12px;height: 12px;background-color: #ecdfd4;border: 0;transform: rotate(45deg);padding: 0;line-height: 1;display: inline-block;}
-.owl-dots .owl-dot.active, .owl-dots .owl-dot:hover {background-color: #ffaf88;}
+.owl-dots .owl-dot {margin: 0 .375rem;width: 12px;height: 12px;background-color: #ecdfd4;border: 0;padding: 0;line-height: 1;display: inline-block;}
+.owl-dots .owl-dot.active, .owl-dots .owl-dot:hover {width: 20px;background-color: #ffaf88;}
 
 
 /******************************************************************************
@@ -921,12 +921,16 @@ header .contacts {display: flex;flex-wrap: wrap;align-items: center;justify-cont
 #slideshow .owl-nav [class^="owl-"] {font-size: 16px;width: 20px;height: 20px}
 
 
-
-
-
-
-
-
+/*** Категории на главной ***/
+.categories__item {position: relative;}
+.categories__image {height: 260px;margin-bottom: 26px;display: flex;align-items: center;justify-content: center;}
+.categories__image img {width: auto;max-width: 100%;max-height: 100%;}
+.categories__name {width: calc(100% - 4rem);height: 56px;background-color: #fff4f2;overflow: hidden;left: 2rem;bottom: -26px;margin: 0 auto;position: absolute;display: flex;align-items: center;justify-content: center;transition: all 0.3s ease;}
+.categories__name:hover {background-color: #df5642;}
+.categories__name:hover a {color: #FFFFFF;}
+.categories__name a {padding: .5rem;text-align: center;display: block;width: 100%;}
+.categories__name a span {display: block;max-height: 40px;overflow: hidden;}
+#catalog .owl-dots {margin-top: 1.5rem;}
 
 
 
