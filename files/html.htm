@@ -387,6 +387,37 @@
 		</div>
 	</section>
 	
+	<!-- Обратный звонок -->
+	<section id="callback">
+		<div class="container">
+			<div class="inner">
+				<div class="callback__content">
+					<div class="callback__title">Бесплатная консультация</div>
+					<div class="callback__subtitle"><span>Возникли вопросы? Заполните форму и наши консультанты </span><span>перезвонят Вам в ближайшее время</span></div>
+					<form method="post" action="{CALLBACK_URL}" class="form__callback" enctype="multipart/form-data">
+						<input type="hidden" name="hash" value="{HASH}" />
+						<input class="callbackredirect" type="hidden" name="return_to" value="{CALLBACK_URL}"/>
+						<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
+						{ANTISPAM_CODE}
+						<div class="form__field">
+							<input class="form__input form__person" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" value="{FORM_CALLBACK_PERSON}" placeholder="Ваше имя" autocomplete="off" />
+							<i class="icon-user"></i>
+						</div>
+						<div class="form__field">
+							<input class="form__input form__phone" type="tel" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}" placeholder="Ваш телефон" autocomplete="off" />
+							<i class="icon-phone"></i>
+						</div>
+						<div class="form__buttons"><button type="submit" title="Заказать звонок" class="form__button button">Заказать звонок</button></div>
+						<div class="form__pp">Нажимая на кнопку &laquo;Заказать звонок&raquo;, Вы соглашаетесь с <a data-fancybox data-src="#fancybox__pp" href="javascript:;">правилами обработки данных</a></div>
+					</form>
+				</div>
+				<div class="callback__image">
+					<img src="{ASSETS_IMAGES_PATH}callback.jpg?design=THEMENAME" />
+				</div>
+			</div>
+		</div>
+	</section>
+	
 	{% ENDIF index_page %}
 	
 	<!-- Модальные окна -->

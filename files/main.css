@@ -106,7 +106,7 @@ dt, dd {line-height: 1.6;}
 .mask {overflow: hidden;-webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 90%);mask-image: linear-gradient(to bottom, black 50%, transparent 90%);}
 
 /*** Инпут поля ***/
-input, select, textarea {height: 50px;line-height: 50px;padding: 0 1.5rem;color: #adb4d3;background-color: #ffffff;border-color: #c1b1a9;border-width: 1px;border-style: solid;border-radius: 0;outline: 0;font-size: 1rem;font-weight: 400;font-family: 'M PLUS Rounded 1c', sans-serif;display: block;width: 100%;text-transform: none;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-appearance: none;-moz-appearance: none;appearance: none;}
+input, select, textarea {height: 50px;line-height: 50px;padding: 0 1.5rem;color: #231803;background-color: #ffffff;border-color: #ecdfd4;border-width: 1px;border-style: solid;border-radius: 0;outline: 0;font-size: 1rem;font-weight: 400;font-family: 'M PLUS Rounded 1c', sans-serif;display: block;width: 100%;text-transform: none;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-appearance: none;-moz-appearance: none;appearance: none;}
 @media all and (max-width: 640px) {
 input, select, textarea {padding: 0 1rem;}
 }
@@ -122,20 +122,20 @@ input[type="file"] {margin-top: 0.25rem;height: auto;line-height: 1;border: 0;pa
 .selectBox:hover:after {color: #f69679;}
 .selectBox select, .selectBox .select {width: 100%;padding: 0 2.5rem 0 1.5rem;font-size: 1rem;font-weight: 400;line-height: 1;-webkit-appearance: none;-moz-appearance: none;appearance: none;}
 /*** Квадратный чекбокс ***/
-input.square, .CompareCheckbox {width: 1.25rem;height: 1.25rem;background: #FFFFFF;border: 1px solid #c1b1a9;border-radius: 0.25rem;margin: 0 1rem 0 0;padding: 0;display: block;position: relative;text-align: center;cursor: pointer;-webkit-tap-highlight-color: transparent;-webkit-appearance: none;transition: all 0.3s ease;}
+input.square, .CompareCheckbox {width: 1.25rem;height: 1.25rem;background: #FFFFFF;border: 1px solid #ecdfd4;border-radius: 0.25rem;margin: 0 1rem 0 0;padding: 0;display: block;position: relative;text-align: center;cursor: pointer;-webkit-tap-highlight-color: transparent;-webkit-appearance: none;transition: all 0.3s ease;}
 input.square:checked, .CompareCheckbox:checked, input.square:hover, .CompareCheckbox:hover {background: #f69679;border-color: #f69679;}
 input.square[disabled] {background-color: #ecdfd4;border-color: #ecdfd4;cursor: default;}
 input[disabled] + label {cursor: default;color: #ecdfd4;}
-/* Текст в не активном инпуте TODO*/
-/*::-webkit-input-placeholder {color: #929292;}
-::-moz-placeholder          {color: #929292;}
-:-moz-placeholder           {color: #929292;}
-:-ms-input-placeholder      {color: #929292;}
-:focus::-webkit-input-placeholder {color: #000000;transition: opacity .3s ease;}
-:focus::-moz-placeholder          {color: #000000;transition: opacity .3s ease;}
-:focus:-moz-placeholder           {color: #000000;transition: opacity .3s ease;}
-:focus:-ms-input-placeholder      {color: #000000;transition: opacity .3s ease;}*/
-/* Ошибка в инпуте */
+/*Текст в не активном инпуте TODO*/
+::-webkit-input-placeholder {color: #c1b1a9;}
+::-moz-placeholder          {color: #c1b1a9;}
+:-moz-placeholder           {color: #c1b1a9;}
+:-ms-input-placeholder      {color: #c1b1a9;}
+:focus::-webkit-input-placeholder {color: #231803;transition: opacity .3s ease;}
+:focus::-moz-placeholder          {color: #231803;transition: opacity .3s ease;}
+:focus:-moz-placeholder           {color: #231803;transition: opacity .3s ease;}
+:focus:-ms-input-placeholder      {color: #231803;transition: opacity .3s ease;}
+/*Ошибка в инпуте*/
 input.error, textarea.error {border-color: red;}
 input.error::-webkit-input-placeholder {color: red;}
 input.error::-moz-placeholder          {color: red;}
@@ -947,6 +947,29 @@ header .contacts {display: flex;flex-wrap: wrap;align-items: center;justify-cont
 .banners__item[data-item="1"] .banners__content {width: 200px;height: 200px;box-shadow: 10px 10px 0px 0px #ffdcca;}
 .banners__item[data-item="2"] .banners__content {padding: 1rem 3rem;box-shadow: -10px -10px 0px 0px #ffdcca;}
 .banners__item[data-item="3"] .banners__content {padding: 1rem 3rem;box-shadow: 10px -10px 0px 0px #ffdcca;}
+
+
+
+/*** Обратный звонок. Бесплатная консультация ***/
+#callback {margin: 4rem 0;}
+#callback .inner {background-color: #fff4f2;padding: 1.5rem 2rem;position: relative;align-items: center;}
+#callback .callback__title {font-size: 28px;font-weight: bold;}
+#callback .callback__subtitle {font-size: 18px;margin-top: .25rem;}
+#callback .callback__subtitle span {display: block;}
+#callback .callback__content {width: 666px;overflow: hidden;}
+#callback .form__callback {margin-top: 1rem;display: flex;align-items: center;flex-wrap: wrap;}
+#callback .form__field {margin-right: 1rem;}
+#callback .form__field input {max-width: 14rem;height: 40px;line-height: 40px;padding-left: 60px;}
+#callback .form__field i {position: absolute;top: 0;left: 0;color: #c1b1a9;border-right: 1px solid #ecdfd4;font-size: 24px;width: 40px;height: 40px;display: flex;align-items: center;justify-content: center;}
+#callback .form__field input:focus + i {color: #f69679;border-color: #f69679;}
+#callback .form__buttons {margin: 0;}
+#callback .form__buttons .button {line-height: 38px;text-transform: none;}
+#callback .form__pp {color: #c1b1a9;font-size: 12px;text-align: right;width: 100%;}
+#callback .form__pp a {color: #c1b1a9;}
+#callback .callback__image {position: absolute;right: 0;/*box-shadow: 10px 10px 0px 0px #f8e9e6;*/}
+#callback .callback__image:before {content:'';width: 80%;height: 80%;position: absolute;right: -1rem;bottom: -1rem;background-color: #f8e9e6;z-index: 1;}
+#callback .callback__image img {z-index: 2;position: relative;}
+
 
 
 
