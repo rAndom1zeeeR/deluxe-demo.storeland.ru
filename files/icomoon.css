@@ -136,7 +136,7 @@
 .icon-list:before {
   content: "\e924";
 }
-.icon-location-pin:before {
+.icon-location:before {
   content: "\e925";
 }
 .icon-mail:before {
@@ -163,7 +163,7 @@
 .icon-phone:before {
   content: "\e92d";
 }
-.icon-pin:before {
+.icon-loc:before {
   content: "\e92e";
 }
 .icon-sale:before {

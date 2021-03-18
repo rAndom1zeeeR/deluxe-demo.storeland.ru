@@ -106,7 +106,7 @@ dt, dd {line-height: 1.6;}
 .mask {overflow: hidden;-webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 90%);mask-image: linear-gradient(to bottom, black 50%, transparent 90%);}
 
 /*** Инпут поля ***/
-input, select, textarea {height: 50px;line-height: 50px;padding: 0 1.5rem;color: #231803;background-color: #ffffff;border-color: #ecdfd4;border-width: 1px;border-style: solid;border-radius: 0;outline: 0;font-size: 1rem;font-weight: 400;font-family: 'M PLUS Rounded 1c', sans-serif;display: block;width: 100%;text-transform: none;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-appearance: none;-moz-appearance: none;appearance: none;}
+input, select, textarea {height: 40px;line-height: 40px;padding: 0 1.5rem;color: #231803;background-color: #ffffff;border-color: #ecdfd4;border-width: 1px;border-style: solid;border-radius: 0;outline: 0;font-size: 1rem;font-weight: 400;font-family: 'M PLUS Rounded 1c', sans-serif;display: block;width: 100%;text-transform: none;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-appearance: none;-moz-appearance: none;appearance: none;}
 @media all and (max-width: 640px) {
 input, select, textarea {padding: 0 1rem;}
 }
@@ -154,7 +154,7 @@ label.error:after {content: ' ';position: absolute;top: -7px;left: 0.875rem;widt
 /******************************************************************************
 Кнопки
 *******************************************************************************/
-.button, button, .paymentFormSubmitLink, .paymentFormTbodySubmitButton {font-family: 'M PLUS Rounded 1c', sans-serif;color: #ffffff;background: #ffb38e;box-shadow: none;padding: 0 2rem;line-height: 50px;font-size: 1rem;font-weight: 400;text-transform: uppercase;border-width: 1px;border-style: solid;border-color: #ffb38e;border-radius: 0;overflow: visible;text-align: center;margin: 0;outline: 0;cursor: pointer;white-space: nowrap;text-shadow: none;backface-visibility: hidden;transform: translateZ(0);-webkit-appearance: none;-moz-appearance: none;appearance: none;display: inline-block;position: relative;transition: all 0.3s ease;}
+.button, button, .paymentFormSubmitLink, .paymentFormTbodySubmitButton {font-family: 'M PLUS Rounded 1c', sans-serif;color: #ffffff;background: #ffb38e;box-shadow: none;padding: 0 2rem;line-height: 38px;font-size: 1rem;font-weight: 400;text-transform: none;border-width: 1px;border-style: solid;border-color: #ffb38e;border-radius: 0;overflow: visible;text-align: center;margin: 0;outline: 0;cursor: pointer;white-space: nowrap;text-shadow: none;backface-visibility: hidden;transform: translateZ(0);-webkit-appearance: none;-moz-appearance: none;appearance: none;display: inline-block;position: relative;transition: all 0.3s ease;}
 .button:hover, .button.active, button:hover, button.active, .paymentFormSubmitLink:hover, .paymentFormTbodySubmitButton:hover {color: #ffffff;background-color: #DF5642;box-shadow: none;}
 .button2 {color: #231803;background: #fff4f2;border-color: #fff4f2;}
 .button2:hover, .button2.active {color: #ffffff;background: #ffb38e;border-color: #facfb8;}
@@ -291,6 +291,7 @@ progress::-moz-progress-bar {background: #7ca4a3 fixed;}
 .form__fields.two {-webkit-justify-content: space-between;justify-content: space-between;}
 .form__fields.two .form__field {width: 48%;margin-top: 0;display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-wrap: wrap;-webkit-flex-wrap: wrap;flex-wrap: wrap;-ms-flex-align: center;-webkit-align-items: center;-webkit-box-align: center;align-items: center;}
 .form__fields input {transition: all 0.3s ease;}
+.form__field {position: relative;}
 .form__pp {font-size: 12px;margin-top: 1rem;}
 .form__pp a {text-decoration: underline;}
 .form__buttons {margin-top: 2rem;}
@@ -831,11 +832,11 @@ header .contacts {display: flex;flex-wrap: wrap;align-items: center;justify-cont
 .fancybox__link {margin-top: .25rem;color: #c1b1a9;text-decoration: underline;cursor: pointer;transition: all 0.3s ease;}
 .fancybox__link:hover {color: #ffaf88;}
 /* Соц Сети */
-.social__links {margin-top: .25rem;display: flex;flex-wrap: wrap;align-items: center;justify-content: flex-end;}
-.social__links a {font-size: 20px;color: #cabdb6;}
-.social__links a + a {margin-left: 1rem;}
-.social__links a:hover {color: #ffaf88;}
-.social__links a span {display: none;}
+.social-links {margin-top: .25rem;display: flex;flex-wrap: wrap;align-items: center;justify-content: flex-end;}
+.social-links a {font-size: 20px;color: #cabdb6;}
+.social-links a + a {margin-left: 1rem;}
+.social-links a:hover {color: #ffaf88;}
+.social-links a span {display: none;}
 /* Корзина */
 .cart.header__block {align-items: flex-end;}
 .cart .header__block--icon {width: 60px;height: 60px;font-size: 40px;}
@@ -959,11 +960,10 @@ header .contacts {display: flex;flex-wrap: wrap;align-items: center;justify-cont
 #callback .callback__content {width: 666px;overflow: hidden;}
 #callback .form__callback {margin-top: 1rem;display: flex;align-items: center;flex-wrap: wrap;}
 #callback .form__field {margin-right: 1rem;}
-#callback .form__field input {max-width: 14rem;height: 40px;line-height: 40px;padding-left: 60px;}
+#callback .form__field input {max-width: 14rem;padding-left: 60px;}
 #callback .form__field i {position: absolute;top: 0;left: 0;color: #c1b1a9;border-right: 1px solid #ecdfd4;font-size: 24px;width: 40px;height: 40px;display: flex;align-items: center;justify-content: center;}
 #callback .form__field input:focus + i {color: #f69679;border-color: #f69679;}
 #callback .form__buttons {margin: 0;}
-#callback .form__buttons .button {line-height: 38px;text-transform: none;}
 #callback .form__pp {color: #c1b1a9;font-size: 12px;text-align: right;width: 100%;}
 #callback .form__pp a {color: #c1b1a9;}
 #callback .callback__image {position: absolute;right: 0;/*box-shadow: 10px 10px 0px 0px #f8e9e6;*/}
@@ -988,11 +988,44 @@ header .contacts {display: flex;flex-wrap: wrap;align-items: center;justify-cont
 .advantage__content {width: calc(100% - 100px);padding: 0 1rem;}
 
 
+/*** Подвал ***/
+#footer {background-color: #fffaf7;}
+.footer__top {padding: 2rem 0;display: flex;align-items: center;flex-wrap: wrap;}
+.footer__top .logo {flex-grow: 1;text-align: center;}
+.footer__middle {background-color: #FFFFFF;display: flex;flex-wrap: wrap;}
+.footer__middle ul {margin: 0;padding: 0;list-style: none;}
+.footer__middle ul li {margin-bottom: .5rem;}
+.footer__block {width: 25%;padding: 3rem 2rem;}
+.footer__title {margin-bottom: 1rem;font-size: 18px;font-weight: 500;}
+/* Соц Сети */
+.footer__top .social-links a {margin-right: 1rem;font-size: 24px;color: #FFFFFF;background-color: #ffe0d1;width: 50px;height: 50px;display: flex;align-items: center;justify-content: center;}
+.footer__top .social-links a + a {margin-left: 0;}
+.footer__top .social-links a:hover {color: #FFFFFF;background-color: #FFAF88;}
+/* Оплата */
+.payments a {display: flex;align-items: center;}
+.payments i {margin-left: 1rem;font-size: 24px;color: #FFFFFF;background-color: #ffe0d1;width: 50px;height: 50px;display: flex;align-items: center;justify-content: center;transition: all 0.3s ease;}
+.payments i:hover {color: #FFFFFF;background-color: #FFAF88;}
+/* Контакты */
+.contacts__block {display: flex;flex-wrap: wrap;align-items: center;}
+.contacts__block + .contacts__block {margin-top: 2rem;}
+.contacts__icon {font-size: 32px;color: #FFFFFF;background-color: #FFAF88;box-shadow: -5px 4px 0px 0px rgba(255, 83, 0, 0.18);width: 60px;height: 60px;display: flex;align-items: center;justify-content: center;}
+.contacts__content {width: calc(100% - 60px);padding-left: 1rem;}
+.contacts__content a {line-height: 24px;}
+.contacts__content .footer__title {margin-bottom: .5rem;}
+/* Подписаться */
+.footer__block.subscribe {background-color: #fff3e5;padding: 3rem 1rem;}
+.footer__block.subscribe .subscribe__text {margin-bottom: 1rem;}
+.footer__block.subscribe input {padding-left: 60px;}
+.footer__block.subscribe i {position: absolute;top: 0;left: 0;color: #c1b1a9;border-right: 1px solid #ecdfd4;font-size: 24px;width: 40px;height: 40px;display: flex;align-items: center;justify-content: center;}
+.footer__block.subscribe input:focus + i {color: #f69679;border-color: #f69679;}
+.footer__block.subscribe .form__buttons {margin-top: 1rem;}
+.footer__block.subscribe .form__buttons .button {width: 100%;}
+.footer__block.subscribe .form__pp {text-align: center;font-size: 12px;color: #c1b1a9;}
+.footer__block.subscribe .form__pp a {color: #c1b1a9;}
+.footer__block.subscribe .form__pp a:hover {color: #DF5642;}
 
-
-
-
-
+.footer__bottom {padding: 1rem;font-size: 14px;color: #c1b1a9;text-align: center;}
+.copyright > div {display: inline-block;}
 
 
 
