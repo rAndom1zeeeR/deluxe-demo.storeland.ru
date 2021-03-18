@@ -18,12 +18,6 @@
 }
 @font-face {
     font-family: 'M PLUS Rounded 1c';
-    src: local('Rounded Mplus 1c ExtraBold'), local('RoundedMplus1c-ExtraBold'), url('Roundedmplus1cextrabold.woff2') format('woff2'), url('Roundedmplus1cextrabold.woff') format('woff'), url('Roundedmplus1cextrabold.ttf') format('truetype');
-    font-weight: 800;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'M PLUS Rounded 1c';
     src: local('Rounded Mplus 1c Black'), local('RoundedMplus1c-Black'), url('Roundedmplus1cblack.woff2') format('woff2'), url('Roundedmplus1cblack.woff') format('woff'), url('Roundedmplus1cblack.ttf') format('truetype');
     font-weight: 900;
     font-style: normal;
@@ -38,5 +32,11 @@
     font-family: 'M PLUS Rounded 1c';
     src: local('Rounded Mplus 1c Bold'), local('RoundedMplus1c-Bold'), url('Roundedmplus1cbold.woff2') format('woff2'), url('Roundedmplus1cbold.woff') format('woff'), url('Roundedmplus1cbold.ttf') format('truetype');
     font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'M PLUS Rounded 1c';
+    src: local('Rounded Mplus 1c ExtraBold'), local('RoundedMplus1c-ExtraBold'), url('Roundedmplus1cextrabold.woff2') format('woff2'), url('Roundedmplus1cextrabold.woff') format('woff'), url('Roundedmplus1cextrabold.ttf') format('truetype');
+    font-weight: 800;
     font-style: normal;
 }
