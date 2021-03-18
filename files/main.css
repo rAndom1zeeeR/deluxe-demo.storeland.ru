@@ -981,7 +981,11 @@ header .contacts {display: flex;flex-wrap: wrap;align-items: center;justify-cont
 .index__image img {z-index: 2;position: relative;}
 
 
-
+/*** Преимушества ***/
+.advantage__title {margin-bottom: .5rem;font-size: 18px;font-weight: 500;}
+.advantage__item {width: 33.333333%;display: flex;align-items: center;flex-wrap: wrap;}
+.advantage__icon {font-size: 64px;color: #FFFFFF;background-color: #FFAF88;box-shadow: -7px 6px 0px 0px rgba(255, 83, 0, 0.18);width: 100px;height: 100px;display: flex;align-items: center;justify-content: center;}
+.advantage__content {width: calc(100% - 100px);padding: 0 1rem;}
 
 
 
