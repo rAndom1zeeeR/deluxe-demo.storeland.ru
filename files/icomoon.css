@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?e2q4z');
-  src:  url('fonts/icomoon.eot?e2q4z#iefix') format('embedded-opentype'),
-  url('fonts/icomoon.ttf?e2q4z') format('truetype'),
-  url('fonts/icomoon.woff?e2q4z') format('woff'),
-  url('fonts/icomoon.svg?e2q4z#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?yt1by8');
+  src:  url('fonts/icomoon.eot?yt1by8#iefix') format('embedded-opentype'),
+  url('fonts/icomoon.ttf?yt1by8') format('truetype'),
+  url('fonts/icomoon.woff?yt1by8') format('woff'),
+  url('fonts/icomoon.svg?yt1by8#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -39,9 +39,6 @@
 }
 .icon-yandex:before {
   content: "\e913";
-}
-.icon-yandexmoney:before {
-  content: "\e914";
 }
 .icon-facebook:before {
   content: "\e902";
@@ -84,9 +81,6 @@
 }
 .icon-visa:before {
   content: "\e90f";
-}
-.icon-2:before {
-  content: "\e911";
 }
 .icon-arrow_down:before {
   content: "\e915";
