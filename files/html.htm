@@ -301,8 +301,8 @@
 			<!-- Слайдер -->
 			<div class="slider owl-carousel">
 				<div class="slider__item lozad" data-background-image="{ASSETS_IMAGES_PATH}slide_1.jpg?design=THEMENAME" data-slide="1">
-					<div class="slider__inner">
-						<div class="slider__content">
+					<div class="slider__content">
+						<div class="slider__inner">
 							<div class="slider__subtitle"><span>Создаем атмосферу праздника</span></div>
 							<a href="{CATALOG_URL}" class="slider__title"><span>Тематическими подушками</span></a>
 							<a href="{CATALOG_URL}" class="slider__button" title="Подробнее"><span>Подробнее</span></a>
@@ -311,8 +311,8 @@
 					</div>
 				</div>
 				<div class="slider__item lozad" data-background-image="{ASSETS_IMAGES_PATH}slide_2.jpg?design=THEMENAME" data-slide="1">
-					<div class="slider__inner">
-						<div class="slider__content">
+					<div class="slider__content">
+						<div class="slider__inner">
 							<div class="slider__subtitle"><span>Качественные, яркие и мягкие</span></div>
 							<a href="{CATALOG_URL}" class="slider__title"><span>Комплекты в кроватку</span></a>
 							<a href="{CATALOG_URL}" class="slider__button" title="Подробнее"><span>Подробнее</span></a>
@@ -321,8 +321,8 @@
 					</div>
 				</div>
 				<div class="slider__item lozad" data-background-image="{ASSETS_IMAGES_PATH}slide_3.jpg?design=THEMENAME" data-slide="1">
-					<div class="slider__inner">
-						<div class="slider__content">
+					<div class="slider__content">
+						<div class="slider__inner">
 							<div class="slider__subtitle"><span>Ивановская распродажа</span></div>
 							<a href="{CATALOG_URL}" class="slider__title"><span>Постельного белья</span></a>
 							<a href="{CATALOG_URL}" class="slider__button" title="Подробнее"><span>Подробнее</span></a>
@@ -436,6 +436,112 @@
 			</div>
 		</div>
 	</section>
+	
+	<!-- Новости -->
+	{% IF news_list_all_empty=0 || news_list_shop_empty=0 || news_list_articles_empty=0 || news_list_mass_media_empty=0 %}
+	<section id="news">
+		<div class="container">
+			<div class="block__nav">
+				<div class="nav__tabs">
+					{% IFNOT news_list_all_empty %}<a href="#" class="nav__tab button active" data-content="news_list_all">Новости</a>{% ENDIF %}
+					{% IFNOT news_list_shop_empty %}<a href="#" class="nav__tab button active" data-content="news_list_shop">Новости</a>{% ENDIF %}
+					{% IFNOT news_list_articles_empty %}<a href="#" class="nav__tab button" data-content="news_list_articles">Статьи</a>{% ENDIF %}
+					{% IFNOT news_list_mass_media_empty %}<a href="#" class="nav__tab button" data-content="news_list_mass_media">Блог</a>{% ENDIF %}
+				</div>
+				<div class="owl-nav" data-content="" style="display: none;">
+					<div class="owl-prev"></div>
+					<div class="owl-next"></div>
+				</div>
+			</div>
+			<!-- Список ВСЕХ новостей магазина. Если в настройках отмечено "Группировать новости в блоке навигации на сайте" -->
+			{% IFNOT news_list_all_empty %}
+			<div class="news_list_all active owl-carousel" data-content="news_list_all">
+				{% FOR news_list_all %}
+				<div class="news__item">
+					<a class="news__image" href="{news_list_all.URL}" title="Перейти к странице &laquo;{news_list_all.TITLE}&raquo;">
+						<img class="owl-lazy" data-src="{% IF news_list_all.IMG %}{news_list_all.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news_2.jpg?design=THEMENAME{% ENDIF %}" alt="{news_list_all.TITLE}" />
+						{% IF news_list_all.SHOW_TIME %}
+						<div class="news__date">{news_list_all.TIME | date("d.m.y")}</div>
+						{% ENDIF %}
+					</a>
+					<div class="news__content">
+						<a class="news__title" href="{news_list_all.URL}" title="Перейти к странице &laquo;{news_list_all.TITLE}&raquo;"><span>{news_list_all.TITLE}</span></a>
+						{% IF news_list_all.TEXT_SHORT %}<div class="news__text">{news_list_all.TEXT_SHORT}</div>{% ENDIF %}
+						<a href="{news_list_all.URL}" class="news__more" title="Перейти к странице &laquo;{news_list_all.TITLE}&raquo;"><span>Читать далее</span></a>
+					</div>
+				</div>
+				{% ENDFOR %}
+			</div>
+			{% ENDIF %}
+			<!-- Список Новости -->
+			{% IFNOT news_list_shop_empty %}
+			<div class="news_list_shop owl-carousel active" data-content="news_list_shop">
+				{% FOR news_list_shop %}
+				<div class="news__item">
+					<a class="news__image" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;">
+						<img class="owl-lazy" data-src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news_1.jpg?design=THEMENAME{% ENDIF %}" alt="{news_list_shop.TITLE}" />
+					</a>
+					<div class="news__content">
+						<div class="news__inner">
+							{% IF news_list_shop.SHOW_TIME %}
+							<div class="news__date">
+								<i class="icon-calendar"></i>
+								<span class="day">{news_list_shop.TIME | date("d")}</span>
+								<span class="month">{news_list_shop.TIME | date("M")}</span>
+							</div>
+							{% ENDIF %}
+							<a class="news__title" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;"><span>{news_list_shop.TITLE}</span></a>
+							{% IF news_list_shop.TEXT_SHORT %}<div class="news__text">{news_list_shop.TEXT_SHORT}</div>{% ENDIF %}
+							<a href="{news_list_shop.URL}" class="news__more more" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;"><span>Читать далее</span><i class="icon-arrow_right"></i></a>
+						</div>
+					</div>
+				</div>
+				{% ENDFOR %}
+			</div>
+			{% ENDIF %}
+			<!-- Список Статьи -->
+			{% IFNOT news_list_articles_empty %}
+			<div class="news_list_articles owl-carousel" data-content="news_list_articles">
+				{% FOR news_list_articles %}
+				<div class="news__item">
+					<a class="news__image" href="{news_list_articles.URL}" title="Перейти к странице &laquo;{news_list_articles.TITLE}&raquo;">
+						<img class="owl-lazy" data-src="{% IF news_list_articles.IMG %}{news_list_articles.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news_1.jpg?design=THEMENAME{% ENDIF %}" alt="{news_list_articles.TITLE}" />
+						{% IF news_list_articles.SHOW_TIME %}
+						<div class="news__date">{news_list_articles.TIME | date("d.m.y")}</div>
+						{% ENDIF %}
+					</a>
+					<div class="news__content">
+						<a class="news__title" href="{news_list_articles.URL}" title="Перейти к странице &laquo;{news_list_articles.TITLE}&raquo;"><span>{news_list_articles.TITLE}</span></a>
+						{% IF news_list_articles.TEXT_SHORT %}<div class="news__text">{news_list_articles.TEXT_SHORT}</div>{% ENDIF %}
+						<a href="{news_list_articles.URL}" class="news__more" title="Перейти к странице &laquo;{news_list_articles.TITLE}&raquo;"><span>Читать далее</span></a>
+					</div>
+				</div>
+				{% ENDFOR %}
+			</div>
+			{% ENDIF %}
+			<!-- Список Блог -->
+			{% IFNOT news_list_mass_media_empty %}
+			<div class="news_list_mass_media owl-carousel" data-content="news_list_mass_media">
+				{% FOR news_list_mass_media %}
+				<div class="news__item">
+					<a class="news__image" href="{news_list_mass_media.URL}" title="Перейти к странице &laquo;{news_list_mass_media.TITLE}&raquo;">
+						<img class="owl-lazy" data-src="{% IF news_list_mass_media.IMG %}{news_list_mass_media.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news_1.jpg?design=THEMENAME{% ENDIF %}" alt="{news_list_mass_media.TITLE}" />
+						{% IF news_list_mass_media.SHOW_TIME %}
+						<div class="news__date">{news_list_mass_media.TIME | date("d.m.y")}</div>
+						{% ENDIF %}
+					</a>
+					<div class="news__content">
+						<a class="news__title" href="{news_list_mass_media.URL}" title="Перейти к странице &laquo;{news_list_mass_media.TITLE}&raquo;"><span>{news_list_mass_media.TITLE}</span></a>
+						{% IF news_list_mass_media.TEXT_SHORT %}<div class="news__text">{news_list_mass_media.TEXT_SHORT}</div>{% ENDIF %}
+						<a href="{news_list_mass_media.URL}" class="news__more" title="Перейти к странице &laquo;{news_list_mass_media.TITLE}&raquo;"><span>Читать далее</span></a>
+					</div>
+				</div>
+				{% ENDFOR %}
+			</div>
+			{% ENDIF %}
+		</div>
+	</section>
+	{% ENDIF %}
 	
 	<!-- Преимушества -->
 	<section id="advantage">
