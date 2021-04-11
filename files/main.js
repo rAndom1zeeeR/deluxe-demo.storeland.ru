@@ -2904,7 +2904,7 @@ function pdtSlider() {
   });
   // Функция слайдера для "Лидеры продаж" на главной странице
   $('#pdt__best .owl-carousel').owlCarousel({
-    items: 5,
+    items: 3,
     margin: 32,
     loop: false,
     rewind: true,
@@ -2927,11 +2927,11 @@ function pdtSlider() {
     responsive: {
       0:{items:1},
       320:{items:1},
-      481:{items:2},
+      481:{items:1},
       641:{items:2},
-      768:{items:3},
-      992:{items:4},
-      1200:{items:5}
+      768:{items:2},
+      992:{items:3},
+      1200:{items:3}
     }
   });
   // Функция слайдера для Новинок на главной странице
@@ -2961,7 +2961,7 @@ function pdtSlider() {
       481:{items:1},
       641:{items:2},
       768:{items:2},
-      992:{items:3},
+      992:{items:2},
       1200:{items:3}
     },
     onInitialized: carouselInitialized,
@@ -3409,10 +3409,10 @@ function goodsModRest() {
   $('.goodsModRestValue').each(function(){
     let value = $(this).data('value');
     if (value > 10) {
-      $(this).html('На складе много');
+      $(this).html('В наличии много');
       $(this).css('opacity', '1');
     }else{
-      $(this).html('На складе мало');
+      $(this).html('В наличии мало');
       $(this).css('opacity', '1');
       $(this).parent().addClass('few');
     }
