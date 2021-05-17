@@ -82,7 +82,7 @@
 								</a>
 								<span class="header__block-contacts dropdown">
 									<span class="dropdown__open" data-open="contacts"><i class="icon-more"></i></span>
-									<div class="contacts dropdown__content" data-open="contacts" itemscope itemtype="https://schema.org/Organization">
+									<div class="contacts dropdown__content" data-open="contacts">
 										<!-- Телефон 1 -->
 										{% IF SETTINGS_STORE_PHONE_NUMBER1 || SETTINGS_STORE_PHONE_NUMBER2 || SETTINGS_STORE_PHONE_NUMBER3 %}
 										<div class="contacts__block phone">
@@ -118,7 +118,6 @@
 											</div>
 										</a>
 										{% ENDIF %}
-										<meta itemprop="name" content="{SETTINGS_STORE_ORG_NAME}"/>
 									</div>
 								</span>
 							</div>
