@@ -1266,7 +1266,7 @@ $('.productView__form, .goodsListForm').off('submit').submit(function() {
           if(typeof(Noty) == "function") {
             new Noty({
               text: '<div class="noty__addto"><i class="icon-close"></i><div class="noty__message">'+ $(data).html() + '</div></div>',
-              layout:"bottomCenter",
+              layout:"bottomRight",
               type:"warning",
               theme:"",
               closeWith: ['click'],
@@ -1293,7 +1293,7 @@ $('.productView__form, .goodsListForm').off('submit').submit(function() {
           if(typeof(Noty) == "function") {
             new Noty({
               text: '<div class="noty__addto"><i class="icon-check"></i><div class="noty__message">'+ $(data).html() + '</div></div>',
-              layout:"bottomCenter",
+              layout:"bottomRight",
               type:"success",
               theme:"",
               closeWith: ['click'],
@@ -1452,7 +1452,7 @@ $('.add-compare').off('click').click(function(){
           if(typeof(Noty) == "function") {
             new Noty({
               text: '<div class="noty__addto"><i class="icon-check"></i><div class="noty__message">'+ data.message + '</div></div>',
-              layout:"bottomCenter",
+              layout:"bottomRight",
               type:"success",
               theme:"",
               closeWith: ['click'],
@@ -1479,7 +1479,7 @@ $('.add-compare').off('click').click(function(){
           if(typeof(Noty) == "function") {
             new Noty({
               text: '<div class="noty__addto"><i class="icon-close"></i><div class="noty__message">'+ data.message + '</div></div>',
-              layout:"bottomCenter",
+              layout:"bottomRight",
               type:"warning",
               theme:"",
               closeWith: ['click'],
@@ -1633,7 +1633,7 @@ $('.add-favorites').off('click').click(function(){
           if(typeof(Noty) == "function") {
             new Noty({
               text: '<div class="noty__addto"><i class="icon-check"></i><div class="noty__message">'+ data.message + '</div></div>',
-              layout:"bottomCenter",
+              layout:"bottomRight",
               type:"success",
               theme:"",
               closeWith: ['click'],
@@ -1660,7 +1660,7 @@ $('.add-favorites').off('click').click(function(){
           if(typeof(Noty) == "function") {
             new Noty({
               text: '<div class="noty__addto"><i class="icon-close"></i><div class="noty__message">'+ data.message + '</div></div>',
-              layout:"bottomCenter",
+              layout:"bottomRight",
               type:"warning",
               theme:"",
               closeWith: ['click'],
@@ -2816,7 +2816,7 @@ function pdtCatalog() {
     responsiveRefreshRate: 100,
     responsive: {
       0:{items:1},
-      320:{items:1},
+      320:{items:2},
       481:{items:2},
       641:{items:2},
       768:{items:3},
@@ -2894,13 +2894,7 @@ function pdtSlider() {
     touchDrag: true,
     pullDrag: true,
     responsiveClass: true,
-    responsiveRefreshRate: 100,
-    responsive: {
-      0:{items:1},
-      320:{items:1},
-      641:{items:2, margin: 32},
-      768:{items:1}
-    }
+    responsiveRefreshRate: 100
   });
   // Функция слайдера для "Лидеры продаж" на главной странице
   $('#pdt__best .owl-carousel').owlCarousel({
@@ -2928,7 +2922,7 @@ function pdtSlider() {
       0:{items:1},
       320:{items:1},
       481:{items:1},
-      641:{items:2},
+      641:{items:1},
       768:{items:2},
       992:{items:3},
       1200:{items:3}
@@ -2959,7 +2953,7 @@ function pdtSlider() {
       0:{items:1},
       320:{items:1},
       481:{items:1},
-      641:{items:2},
+      641:{items:1},
       768:{items:2},
       992:{items:2},
       1200:{items:3}
@@ -2992,7 +2986,7 @@ function pdtSlider() {
       0:{items:1},
       320:{items:1},
       481:{items:1},
-      641:{items:2},
+      641:{items:1},
       768:{items:2},
       992:{items:3},
       1200:{items:3}
@@ -3258,7 +3252,7 @@ function closeMenu() {
   $('#overlay').on('click', function(e){
     event.preventDefault();
     if($(this).hasClass('opened')){
-      $('div, a, form').removeClass('opened');
+      $('div, a, form, span').removeClass('opened');
       $('.overflowMenu').removeClass('active');
       setTimeout(() => $('#overlay').removeClass('transparent'), 600)
     }

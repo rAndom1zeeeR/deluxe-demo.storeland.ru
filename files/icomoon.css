@@ -109,7 +109,7 @@
 .icon-cart:before {
   content: "\e91b";
 }
-.icon-check-mark:before {
+.icon-check:before {
   content: "\e91c";
 }
 .icon-clock:before {

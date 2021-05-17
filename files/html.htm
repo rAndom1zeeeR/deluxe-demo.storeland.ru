@@ -72,23 +72,66 @@
 					<meta itemprop="name" content="{SETTINGS_STORE_ORG_NAME}"/>
 					{% IF SETTINGS_STORE_PHONE_NUMBER1 %}
 					<div class="header__block phone">
-						<div class="header__block--icon">
+						<div class="header__block-icon dropdown__open" data-open="contacts">
 							<i class="icon-phone"></i>
 						</div>
-						<div class="header__block--content">
-							<a href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE1}{SETTINGS_STORE_PHONE_CITY_CODE1}{SETTINGS_STORE_PHONE_NUMBER1}">
-								<span itemprop="telephone">{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}</span>
-							</a>
+						<div class="header__block-content">
+							<div class="header__block-flex">
+								<a href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE1}{SETTINGS_STORE_PHONE_CITY_CODE1}{SETTINGS_STORE_PHONE_NUMBER1}">
+									<span itemprop="telephone">{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}</span>
+								</a>
+								<span class="header__block-contacts dropdown">
+									<span class="dropdown__open" data-open="contacts"><i class="icon-more"></i></span>
+									<div class="contacts dropdown__content" data-open="contacts" itemscope itemtype="https://schema.org/Organization">
+										<!-- Телефон 1 -->
+										{% IF SETTINGS_STORE_PHONE_NUMBER1 || SETTINGS_STORE_PHONE_NUMBER2 || SETTINGS_STORE_PHONE_NUMBER3 %}
+										<div class="contacts__block phone">
+											<i class="icon-phone"></i>
+											<div class="contacts__content">
+												<a href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}" class="contacts__phone phone" title="{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}"><span itemprop="telephone">{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}</span></a>
+												{% IF SETTINGS_STORE_PHONE_NUMBER2 %}<a href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE2}({SETTINGS_STORE_PHONE_CITY_CODE2}){SETTINGS_STORE_PHONE_NUMBER2}" class="contacts__phone phone" title="{SETTINGS_STORE_PHONE_COUNTRY_CODE2}({SETTINGS_STORE_PHONE_CITY_CODE2}){SETTINGS_STORE_PHONE_NUMBER2}"><span itemprop="telephone">{SETTINGS_STORE_PHONE_COUNTRY_CODE2}({SETTINGS_STORE_PHONE_CITY_CODE2}){SETTINGS_STORE_PHONE_NUMBER2}</span></a>{% ENDIF %}
+												{% IF SETTINGS_STORE_PHONE_NUMBER3 %}<a href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE3}({SETTINGS_STORE_PHONE_CITY_CODE3}){SETTINGS_STORE_PHONE_NUMBER3}" class="contacts__phone phone" title="{SETTINGS_STORE_PHONE_COUNTRY_CODE3}({SETTINGS_STORE_PHONE_CITY_CODE3}){SETTINGS_STORE_PHONE_NUMBER3}"><span itemprop="telephone">{SETTINGS_STORE_PHONE_COUNTRY_CODE3}({SETTINGS_STORE_PHONE_CITY_CODE3}){SETTINGS_STORE_PHONE_NUMBER3}</span></a>{% ENDIF %}
+											</div>
+										</div>
+										{% ENDIF %}
+										{% IF SETTINGS_STORE_EMAIL_MAIN %}
+										<div class="contacts__block email">
+											<i class="icon-mail"></i>
+											<div class="contacts__content">
+												<a class="email" href="mailto:{SETTINGS_STORE_EMAIL_MAIN}" title="{SETTINGS_STORE_EMAIL_MAIN}"><span itemprop="email">{SETTINGS_STORE_EMAIL_MAIN}</span></a>
+											</div>
+										</div>
+										{% ENDIF %}
+										{% IF SETTINGS_STORE_REGION %}
+										<a class="contacts__block region" href="https://yandex.ru/maps/?text={SETTINGS_STORE_REGION}&z=17" target="_blank" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+											<i class="icon-location"></i>
+											<div class="contacts__content">
+												<span itemprop="addressLocality">{SETTINGS_STORE_REGION}</span>
+											</div>
+										</a>
+										{% ENDIF %}
+										{% IF SETTINGS_STORE_WORK_TIME %}
+										<a class="contacts__block worktime" href="{FEEDBACK_URL}" title="Режим работы">
+											<i class="icon-clock"></i>
+											<div class="contacts__content">
+												<span>{SETTINGS_STORE_WORK_TIME}</span>
+											</div>
+										</a>
+										{% ENDIF %}
+										<meta itemprop="name" content="{SETTINGS_STORE_ORG_NAME}"/>
+									</div>
+								</span>
+							</div>
 							<div data-fancybox="" data-src="#fancybox__callback" class="fancybox__link"><span>Заказать звонок</span></div>
 						</div>
 					</div>
 					{% ENDIF %}
 					{% IF SETTINGS_STORE_EMAIL_MAIN %}
 					<div class="header__block mail">
-						<div class="header__block--icon">
+						<div class="header__block-icon">
 							<i class="icon-mail"></i>
 						</div>
-						<div class="header__block--content">
+						<div class="header__block-content">
 							<a href="mailto:{SETTINGS_STORE_EMAIL_MAIN}" title="{SETTINGS_STORE_EMAIL_MAIN}">
 								<span itemprop="email">{SETTINGS_STORE_EMAIL_MAIN}</span>
 							</a>
@@ -111,12 +154,12 @@
 				</div>
 				<!-- Корзина -->
 				<div class="header__block cart dropdown {% IF CART_COUNT_TOTAL > 0 %}hasItems{% ENDIF %}">
-					<div class="header__block--icon">
+					<div class="header__block-icon dropdown__open" data-open="cart">
 						<i class="icon-cart"></i>
 						<span class="cart__count" data-count="{CART_COUNT_TOTAL}">{CART_COUNT_TOTAL}</span>
 					</div>
-					<div class="header__block--content">
-						<a href="{CART_URL}" class="addto__label dropdown__open" data-open="cart" title="Корзина">
+					<div class="header__block-content">
+						<a href="{CART_URL}" class="addto__label" title="Корзина">
 							<span class="price__now cartSumNow {CURRENCY_CHAR_CODE}">{CART_SUM_NOW | money_format}</span>
 						</a>
 					</div>
@@ -129,8 +172,12 @@
 		<div class="container">
 			<div class="inner">
 				<!--Каталог-->
-				<div class="catalog--icon"><span>Каталог</span></div>
+				<div class="catalog--icon">
+					<i class="icon-menu"></i>
+					<span>Каталог</span>
+				</div>
 				<!--Меню-->
+				<div class="mainnav--icon"><span>Меню</span><i class="icon-arrow_right"></i></div>
 				<nav class="mainnav" itemscope itemtype="https://schema.org/SiteNavigationElement">
 					<ul class="mainnav__list">
 						{% FOR menu %}
@@ -164,56 +211,6 @@
 				</div>
 				<!-- Избр, Срав, ЛК -->
 				<div id="addto">
-					<!-- Войти -->
-					<div class="login dropdown">
-						<a href="{USER_LOGIN_URL}" class="addto__label dropdown__open login__icon" title="Личный кабинет" data-open="login">
-							<i class="icon-user"></i>
-							<span>Войти</span>
-						</a>
-						<div id="addtoLogin" class="addto__login dropdown__content" data-open="login">
-							<div class="addto__title">Личный кабинет</div>
-							{% IF CLIENT_IS_LOGIN %}
-							<!-- ЛК для авторизованных пользователей -->
-							<div class="mainnav__links">
-								<a href="{USER_SETTINGS_URL}" title="Личный кабинет" rel="nofollow"><span>Мой кабинет</span></a>
-								<a href="{USER_HISTORY_LIST_URL}" title="История заказов" rel="nofollow"><span>История</span></a>
-								<a href="{FAVORITES_URL}" title="Избранные товары" rel="nofollow"><span>Избранное</span></a>
-								{% IF SETTINGS_COMPARE_DISABLE=0 %}<a href="{COMPARE_URL}" title="Сравнение" rel="nofollow">Сравнение</a>{% ENDIF %}
-								<a href="{USER_LOGOUT_URL}" title="Выход" rel="nofollow"><span>Выход</span></a>
-							</div>
-							{% ELSE %}
-							<!-- Форма входа и регистрации -->
-							<form action="{USER_LOGIN_URL}" method="post" class="form__client">
-								<input type="hidden" name="hash" value="{HASH}" />
-								<input type="hidden" name="from" value="{FROM}" />
-								<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
-								{ANTISPAM_CODE}
-								<div class="form__list">
-									<div class="form__fields">
-										<label class="required">Электронная почта <em>*</em></label>
-										<input type="email" name="form[sites_client_mail]" value="{FORM_SITES_CLIENT_MAIL}" maxlength="255" class="form__input sites_client_mail email" placeholder="Email" required/>
-									</div>
-									<div class="form__fields">
-										<label class="required">Пароль: <em>*</em></label>
-										<input type="password" name="form[sites_client_pass]" value="{FORM_SITES_CLIENT_PASS}" maxlength="50" minlength="6" class="form__input sites_client_pass" placeholder="Пароль" onkeyup="checkCapsWarning(event)" onfocus="checkCapsWarning(event)" onblur="removeCapsWarning()" required/>
-										{% IFNOT user_agent_ie %}
-										<div class="showPassBlock"><a href="#" rel="Скрыть пароль" class="showPass">Показать пароль</a></div>
-										{% ENDIF %}
-										<div id="capslock">
-											<div><i class="icon-warning"></i></div>
-											<div><strong>Caps Lock включен.</strong></div>
-											<div>Пароль может быть введен неверно.</div>
-										</div>
-									</div>
-								</div>
-								<div class="client__buttons addto__buttons">
-									<button type="submit" name="send" class="button" title="Войти">Войти</button>
-									<a href="{USER_REGISTER_URL}" class="button">Зарегистрироваться</a>
-								</div>
-							</form>
-							{% ENDIF %}
-						</div>
-					</div>
 					<!-- Сравнение -->
 					{% IFNOT MOD_LNAME = compare && SETTINGS_COMPARE_DISABLE=0 %}
 					<div class="compare dropdown {% IF COMPARE_GOODS_COUNT > 0 %}hasItems{% ENDIF %}">
@@ -222,34 +219,6 @@
 							<span>Сравнение</span>
 							<span class="compare__count" data-count="{COMPARE_GOODS_COUNT}">{COMPARE_GOODS_COUNT}</span>
 						</a>
-						<div id="addtoCompare" class="addto__compare dropdown__content" data-open="compare">
-							<div class="addto__title">В Сравнении</div>
-							<div class="addto__items">
-								{% FOR compare_goods %}
-								<div class="addto__item" data-id="{compare_goods.ID}">
-									<a href="{compare_goods.URL}" title="{compare_goods.NAME}" class="addto__image"><img src="{% IF compare_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{compare_goods.IMAGE_ICON}{% ENDIF %}" class="goods-image-icon" /></a>
-									<div class="addto__shop">
-										<!-- Название -->
-										<a href="{compare_goods.URL}" class="addto__name" title="{compare_goods.NAME}"><span>{compare_goods.NAME}</span></a>
-										<!-- Цена -->
-										<div class="addto__price {CURRENCY_CHAR_CODE}">
-											<div class="price__now">{compare_goods.MIN_PRICE_NOW | money_format}</div>
-											<!-- Удаление -->
-											<a href="{COMPARE_DELETE_URL}?id={compare_goods.MIN_PRICE_NOW_ID}" data-goods-mod-id="{compare_goods.MIN_PRICE_NOW_ID}" class="addto__remove remove" title="Убрать товар из списка сравнения" onclick="removeFromCompare($(this))"><span>Удалить</span></a>
-										</div>
-									</div>
-								</div>
-								{% ENDFOR %}
-							</div>
-							<div class="addto__empty">
-								<div class="addto__title">Ваш список сравнения пуст</div>
-								<a href="{CATALOG_URL}" class="button addto__close" title="Продолжить покупки">Продолжить покупки</a>
-							</div>
-							<div class="addto__buttons">
-								<a href="{COMPARE_RESET_URL}" onclick="removeFromCompareAll($(this))" class="button button2 removeAll" title="Очистить список сравнения"><span>Очистить сравнение</span></a>
-								<a href="{COMPARE_URL}" class="button" title="Перейти к Сравнению">Перейти к Сравнению</a>
-							</div>
-						</div>
 					</div>
 					{% ENDIF %}
 					<!-- Избранное -->
@@ -259,34 +228,25 @@
 							<span>Избранное</span>
 							<span class="favorites__count" data-count="{FAVORITES_GOODS_COUNT}">{FAVORITES_GOODS_COUNT}</span>
 						</a>
-						<div id="addtoFavorites" class="addto__favorites dropdown__content" data-open="favorites">
-							<div class="addto__title">В Избранном</div>
-							<div class="addto__items">
-								{% FOR favorites_goods %}
-								<div class="addto__item" data-id="{favorites_goods.ID}">
-									<a href="{favorites_goods.URL}" title="{favorites_goods.NAME}" class="addto__image"><img src="{% IF favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{favorites_goods.IMAGE_ICON}{% ENDIF %}" class="goods-image-icon" /></a>
-									<div class="addto__shop">
-										<!-- Название -->
-										<a href="{favorites_goods.URL}" class="addto__name" title="{favorites_goods.NAME}">{favorites_goods.NAME}</a>
-										<!-- Цена -->
-										<div class="addto__price {CURRENCY_CHAR_CODE}">
-											<div class="price__now">{favorites_goods.MIN_PRICE_NOW | money_format}</div>
-											<!-- Удаление -->
-											<a href="{FAVORITES_DELETE_URL}?id={favorites_goods.MIN_PRICE_NOW_ID}" data-goods-mod-id="{favorites_goods.MIN_PRICE_NOW_ID}" class="addto__remove remove" title="Убрать товар из списка избранного" onclick="removeFromFavorites($(this))"><span>Удалить</span></a>
-										</div>
-									</div>
-								</div>
-								{% ENDFOR %}
-							</div>
-							<div class="addto__empty">
-								<div class="addto__title">Ваш список избранного пуст</div>
-								<a href="{CATALOG_URL}" class="button addto__close" title="Продолжить покупки">Продолжить покупки</a>
-							</div>
-							<div class="addto__buttons">
-								<a href="{FAVORITES_RESET_URL}" onclick="removeFromFavoritesAll($(this))" class="button button2 removeAll" title="Очистить список Избранного"><span>Очистить Избранное</span></a>
-								<a href="{FAVORITES_URL}" class="button" title="Перейти к Избранному">Перейти к Избранному</a>
-							</div>
-						</div>
+					</div>
+					<!-- Корзина -->
+					<div class="cart dropdown {% IF CART_COUNT_TOTAL > 0 %}hasItems{% ENDIF %}">
+						<a href="{CART_URL}" class="addto__label dropdown__open cart__icon" title="Корзина" data-open="cart">
+							<i class="icon-cart"></i>
+							<span>Корзина</span>
+							<span class="cart__count" data-count="{CART_COUNT_TOTAL}">{CART_COUNT_TOTAL}</span>
+						</a>
+					</div>
+					<!-- Войти -->
+					<div class="login dropdown">
+						<a href="{USER_LOGIN_URL}" class="addto__label dropdown__open login__icon" title="Личный кабинет" data-open="login">
+							<i class="icon-user"></i>
+							<span>Войти</span>
+						</a>
+					</div>
+					<!-- Наверх -->
+					<div class="toTop">
+						<div class="addto__label"><i class="icon-arrow_up"></i></div>
 					</div>
 				</div>
 			</div>
@@ -1266,10 +1226,10 @@
 		<div class="container">
 			<div class="block__nav">
 				<div class="nav__tabs">
-					{% IFNOT news_list_all_empty %}<a href="#" class="nav__tab button active" data-content="news_list_all">Новости</a>{% ENDIF %}
-					{% IFNOT news_list_shop_empty %}<a href="#" class="nav__tab button active" data-content="news_list_shop">Новости</a>{% ENDIF %}
-					{% IFNOT news_list_articles_empty %}<a href="#" class="nav__tab button" data-content="news_list_articles">Статьи</a>{% ENDIF %}
-					{% IFNOT news_list_mass_media_empty %}<a href="#" class="nav__tab button" data-content="news_list_mass_media">Блог</a>{% ENDIF %}
+					{% IFNOT news_list_all_empty %}<a href="#" class="nav__tab active" data-content="news_list_all">Новости</a>{% ENDIF %}
+					{% IFNOT news_list_shop_empty %}<a href="#" class="nav__tab active" data-content="news_list_shop">Новости</a>{% ENDIF %}
+					{% IFNOT news_list_articles_empty %}<a href="#" class="nav__tab" data-content="news_list_articles">Статьи</a>{% ENDIF %}
+					{% IFNOT news_list_mass_media_empty %}<a href="#" class="nav__tab" data-content="news_list_mass_media">Блог</a>{% ENDIF %}
 				</div>
 				<div class="owl-nav" data-content="" style="display: none;">
 					<div class="owl-prev"></div>
@@ -1387,7 +1347,7 @@
 	<!-- Преимушества -->
 	<section id="advantage">
 		<div class="container">
-			<div class="inner">
+			<div class="advantage__items">
 				<div class="advantage__item" data-item="1">
 					<div class="advantage__icon">
 						<i class="icon-delivery"></i>
@@ -1481,8 +1441,8 @@
 							</div>
 							<div class="form__buttons">
 								<button type="submit" title="Отправить" class="form__button button">Подписаться</button>
-								<div class="form__pp">Нажимая на кнопку &laquo;Заказать звонок&raquo;, Вы соглашаетесь с <a data-fancybox data-src="#fancybox__pp" href="javascript:;">правилами обработки данных</a></div>
 							</div>
+							<div class="form__pp">Нажимая на кнопку &laquo;Заказать звонок&raquo;, Вы соглашаетесь с <a data-fancybox data-src="#fancybox__pp" href="javascript:;">правилами обработки данных</a></div>
 						</form>
 					</div>
 				</div>
@@ -1512,10 +1472,10 @@
 						</ul>
 					</div>
 				</div>
+				<!-- Подвал.Контакты -->
 				<div class="footer__block contacts">
 					<div class="footer__title">Контакты</div>
 					<div class="footer__content">
-						<!-- Подвал.Контакты -->
 						<div class="contacts" itemscope itemtype="https://schema.org/Organization">
 							<!-- Телефон 1 -->
 							{% IF SETTINGS_STORE_PHONE_NUMBER1 || SETTINGS_STORE_PHONE_NUMBER2 || SETTINGS_STORE_PHONE_NUMBER3 %}
@@ -1576,8 +1536,168 @@
 	
 	<!-- Модальные окна -->
 	<noindex>
-		<!-- Скрытое обновление корзины -->
-		<div class="hiddenUpdate" style="display: none;"></div>
+		<!-- Личный кабинет -->
+		<div id="addtoLogin" class="addto__login dropdown__content" data-open="login">
+			<div class="dropdown__title">
+				<span class="dropdown__label">Личный кабинет</span>
+				<span class="dropdown__close"><i class="icon-close"></i></span>
+			</div>
+			<div class="dropdown__inner">
+				{% IF CLIENT_IS_LOGIN %}
+				<!-- ЛК для авторизованных пользователей -->
+				<div class="mainnav__links">
+					<a href="{USER_SETTINGS_URL}" title="Личный кабинет" rel="nofollow"><span>Мой кабинет</span></a>
+					<a href="{USER_HISTORY_LIST_URL}" title="История заказов" rel="nofollow"><span>История</span></a>
+					<a href="{FAVORITES_URL}" title="Избранные товары" rel="nofollow"><span>Избранное</span></a>
+					{% IF SETTINGS_COMPARE_DISABLE=0 %}<a href="{COMPARE_URL}" title="Сравнение" rel="nofollow">Сравнение</a>{% ENDIF %}
+					<a href="{USER_LOGOUT_URL}" title="Выход" rel="nofollow"><span>Выход</span></a>
+				</div>
+				{% ELSE %}
+				<!-- Форма входа и регистрации -->
+				<form action="{USER_LOGIN_URL}" method="post" class="form__client">
+					<input type="hidden" name="hash" value="{HASH}" />
+					<input type="hidden" name="from" value="{FROM}" />
+					<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
+					{ANTISPAM_CODE}
+					<div class="form__list">
+						<div class="form__fields">
+							<div class="form__field">
+								<input type="email" name="form[sites_client_mail]" value="{FORM_SITES_CLIENT_MAIL}" maxlength="255" class="form__input sites_client_mail email" placeholder="Email" required/>
+								<i class="icon-mail"></i>
+							</div>
+						</div>
+						<div class="form__fields">
+							<div class="form__field">
+								<input type="password" name="form[sites_client_pass]" value="{FORM_SITES_CLIENT_PASS}" maxlength="50" minlength="6" class="form__input sites_client_pass" placeholder="Пароль" onkeyup="checkCapsWarning(event)" onfocus="checkCapsWarning(event)" onblur="removeCapsWarning()" required/>
+								<i class="icon-padlock"></i>
+							</div>
+							{% IFNOT user_agent_ie %}
+							<div class="showPassBlock"><a href="#" rel="Скрыть пароль" class="showPass">Показать пароль</a></div>
+							{% ENDIF %}
+							<div id="capslock">
+								<div><i class="icon-warning"></i></div>
+								<div><strong>Caps Lock включен.</strong></div>
+								<div>Пароль может быть введен неверно.</div>
+							</div>
+						</div>
+					</div>
+					<div class="client__buttons addto__buttons">
+						<button type="submit" name="send" class="button button3" title="Войти">Войти</button>
+						<a href="{USER_REGISTER_URL}" class="button">Зарегистрироваться</a>
+					</div>
+				</form>
+				{% ENDIF %}
+			</div>
+		</div>
+		<!-- Корзина -->
+		<div id="addtoCart" class="addto__cart dropdown__content right {% IF CART_COUNT_TOTAL > 0 %}hasItems{% ENDIF %}" data-open="cart">
+			<div class="dropdown__title">
+				<span class="dropdown__label">Корзина</span>
+				<span class="dropdown__close"><i class="icon-close"></i></span>
+			</div>
+			<div class="dropdown__inner">
+				{% IFNOT cart_items_empty %}
+				<div class="addto__items">
+					{% FOR cart_items %}
+					<div class="addto__item" data-id="{cart_items.GOODS_ID}">
+						<a href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}" class="addto__image"><img src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{cart_items.GOODS_IMAGE_ICON}{% ENDIF %}" alt="{cart_items.GOODS_NAME}" class="goods-image-icon" /></a>
+						<div class="addto__shop">
+							<!-- Название -->
+							<a href="{cart_items.GOODS_URL}" class="addto__name" title="{cart_items.GOODS_NAME}"><span>{cart_items.GOODS_NAME}</span></a>
+							{% IFNOT cart_items.distinctive_properties_empty %}<div class="addto__mod">({% FOR distinctive_properties %}{cart_items.distinctive_properties.NAME}: {cart_items.distinctive_properties.VALUE}{% IFNOT cart_items.distinctive_properties.last %}, {% ENDIF %}{% ENDFOR %})</div>{% ENDIF %}
+							<!-- Цена -->
+							<div class="addto__price {CURRENCY_CHAR_CODE}">
+								<div class="price__now" data-price="{cart_items.GOODS_MOD_PRICE_NOW}">{cart_items.GOODS_MOD_PRICE_NOW | money_format}</div>
+								<!-- Удаление -->
+								<a class="addto__remove remove" href="{cart_items.ORDER_LINE_DELETE_URL}" data-qty="{cart_items.ORDER_LINE_QUANTITY}" title="Удалить позицию" data-id="{cart_items.GOODS_ID}" onclick="removeFromCart($(this))"><span>Удалить</span></a>
+							</div>
+						</div>
+					</div>
+					{% ENDFOR %}
+				</div>
+				<div class="addto__total {CURRENCY_CHAR_CODE}">
+					<span>Итого:</span>
+					<span class="price__now">{CART_SUM_NOW | money_format}</span>
+				</div>
+				{% ENDIF %}
+				<div class="addto__empty">
+					<div class="addto__title">В корзине пока ничего нет</div>
+					<a href="{CATALOG_URL}" class="button addto__close" title="Продолжить покупки">Продолжить покупки</a>
+				</div>
+				<div class="addto__buttons">
+					<a href="{CART_TRUNCATE_URL}" onclick="removeFromCartAll($(this))" class="button button2 removeAll" title="Очистить корзину"><span>Очистить корзину</span></a>
+					<a href="{CART_URL}" class="button" title="Перейти в Корзину"><span>Оформить заказ</span></a>
+				</div>
+			</div>
+		</div>
+		<!-- Сравнение -->
+		<div id="addtoCompare" class="addto__compare dropdown__content {% IF COMPARE_GOODS_COUNT > 0 %}hasItems{% ENDIF %}" data-open="compare">
+			<div class="dropdown__title">
+				<span class="dropdown__label">В Сравнении</span>
+				<span class="dropdown__close"><i class="icon-close"></i></span>
+			</div>
+			<div class="dropdown__inner">
+				<div class="addto__items">
+					{% FOR compare_goods %}
+					<div class="addto__item" data-id="{compare_goods.ID}">
+						<a href="{compare_goods.URL}" title="{compare_goods.NAME}" class="addto__image"><img src="{% IF compare_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{compare_goods.IMAGE_ICON}{% ENDIF %}" class="goods-image-icon" /></a>
+						<div class="addto__shop">
+							<!-- Название -->
+							<a href="{compare_goods.URL}" class="addto__name" title="{compare_goods.NAME}"><span>{compare_goods.NAME}</span></a>
+							<!-- Цена -->
+							<div class="addto__price {CURRENCY_CHAR_CODE}">
+								<div class="price__now">{compare_goods.MIN_PRICE_NOW | money_format}</div>
+								<!-- Удаление -->
+								<a href="{COMPARE_DELETE_URL}?id={compare_goods.MIN_PRICE_NOW_ID}" data-goods-mod-id="{compare_goods.MIN_PRICE_NOW_ID}" class="addto__remove remove" title="Убрать товар из списка сравнения" onclick="removeFromCompare($(this))"><span>Удалить</span></a>
+							</div>
+						</div>
+					</div>
+					{% ENDFOR %}
+				</div>
+				<div class="addto__empty">
+					<div class="addto__title">Ваш список сравнения пуст</div>
+					<a href="{CATALOG_URL}" class="button addto__close" title="Продолжить покупки">Продолжить покупки</a>
+				</div>
+				<div class="addto__buttons">
+					<a href="{COMPARE_RESET_URL}" onclick="removeFromCompareAll($(this))" class="button button2 removeAll" title="Очистить список сравнения"><span>Очистить сравнение</span></a>
+					<a href="{COMPARE_URL}" class="button" title="Перейти к Сравнению">Перейти к Сравнению</a>
+				</div>
+			</div>
+		</div>
+		<!-- Избранное -->
+		<div id="addtoFavorites" class="addto__favorites dropdown__content {% IF FAVORITES_GOODS_COUNT > 0 %}hasItems{% ENDIF %}" data-open="favorites">
+			<div class="dropdown__title">
+				<span class="dropdown__label">В Избранном</span>
+				<span class="dropdown__close"><i class="icon-close"></i></span>
+			</div>
+			<div class="dropdown__inner">
+				<div class="addto__items">
+					{% FOR favorites_goods %}
+					<div class="addto__item" data-id="{favorites_goods.ID}">
+						<a href="{favorites_goods.URL}" title="{favorites_goods.NAME}" class="addto__image"><img src="{% IF favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{favorites_goods.IMAGE_ICON}{% ENDIF %}" class="goods-image-icon" /></a>
+						<div class="addto__shop">
+							<!-- Название -->
+							<a href="{favorites_goods.URL}" class="addto__name" title="{favorites_goods.NAME}">{favorites_goods.NAME}</a>
+							<!-- Цена -->
+							<div class="addto__price {CURRENCY_CHAR_CODE}">
+								<div class="price__now">{favorites_goods.MIN_PRICE_NOW | money_format}</div>
+								<!-- Удаление -->
+								<a href="{FAVORITES_DELETE_URL}?id={favorites_goods.MIN_PRICE_NOW_ID}" data-goods-mod-id="{favorites_goods.MIN_PRICE_NOW_ID}" class="addto__remove remove" title="Убрать товар из списка избранного" onclick="removeFromFavorites($(this))"><span>Удалить</span></a>
+							</div>
+						</div>
+					</div>
+					{% ENDFOR %}
+				</div>
+				<div class="addto__empty">
+					<div class="addto__title">Ваш список избранного пуст</div>
+					<a href="{CATALOG_URL}" class="button addto__close" title="Продолжить покупки">Продолжить покупки</a>
+				</div>
+				<div class="addto__buttons">
+					<a href="{FAVORITES_RESET_URL}" onclick="removeFromFavoritesAll($(this))" class="button button2 removeAll" title="Очистить список Избранного"><span>Очистить Избранное</span></a>
+					<a href="{FAVORITES_URL}" class="button" title="Перейти к Избранному">Перейти к Избранному</a>
+				</div>
+			</div>
+		</div>
 		<!-- Политика конфиденциальности в модальном окне -->
 		<div id="fancybox__pp" class="modal" style="display:none">
 			<div class="modal__title block__title">
@@ -1615,12 +1735,19 @@
 					<input class="callbackredirect" type="hidden" name="return_to" value="{CALLBACK_URL}"/>
 					<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
 					{ANTISPAM_CODE}
+					<div class="form__text">
+						<p>Возникли вопросы? Заполните форму и наши консультанты перезвонят Вам в ближайшее время</p>
+					</div>
 					<div class="form__fields">
 						<div class="form__field">
 							<input id="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" class="form__input form__person" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" value="{FORM_CALLBACK_PERSON}" placeholder="Владимир П." autocomplete="off"/>
+							<i class="icon-user"></i>
 						</div>
+					</div>
+					<div class="form__fields">
 						<div class="form__field">
 							<input id="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" class="form__input form__phone" type="tel" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}" placeholder="+7 (987) 654-3210" autocomplete="off"/>
+							<i class="icon-phone"></i>
 						</div>
 					</div>
 					<div class="form__buttons">
@@ -1644,9 +1771,13 @@
 					<div class="form__fields">
 						<div class="form__field">
 							<input class="form__input form__person form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" value="{FORM_CALLBACK_PERSON}" placeholder="Владимир П." autocomplete="off"/>
+							<i class="icon-user"></i>
 						</div>
+					</div>
+					<div class="form__fields">
 						<div class="form__field">
 							<input class="form__input form__phone form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" type="tel" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}" placeholder="+7 (987) 654-3210" autocomplete="off"/>
+							<i class="icon-phone"></i>
 						</div>
 					</div>
 					<div class="form__fields">
@@ -1678,20 +1809,27 @@
 					{ANTISPAM_CODE}
 					<!-- Для использования почты для уведомлений необходимо удалить блок с телефоном -->
 					<div class="form__fields">
-						<input class="form__input form__phone" type="tel" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}" placeholder="+7 (987) 654-3210" autocomplete="off"/>
+						<div class="form__field">
+							<input class="form__input form__phone" type="tel" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}" placeholder="+7 (987) 654-3210" autocomplete="off"/>
+							<i class="icon-phone"></i>
+						</div>
 					</div>
 					<!-- Для использования почты для уведомлений необходимо удалить ниже style="display: none;" -->
 					<div class="form__fields" style="display: none;">
-						<input class="form__input form__email" type="email" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_EMAIL}]" value="{FORM_CALLBACK_EMAIL}" placeholder="email@email.ru *" autocomplete="off"/>
+						<div class="form__field">
+							<input class="form__input form__email" type="email" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_EMAIL}]" value="{FORM_CALLBACK_EMAIL}" placeholder="email@email.ru *" autocomplete="off"/>
+							<i class="icon-mail"></i>
+						</div>
 					</div>
 					<div class="form__buttons">
 						<button type="submit" title="Уведомить" class="form__button button">Уведомить</button>
 					</div>
-					<div class="form__pp">Нажимая на кнопку &laquo;Уведомить&raquo;, Вы соглашаетесь с
-						<a data-fancybox data-src="#fancybox__pp" href="javascript:;">правилами обработки данных</a></div>
+					<div class="form__pp">Нажимая на кнопку &laquo;Уведомить&raquo;, Вы соглашаетесь с <a data-fancybox data-src="#fancybox__pp" href="javascript:;">правилами обработки данных</a></div>
 				</form>
 			</div>
 		</div>
+		<!-- Скрытое обновление корзины -->
+		<div class="hiddenUpdate" style="display: none;"></div>
 	</noindex>
 </div>
 
