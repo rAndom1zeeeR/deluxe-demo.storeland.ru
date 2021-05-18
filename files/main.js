@@ -495,12 +495,12 @@ $(document).ready(function() {
 
 // Наверх
 $(document).ready(function(){
-  $(".toTop").hide();
+  $("#toTop").hide();
 	$(window).scroll(function () {
 		if ($(this).scrollTop() > 100) {
-			$('.toTop').fadeIn();
+			$('#toTop').fadeIn();
 		} else {
-			$('.toTop').fadeOut();
+			$('#toTop').fadeOut();
 		}
 	});
 	$('.toTop').click(function () {
@@ -3277,18 +3277,18 @@ function openMenu() {
     event.preventDefault();
     $('div').removeClass('opened');
     let value = $(this).data('open');
-    if ($('.dropdown__content[data-open="'+ value +'"]').hasClass('opened')){
+    if ($('.dropdown__content[data-content="'+ value +'"]').hasClass('opened')){
       $(this).removeClass('opened');
       $(this).parent().removeClass('opened');
       $('.sidebar__links').removeClass('opened');
       $('#overlay').removeClass('opened');
-      $('.dropdown__content[data-open="'+ value +'"]').removeClass('opened');
+      $('.dropdown__content[data-content="'+ value +'"]').removeClass('opened');
     }else{
       $(this).addClass('opened');
       $(this).parent().addClass('opened');
       $('.sidebar__links').addClass('opened');
       $('#overlay').addClass('opened');
-      $('.dropdown__content[data-open="'+ value +'"]').addClass('opened');
+      $('.dropdown__content[data-content="'+ value +'"]').addClass('opened');
     }
   });
 
@@ -3720,6 +3720,23 @@ $(document).ready(function(){
     $(this).addClass('active');
     $('.dropdown__content [data-content]').hide();
     content.show();
+  });
+
+  //Открытие меню
+  $('.mainnav--icon').on('click', function (event){
+    event.preventDefault();
+    $('#addtoCatalog').hide();
+    $('#addtoMenu').show();
+    button.removeClass('active');
+    $('.dropdown__label[data-open="menu"]').addClass('active');
+  });
+  //Открытие каталога
+  $('.catalog--icon').on('click', function (event){
+    event.preventDefault();
+    $('#addtoMenu').hide();
+    $('#addtoCatalog').show();
+    button.removeClass('active');
+    $('.dropdown__label[data-open="catalog"]').addClass('active');
   });
 
 });

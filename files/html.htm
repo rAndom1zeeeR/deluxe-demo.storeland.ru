@@ -82,7 +82,7 @@
 								</a>
 								<span class="header__block-contacts dropdown">
 									<span class="dropdown__open" data-open="contacts"><i class="icon-more"></i></span>
-									<div class="contacts dropdown__content" data-open="contacts">
+									<div class="contacts dropdown__content" data-content="contacts">
 										<!-- Телефон 1 -->
 										{% IF SETTINGS_STORE_PHONE_NUMBER1 || SETTINGS_STORE_PHONE_NUMBER2 || SETTINGS_STORE_PHONE_NUMBER3 %}
 										<div class="contacts__block phone">
@@ -171,12 +171,15 @@
 		<div class="container">
 			<div class="inner">
 				<!--Каталог-->
-				<div class="catalog--icon">
+				<div class="catalog--icon dropdown__open" data-open="catalogMenu">
 					<i class="icon-menu"></i>
 					<span>Каталог</span>
 				</div>
 				<!--Меню-->
-				<div class="mainnav--icon"><span>Меню</span><i class="icon-arrow_right"></i></div>
+				<div class="mainnav--icon dropdown__open" data-open="catalogMenu">
+					<span>Меню</span>
+					<i class="icon-arrow_right"></i>
+				</div>
 				<nav class="mainnav" itemscope itemtype="https://schema.org/SiteNavigationElement">
 					<ul class="mainnav__list">
 						{% FOR menu %}
@@ -245,7 +248,7 @@
 					</div>
 					<!-- Наверх -->
 					<div class="toTop">
-						<div class="addto__label"><i class="icon-arrow_up"></i></div>
+						<a href="#" class="addto__label"><i class="icon-arrow_up"></i></a>
 					</div>
 				</div>
 			</div>
@@ -1535,8 +1538,43 @@
 	
 	<!-- Модальные окна -->
 	<noindex>
+		<!-- Наверх -->
+		<div id="toTop" class="toTop">
+			<i class="icon-arrow_up"></i>
+		</div>
+		<div id="catalogMenu" class="dropdown__content" data-content="catalogMenu">
+			<div class="dropdown__title">
+				<div class="dropdown__label menu" data-open="menu"><span>Меню сайта</span></div>
+				<div class="dropdown__label catalog active" data-open="catalog"><span>Каталог</span></div>
+				<span class="dropdown__close"><i class="icon-close"></i></span>
+			</div>
+			<div id="addtoCatalog" class="addto__catalog" data-content="catalog">
+				<div class="catalog__items">
+					{% FOR catalog_full %}
+					{% IF catalog_full.FIRST %}{% IFNOT catalog_full.LEVEL = 0 %}<div data-level="{catalog_full.LEVEL}" class="sub">{% ENDIF %}{% ENDIF %}
+					<div {% IF catalog_full.HIDE %}style="display:none;"{% ENDIF %} data-level="{catalog_full.LEVEL}" class="catalog__item {% IF catalog_full.ISSET_VISIBLE_SUB %}parent{% ENDIF %} {% IF catalog_full.CURRENT_PARENT %}opened{% ENDIF %}">
+						<a href="{catalog_full.URL}" data-level="{catalog_full.LEVEL}" class="catalog__link {% IF catalog_full.CURRENT %}opened{% ENDIF %}">
+							<span>{catalog_full.NAME}</span>
+							{% IF catalog_full.ISSET_VISIBLE_SUB %}<span class="open"></span>{% ENDIF %}
+						</a>
+						{% IF catalog_full.ISSET_SUB=0 %}</div>{% ENDIF %}
+					{% IF catalog_full.LAST %}{%FOR out%}</div> {%IFNOT catalog_full.out.LAST%}</div>{%ENDIF%}{%ENDFOR%}{% ENDIF %}
+				{% ENDFOR %}
+			</div>
+			<div id="addtoMenu" class="addto__menu" data-content="menu">
+				<ul class="mainnav__list">
+					{% FOR menu %}
+					{% FOR header %}
+					{% FOR links %}
+					<li><a href="{menu.header.links.URL}" class="mainnav__link {% IF menu.header.links.SELECTED %}active{%ENDIF%}" title="{% IF menu.header.links.TITLE %}{menu.header.links.TITLE}{% ELSE%}{menu.header.links.NAME}{% ENDIF %}" itemprop="url"><span itemprop="name">{menu.header.links.NAME}</span></a></li>
+					{% ENDFOR %}
+					{% ENDFOR %}
+					{% ENDFOR %}
+				</ul>
+			</div>
+		</div>
 		<!-- Личный кабинет -->
-		<div id="addtoLogin" class="addto__login dropdown__content" data-open="login">
+		<div id="addtoLogin" class="addto__login dropdown__content" data-content="login">
 			<div class="dropdown__title">
 				<span class="dropdown__label">Личный кабинет</span>
 				<span class="dropdown__close"><i class="icon-close"></i></span>
@@ -1589,7 +1627,7 @@
 			</div>
 		</div>
 		<!-- Корзина -->
-		<div id="addtoCart" class="addto__cart dropdown__content right {% IF CART_COUNT_TOTAL > 0 %}hasItems{% ENDIF %}" data-open="cart">
+		<div id="addtoCart" class="addto__cart dropdown__content right {% IF CART_COUNT_TOTAL > 0 %}hasItems{% ENDIF %}" data-content="cart">
 			<div class="dropdown__title">
 				<span class="dropdown__label">Корзина</span>
 				<span class="dropdown__close"><i class="icon-close"></i></span>
@@ -1630,7 +1668,7 @@
 			</div>
 		</div>
 		<!-- Сравнение -->
-		<div id="addtoCompare" class="addto__compare dropdown__content {% IF COMPARE_GOODS_COUNT > 0 %}hasItems{% ENDIF %}" data-open="compare">
+		<div id="addtoCompare" class="addto__compare dropdown__content {% IF COMPARE_GOODS_COUNT > 0 %}hasItems{% ENDIF %}" data-content="compare">
 			<div class="dropdown__title">
 				<span class="dropdown__label">В Сравнении</span>
 				<span class="dropdown__close"><i class="icon-close"></i></span>
@@ -1664,7 +1702,7 @@
 			</div>
 		</div>
 		<!-- Избранное -->
-		<div id="addtoFavorites" class="addto__favorites dropdown__content {% IF FAVORITES_GOODS_COUNT > 0 %}hasItems{% ENDIF %}" data-open="favorites">
+		<div id="addtoFavorites" class="addto__favorites dropdown__content {% IF FAVORITES_GOODS_COUNT > 0 %}hasItems{% ENDIF %}" data-content="favorites">
 			<div class="dropdown__title">
 				<span class="dropdown__label">В Избранном</span>
 				<span class="dropdown__close"><i class="icon-close"></i></span>
