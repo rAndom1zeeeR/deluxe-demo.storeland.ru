@@ -1517,6 +1517,27 @@
 					</ul>
 				</div>
 			</div>
+			<!-- Баннеры в каталоге -->
+			{% IF MOD_LNAME = catalog %}
+			<div class="products__banners">
+				<div class="products__banner lozad" data-background-image="{ASSETS_IMAGES_PATH}products-banner1.jpg?design=THEMENAME">
+					<div class="products__banner-inner">
+						<div class="products__banner-content">
+							<div class="products__banner-title">Детский текстиль</div>
+							<div class="products__banner-subtitle">Гипоаллергенный, мягкий и красивый</div>
+						</div>
+					</div>
+				</div>
+				<div class="products__banner lozad" data-background-image="{ASSETS_IMAGES_PATH}products-banner2.jpg?design=THEMENAME">
+					<div class="products__banner-inner">
+						<div class="products__banner-content">
+							<div class="products__banner-title">Подарки</div>
+							<div class="products__banner-subtitle">При заказе от 3 000 рублей</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% ENDIF %}
 			<div class="body">{BODY}</div>
 		</div>
 	</section>

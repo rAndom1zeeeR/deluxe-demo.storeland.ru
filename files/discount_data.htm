@@ -422,13 +422,13 @@
   <div class="toolbar bottom">
     <ol class="pages">
 	    {% IF GOODS_PAGES_SHOW_FIRST %}
-	    <li class="first"><a href="{GOODS_PAGINATE_URL | url_amp}&page=1" title="Первая страница"><span><i class="icon-arrow-left"></i></span></a></li>
+	    <li class="first"><a href="{GOODS_PAGINATE_URL | url_amp}&page=1" title="Первая страница"><span><i class="icon-arrow_left"></i></span></a></li>
 	    <li class="prev"><a href="{GOODS_PAGINATE_URL | url_amp}&page={GOODS_PAGES_PREVIOUS}" title="Предыдущая страница"><span>{GOODS_PAGES_PREVIOUS}</span></a></li>
 	    {% ENDIF %}
 	    <li class="current"><span>{GOODS_PAGES_CURRENT}</span></li>
 	    {% IF GOODS_PAGES_SHOW_LAST %}
 	    <li class="next"><a href="{GOODS_PAGINATE_URL | url_amp}&page={GOODS_PAGES_NEXT}" title="Следующая страница"><span>{GOODS_PAGES_NEXT}</span></a></li>
-	    <li class="last"><a href="{GOODS_PAGINATE_URL | url_amp}&page={GOODS_PAGES_LAST}" title="Последняя страница"><span><i class="icon-arrow-right"></i></span></a></li>
+	    <li class="last"><a href="{GOODS_PAGINATE_URL | url_amp}&page={GOODS_PAGES_LAST}" title="Последняя страница"><span><i class="icon-arrow_right"></i></span></a></li>
 	    {% ENDIF %}
     </ol>
   </div>
