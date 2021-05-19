@@ -328,6 +328,7 @@ progress::-moz-progress-bar {background: #7ca4a3 fixed;}
 
 /*** Общие блоки ***/
 section {margin: 2rem 0;}
+#main {margin-top: -12rem;}
 #main .block__left {width: 288px;padding-right: 1rem;flex-grow: 1;}
 #main .block__left.hide {display: none;}
 #main .block__right {width: calc(100% - 288px);padding-left: 1rem;flex-grow: 1;}
@@ -351,17 +352,19 @@ section {margin: 2rem 0;}
 #breadcrumbs {display: block;position: relative;margin-bottom: 0.5rem;border-radius: 10px;overflow-x: auto;}
 #breadcrumbs ul {margin: 0;padding: 0;list-style: none;display: flex;flex-wrap: nowrap;align-items: center;justify-content: center;}
 #breadcrumbs ul li {display: flex;align-items: center;line-height: 2rem;}
-#breadcrumbs ul li:before {width:12px;height:12px;background-color: #bdd6d3;transform: rotate(45deg);content: "";display: block;margin: 0 1rem;}
+#breadcrumbs ul li:before {width:12px;height:2px;background-color: #c1b1a9;content: "";display: block;margin: 0 1rem;}
 #breadcrumbs ul li:first-child:before {display: none;}
 #breadcrumbs ul li span {text-overflow: ellipsis;white-space: nowrap;overflow: hidden;max-width: 300px;}
-#breadcrumbs ul li:last-child {color: #7ca4a3;}
+#breadcrumbs ul li:last-child {color: #df5642;}
+#breadcrumbs ul li a {color: #c1b1a9;}
+#breadcrumbs ul li a:hover {color: #df5642;}
 #breadcrumbs::-webkit-scrollbar {width: 0;height: 0.5rem;}
-#breadcrumbs::-webkit-scrollbar-thumb {background-color: #7ca4a3;}
-#breadcrumbs::-webkit-scrollbar-track {background-color: #f3f3f3;}
+#breadcrumbs::-webkit-scrollbar-thumb {background-color: #ffae89;}
+#breadcrumbs::-webkit-scrollbar-track {background-color: #ebded6;}
 
 /*** Заголовки ***/
-.block__title {margin-bottom: 2rem;width: 100%;position: relative;}
-.block__title .title {font-weight: 800;line-height: 1.2;}
+.block__title {margin-bottom: 1rem;width: 100%;position: relative;}
+.block__title .title {font-weight: 500;line-height: 1.2;text-transform: uppercase;}
 #page__title {text-align: center;margin-bottom: 2rem;}
 /* Заголовки с навигацией */
 .block__nav {margin-bottom: 2rem;padding: 0.75rem;background-color: #fff4f2;position: relative;display: flex;flex-wrap: wrap;align-items: center;justify-content: flex-start;}
@@ -849,7 +852,8 @@ section {margin: 2rem 0;}
 
 
 /*** Фон в шапке ***/
-#pre-header {background-color: #fffaf7;padding-bottom: 8rem;position: relative;overflow: hidden;}
+.index #pre-header {padding-bottom: 8rem;}
+#pre-header {background-color: #fffaf7;padding-bottom: 15rem;position: relative;overflow: hidden;}
 #pre-header:before, #pre-header:after {top: 0;width: 500px;height: 1200px;content: '';background-color: #FFF3E5;position: absolute;-webkit-transform: skew(-45deg);-moz-transform: skew(-45deg);-o-transform: skew(-45deg);}
 #pre-header:before {left: 0;}
 #pre-header:after {right: 10%;}
@@ -1005,8 +1009,8 @@ header .contacts {display: none;}
 #search__result .result__category a {font-weight: bold;}
 #search__result .result__showAll {margin: 1rem auto 0;width: 200px;display: inline-block;}
 #search__result::-webkit-scrollbar {width: 0.5rem;height: 0;}
-#search__result::-webkit-scrollbar-thumb {border-radius: 0.5rem;background-color: #DF5642;}
-#search__result::-webkit-scrollbar-track {border-radius: 0.5rem;background-color: #ecdfd4;}
+#search__result::-webkit-scrollbar-thumb {border-radius: 0.5rem;background-color: #ffae89;}
+#search__result::-webkit-scrollbar-track {border-radius: 0.5rem;background-color: #ebded6;}
 @media (max-width: 1199.98px) {
 .search__input {max-width: 220px;}
 }
@@ -1407,8 +1411,8 @@ header .contacts {display: none;}
 @media all and (max-width: 767.98px) {
 .scroll {width: 100%;overflow-x: scroll;margin-bottom: 1rem;}
 .scroll::-webkit-scrollbar {width: 0;height: 1rem;}
-.scroll::-webkit-scrollbar-thumb {background-color: #7ca4a3;}
-.scroll::-webkit-scrollbar-track {background-color: #f3f3f3;}
+.scroll::-webkit-scrollbar-thumb {background-color: #ffae89;}
+.scroll::-webkit-scrollbar-track {background-color: #ebded6;}
 }
 
 @media all and (min-width: 480px) {
