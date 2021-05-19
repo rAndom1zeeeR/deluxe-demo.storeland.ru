@@ -856,9 +856,12 @@ section {margin: 2rem 0;}
 #pre-header {background-color: #fffaf7;padding-bottom: 15rem;position: relative;overflow: hidden;}
 #pre-header:before, #pre-header:after {top: 0;width: 500px;height: 1200px;content: '';background-color: #FFF3E5;position: absolute;-webkit-transform: skew(-45deg);-moz-transform: skew(-45deg);-o-transform: skew(-45deg);}
 #pre-header:before {left: 0;}
-#pre-header:after {right: 10%;}
-#pre-header > div {position: relative;z-index: 2;}
+#pre-header:after {right: 0;}
+#pre-header > div {z-index: 2;}
 #pre-header header {position: relative;z-index: 2;}
+@media (max-width: 1439.98px) {
+#pre-header:after {display: none;}
+}
 
 /*** Шапка ***/
 header {padding: 2rem 0;position: relative;}
@@ -921,6 +924,7 @@ header .contacts {display: none;}
 }
 
 /*** Меню ***/
+#menu {}
 #menu .inner {align-items: flex-end;position: relative;}
 /* Каталог */
 .catalog--icon {width: 140px;height: 60px;font-size: 18px;color: #FFFFFF;background-color: #DF5642;display: flex;align-items: center;justify-content: center;}
@@ -1060,12 +1064,11 @@ header .contacts {display: none;}
 
 /*** Категории на главной ***/
 #catalog {margin-top: -6rem;}
-.categories__item {position: relative;}
+#catalog .categories__item {width: 100%;margin: 0;}
 .categories__item .categories__image {height: 260px;margin-bottom: 26px;display: flex;align-items: center;justify-content: center;}
 .categories__item .categories__image img {width: auto;max-width: 100%;max-height: 100%;}
 .categories__name {width: calc(100% - 4rem);height: 56px;background-color: #fff4f2;overflow: hidden;left: 2rem;bottom: -26px;margin: 0 auto;position: absolute;display: flex;align-items: center;justify-content: center;transition: all 0.3s ease;}
-.categories__name:hover {background-color: #df5642;}
-.categories__name:hover a {color: #FFFFFF;}
+.categories__name:hover {background-color: #df5642;color: #FFFFFF;}
 .categories__name a {padding: .5rem;text-align: center;display: block;width: 100%;}
 .categories__name a span {display: block;max-height: 40px;overflow: hidden;}
 #catalog .owl-dots {margin-top: 1.5rem;}
@@ -1165,7 +1168,6 @@ header .contacts {display: none;}
 @media (max-width: 991.98px) {
 .index__left {display: none;}
 .index__right {width: 100%;padding-left: 0;}
-
 }
 
 
@@ -1365,7 +1367,9 @@ header .contacts {display: none;}
 }
 
 
-
+/*** Категории товаров ***/
+.categories__list {display: flex;flex-wrap: wrap;align-items: center;}
+.categories__item {margin: 0 0 4rem 0;width: 33.333333%;position: relative;}
 
 
 
