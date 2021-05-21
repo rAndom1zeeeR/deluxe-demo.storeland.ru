@@ -3213,7 +3213,7 @@ function newsCarousel() {
 
 // Функция слайдера для "Вы смотрели" на главной странице
 function viewed() {
-  let viewedContent = $('.viewed');
+  /*let viewedContent = $('.viewed');
   let viewedCount = viewedContent.find('.viewed__item').length;
   if(viewedCount>3){ viewedContent.find('.viewed__buttons').show(); }
   $('.viewed__buttons .showAll').on('click',function(){
@@ -3224,19 +3224,19 @@ function viewed() {
       $(this).addClass('active').find('span').text("Скрыть все");
       viewedContent.find('.viewed__item').addClass('show');
     }
-  });
+  });*/
 
-  /*$('#viewed .owl-carousel').owlCarousel({
-    items: 5,
-    margin: 32,
+  $('.viewed .owl-carousel').owlCarousel({
+    items: 1,
+    margin: 0,
     loop: false,
     rewind: true,
     lazyLoad: true,
     nav: true,
-    navContainer: '#viewed .owl-nav',
+    navContainer: '.viewed .owl-nav',
     navText: [ , ],
     dots: true,
-    dotsContainer: '#viewed .owl-dots',
+    dotsContainer: '.viewed .owl-dots',
     autoHeight: false,
     autoHeightClass: 'owl-height',
     autoplay: false,
@@ -3246,17 +3246,8 @@ function viewed() {
     touchDrag: true,
     pullDrag: true,
     responsiveClass: true,
-    responsiveRefreshRate: 100,
-    responsive: {
-      0:{items:1},
-      320:{items:1},
-      481:{items:2},
-      641:{items:2},
-      768:{items:3},
-      992:{items:4},
-      1200:{items:5}
-    }
-  });*/
+    responsiveRefreshRate: 100
+  });
 }
 
 function closeMenu() {

@@ -1506,16 +1506,16 @@
 			<div class="main-block">
 				{% IFNOT IS_FULL_CATALOG && recently_viewed_goods_empty=0 || SHOW_GOODS_FILTERS %}
 				<div class="main-block__left sidebar {% IF MOD_LNAME = cart || MOD_LNAME = user || MOD_LNAME = order || MOD_LNAME = compare || MOD_LNAME = goods || MOD_LNAME = callback || MOD_LNAME = news || MOD_LNAME = feedback || MOD_LNAME = page %}hide{% ENDIF %}">
-
 					<!-- Вы смотрели -->
 					{% IFNOT recently_viewed_goods_empty %}
 					<div class="sidebar__block viewed" data-content="viewed">
-						<div class="sidebar__title">
+						<div class="sidebar__title block__nav">
 							<span>Вы смотрели</span>
 							<div class="owl-nav"></div>
 						</div>
-						<div class="viewed__items">
+						<div class="viewed__items owl-carousel">
 							{% FOR recently_viewed_goods %}
+							{% IF recently_viewed_goods.first %}<div class="product__items">{% ENDIF %}
 							<div class="viewed__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && recently_viewed_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
 								<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{recently_viewed_goods.MIN_PRICE_NOW_ID} goodsListForm">
 									<input type="hidden" name="hash" value="{HASH}" />
@@ -1671,11 +1671,15 @@
 									</div>
 								</form>
 							</div>
+							{% IFNOT recently_viewed_goods.last %}
+							{recently_viewed_goods.index | is_divided("4","</div><div class=product__items>","")}
+							{% ENDIF %}
+							{% IF recently_viewed_goods.last %}</div>{% ENDIF %}
 							{% ENDFOR %}
 						</div>
-						<div class="sidebar__buttons viewed__buttons">
+						<!--<div class="sidebar__buttons viewed__buttons">
 							<div class="button button2 showAll"><span>Показать все</span></div>
-						</div>
+						</div>-->
 					</div>
 					{% ENDIF %}
 				</div>
