@@ -3213,7 +3213,20 @@ function newsCarousel() {
 
 // Функция слайдера для "Вы смотрели" на главной странице
 function viewed() {
-  $('#viewed .owl-carousel').owlCarousel({
+  let viewedContent = $('.viewed');
+  let viewedCount = viewedContent.find('.viewed__item').length;
+  if(viewedCount>3){ viewedContent.find('.viewed__buttons').show(); }
+  $('.viewed__buttons .showAll').on('click',function(){
+    if($(this).hasClass('active')){
+      $(this).removeClass('active').find('span').text("Показать все");
+      viewedContent.find('.viewed__item').removeClass('show');
+    }else{
+      $(this).addClass('active').find('span').text("Скрыть все");
+      viewedContent.find('.viewed__item').addClass('show');
+    }
+  });
+
+  /*$('#viewed .owl-carousel').owlCarousel({
     items: 5,
     margin: 32,
     loop: false,
@@ -3243,7 +3256,7 @@ function viewed() {
       992:{items:4},
       1200:{items:5}
     }
-  });
+  });*/
 }
 
 function closeMenu() {
