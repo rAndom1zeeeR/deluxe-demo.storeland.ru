@@ -1506,6 +1506,27 @@
 			<div class="main-block">
 				{% IFNOT IS_FULL_CATALOG && recently_viewed_goods_empty=0 || SHOW_GOODS_FILTERS %}
 				<div class="main-block__left sidebar {% IF MOD_LNAME = cart || MOD_LNAME = user || MOD_LNAME = order || MOD_LNAME = compare || MOD_LNAME = goods || MOD_LNAME = callback || MOD_LNAME = news || MOD_LNAME = feedback || MOD_LNAME = page %}hide{% ENDIF %}">
+					<!--Каталог-->
+					<div class="sidebar__block catalog">
+						<div class="sidebar__title block__nav">
+							<span>Каталог</span>
+							<div class="owl-nav"></div>
+						</div>
+						<div class="addto__catalog" data-content="catalog">
+							<div class="catalog__items">
+								{% FOR catalog_full %}
+								{% IF catalog_full.FIRST %}{% IFNOT catalog_full.LEVEL = 0 %}<div data-level="{catalog_full.LEVEL}" class="sub">{% ENDIF %}{% ENDIF %}
+								<div {% IF catalog_full.HIDE %}style="display:none;"{% ENDIF %} data-level="{catalog_full.LEVEL}" class="catalog__item {% IF catalog_full.ISSET_VISIBLE_SUB %}parent{% ENDIF %} {% IF catalog_full.CURRENT_PARENT %}opened{% ENDIF %}">
+									<a href="{catalog_full.URL}" data-level="{catalog_full.LEVEL}" class="catalog__link {% IF catalog_full.CURRENT %}opened{% ENDIF %}">
+										<span>{catalog_full.NAME}</span>
+										{% IF catalog_full.ISSET_VISIBLE_SUB %}<span class="open"></span>{% ENDIF %}
+									</a>
+									{% IF catalog_full.ISSET_SUB=0 %}</div>{% ENDIF %}
+								{% IF catalog_full.LAST %}{%FOR out%}</div> {%IFNOT catalog_full.out.LAST%}</div>{%ENDIF%}{%ENDFOR%}{% ENDIF %}
+							{% ENDFOR %}
+						</div>
+					</div>
+
 					<!-- Вы смотрели -->
 					{% IFNOT recently_viewed_goods_empty %}
 					<div class="sidebar__block viewed" data-content="viewed">
