@@ -58,7 +58,7 @@
       <!-- Строка №5 Цены товарных модификаций -->
       <div class="CompareGoodsTableTbodyComparisonLine {% IF GOODS_MOD_COST_NOW_IS_SAME %}same{% ENDIF %}" >
         <div class="cell">
-          <input class="CompareCheckbox" type="checkbox" id="compare_tb_check_price" />
+          <input class="square" type="checkbox" id="compare_tb_check_price" />
           <label for="compare_tb_check_price">Цена</label>
         </div>
         <div class="content owl-carousel">
@@ -81,7 +81,7 @@
       <!-- Строка №6 В корзину -->
       <div class="CompareGoodsTableTbodyComparisonLine {% IF GOODS_MOD_COST_NOW_IS_SAME %}same{% ENDIF %}" >
         <div class="cell">
-          <input class="CompareCheckbox" type="checkbox" id="compare_tb_check_price" />
+          <input class="square" type="checkbox" id="compare_tb_check_price" />
         </div>
         <div class="content owl-carousel">
         {% FOR goods_mod_info %}
@@ -116,7 +116,7 @@
       {% IFNOT GOODS_ART_NUMBER_IS_EMPTY_FOR_ALL %}
         <div class="CompareGoodsTableTbodyComparisonLine {% IF GOODS_ART_NUMBER_IS_SAME %}same{% ENDIF %}">
           <div class="cell">
-            <input class="CompareCheckbox" type="checkbox" id="compare_tb_check_art_number" />
+            <input class="square" type="checkbox" id="compare_tb_check_art_number" />
             <label for="compare_tb_check_art_number">Артикул</label>
           </div>
           <div class="content owl-carousel">
@@ -135,7 +135,7 @@
       {% FOR goods_attr_list %}
         <div class="CompareGoodsTableTbodyComparisonLine {% IF goods_attr_list.IS_SAME%}same{% ENDIF %}">
           <div class="cell">
-            <input class="CompareCheckbox" type="checkbox" id="compare_tb_check_attr_{goods_attr_list.ID}" />
+            <input class="square" type="checkbox" id="compare_tb_check_attr_{goods_attr_list.ID}" />
             <label for="compare_tb_check_attr_{goods_attr_list.ID}">{goods_attr_list.NAME}</label>
           </div>
           <div class="content owl-carousel">
@@ -156,7 +156,7 @@
         {% IFNOT GOODS_GOODS_DESC_LARGE_IS_EMPTY_FOR_ALL %}
           <div class="CompareGoodsTableTbodyComparisonLine {% IF GOODS_GOODS_DESC_LARGE_IS_SAME %}same{% ENDIF %}">
             <div class="cell vtop">
-              <input class="CompareCheckbox" type="checkbox" id="compare_tb_check_description_large" />
+              <input class="square" type="checkbox" id="compare_tb_check_description_large" />
               <label for="compare_tb_check_description_large">Описание</label>
             </div>
             <div class="content owl-carousel">
@@ -182,7 +182,7 @@
         {% IFNOT GOODS_GOODS_DESC_SHORT_IS_EMPTY_FOR_ALL %}
           <div class="CompareGoodsTableTbodyComparisonLine {% IF GOODS_GOODS_DESC_SHORT_IS_SAME %}same{% ENDIF %}">
             <div class="cell vtop">
-              <input class="CompareCheckbox" type="checkbox" id="compare_tb_check_description_short" />
+              <input class="square" type="checkbox" id="compare_tb_check_description_short" />
               <label for="compare_tb_check_description_short">Описание</label>
             </div>
             <div class="content owl-carousel">

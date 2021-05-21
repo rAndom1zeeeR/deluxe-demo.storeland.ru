@@ -127,8 +127,10 @@ input[type="file"] {margin-top: 0.25rem;height: auto;line-height: 1;border: 0;pa
 .selectBox select, .selectBox .select {padding: 0 2rem 0 1rem;}
 }
 /*** Квадратный чекбокс ***/
-input.square, .CompareCheckbox {width: 1.25rem;height: 1.25rem;background: #FFFFFF;border: 1px solid #ecdfd4;border-radius: 0.25rem;margin: 0 1rem 0 0;padding: 0;display: block;position: relative;text-align: center;cursor: pointer;-webkit-tap-highlight-color: transparent;-webkit-appearance: none;transition: all 0.3s ease;}
-input.square:checked, .CompareCheckbox:checked, input.square:hover, .CompareCheckbox:hover {background: #f69679;border-color: #f69679;}
+input.square {width: 1.25rem;height: 1.25rem;background: #FFFFFF;border: 1px solid #ffaf88;border-radius: 0;margin: 0 1rem 0 0;padding: 0;display: block;position: relative;text-align: center;cursor: pointer;-webkit-tap-highlight-color: transparent;-webkit-appearance: none;transition: all 0.3s ease;}
+input.square:checked, input.square:hover {background: #ffaf88;border-color: #ffaf88;}
+input.square:after {opacity: 0;content: '\e91c';font-family: 'icomoon';vertical-align: top;color: #fff;line-height: 1;transition: all 0.3s ease;}
+input.square:checked:after, input.square:hover:after {opacity: 1;}
 input.square[disabled] {background-color: #ecdfd4;border-color: #ecdfd4;cursor: default;}
 input[disabled] + label {cursor: default;color: #ecdfd4;}
 /*Текст в не активном инпуте TODO*/
@@ -1454,7 +1456,8 @@ header .contacts {display: none;}
 .sort > div + div {margin-left: .75rem;}
 }
 
-/** Сайдбар. Левая часть **/
+
+/*** Сайдбар. Левая часть ***/
 .sidebar__block {margin-bottom: 2rem;}
 .sidebar__title {font-size: 18px;line-height: 26px;color: #FFFFFF;background-color: #ffaf88;}
 .sidebar__title .owl-nav [class^="owl-"] {color: #ffffff;}
@@ -1490,7 +1493,44 @@ header .contacts {display: none;}
 .viewed__item {width: 100%;}
 }
 
-
+/*** Фильтры ***/
+.filter__items {max-height: 144px;overflow-y: auto;}
+.filter__items::-webkit-scrollbar {width: .5rem;}
+.filter__items::-webkit-scrollbar-thumb {background-color: #ffae89;}
+.filter__items::-webkit-scrollbar-track {background-color: #ebded6;}
+.filter__item {width: 100%;display: flex;align-items: center;flex-wrap: wrap;}
+.filter__item + .filter__item {margin-top: 0.75rem;}
+.filter__item label {width: calc(100% - 40px);cursor: pointer;}
+.filter__item.disabled label {opacity: .5;cursor: default;}
+.filter__name {font-size: 16px;font-weight: 600;margin-bottom: 1rem;padding-bottom: .5rem;border-bottom: 1px solid #f8e9e6;}
+.filter__list {margin-top: 2rem;padding: 1rem;background-color: #fff4f2;}
+.filter__list:first-child {margin-top: 0;}
+.filter__buttons {display: none;margin-top: 0;padding: 0;}
+.hasFilters .filter__buttons {display: block;}
+.filters .sidebar__content {padding: 2rem 0;display: block;}
+/* Фильтр Цены */
+.filters-price .filter__items {max-height: 100%;overflow: visible;margin-top: 0;}
+.filters-price .inputText {display: inline-block;height: 30px;line-height: 30px;text-align: center;padding: 0 3px;border: 0;background: #ffffff;}
+.filters-price .separator {display: inline-block;width: 25px;height: 1px;margin: 0 5px;vertical-align: middle;background: transparent;}
+.filters-price #goods-filter-price-slider {width: 100%;position: relative;border: 0;height: 6px;margin: 1rem 0.5rem 1rem 0px;background: #e2e6f1;cursor: pointer;}
+.filters-price .ui-slider-horizontal .ui-slider-handle {top: -5px;}
+.filters-price .ui-slider-handle {position: absolute;width: 16px;height: 16px;background: #ffaf88;margin: 0 0 0 -1px;z-index: 2;}
+.filters-price .ui-slider-handle:last-child {left: auto;right: 0;margin-left: -4px;}
+.filters-price .ui-slider-handle.ui-state-hover, .filters-price .ui-slider-handle.ui-state-focus {background: #ffaf88;cursor: pointer;}
+.filters-price .ui-slider .ui-slider-range {position: absolute;top: 0;height: 6px;background: #ffaf88;border: 1px solid #ffaf88;border-radius: 0;cursor: pointer;}
+.priceSlider {display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-wrap: wrap;-webkit-flex-wrap: wrap;flex-wrap: wrap;-webkit-justify-content: space-between;justify-content: space-between;}
+.hasFilters .goodsFilterPriceSubmit {display: -ms-flexbox;display: -webkit-flex;display: flex;}
+.goodsFilterPriceSubmit {margin-top: 1rem;width: 100%;text-align: center;display: none;-ms-flex-align: center;-webkit-align-items: center;-webkit-box-align: center;align-items: center;justify-content: space-between;}
+.goodsFilterPriceRangePointers {width: 100%;display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-align: center;-webkit-align-items: center;-webkit-box-align: center;align-items: center;-webkit-justify-content: space-between;justify-content: space-between;}
+@media all and (max-width: 991px) {
+#filters {transform: translate(-100%, 0px);transition: all 0.3s ease-in-out;position: fixed;left: 0;top: 0;width: 288px;height: 100%;background: #FFFFFF;box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.09);border: 0;border-radius: 0;overflow-x: auto;z-index: 11;}
+#filters.opened {transform: translate(0px, 0px);}
+.filter__buttons {padding: 1rem 2rem;}
+.filters .sidebar__content {padding: 2rem 0 1rem;max-height: calc(100vh - 59px - 56px - 32px);overflow-y: auto;}
+.filters .sidebar__content::-webkit-scrollbar {width: .75rem;}
+.filters .sidebar__content::-webkit-scrollbar-thumb {background-color: #ffae89;}
+.filters .sidebar__content::-webkit-scrollbar-track {background-color: #ebded6;}
+}
 
 
 
