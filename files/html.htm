@@ -1530,9 +1530,6 @@
 					<!-- Если в тарифном плане подключен модуль фильтров по товарам -->
 					{% IF SHOW_GOODS_PRICE_FILTERS || SHOW_GOODS_FILTERS %}
 					<div id="filters" data-content="filters" class="sidebar__block filters {% FOR filter_attr_list %}{% FOR values %}{% IF filter_attr_list.values.CHECKED %}hasFilters {% ENDIF %}{% ENDFOR %}{% ENDFOR %} {% FOR filter_prop_list %}{% FOR values %}{% IF filter_prop_list.values.CHECKED %}hasFilters {% ENDIF %}{% ENDFOR %}{% ENDFOR %}">
-						<div class="sidebar__title block__nav">
-							<span>Фильтры</span>
-						</div>
 						<div class="sidebar__content">
 							<form action="" method="get" class="form__filters">
 								<!-- Если есть возможность фильтрации товаров по ценам -->
@@ -1554,8 +1551,8 @@
 											</div>
 											<div id="goods-filter-price-slider"></div>
 											<div class="goodsFilterPriceSubmit">
-												<button class="button button5" type="submit" title="Показать"><span>Применить</span></button>
-												<a href="{PAGE_CANONICAL}" class="clear" title="Очистить фильры"><span>Очистить</span></a>
+												<button class="button button3 small" type="submit" title="Показать"><span>Применить</span></button>
+												<a href="{PAGE_CANONICAL}" class="clear button button4 small" title="Очистить фильры"><span>Очистить</span></a>
 											</div>
 										</div>
 									</div>

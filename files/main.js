@@ -775,6 +775,10 @@ function catalog() {
     $(this)[0].form.submit();
   });
 
+  $('.filtersActive input').click(function(){
+    $(this)[0].form.submit();
+  });
+
   // Боковое меню сохранение открытой вложенности
   $('.collapsible:not(".active")').find('.collapsible__content').css('display', 'none');
   $('.collapsible__click').click(function(event){

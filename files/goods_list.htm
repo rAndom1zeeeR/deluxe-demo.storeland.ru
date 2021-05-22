@@ -84,12 +84,38 @@
 			<!-- /END Вид Таблица/Список -->
 		</form>
 		{% IF TARIFF_FEATURE_GOODS_FILTERS && SHOW_GOODS_FILTERS %}
-		<!-- Чекбокс фильтры -->
-		<div class="filters__open">
-			<i class="icon-filter"></i>
-			<span>Фильтры</span>
+		<!-- Фильтры -->
+		<div class="filters-by {% FOR filter_attr_list %}{% FOR values %}{% IF filter_attr_list.values.CHECKED %}hasFilters {% ENDIF %}{% ENDFOR %}{% ENDFOR %} {% FOR filter_prop_list %}{% FOR values %}{% IF filter_prop_list.values.CHECKED %}hasFilters{% ENDIF %}{% ENDFOR %}{% ENDFOR %}">
+			<div class="filters__open button button3">
+				<i class="icon-filter"></i>
+				<span>Фильтры</span>
+			</div>
+			<!-- Активные Фильтры -->
+			<div class="filtersActive">
+				<div class="filtersActive__title">Активные фильтры:</div>
+				<!-- Фильтры по характеристикам товаров (Например: Производитель, разрешение экрана, заряд аккомулятора) -->
+				<div class="filtersActive__items">
+					{% FOR filter_attr_list %}{% FOR values %}{% IF filter_attr_list.values.CHECKED %}
+					<label class="filtersActive__item" for="filterAttrVal{filter_attr_list.values.ID}">
+						<span class="filtersActive__name">{filter_attr_list.NAME}:</span>
+						<span class="filtersActive__value">{filter_attr_list.values.VALUE}</span>
+						<span class="filtersActive__count">({filter_attr_list.values.NB_GOODS_FILTERED})</span>
+						<span class="filtersActive__remove"><i class="icon-close"></i></span>
+					</label>
+					{% ENDIF %}{% ENDFOR %}{% ENDFOR %}
+					{% FOR filter_prop_list %}{% FOR values %}{% IF filter_prop_list.values.CHECKED %}
+					<label class="filtersActive__item" for="filterPropVal{filter_prop_list.values.ID}">
+						<span class="filtersActive__name">{filter_prop_list.NAME}:</span>
+						<span class="filtersActive__value">{filter_prop_list.values.VALUE}</span>
+						<span class="filtersActive__count">({filter_prop_list.values.NB_GOODS_FILTERED})</span>
+						<span class="filtersActive__remove"><i class="icon-close"></i></span>
+					</label>
+					{% ENDIF %}{% ENDFOR %}{% ENDFOR %}
+				</div>
+				<!-- Фильтры по свойствам товарных модификаций (Например: Цвет, размер, модификация) -->
+			</div>
 		</div>
-		<!-- END Чекбокс фильтры -->
+		<!-- END фильтры -->
 		{% ENDIF %}
 	</div>
 </div>
