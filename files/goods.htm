@@ -38,6 +38,8 @@
 		
 		<!-- Основная информация о товаре -->
 		<div class="productView__shop">
+			<!-- Имя товара -->
+			<h1 class="productView__name" itemprop="name">{GOODS_NAME}</h1>
 			<!-- Доступность товара -->
 			<div class="productView__available">
 				<div class="available__true" {% IF GOODS_MOD_REST_VALUE=0 %}style="display:none;" {% ENDIF %}>
@@ -85,8 +87,6 @@
 				{% ENDIF %}
 				<span class="price__now {CURRENCY_CHAR_CODE}" itemprop="price" content="{GOODS_MOD_PRICE_NOW}" data-price="{GOODS_MOD_PRICE_NOW}">{GOODS_MOD_PRICE_NOW | money_format}</span>
 			</div>
-			<!-- Имя товара -->
-			<h1 class="productView__name" itemprop="name">{GOODS_NAME}</h1>
 			<!-- Краткое описание -->
 			{% IF GOODS_DESCRIPTION_SHORT %}
 			<div class="productView__text" itemprop="description">{GOODS_DESCRIPTION_SHORT}</div>
@@ -291,10 +291,10 @@
 	<div class="productView__tabs">
 		<div class="tabs__nav">
 			{% IF GOODS_DESCRIPTION_LARGE || GOODS_SEO_DESCRIPTION_SHORT || GOODS_SEO_DESCRIPTION_LARGE %}
-			<div class="tab" data-tab="1"><span>Описание</span>/div>
+			<div class="tab" data-tab="1"><span>Описание</span></div>
 			{% ENDIF %}
 			{% IFNOT goods_features_empty %}
-			<div class="tab" data-tab="2"><span>Хар-ки</span></div>
+			<div class="tab" data-tab="2"><span>Характеристики</span></div>
 			{% ENDIF %}
 			{% IFNOT goods_delivery_empty %}
 			<div class="tab" data-tab="3"><span>Доставка</span></div>
@@ -308,7 +308,7 @@
 			{% IF GOODS_DESCRIPTION_LARGE || GOODS_SEO_DESCRIPTION_SHORT || GOODS_SEO_DESCRIPTION_LARGE %}
 			<div class="productView__description active" data-tab="1">
 				<!-- Блок описания товара. Показываем его если есть описание товара -->
-				<div class="htmlDataBlock">
+				<div class="">
 					{% IF GOODS_DESCRIPTION_LARGE %}
 					<p>{GOODS_DESCRIPTION_LARGE}</p>
 					{% ENDIF %}
@@ -326,66 +326,72 @@
 			<!-- Характеристики -->
 			{% IFNOT goods_features_empty %}
 			<div class="productView__features {% IF GOODS_DESCRIPTION_LARGE=1 || GOODS_SEO_DESCRIPTION_SHORT=1 || GOODS_SEO_DESCRIPTION_LARGE=1 %}active{% ENDIF %}" data-tab="2">
-				{% FOR goods_features %}
-				<div class="features__item">
-					<div class="features__name"><span>{goods_features.NAME}:</span></div>
-					<div class="features__value"><span>{goods_features.VALUE}</span></div>
+				<div class="row">
+					<div class="features__items">
+						{% FOR goods_features %}
+						<div class="features__item">
+							<div class="features__name"><span>{goods_features.NAME}:</span></div>
+							<div class="features__value"><span>{goods_features.VALUE}</span></div>
+						</div>
+						{% ENDFOR %}
+					</div>
 				</div>
-				{% ENDFOR %}
 			</div>
 			{% ENDIF %}
 			<!-- Условия доставки -->
 			{% IFNOT goods_delivery_empty %}
 			<div class="productView__delivery {% IF GOODS_DESCRIPTION_LARGE=1 && goods_features_empty %}active{% ENDIF %}" data-tab="3">
-				{% FOR goods_delivery %}
-				<div class="delivery__item">
-					<div class="delivery__name">
-						<span class="delivery__index">{goods_delivery.index}</span><span>{goods_delivery.NAME}</span></div>
-					{% IF goods_delivery.DESC %}
-					<div class="delivery__text">{goods_delivery.DESC}</div>
-					{% ENDIF %}
-					{% IF goods_delivery.rules_empty %}
-					<div class="delivery__price">
-						<span>Стоимость доставки: </span>
-						<strong>{goods_delivery.PRICE | money_format}</strong>
-					</div>
-					{% ELSE %}
-					<div class="delivery__subtitle">Стоимость доставки зависит от суммы заказа</div>
-					{% FOR rules %}
-					<div class="delivery__price">Для заказов больше
-						<strong>{goods_delivery.rules.SUM_MORE_PRICE | money_format}</strong> - доставка
-						<strong>{goods_delivery.rules.PRICE | money_format}</strong></div>
-					{% ENDFOR %}
-					<div class="delivery__price">Для заказов меньше
-						<strong>{goods_delivery.SUM_LESS_PRICE | money_format}</strong> - доставка
-						<strong>{goods_delivery.PRICE | money_format}</strong></div>
-					{% ENDIF %}
-					{% IFNOT goods_delivery.zone_list_empty %}
-					<a href="#" class="zone__open"><span>Зоны доставки:</span></a>
-					<div class="zone__list">
-						{% FOR zone_list %}
-						<div class="zone-{goods_delivery.zone_list.index}">
-							<div class="delivery__name">{goods_delivery.zone_list.NAME}</div>
-							{% IF goods_delivery.zone_list.rules_empty %}
-							<div class="delivery__price">Стоимость доставки:
-								<strong>{goods_delivery.zone_list.PRICE | money_format}</strong></div>
-							{% ELSE %}
-							<div class="delivery__price">Стоимость доставки зависит от суммы заказа:</div>
-							{% FOR rules %}
-							<div class="zone__price">Для заказов больше
-								<strong>{goods_delivery.zone_list.rules.SUM_MORE_PRICE | money_format}</strong> - доставка
-								<strong>{goods_delivery.zone_list.rules.PRICE | money_format}</strong></div>
-							{% ENDFOR %}
-							<div class="zone__price">Для заказов меньше
-								<strong>{goods_delivery.SUM_LESS_PRICE | money_format}</strong> - доставка
-								<strong>{goods_delivery.zone_list.PRICE | money_format}</strong></div>
-							{% ENDIF %}
+				<div class="delivery__items">
+					{% FOR goods_delivery %}
+					<div class="delivery__item">
+						<div class="delivery__name">
+							<span class="delivery__index">{goods_delivery.index}</span><span>{goods_delivery.NAME}</span></div>
+						{% IF goods_delivery.DESC %}
+						<div class="delivery__text">{goods_delivery.DESC}</div>
+						{% ENDIF %}
+						{% IF goods_delivery.rules_empty %}
+						<div class="delivery__price">
+							<span>Стоимость доставки: </span>
+							<strong>{goods_delivery.PRICE | money_format}</strong>
 						</div>
+						{% ELSE %}
+						<div class="delivery__subtitle">Стоимость доставки зависит от суммы заказа</div>
+						{% FOR rules %}
+						<div class="delivery__price">Для заказов больше
+							<strong>{goods_delivery.rules.SUM_MORE_PRICE | money_format}</strong> - доставка
+							<strong>{goods_delivery.rules.PRICE | money_format}</strong></div>
 						{% ENDFOR %}
+						<div class="delivery__price">Для заказов меньше
+							<strong>{goods_delivery.SUM_LESS_PRICE | money_format}</strong> - доставка
+							<strong>{goods_delivery.PRICE | money_format}</strong></div>
+						{% ENDIF %}
+						{% IFNOT goods_delivery.zone_list_empty %}
+						<a href="#" class="zone__open"><span>Зоны доставки:</span></a>
+						<div class="zone__list">
+							{% FOR zone_list %}
+							<div class="zone-{goods_delivery.zone_list.index}">
+								<div class="delivery__name">{goods_delivery.zone_list.NAME}</div>
+								{% IF goods_delivery.zone_list.rules_empty %}
+								<div class="delivery__price">Стоимость доставки:
+									<strong>{goods_delivery.zone_list.PRICE | money_format}</strong></div>
+								{% ELSE %}
+								<div class="delivery__price">Стоимость доставки зависит от суммы заказа:</div>
+								{% FOR rules %}
+								<div class="zone__price">Для заказов больше
+									<strong>{goods_delivery.zone_list.rules.SUM_MORE_PRICE | money_format}</strong> - доставка
+									<strong>{goods_delivery.zone_list.rules.PRICE | money_format}</strong></div>
+								{% ENDFOR %}
+								<div class="zone__price">Для заказов меньше
+									<strong>{goods_delivery.SUM_LESS_PRICE | money_format}</strong> - доставка
+									<strong>{goods_delivery.zone_list.PRICE | money_format}</strong></div>
+								{% ENDIF %}
+							</div>
+							{% ENDFOR %}
+						</div>
+						{% ENDIF %}
 					</div>
-					{% ENDIF %}
+					{% ENDFOR %}
 				</div>
-				{% ENDFOR %}
 			</div>
 			{% ENDIF %}
 			<!-- Отзывы -->

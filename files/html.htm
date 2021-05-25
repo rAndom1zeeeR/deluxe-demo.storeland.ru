@@ -32,7 +32,7 @@
 	<!-- Скрипты магазина -->
 	<script type="text/javascript" src="{ASSETS_JS_PATH}jquery-3.4.1.min.js?design=THEMENAME"></script>
 </head>
-<body class="nojs {% IF index_page %}index{% ENDIF %} {% IF MOD_LNAME=user && ACT=favorites %}favorites__page{% ENDIF %} {% IF MOD_LNAME = cart %}pageCart{% ENDIF %} {% IF MOD_LNAME = user %}user__page{% ENDIF %}">
+<body class="nojs {% IF index_page %}index{% ENDIF %} {% IF MOD_LNAME=user && ACT=favorites %}page__favorites{% ENDIF %} {% IF MOD_LNAME = cart %}page__cart{% ENDIF %} {% IF MOD_LNAME = user %}page__user{% ENDIF %}">
 <div class="wrapper">
 	<!-- Сообщение для инвалидов -->
 	<noscript>
@@ -534,14 +534,8 @@
 										</div>
 									</form>
 								</div>
-								{% IFNOT index_page_new_goods.last %}
-								{index_page_new_goods.index | is_divided("2","
-							</div>
-							<div class=product__items>","")}
-								{% ENDIF %}
-								{% IF index_page_new_goods.last %}
-							</div>
-							{% ENDIF %}
+								{% IFNOT index_page_new_goods.last %}{index_page_new_goods.index | is_divided("2","</div><div class=product__items>","")}{% ENDIF %}
+								{% IF index_page_new_goods.last %}</div>{% ENDIF %}
 							{% ENDFOR %}
 						</div>
 					</div>
@@ -737,14 +731,8 @@
 										</div>
 									</form>
 								</div>
-								{% IFNOT index_page_goods.last %}
-								{index_page_goods.index | is_divided("2","
-							</div>
-							<div class=product__items>","")}
-								{% ENDIF %}
-								{% IF index_page_goods.last %}
-							</div>
-							{% ENDIF %}
+								{% IFNOT index_page_goods.last %}{index_page_goods.index | is_divided("2","</div><div class=product__items>","")}{% ENDIF %}
+								{% IF index_page_goods.last %}</div>{% ENDIF %}
 							{% ENDFOR %}
 						</div>
 					</div>
@@ -940,14 +928,8 @@
 										</div>
 									</form>
 								</div>
-								{% IFNOT index_page_favorites_goods.last %}
-								{index_page_favorites_goods.index | is_divided("2","
-							</div>
-							<div class=product__items>","")}
-								{% ENDIF %}
-								{% IF index_page_favorites_goods.last %}
-							</div>
-							{% ENDIF %}
+								{% IFNOT index_page_favorites_goods.last %}{index_page_favorites_goods.index | is_divided("2","</div><div class=product__items>","")}{% ENDIF %}
+								{% IF index_page_favorites_goods.last %}</div>{% ENDIF %}
 							{% ENDFOR %}
 						</div>
 					</div>
@@ -1157,14 +1139,8 @@
 										</div>
 									</form>
 								</div>
-								{% IFNOT index_page_sale_goods.last %}
-								{index_page_sale_goods.index | is_divided("2","
-							</div>
-							<div class=product__items>","")}
-								{% ENDIF %}
-								{% IF index_page_sale_goods.last %}
-							</div>
-							{% ENDIF %}
+								{% IFNOT index_page_sale_goods.last %}{index_page_sale_goods.index | is_divided("2","</div><div class=product__items>","")}{% ENDIF %}
+								{% IF index_page_sale_goods.last %}</div>{% ENDIF %}
 							{% ENDFOR %}
 						</div>
 					</div>
@@ -1424,10 +1400,7 @@
 					{% ELSEIF MOD_LNAME=order && ACT=stage %}
 					<h1 class="title">Оформление заказа. Шаг {ORDER_STAGE_NUM} из 4</h1>
 					{% ELSEIF MOD_LNAME=search %}
-					<h1 class="title">Результат поиска по запросу: {% IFNOT search_query_empty %}&laquo;{SEARCH_QUERY}&raquo;
-						<div class="subtitle">({GOODS_PAGES_RESULTS} товар{GOODS_PAGES_RESULTS | gen_word_end("","а","ов")} найд{GOODS_PAGES_RESULTS | gen_word_end("ен","ено","ено")} по запросу)</div>
-						{% ENDIF %}
-					</h1>
+					<h1 class="title">Результат поиска по запросу: {% IFNOT search_query_empty %}&laquo;{SEARCH_QUERY}&raquo; <div class="subtitle">({GOODS_PAGES_RESULTS} товар{GOODS_PAGES_RESULTS | gen_word_end("","а","ов")} найд{GOODS_PAGES_RESULTS | gen_word_end("ен","ено","ено")} по запросу)</div>{% ENDIF %}</h1>
 					{% ELSEIF MOD_LNAME=discount && ACT=index && ID %}
 					<h1 class="title">{PROMOTIONAL_CAMPAIGN_NAME}</h1>
 					{% ELSEIF MOD_LNAME=discount && ACT=index %}
@@ -1667,7 +1640,7 @@
 			{% ENDIF %}
 			<div class="main-block">
 				{% IFNOT IS_FULL_CATALOG && recently_viewed_goods_empty=0 || SHOW_GOODS_FILTERS %}
-				<div class="main-block__left sidebar {% IF MOD_LNAME = cart || MOD_LNAME = user || MOD_LNAME = order || MOD_LNAME = compare || MOD_LNAME = goods || MOD_LNAME = callback || MOD_LNAME = news || MOD_LNAME = feedback || MOD_LNAME = page %}hide{% ENDIF %}">
+				<div class="main-block__left sidebar {% IFNOT MOD_LNAME = user && ACT=favorites || MOD_LNAME = cart || MOD_LNAME = user || MOD_LNAME = order || MOD_LNAME = compare || MOD_LNAME = goods || MOD_LNAME = callback || MOD_LNAME = news || MOD_LNAME = feedback || MOD_LNAME = page %}hide{% ENDIF %}">
 					<!--Каталог-->
 					<div class="sidebar__block catalog">
 						<div class="sidebar__title block__nav">
@@ -1916,28 +1889,22 @@
 												<!-- Добавление в корзину -->
 												<div class="product__addCart">
 													{% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && recently_viewed_goods.MAX_REST_VALUE=0 %}
-													<a class="add-notify" title="Уведомить" data-tooltipOFF="Уведомить" rel="nofollow" data-fancybox data-src="#fancybox__notify" href="javascript:;" data-name="{recently_viewed_goods.NAME}" data-art="{recently_viewed_goods.ART_NUMBER}"><span>Уведомить</span></a>
+														<a class="add-notify" title="Уведомить" data-tooltipOFF="Уведомить" rel="nofollow" data-fancybox data-src="#fancybox__notify" href="javascript:;" data-name="{recently_viewed_goods.NAME}" data-art="{recently_viewed_goods.ART_NUMBER}"><span>Уведомить</span></a>
 													{% ELSE %}
-													{% IF recently_viewed_goods.COUNT_MODIFICATION > 1 %}
-													<a class="add-mod" title="Добавить в корзину &laquo;{recently_viewed_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{recently_viewed_goods.URL_MIN_PRICE_NOW}" data-prodname="{recently_viewed_goods.NAME}"><span>Купить</span></a>
-													{% ELSE %}
-													<!--a class="add-cart quick button" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={recently_viewed_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={recently_viewed_goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a-->
-													<a class="add-cart" title="Добавить в корзину &laquo;{recently_viewed_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={recently_viewed_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={recently_viewed_goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a>
-													{% ENDIF %}
+														{% IF recently_viewed_goods.COUNT_MODIFICATION > 1 %}
+															<a class="add-mod" title="Добавить в корзину &laquo;{recently_viewed_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{recently_viewed_goods.URL_MIN_PRICE_NOW}" data-prodname="{recently_viewed_goods.NAME}"><span>Купить</span></a>
+														{% ELSE %}
+														<!--a class="add-cart quick button" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={recently_viewed_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={recently_viewed_goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a-->
+														<a class="add-cart" title="Добавить в корзину &laquo;{recently_viewed_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={recently_viewed_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={recently_viewed_goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a>
+														{% ENDIF %}
 													{% ENDIF %}
 												</div>
 											</div>
 										</div>
 									</form>
 								</div>
-								{% IFNOT recently_viewed_goods.last %}
-								{recently_viewed_goods.index | is_divided("4","
-							</div>
-							<div class=product__items>","")}
-								{% ENDIF %}
-								{% IF recently_viewed_goods.last %}
-							</div>
-							{% ENDIF %}
+								{% IFNOT recently_viewed_goods.last %}{recently_viewed_goods.index | is_divided("4","</div><div class=product__items>","")}{% ENDIF %}
+								{% IF recently_viewed_goods.last %}</div>{% ENDIF %}
 							{% ENDFOR %}
 						</div>
 						<!--<div class="sidebar__buttons viewed__buttons">
@@ -1947,7 +1914,7 @@
 					{% ENDIF %}
 				</div>
 				{% ENDIF %}
-				<div class="main-block__right {% IFNOT IS_FULL_CATALOG && recently_viewed_goods_empty=0 || SHOW_GOODS_FILTERS %}hasSidebar{% ENDIF %} {% IF MOD_LNAME = cart || MOD_LNAME = user || MOD_LNAME = order || MOD_LNAME = compare || MOD_LNAME = goods || MOD_LNAME = callback || MOD_LNAME = news || MOD_LNAME = feedback || MOD_LNAME = page %}full{% ENDIF %}">
+				<div class="main-block__right {% IFNOT IS_FULL_CATALOG && recently_viewed_goods_empty=0 || SHOW_GOODS_FILTERS %}hasSidebar {% ENDIF %} {% IFNOT MOD_LNAME = user && ACT=favorites || MOD_LNAME = cart || MOD_LNAME = user || MOD_LNAME = order || MOD_LNAME = compare || MOD_LNAME = goods || MOD_LNAME = callback || MOD_LNAME = news || MOD_LNAME = feedback || MOD_LNAME = page %}full{% ENDIF %}">
 					<div class="body">{BODY}</div>
 				</div>
 			</div>
@@ -2235,17 +2202,17 @@
 				<span class="dropdown__label">Личный кабинет</span>
 				<span class="dropdown__close"><i class="icon-close"></i></span>
 			</div>
+			{% IF CLIENT_IS_LOGIN %}
+			<!-- ЛК для авторизованных пользователей -->
+			<div class="mainnav__links">
+				<a href="{USER_SETTINGS_URL}" title="Личный кабинет" rel="nofollow"><span>Мой кабинет</span></a>
+				<a href="{USER_HISTORY_LIST_URL}" title="История заказов" rel="nofollow"><span>История</span></a>
+				<a href="{FAVORITES_URL}" title="Избранные товары" rel="nofollow"><span>Избранное</span></a>
+				{% IF SETTINGS_COMPARE_DISABLE=0 %}<a href="{COMPARE_URL}" title="Сравнение" rel="nofollow">Сравнение</a>{% ENDIF %}
+				<a href="{USER_LOGOUT_URL}" title="Выход" rel="nofollow"><span>Выход</span></a>
+			</div>
+			{% ELSE %}
 			<div class="dropdown__inner">
-				{% IF CLIENT_IS_LOGIN %}
-				<!-- ЛК для авторизованных пользователей -->
-				<div class="mainnav__links">
-					<a href="{USER_SETTINGS_URL}" title="Личный кабинет" rel="nofollow"><span>Мой кабинет</span></a>
-					<a href="{USER_HISTORY_LIST_URL}" title="История заказов" rel="nofollow"><span>История</span></a>
-					<a href="{FAVORITES_URL}" title="Избранные товары" rel="nofollow"><span>Избранное</span></a>
-					{% IF SETTINGS_COMPARE_DISABLE=0 %}<a href="{COMPARE_URL}" title="Сравнение" rel="nofollow">Сравнение</a>{% ENDIF %}
-					<a href="{USER_LOGOUT_URL}" title="Выход" rel="nofollow"><span>Выход</span></a>
-				</div>
-				{% ELSE %}
 				<!-- Форма входа и регистрации -->
 				<form action="{USER_LOGIN_URL}" method="post" class="form__client">
 					<input type="hidden" name="hash" value="{HASH}" />
@@ -2279,8 +2246,8 @@
 						<a href="{USER_REGISTER_URL}" class="button">Зарегистрироваться</a>
 					</div>
 				</form>
-				{% ENDIF %}
 			</div>
+			{% ENDIF %}
 		</div>
 		<!-- Корзина -->
 		<div id="addtoCart" class="addto__cart dropdown__content right {% IF CART_COUNT_TOTAL > 0 %}hasItems{% ENDIF %}" data-content="cart">
@@ -2556,60 +2523,37 @@
 <!-- ВНИМАНИЕ! Если Вы удалите код ниже, то это повлияет на работу вашего сайта. Пожалуйста ничего не удаляйте без консультации у специалистов. -->
 <script type="text/javascript">
 	// Запуск основных скриптов для страницы "Товар"
-	{%
-		IF
-		MOD_LNAME = goods %
-	}
+	{% IF MOD_LNAME = goods %}
 	$(document).ready(function () {
 		goodspage();
 		goodsModification();
 		newModification();
 		gsapAnimGoods();
 	});
-	{%
-		ENDIF %
-	}
+	{% ENDIF %}
 	// Скрипты для страницы "Сравнение"
-	{%
-		IF
-		MOD_LNAME = compare %
-	}
+	{% IF MOD_LNAME = compare %}
 	$(document).ready(function () {
 		Compare();
 	});
-	{%
-		ENDIF %
-	}
+	{% ENDIF %}
 	// Скрипты для страницы "Корзина"
-	{%
-		IF
-		MOD_LNAME = cart %
-	}
+	{% IF MOD_LNAME = cart %}
 	$(document).ready(function () {
 		cartQuantity();
 	});
-	{%
-		ENDIF %
-	}
+	{% ENDIF %}
 	// Скрипты для страницы "Товары, Акции, Поиск"
-	{%
-		IF
-		MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search %
-	}
+	{% IF MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search %}
 	$(document).ready(function () {
 		priceFilter();
 		catalog();
 		gsapAnimCatalog();
 		gridPage();
 	});
-	{%
-		ENDIF %
-	}
+	{% ENDIF %}
 	// Запуск основных скриптов для "главной" страницы
-	{%
-		IF
-		index_page %
-	}
+	{% IF index_page %}
 	$(document).ready(function () {
 		slideShow();
 		newsCarousel();
@@ -2619,14 +2563,9 @@
 		counterDate();
 		gsapAnimIndex();
 	});
-	{%
-		ENDIF %
-	}
+	{% ENDIF %}
 	// Модальное окно уведомления при отправке сообщения
-	{%
-		IF
-		FORM_NOTICE %
-	}
+	{% IF FORM_NOTICE %}
 	new Noty({
 		text: '<div class="noty__addto"><i class="icon-{% IF FORM_NOTICE_IS_GOOD %}check{% ELSE %}warning{% ENDIF %}"></i><div class="noty__message">{FORM_NOTICE | nl2br}</div></div>',
 		layout: "bottomCenter",
@@ -2648,9 +2587,7 @@
 		onClose: true,
 		killer: false
 	}).show();
-	{%
-		ENDIF %
-	}
+	{% ENDIF %}
 	// Анимация перед загружаемым объектом
 	$(window).on('load', function () {
 		preload();

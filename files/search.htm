@@ -30,39 +30,41 @@
 				{% FOR goods_filters %}
 				<input type="hidden" name="{goods_filters.NAME}" value="{goods_filters.VALUE}" />
 				{% ENDFOR %}
-				<!-- Сортировать по: (Поле сортировки товаров по умолчанию) -->
-				<div class="sort-by selectBox">
-					<!-- Сортировка выпадающим списком	-->
-					<select class="select" name="goods_search_field_id" title="Название сортировки" onchange="this.form.submit();">
-						{% FOR goods_order_fields %}
-						{% IF goods_order_fields.ID = 1 || goods_order_fields.ID = 2 || goods_order_fields.ID = 5 || goods_order_fields.ID = 11 || goods_order_fields.ID = 13 %}
-						<option value="{goods_order_fields.ID}" title="{goods_order_fields.NAME}" {% IF goods_order_fields.SELECTED %}selected="selected" {% ENDIF %}>
-							{% IF goods_order_fields.ID = 1%}
-							Цена ↓
-							{% ELSEIF goods_order_fields.ID = 2 %}
-							Цена ↑
-							{% ELSEIF goods_order_fields.ID = 5 %}
-							Наличие
-							{% ELSEIF goods_order_fields.ID = 11 %}
-							Рейтинг
-							{% ELSEIF goods_order_fields.ID = 13 %}
-							Отзывы
+				<div class="sort">
+					<!-- Сортировать по: (Поле сортировки товаров по умолчанию) -->
+					<div class="sort-by selectBox">
+						<!-- Сортировка выпадающим списком	-->
+						<select class="select" name="goods_search_field_id" title="Название сортировки" onchange="this.form.submit();">
+							{% FOR goods_order_fields %}
+							{% IF goods_order_fields.ID = 1 || goods_order_fields.ID = 2 || goods_order_fields.ID = 5 || goods_order_fields.ID = 11 || goods_order_fields.ID = 13 %}
+							<option value="{goods_order_fields.ID}" title="{goods_order_fields.NAME}" {% IF goods_order_fields.SELECTED %}selected="selected" {% ENDIF %}>
+								{% IF goods_order_fields.ID = 1%}
+								Цена ↓
+								{% ELSEIF goods_order_fields.ID = 2 %}
+								Цена ↑
+								{% ELSEIF goods_order_fields.ID = 5 %}
+								Наличие
+								{% ELSEIF goods_order_fields.ID = 11 %}
+								Рейтинг
+								{% ELSEIF goods_order_fields.ID = 13 %}
+								Отзывы
+								{% ENDIF %}
+							</option>
 							{% ENDIF %}
-						</option>
-						{% ENDIF %}
-						{% ENDFOR %}
-					</select>
+							{% ENDFOR %}
+						</select>
+					</div>
+					<!-- /END Сортировать по: -->
+					<!-- Показывать по: (Шаг для выбора пользователем лимита выдачи товаров на страницу от 1 до 100) -->
+					<div class="show-by selectBox">
+						<select class="select" name="per_page" title="Лимит товаров на странице" onchange="this.form.submit();">
+							{% FOR goods_per_page_list %}
+							<option value="{goods_per_page_list.LIMIT}" {% IF goods_per_page_list.SELECTED %}selected="selected" {% ENDIF %}>{goods_per_page_list.LIMIT}</option>
+							{% ENDFOR %}
+						</select>
+					</div>
+					<!-- /END Показывать по: -->
 				</div>
-				<!-- /END Сортировать по: -->
-				<!-- Показывать по: (Шаг для выбора пользователем лимита выдачи товаров на страницу от 1 до 100) -->
-				<div class="show-by selectBox">
-					<select class="select" name="per_page" title="Лимит товаров на странице" onchange="this.form.submit();">
-						{% FOR goods_per_page_list %}
-						<option value="{goods_per_page_list.LIMIT}" {% IF goods_per_page_list.SELECTED %}selected="selected" {% ENDIF %}>{goods_per_page_list.LIMIT}</option>
-						{% ENDFOR %}
-					</select>
-				</div>
-				<!-- /END Показывать по: -->
 				<!-- Вид Таблица/Список -->
 				<div class="view__type">
 					{% IF GOODS_VIEW_TYPE=1 %}
