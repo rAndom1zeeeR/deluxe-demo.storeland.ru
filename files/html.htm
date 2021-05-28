@@ -227,7 +227,7 @@
 				<div id="addto">
 					<!-- Сравнение -->
 					{% IFNOT MOD_LNAME = compare && SETTINGS_COMPARE_DISABLE=0 %}
-					<div class="compare dropdown {% IF COMPARE_GOODS_COUNT > 0 %}hasItems{% ENDIF %}">
+					<div class="addto__block compare dropdown {% IF COMPARE_GOODS_COUNT > 0 %}hasItems{% ENDIF %}">
 						<a href="{COMPARE_URL}" class="addto__label dropdown__open compare__icon" title="Сравнение" data-open="compare">
 							<i class="icon-compare"></i>
 							<span>Сравнение</span>
@@ -236,7 +236,7 @@
 					</div>
 					{% ENDIF %}
 					<!-- Избранное -->
-					<div class="favorites dropdown {% IF FAVORITES_GOODS_COUNT > 0 %}hasItems{% ENDIF %}">
+					<div class="addto__block favorites dropdown {% IF FAVORITES_GOODS_COUNT > 0 %}hasItems{% ENDIF %}">
 						<a href="{FAVORITES_URL}" class="addto__label dropdown__open favorites__icon" title="Избранное" data-open="favorites">
 							<i class="icon-favorites"></i>
 							<span>Избранное</span>
@@ -244,7 +244,7 @@
 						</a>
 					</div>
 					<!-- Корзина. Адаптив -->
-					<div class="cart dropdown {% IF CART_COUNT_TOTAL > 0 %}hasItems{% ENDIF %}">
+					<div class="addto__block cart dropdown {% IF CART_COUNT_TOTAL > 0 %}hasItems{% ENDIF %}">
 						<a href="{CART_URL}" class="addto__label dropdown__open cart__icon" title="Корзина" data-open="cart">
 							<i class="icon-cart"></i>
 							<span>Корзина</span>
@@ -252,14 +252,14 @@
 						</a>
 					</div>
 					<!-- Войти -->
-					<div class="login dropdown">
+					<div class="addto__block login dropdown">
 						<a href="{USER_LOGIN_URL}" class="addto__label dropdown__open login__icon" title="Личный кабинет" data-open="login">
 							<i class="icon-user"></i>
 							<span>Войти</span>
 						</a>
 					</div>
 					<!-- Наверх. Адаптив -->
-					<div class="toTop">
+					<div class="addto__block toTop">
 						<a href="#" class="addto__label"><i class="icon-arrow_up"></i></a>
 					</div>
 				</div>
@@ -339,10 +339,9 @@
 							{% IFNOT index_page_goods_empty %}<a href="#" class="nav__tab {% IF index_page_new_goods_empty %}active{% ENDIF %}" data-content="pdt__sale">Акции</a>{% ENDIF %}
 							{% IFNOT index_page_favorites_goods_empty %}<a href="#" class="nav__tab {% IF index_page_new_goods_empty && index_page_goods_empty %}active{% ENDIF %}" data-content="pdt__best">Хиты</a>{% ENDIF %}
 						</div>
-						<div class="owl-nav" data-content="">
-							<div class="owl-prev"></div>
-							<div class="owl-next"></div>
-						</div>
+						{% IFNOT index_page_new_goods_empty %}<div class="owl-nav active" data-content="pdt__new"></div>{% ENDIF %}
+						{% IFNOT index_page_goods_empty %}<div class="owl-nav {% IF index_page_new_goods_empty %}active{% ENDIF %}" data-content="pdt__sale"></div>{% ENDIF %}
+						{% IFNOT index_page_favorites_goods_empty %}<div class="owl-nav {% IF index_page_new_goods_empty && index_page_goods_empty %}active{% ENDIF %}" data-content="pdt__best"></div>{% ENDIF %}
 					</div>
 					<!-- Новинки -->
 					{% IFNOT index_page_new_goods_empty %}

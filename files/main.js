@@ -2943,7 +2943,7 @@ function pdtSlider() {
     navContainer: '#pdt__sales .owl-nav',
     navText: [ , ],
     dots: true,
-    dotsContainer: '#pdt__sales .owl-dots',
+    dotsContainer: '',
     autoHeight: false,
     autoHeightClass: 'owl-height',
     autoplay: false,
@@ -2963,10 +2963,10 @@ function pdtSlider() {
     rewind: true,
     lazyLoad: true,
     nav: true,
-    navContainer: '#pdt__best .owl-nav',
+    navContainer: '.pdt__left .owl-nav[data-content="pdt__best"]',
     navText: [ , ],
-    dots: true,
-    dotsContainer: '#pdt__best .owl-dots',
+    dots: false,
+    dotsContainer: '',
     autoHeight: false,
     autoHeightClass: 'owl-height',
     autoplay: false,
@@ -2994,8 +2994,8 @@ function pdtSlider() {
     loop: false,
     rewind: true,
     lazyLoad: true,
-    nav: false,
-    navContainer: '',
+    nav: true,
+    navContainer: '.pdt__left .owl-nav[data-content="pdt__new"]',
     navText: [ , ],
     dots: false,
     autoHeight: false,
@@ -3016,9 +3016,7 @@ function pdtSlider() {
       768:{items:2},
       992:{items:2},
       1200:{items:3}
-    },
-    onInitialized: carouselInitialized,
-    onChanged: carouselInitialized
+    }
   });
   // Функция слайдера для Хитов продаж на главной странице
   $('#pdt__sale .owl-carousel').owlCarousel({
@@ -3027,8 +3025,8 @@ function pdtSlider() {
     loop: false,
     rewind: true,
     lazyLoad: true,
-    nav: false,
-    navContainer: '',
+    nav: true,
+    navContainer: '.pdt__left .owl-nav[data-content="pdt__sale"]',
     navText: [ , ],
     dots: false,
     autoHeight: false,
@@ -3049,34 +3047,20 @@ function pdtSlider() {
       768:{items:2},
       992:{items:3},
       1200:{items:3}
-    },
-    onInitialized: carouselInitialized,
-    onChanged: carouselInitialized
-  });
-  // Кнопки навигации
-  function carouselInitialized(event){
-    if (event.item.count > event.page.size) {
-      $('#pdt .block__nav .owl-nav').css('display', 'block');
-    }else{
-      $('#pdt .block__nav .owl-nav').css('display', 'none');
     }
-  }
-  $('#pdt .block__nav .owl-prev').on('click', function(event) {
-    $('#pdt .owl-carousel').trigger('prev.owl.carousel');
-  });
-  $('#pdt .block__nav .owl-next').on('click', function(event) {
-    $('#pdt .owl-carousel').trigger('next.owl.carousel');
   });
   // Табы в товарах
-  $('#pdt .nav__tab').on('click', function (event) {
+  $('.pdt__left .nav__tab').on('click', function (event) {
     event.preventDefault();
     let content = $(this).attr('data-content');
-    $('#pdt [id^="pdt__"]').prepend('<div class="preloader"><div class="loading"></div></div>');
+    $('.pdt__left [id^="pdt__"]').prepend('<div class="preloader"><div class="loading"></div></div>');
     preload();
-    $('#pdt .nav__tab').removeClass('active')
-    $('#pdt [id^="pdt__"][data-content]').removeClass('active');
+    $('.pdt__left .nav__tab').removeClass('active')
+    $('.pdt__left [id^="pdt__"][data-content]').removeClass('active');
+    $('.pdt__left .owl-nav[data-content]').removeClass('active');
     $(this).addClass('active');
-    $('#pdt [id^="pdt__"][data-content="'+ content +'"').addClass('active');
+    $('.pdt__left [id^="pdt__"][data-content="'+ content +'"').addClass('active');
+    $('.pdt__left .owl-nav[data-content="'+ content +'"').addClass('active');
   });
 }
 
