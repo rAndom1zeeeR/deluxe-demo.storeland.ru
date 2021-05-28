@@ -2735,6 +2735,7 @@ function startOrder(){
       });
       // Валидация формы на странице оформления заказа
       $(".total__buttons button").on('click', function(){
+        console.log('start')
         let form = $(".fastOrder__form");
         form.validate({
           errorPlacement: function(error, element) { }

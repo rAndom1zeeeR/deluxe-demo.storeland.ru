@@ -677,6 +677,7 @@ section {margin: 2rem 0;}
 /*** Страница: Быстрый заказ ***/
 #OrderAjaxBlock {margin-top: 2rem;}
 #closeOrder {display: none;}
+.fastOrder .fastOrderForm {border: 5px solid #f8e9e6;border-top: 0;padding: 1rem;}
 .fastOrder__form {display: flex;flex-wrap: wrap;justify-content: space-between;}
 .fastOrderForm [order] {width: 100%;margin-bottom: 2rem;}
 .fastOrderForm [order] .title {margin-bottom: 1.5rem;padding: .25rem 0;border: 1px solid #ecdfd4;border-left: 0;border-right: 0;font-size: 18px;text-align: center;}
@@ -688,8 +689,8 @@ section {margin: 2rem 0;}
 .fastOrderForm .form__fields label {display: none;}
 .fastOrderForm label.error {display: none !important;}
 .fastOrderForm .form__wantRegister label {display: block;margin: 0;width: calc(100% - 40px)}
-.fastOrderForm .deliveryConvenientDate:nth-child(1) {width: calc(50% - 0.5rem);margin-right: 0.5rem;}
-.fastOrderForm .deliveryConvenientDate:nth-child(2) {width: calc(50% - 0.5rem);margin-left: 0.5rem;margin-top: 0;}
+.fastOrderForm .deliveryConvenientDate:nth-child(1) {width: calc(50% - 1rem);margin-right: 1rem;}
+.fastOrderForm .deliveryConvenientDate:nth-child(2) {width: calc(50% - 1rem);margin-left: 1rem;margin-top: 0;}
 .fastOrderForm .cart__total {display: flex;flex-wrap: wrap;align-items: center;width: 100%;padding: 2rem 0 0 0;margin-top: 0;}
 .fastOrderForm .total__items {width: 100%;}
 .fastOrderForm .total__title {margin: 0;font-weight: bold;}
@@ -736,14 +737,15 @@ section {margin: 2rem 0;}
 /* Самовывоз */
 .fastOrder__form.pickup [order="1"] {width: 100%;}
 .fastOrder__form.pickup [order="2"] {display: none;}
-@media all and (max-width: 1199.98px) {
+@media (max-width: 991.98px) {
+.delivery__option {width: calc(50% - 2rem);}
+.payment__option {width: calc(50% - 2rem);}
+.fastOrderForm .form__fields {width: calc(50% - 2rem);}
 }
-@media all and (max-width: 639.98px) {
-}
-@media all and (max-width: 479px) {
-/*.fastOrderForm .total__buttons .button {padding: 0 3rem;}
-.fastOrderForm .total__buttons .button + .button {margin: 1rem 0 0 0;}
-.fastOrderForm [order] .title + .form__list {width: 100%;}*/
+@media (max-width: 639.98px) {
+.delivery__option {width: 100%;}
+.payment__option {width: 100%;}
+.fastOrderForm .form__fields {width: 100%;}
 }
 /** Купоны **/
 .coupon__button {line-height: 40px;right: 0px;position: absolute;display: flex;align-items: center;justify-content: center;transition: all 0.3s ease;}
