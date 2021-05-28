@@ -386,7 +386,10 @@ section {margin: 2rem 0;}
 .block__nav .nav__tabs::-webkit-scrollbar-track {border-radius: 0;background-color: #ebded6;}
 @media all and (max-width: 991.98px) {
 }
-@media all and (max-width: 479px) {
+@media all and (max-width: 639.98px) {
+.block__title .title {font-size: 1.5rem;}
+}
+@media all and (max-width: 479.98px) {
 .block__nav .owl-dots {display: none;}
 .block__title.block__nav {padding: 1rem;}
 .block__title .title {font-size: 1.25rem;}
@@ -408,6 +411,9 @@ section {margin: 2rem 0;}
 .modal .fancybox-close-small {color: #ffffff;border: 1px solid #ffffff;}
 .fancybox-close-small {top: 6px;right: 6px;height: 40px;padding: 0;}
 .fancybox-close-small:hover {border-color: transparent}
+@media (max-width: 374.98px) {
+.fancybox-close-small {width: 34px;height: 30px;}
+}
 
 /*** Выпадающее меню ***/
 .dropdown__content {transform: translate(-150%, 0px);transition: all 0.3s ease-in-out;position: fixed;left: 0;top: 0;width: 360px;height: auto;background: #ffffff;box-shadow: none;border: 5px solid #f8e9e6;border-top: 0;border-radius: 0;z-index: 11;}
@@ -750,14 +756,14 @@ section {margin: 2rem 0;}
 .fastOrderForm .form__fields {width: 100%;}
 }
 /** Купоны **/
-.coupon__button {line-height: 40px;right: 0px;position: absolute;display: flex;align-items: center;justify-content: center;transition: all 0.3s ease;}
+.coupon__button {line-height: 38px;right: 0px;position: absolute;display: flex;align-items: center;justify-content: center;transition: all 0.3s ease;}
 .coupon__button:before {font-family: 'icomoon';}
 /*.coupon__order.active .coupon__button span {display: none;}
 .coupon__order.active .coupon__button:before {content: '\e91b';}
 .coupon__order.error .coupon__button:before {content: '\e914';}*/
 .coupon__reset {display: none;position: absolute;right: 12rem;line-height: 1;cursor: pointer;}
 .coupon__reset.active {display: block;}
-.coupon__reset:after {content: "\e900";font-family: 'icomoon';}
+.coupon__reset:after {content: "\e91a";font-family: 'icomoon';}
 .coupon__order input:focus + .coupon__button {}
 .coupon__order.error input {border-color: red;}
 @media all and (max-width: 479px) {
@@ -877,7 +883,7 @@ section {margin: 2rem 0;}
 
 /*** Фон в шапке ***/
 .index #pre-header {height: 700px;}
-#pre-header {width: 100%;height: 400px;position: absolute;top: 0;left: 0;background-color: #fffaf7;overflow: hidden;}
+#pre-header {width: 100%;height: 310px;position: absolute;top: 0;left: 0;background-color: #fffaf7;overflow: hidden;}
 #pre-header:before, #pre-header:after {top: 0;width: 500px;height: 1200px;content: '';background-color: #FFF3E5;position: absolute;-webkit-transform: skew(-45deg);-moz-transform: skew(-45deg);-o-transform: skew(-45deg);}
 #pre-header:before {left: 0;}
 #pre-header:after {right: 0;}
@@ -886,8 +892,12 @@ section {margin: 2rem 0;}
 @media (max-width: 1439.98px) {
 #pre-header:after {display: none;}
 }
-@media (max-width: 639.98px) {
+@media (max-width: 767.98px) {
 .index #pre-header {height: 500px;}
+#pre-header {height: 300px;}
+}
+@media (max-width: 479.98px) {
+#pre-header {height: 260px;}
 }
 
 /*** Шапка ***/
@@ -929,6 +939,8 @@ header .contacts {display: flex;flex-wrap: wrap;align-items: center;justify-cont
 .cart .header__block-content {width: calc(100% - 60px);}
 .cart.header__block .cart__count {position: absolute;top: 0;right: -40px;font-size: 14px;color: #231803;background-color: #fed8c3;width: 40px;height: 25px;line-height: 25px;text-align: center;}
 .cart.header__block .cartSumNow {font-size: 1rem;font-weight: 400;}
+.cart .header__block-content {display: none;}
+.cart.hasItems .header__block-content {display: inline-block;}
 @media (max-width: 1199.98px) {
 header .mail {display: none;}
 }
@@ -995,8 +1007,9 @@ header .contacts {display: none;}
 .addto__block.hasItems:after {right: .5rem;bottom: 0;background-color: #ffaf88;width: .75rem;height: .75rem;border-radius: 100%;position: absolute;content: '';}
 .addto__block.cart {display: none;}
 .page__favorites .addto__block.favorites {display: none;}
-.addto__label span {display: none;}
 .addto__label i {font-size: 28px;}
+.addto__label i + span {display: none;}
+.addto__label [data-count] {display: none;}
 @media (max-width: 767.98px) {
 #addto {border: 1px solid #ecdfd4;background-color: #ffffff;padding: 0;justify-content: center;position: fixed;left: 0;bottom: 0;width: 100%;z-index: 19;}
 .addto__block {border-left: 1px solid #ecdfd4;}
@@ -1740,7 +1753,6 @@ header .contacts {display: none;}
 /* Сопутствующие и С этим товаром смотрят */
 .related > div + div {margin-top: 2rem;}
 
-.page__cart #pre-header {height: 320px;}
 
 
 

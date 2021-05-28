@@ -26,7 +26,7 @@
                 <input type="text" name="form[quantity][{cart_items.GOODS_MOD_ID}]" maxlength="4" value="{cart_items.ORDER_LINE_QUANTITY}" max="{cart_items.GOODS_MOD_REST_VALUE}" title="Количество, {cart_items.GOODS_MOD_MEASURE_NAME}" class="cartqty" onkeypress="return keyPress(this, event);" onpaste="return false;" autocomplete="off" />
                 <a href="javascript:void(0)" class="qty__plus unselectable" title="Увеличить"><i class="icon-arrow_up"></i></a>
               </div>
-	            <div class="cart__price">
+	            <div class="cart__price {CURRENCY_CHAR_CODE}">
 	              <div class="cartPriceTotal price__now">{cart_items.ORDER_LINE_PRICE_NOW | money_format}</div>
 	            </div>
 	            <div class="cart__delete">
@@ -65,7 +65,7 @@
 	        <div class="total__item total__cart">
 		        <div class="total__label">Итого:</div>
 		        <div class="total__price cartSumTotal" data-value="{CART_SUM_NOW_WITH_DISCOUNT}">{CART_SUM_NOW_WITH_DISCOUNT | money_format}</div>
-		        <div style="display: none;" class="total__price cartSum" data-value="{CART_SUM_NOW}">{CART_SUM_NOW | money_format}</div>
+		        <div style="display: none;" class="total__price cartSumNow" data-value="{CART_SUM_NOW}">{CART_SUM_NOW | money_format}</div>
 		        <div style="display: none;" class="total__price cartSumTotalHide" data-value="{CART_SUM_NOW_WITH_DISCOUNT}">{CART_SUM_NOW_WITH_DISCOUNT | money_format}</div>
 		        <div style="display: none;" class="total__price cartSumDiscount" data-value="{CART_SUM_NOW_WITH_DISCOUNT}">{CART_SUM_NOW_WITH_DISCOUNT | money_format}</div>
 	        </div>

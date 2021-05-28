@@ -1246,7 +1246,7 @@ $('.productView__form, .goodsListForm').off('submit').submit(function() {
     $('.cart').addClass("hasItems");
     return (false);
   }
-  $('.cart').addClass("hasItems");
+  $('.cart, .addto__cart').addClass("hasItems");
   $('.cart__count').animate({opacity: 0,display: "none"},500);
   $('.cart__count').animate({display: "inline",opacity: 1},500);
   // Находим форму, которую отправляем на сервер, для добавления товара в корзину
@@ -1827,7 +1827,7 @@ function removeFromCompareAll(e){
 function removeFromCart(e){
   event.preventDefault();
   if(confirm('Вы точно хотите удалить товар из корзины?')){
-  e.parent().parent().fadeOut().remove();
+  e.parent().parent().parent().fadeOut().remove();
   let href = e.attr('href');
   let qty = e.data('qty');
   let oldCount = $('.cart__count').attr('data-count');
@@ -1837,7 +1837,8 @@ function removeFromCart(e){
     success: function(d){
       let newCount = oldCount - qty;
       $('.cart__count').attr('data-count', newCount).text(newCount);
-      $('.totalSum').html($(d).find('.totalSum').html());
+      $('.addto__cart .cartSumNow').html($(d).find('.cartSumNow').html());
+      $('header .cartSumNow').html($(d).find('.cartSumNow').html());
       let flag = 0;
       if(newCount != 0){
         $('.addto__cart .addto__item').each(function(){
@@ -1849,7 +1850,7 @@ function removeFromCart(e){
           }
         })
       }else{
-        $('.cart').removeClass("hasItems");
+        $('.cart, .addto__cart').removeClass("hasItems");
         $('.cart__count').attr('data-count', '0').text("0");
         $('.addto__cart .addto__item').remove();
       }

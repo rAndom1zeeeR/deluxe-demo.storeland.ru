@@ -29,6 +29,9 @@
 </div>
 
 <!-- Блок для обновления данных корзины. Не виден пользователю -->
+<div style="display:none;" id="newCartSum">
+	{CART_SUM_NOW | money_format}
+</div>
 <div style="display:none;" id="newCartCount">
   {CART_COUNT_TOTAL}
 </div>
@@ -59,7 +62,7 @@
 		</div>
 		<div class="addto__total {CURRENCY_CHAR_CODE}">
 			<span>Итого:</span>
-			<span class="price__now">{CART_SUM_NOW | money_format}</span>
+			<span class="price__now cartSumNow">{CART_SUM_NOW | money_format}</span>
 		</div>
 		{% ENDIF %}
 		<div class="addto__empty">
@@ -74,6 +77,7 @@
 </div>
 <!-- Обновление данных корзины -->
 <script>
+$('header .cartSumNow').html($('#newCartSum').html());
 $('.cart__count').html($('#newCartCount').html());
 $('.cart__count').attr('data-count', $('#newCartCount').html());
 $('.addto__cart').html($('#newCartData').html());
