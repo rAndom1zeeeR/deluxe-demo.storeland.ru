@@ -113,7 +113,7 @@ input, select, textarea {padding: 0 1rem;}
 }
 input:focus, select:focus, textarea:focus {outline: 0;border-color: #f69679;color: #231803;}
 input:focus + i, select:focus + i, textarea:focus + i {color: #f69679;}
-input.error + i, select.error + i, textarea.error + i {color: red;}
+input.error + i, select.error + i, textarea.error + i {color: red;border-color: red;}
 textarea {height: auto;line-height: 1;padding: 1rem;}
 select {cursor: pointer;-webkit-appearance: menulist;}
 input[type="file"] {margin-top: 0.25rem;height: auto;line-height: 1;border: 0;padding: 0;border-radius: 0;background: transparent;}
@@ -318,7 +318,7 @@ progress::-moz-progress-bar {background: #ffaf88 fixed;}
 }
 
 /*** Таблицы ***/
-.table-box {width: 100%;border-collapse: collapse;line-height: 1.125rem;margin-bottom: 1rem;text-align: center;border-radius: 0;}
+.table-box {margin-bottom: 1rem;width: 100%;background-color: #ffffff;border-collapse: collapse;line-height: 1.125rem;text-align: center;border-radius: 0;}
 .table-box > tbody > tr > th, .table-box > tfoot > tr > th, .table-box > tbody > tr > td {border: 1px solid #ecdfd4;line-height: 1.125rem;padding: 0.75rem 0.625rem;text-align: center;}
 .table-box thead td, .table-box tfoot td {color: #999999;background-color: #fbfbfb;border: 1px solid #ecdfd4;line-height: 1.125rem;padding: 0.75rem;text-align: center;}
 .table-box tfoot td {color: #231803;font-weight: bold;}
@@ -337,7 +337,7 @@ progress::-moz-progress-bar {background: #ffaf88 fixed;}
 
 /*** Общие блоки ***/
 section {margin: 2rem 0;}
-#main {margin-top: -12rem;position: relative;}
+#main {position: relative;}
 .main-block {display: flex;flex-wrap: wrap;}
 .main-block__left {width: 25%;padding-right: 1rem;flex-grow: 1;}
 .main-block__left.hide {display: none;}
@@ -675,19 +675,19 @@ section {margin: 2rem 0;}
 .noty_has_timeout.noty_has_progressbar .noty_progressbar {background-color: #df5642;opacity: 1;height: 5px;}
 
 /*** Страница: Быстрый заказ ***/
-#OrderAjaxBlock {margin-top: 3rem;}
+#OrderAjaxBlock {margin-top: 2rem;}
 #closeOrder {display: none;}
 .fastOrder__form {display: flex;flex-wrap: wrap;justify-content: space-between;}
-.fastOrderForm [order] {width: 100%;margin-bottom: 2rem;display: flex;flex-wrap: wrap;}
-.fastOrderForm [order] .title {width: 200px;line-height: 50px;font-size: 18px;display: flex;align-items: flex-start;}
-.fastOrderForm [order] .title + .form__list {width: calc(100% - 200px);}
-.fastOrderForm .form__fields label {display: none;}
-.fastOrderForm .form__fields label.error {display: none !important;}
-.fastOrderForm .form__wantRegister label {display: block;margin: 0;width: calc(100% - 40px)}
+.fastOrderForm [order] {width: 100%;margin-bottom: 2rem;}
+.fastOrderForm [order] .title {margin-bottom: 1.5rem;padding: .25rem 0;border: 1px solid #ecdfd4;border-left: 0;border-right: 0;font-size: 18px;text-align: center;}
 .fastOrderForm .form__list {display: flex;flex-wrap: wrap;}
-.fastOrderForm .form__fields {width: 100%;margin-bottom: 1rem;}
+.fastOrderForm .form__fields {width: calc(33.333333% - 2rem);margin: 0 1rem 1rem 1rem;flex-grow: 1;}
 .fastOrderForm .form__fields:last-child {margin-bottom: 0;}
-.fastOrderForm .form__fields input[type="checkbox"] {height: 1.5rem;border-radius: 5px;padding: 0;}
+.fastOrderForm .form__fields.form__wantRegister {width: 100%;margin-bottom: 0;}
+.fastOrderForm .form__field input, .fastOrderForm .form__field select {padding-left: 3.5rem;}
+.fastOrderForm .form__fields label {display: none;}
+.fastOrderForm label.error {display: none !important;}
+.fastOrderForm .form__wantRegister label {display: block;margin: 0;width: calc(100% - 40px)}
 .fastOrderForm .deliveryConvenientDate:nth-child(1) {width: calc(50% - 0.5rem);margin-right: 0.5rem;}
 .fastOrderForm .deliveryConvenientDate:nth-child(2) {width: calc(50% - 0.5rem);margin-left: 0.5rem;margin-top: 0;}
 .fastOrderForm .cart__total {display: flex;flex-wrap: wrap;align-items: center;width: 100%;padding: 2rem 0 0 0;margin-top: 0;}
@@ -697,6 +697,8 @@ section {margin: 2rem 0;}
 .fastOrderForm .total__buttons .button + .button {margin-left: 2rem;}
 .fastOrderForm .total__buttons .total__pp {text-align: center;margin-top: 1rem;}
 .fastOrderForm .total__buttons .total__pp a {text-decoration: underline;}
+.fastOrderForm .selectBox select {height: 40px;background-color: transparent;}
+.fastOrderForm .selectBox:after {background-color: #ffffff;}
 .delivery__fields {margin-top: 1rem;}
 .delivery__price, .zones__price {margin-left: 0.5rem;font-weight: bold;}
 .zones__price {margin: 0.5rem 0 0 0;display: block;}
@@ -706,35 +708,45 @@ section {margin: 2rem 0;}
 .delivery__zones {margin-top: 1rem;padding-left: 1rem;}
 .delivery__zone {margin-top: 0.5rem;}
 .delivery__zone > div {margin-top: 1rem;}
-.delivery__option {margin-bottom: 2rem;}
-.delivery__option:last-child {margin-bottom: 0;}
-.delivery__option input {display: inline-block;vertical-align: middle;border: 0;}
-.delivery__option label {width: calc(100% - 45px);display: inline-block;vertical-align: middle;margin-bottom: 0;}
+.fastOrderForm .delivery {margin-bottom: 0;}
+.order__delivery {display: flex;flex-wrap: wrap;}
+.delivery__option {width: calc(33.333333% - 2rem);margin: 0 1rem 2rem 1rem;background-color: #fff4f2;padding: 1rem;transition: all 0.3s ease;}
+.delivery__option:hover {background-color: #ffaf88;color: #ffffff;}
+.delivery__option input {width: 2rem;height: 2rem;background-color: #ffffff;border: 1px solid #ffaf88;border-radius: 100%;display: inline-block;vertical-align: middle;}
+.delivery__option input:after {display: none;}
+.delivery__option input:hover, .delivery__option input:checked {background-color: #ffaf88;border: 4px solid #ffffff;}
+.delivery__option.active {background-color: #ffaf88;color: #ffffff;}
+.delivery__option label {width: calc(100% - 4rem);display: inline-block;vertical-align: middle;margin-bottom: 0;}
 .delivery__fields label {width: auto;}
 .delivery__desc {margin-top: 1rem;}
-.payment__option {margin-bottom: 2rem;}
-.payment__option input {display: inline-block;vertical-align: middle;border: 0;}
-.payment__option label {width: calc(100% - 45px);display: inline-block;vertical-align: middle;}
+.fastOrderForm .payment {margin-bottom: 0;}
+.order__payment {width: 100%;display: flex;flex-wrap: wrap;}
+.payment__option {width: calc(33.333333% - 2rem);margin: 0 1rem 2rem 1rem;background-color: #fff4f2;padding: 1rem;transition: all 0.3s ease;}
+.payment__option:hover {background-color: #ffaf88;color: #ffffff;}
+.payment__option input {width: 2rem;height: 2rem;background-color: #ffffff;border: 1px solid #ffaf88;border-radius: 100%;display: inline-block;vertical-align: middle;}
+.payment__option input:after {display: none;}
+.payment__option input:hover, .payment__option input:checked {background-color: #ffaf88;border: 4px solid #ffffff;}
+.payment__option.active {background-color: #ffaf88;color: #ffffff;}
+.payment__option label {width: calc(100% - 4rem);display: inline-block;vertical-align: middle;margin-bottom: 0;}
 .payment__option {margin-bottom: 1rem;}
 .payment__desc {margin-top: 1rem;}
+.fields__comment label {display: none;}
+.fields__comment textarea {padding-left: 60px;}
+.fields__comment i {height: 100%;}
 /* Самовывоз */
 .fastOrder__form.pickup [order="1"] {width: 100%;}
 .fastOrder__form.pickup [order="2"] {display: none;}
 @media all and (max-width: 1199.98px) {
 }
 @media all and (max-width: 639.98px) {
-.fastOrderForm [order] {width: 100%;}
-.fastOrderForm .total__buttons .button {padding: 0 2rem;}
-.fastOrderForm [order] .title {width: 100%;margin-bottom: .5rem;}
-.fastOrderForm [order] .title + .form__list {width: 80%;}
 }
 @media all and (max-width: 479px) {
-.fastOrderForm .total__buttons .button {padding: 0 3rem;}
+/*.fastOrderForm .total__buttons .button {padding: 0 3rem;}
 .fastOrderForm .total__buttons .button + .button {margin: 1rem 0 0 0;}
-.fastOrderForm [order] .title + .form__list {width: 100%;}
+.fastOrderForm [order] .title + .form__list {width: 100%;}*/
 }
 /** Купоны **/
-.coupon__button {line-height: 40px;right: 4px;position: absolute;display: flex;align-items: center;justify-content: center;transition: all 0.3s ease;}
+.coupon__button {line-height: 40px;right: 0px;position: absolute;display: flex;align-items: center;justify-content: center;transition: all 0.3s ease;}
 .coupon__button:before {font-family: 'icomoon';}
 /*.coupon__order.active .coupon__button span {display: none;}
 .coupon__order.active .coupon__button:before {content: '\e91b';}
@@ -752,61 +764,55 @@ section {margin: 2rem 0;}
 /*** Страница: Корзина ***/
 .pageCart .cart {display: none;}
 .pageCart .cart__count {display: none;}
-.cartTable {position: relative;display: flex;flex-wrap: wrap;align-items: flex-start;}
+.cartForm {position: relative;display: flex;flex-wrap: wrap;align-items: flex-start;}
 .cart__items {width: 100%;}
-.cart__item {display: flex;flex-wrap: wrap;align-items: center;}
-.cart__item:first-child {margin-top: 0;}
+.cart__item {border-bottom: 1px solid #ecdfd4;padding: 1rem 0;display: flex;flex-wrap: wrap;align-items: center;}
 .cart__image {width: 100px;height: 100px;display: flex;align-items: center;justify-content: center;}
 .cart__image img {max-width: 100px;max-height: 100px;}
-.cart__inner {border-bottom: 1px solid #ecdfd4;width: calc(100% - 120px);padding: 2rem;display: flex;flex-wrap: wrap;align-items: center;justify-content: center;}
+.cart__inner {width: calc(100% - 100px);padding: 0 1rem;display: flex;flex-wrap: wrap;align-items: center;justify-content: center;}
 .cart__info {width: 60%;}
 .cart__actions {width: 40%;display: flex;align-items: center;justify-content: space-between;flex-wrap: wrap;}
 .cart__price {flex-grow: 1;font-size: 18px;text-align: right;}
 .cart__price .price__old {margin-top: 0.5rem;}
 .cart__name {display: block;}
-.cart__art {margin-top: 1rem;font-size: 0.75rem;word-break: break-word;overflow: hidden;}
-.cart__properties {margin-top: 1rem;font-size: 0.75rem;word-break: break-all;}
+.cart__art {color: #c1b1a9;margin-top: 1rem;font-size: 0.75rem;word-break: break-word;overflow: hidden;}
+.cart__properties {color: #c1b1a9;margin-top: .5rem;font-size: 0.75rem;word-break: break-all;}
 .cart__properties span + span {margin-left: 0.25rem;}
 .cart__buttons {padding: 0;display: flex;align-items: center;justify-content: space-between;flex-wrap: wrap;}
 .cart__buttons a {display: inline-block;margin: 2rem 0 0 0;border: 0;}
-.cart__delete {margin: 1rem 0 0 0;line-height: 1;transition: all 0.3s ease;}
-.cart__delete a {color: #36928a;}
-.cart__delete a:hover {color: #231803;}
-.cart__delete a i {display: none;}
+.cart__delete {line-height: 1;transition: all 0.3s ease;}
+.cart__delete a {color: #cabdb6;width: 30px;display: block;text-align: right;}
+.cart__delete a:hover {color: #DF5642;}
+.cart__delete a span {display: none;}
 /*.cart__delete a i {color: #ffffff;font-size: 10px;width: 30px;height: 30px;border-radius: 10px;background-color: #bdd6d3;display: none;align-items: center;justify-content: center;}
 .cart__delete a:hover i {background-color: #171717;}*/
 /* Корзина. Итого */
-.cart__total {margin-top: 2rem;width: 100%;background-color: #f4f3f5;padding: 2rem;display: flex;flex-wrap: wrap;align-items: center;}
+.cart__total {margin-top: 2rem;padding: 2rem 1rem 2rem 2rem;width: 100%;background-color: #fff4f2;display: flex;flex-wrap: wrap;align-items: center;}
 .total__items {width: 30%;}
-.total__item {margin-bottom: 1rem;}
+.total__item {margin-bottom: .5rem;}
 .total__item:last-child {margin-bottom: 0;}
-.total__label {display: inline-block;margin-right: .5rem;}
-.total__price {display: inline-block;font-size: 1rem;font-weight: bold;}
-.total__buttons {width: 70%;display: flex;align-items: flex-end;justify-content: center;flex-direction: column;}
-.total__buttons .total__pp {padding: 0 2rem;text-align: right;color: #afb9b8;font-size: 12px;}
-.total__buttons .inner {align-items: center;}
-.total__cart .total__label {font-size: 24px;margin-right: 1rem;}
-.cart__clear {margin-bottom: 2rem;padding: 0 2rem;}
+.total__label {display: inline-block;margin-right: 1rem;}
+.total__price {display: inline-block;}
+.total__cart .total__price {font-size: 1.125rem;font-weight: bold;}
+.total__buttons {width: 70%;display: flex;align-items: center;justify-content: flex-end;flex-direction: row;flex-wrap: wrap;}
+.total__buttons .total__pp {width: 100%;padding: 0 1rem;text-align: right;color: #afb9b8;font-size: 12px;}
+.total__buttons .button {margin: 0 1rem 1rem 1rem;}
+.total__cart .total__label {text-transform: uppercase;}
 @media all and (max-width: 991.98px) {
 .cart__items {width: 100%;padding: 0;}
 .cart__total {width: 100%;margin-top: 2rem;}
-.cart__info {width: calc(100% - 150px);}
-.cart__actions {justify-content: flex-end;width: 150px;}
-.cart__price {margin-top: 1rem;}
+.cart__info {width: calc(100% - 180px);}
+.cart__actions {justify-content: flex-end;width: 180px;}
+.cart__qty {margin-bottom: 1rem;}
 .total__buttons {width: 50%;}
 .total__items {width: 50%;}
-.total__buttons .inner {justify-content: flex-end;}
-.cart__clear {margin-bottom: 1rem;}
-.total__buttons .total__pp {margin-top: 1rem;padding: 0;order: 2;}
+.total__buttons .button {flex-grow: 1;}
 }
 @media all and (max-width: 639.98px) {
 .cart__info {width: 100%;}
-.cart__actions {width: 100%;margin-top: 1rem;justify-content: flex-start;}
-.cart__price .cart__delete {}
-.cart__delete {margin: 0 0 0 1rem;}
-.cart__delete a span {display: none;}
-.cart__delete a i {display: block;padding: 1rem;font-size: 1rem;border: 1px solid #ecdfd4;}
+.cart__actions {width: 100%;margin-top: 1rem;justify-content: flex-start;position: relative;}
 .cart__price {width: 100%;display: flex;align-items: center;justify-content: flex-start;margin: 1rem 0 0 0;}
+.cart__delete {position: absolute;right: 0;bottom: 0;}
 .total__items {width: 100%;}
 .total__buttons {width: 100%;margin-top: 2rem;align-items: center;}
 .total__buttons .inner {justify-content: center;}
@@ -816,17 +822,19 @@ section {margin: 2rem 0;}
 .cart__inner {width: calc(100% - 80px);padding: 1rem 0 1rem 1rem;}
 .cart__image {width: 80px;height: 80px;}
 .cart__image img {max-width: 80px;max-height: 80px;}
-.cart__price {width: 100%;margin-bottom: 1rem;}
 }
 
 
 /*** Количество ***/
 .qty {display: flex;align-items: center;flex-wrap: wrap;}
 .qty a {color: #231803;font-size: 14px;width: 50px;height: 50px;background-color: #fff8ef;position: relative;display: flex;align-items: center;justify-content: center;}
+.qty a:hover {background-color: #ffb38e;color: #ffffff;}
 .qty input {width: 50px;height: 50px;background-color: #fff8ef;margin: 0 .5rem;padding: 0 0.25rem;border: 0;text-align: center;}
+/* Анимация поворота квадрата при наведении на иконку
 .qty a:before {content: '';opacity: 0;display: block;width: 24px;height: 24px;background-color: #facfb8;position: absolute;transition: 0.3s all ease;z-index: 1;}
 .qty a:hover:before {opacity: 1;transform: rotate(135deg);}
 .qty a i {position: relative;z-index: 2;}
+*/
 
 /*** Быстрый просмотр ***/
 .fancybox-content .quick {display: none;}
@@ -861,8 +869,8 @@ section {margin: 2rem 0;}
 
 
 /*** Фон в шапке ***/
-.index #pre-header {padding-bottom: 8rem;}
-#pre-header {background-color: #fffaf7;padding-bottom: 15rem;position: relative;overflow: hidden;}
+.index #pre-header {height: 700px;}
+#pre-header {width: 100%;height: 400px;position: absolute;top: 0;left: 0;background-color: #fffaf7;overflow: hidden;}
 #pre-header:before, #pre-header:after {top: 0;width: 500px;height: 1200px;content: '';background-color: #FFF3E5;position: absolute;-webkit-transform: skew(-45deg);-moz-transform: skew(-45deg);-o-transform: skew(-45deg);}
 #pre-header:before {left: 0;}
 #pre-header:after {right: 0;}
@@ -873,7 +881,7 @@ section {margin: 2rem 0;}
 }
 
 /*** Шапка ***/
-header {padding: 2rem 0;position: relative;}
+header {padding: 2rem 0;position: relative;z-index: 2;}
 .logo {flex-grow: 1;}
 .logo a {max-width: 225px;}
 /* Иконка */
@@ -933,7 +941,7 @@ header .contacts {display: none;}
 }
 
 /*** Меню ***/
-#menu {}
+#menu {position: relative;}
 #menu .inner {align-items: flex-end;position: relative;}
 /* Каталог */
 .catalog--icon {width: 140px;height: 60px;font-size: 18px;color: #FFFFFF;background-color: #DF5642;display: flex;align-items: center;justify-content: center;}
@@ -1667,6 +1675,7 @@ header .contacts {display: none;}
 .opinion__name {margin-right: 2rem;font-weight: 600;display: inline-block;text-overflow: ellipsis;overflow: hidden;max-width: 50%;}
 .opinion__date {color: #c1b1a9;font-size: 14px;}
 .opinion__ratings {flex-grow: 1;text-align: right;}
+.opinion__delete {margin-top: .5rem;}
 /* Отзывы: Добавление */
 .opinion__addForm {width: 360px;padding: 1rem;background-color: #fff4f2;overflow: hidden;position: sticky;top: 0;}
 .opinion__label {text-align: center;font-size: 18px;font-weight: bold;}
@@ -1693,7 +1702,7 @@ header .contacts {display: none;}
 /* Сопутствующие и С этим товаром смотрят */
 .related > div + div {margin-top: 2rem;}
 
-
+.page__cart #pre-header {height: 320px;}
 
 
 

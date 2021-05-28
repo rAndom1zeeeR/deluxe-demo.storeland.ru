@@ -2436,14 +2436,17 @@ function OrderScripts() {
     $('.order__payment[rel="' + ID + '"]').find('input:first').click();
     $('.delivery__radio').each(function(){
       $(this).prop('checked',false);
+      $(this).parent().removeClass('active');
     });
     $('.zone__radio').each(function(){
       $(this).prop('checked',false);
+      $(this).parent().removeClass('active');
     });
     let val = $(this).val();
     let fz = $($('.zone__radio[deliveryid='+val+']')[0]);
     $(this).prop('checked',true);
     fz.prop('checked',true);
+    $(this).parent().addClass('active');
     let price = $(this).attr('price');
     let priceBlock = $('.delivery__option[rel='+ val +']').find('.delivery__price').find('.num');
     // Обновление цены при наличии зоны
@@ -2674,7 +2677,7 @@ function cartDelete(s){
       url:url,
       cache:false,
       success:function(d){
-        $('.cartItems').html($(d).find('.cartItems').html());
+        $('.cartTable').html($(d).find('.cartTable').html());
         cartQuantity();
         $('#startOrder').on('click', function() {
           startOrder();
