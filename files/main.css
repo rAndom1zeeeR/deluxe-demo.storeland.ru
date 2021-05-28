@@ -1270,8 +1270,16 @@ header .contacts {display: none;}
 .footer__middle {background-color: #FFFFFF;display: flex;flex-wrap: wrap;}
 .footer__middle ul {margin: 0;padding: 0;list-style: none;}
 .footer__middle ul li {margin-bottom: .75rem;}
-.footer__block {width: 25%;padding: 3rem 2rem;}
-.footer__title {margin-bottom: 1rem;font-size: 18px;font-weight: 500;}
+.footer__block {width: 25%;padding: 3rem 2rem;position: relative;overflow: hidden;}
+.footer__title {font-size: 18px;font-weight: 500;display: flex;justify-content: space-between;position: relative;}
+.footer__content {margin-top: 1rem;}
+.footer__open {display: none;}
+@media (max-width: 479.98px) {
+.opened .footer__title i:before {content: '\e915'}
+.opening .footer__content {display: none;}
+.footer__open {display: inline-block;transition: all 0.3s ease;}
+.footer__open:hover, .opened .footer__open {color: #ffaf88;cursor: pointer;}
+}
 /* Соц Сети */
 .footer__top .social-links a {margin-right: 1rem;font-size: 24px;color: #FFFFFF;background-color: #ffe0d1;width: 50px;height: 50px;display: flex;align-items: center;justify-content: center;}
 .footer__top .social-links a + a {margin-left: 0;}
@@ -1299,6 +1307,9 @@ header .contacts {display: none;}
 /* Копирайт */
 .footer__bottom {padding: 1rem;font-size: 14px;color: #c1b1a9;text-align: center;}
 .copyright > div {display: inline-block;}
+@media (min-width: 480px) {
+.footer__content {display: block !important;}
+}
 @media (max-width: 1199.98px) {
 #footer:after {display: none;}
 .contacts__icon {width: 40px;height: 40px;font-size: 24px;}
@@ -1330,13 +1341,16 @@ header .contacts {display: none;}
 .footer__block.subscribe .form__buttons .button {padding: 0 1.5rem;}
 }
 @media (max-width: 479.98px) {
-.footer__block {width: 100%;}
-.footer__block:nth-child(3) {padding-top: 0;}
-.footer__block.contacts .contacts__block {width: 100%;}
-.footer__block.contacts .contacts__block:nth-child(2) {margin-top: 2rem;}
+.footer__block {width: 100%;order: 3;padding: 1rem;}
+.footer__block.subscribe {order: 1;}
 .footer__block.subscribe .form__field {width: 100%;}
 .footer__block.subscribe input {max-width: 100%;}
 .footer__block.subscribe .form__buttons {width: 100%;margin: 1rem 0 0 0;}
+.footer__block.contacts {order: 2;padding: 1rem;}
+.footer__block.contacts .contacts__block {width: 100%;}
+.footer__block.contacts .contacts__block:nth-child(2) {margin-top: 2rem;}
+.footer__block.opening {background-color: #fff3e5;}
+.footer__block.opening + .opening {border-top: 1px solid #ecdfd4;}
 }
 @media (max-width: 374.98px) {
 .footer__top .social-links a {width: 40px;height: 40px;}

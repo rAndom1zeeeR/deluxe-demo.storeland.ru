@@ -2060,8 +2060,13 @@
 						</form>
 					</div>
 				</div>
-				<div class="footer__block">
-					<div class="footer__title">Меню</div>
+				<div class="footer__block opening">
+					<div class="footer__title">
+						<span>Меню</span>
+						<span class="footer__open">
+							<i class="icon-arrow_right"></i>
+						</span>
+					</div>
 					<div class="footer__content">
 						<ul class="mainnav__list" itemscope itemtype="https://schema.org/SiteNavigationElement">
 							{% FOR menu %}
@@ -2076,8 +2081,13 @@
 						</ul>
 					</div>
 				</div>
-				<div class="footer__block">
-					<div class="footer__title">Каталог</div>
+				<div class="footer__block opening">
+					<div class="footer__title">
+						<span>Каталог</span>
+						<span class="footer__open">
+							<i class="icon-arrow_right"></i>
+						</span>
+					</div>
 					<div class="footer__content">
 						<ul>
 							{% FOR catalog_full %}
@@ -2549,7 +2559,6 @@
 		priceFilter();
 		catalog();
 		gsapAnimCatalog();
-		gridPage();
 	});
 	{% ENDIF %}
 	// Запуск основных скриптов для "главной" страницы
