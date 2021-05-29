@@ -3139,7 +3139,7 @@ function slideShow() {
   let owlS = $('#slideshow .owl-carousel');
   owlS.owlCarousel({
     items: 1,
-    loop: true,
+    loop: false,
     rewind: true,
     lazyLoad: true,
     nav: true,
@@ -3156,8 +3156,16 @@ function slideShow() {
     dotsSpeed: 400,
     mouseDrag: true,
     touchDrag: true,
-    pullDrag: true
+    pullDrag: true,
+    onInitialized: counter,
+    onChanged: counter
   });
+  function counter(event) {
+    let items = event.item.count;     // Number of items
+    let item = event.item.index + 1;  // Position of the current item
+    $('#slideshow .count').remove();
+    $('#slideshow .owl-next').before('<span class="count">'+ item + '/' + items +'</span>')
+  }
 }
 // Новости
 function newsCarousel() {
