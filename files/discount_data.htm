@@ -3,9 +3,7 @@
 <div class="message {% IF FORM_NOTICE_IS_GOOD %}success{% ELSE %}warning{% ENDIF %}">{FORM_NOTICE | nl2br}</div>{% ENDIF %}
 <!-- Информация об акции -->
 <div class="promotion__content">
-	<div class="promotion__name">Акция
-		<strong>&laquo;{PROMOTIONAL_CAMPAIGN_NAME}&raquo;</strong> Скидка на все товары акции
-		<strong class="promotion__percentage">{PROMOTIONAL_CAMPAIGN_DISCOUNT_PERCENTAGE}%</strong>
+	<div class="promotion__title">Акция <strong>&laquo;{PROMOTIONAL_CAMPAIGN_NAME}&raquo;</strong> Скидка на все товары акции <strong class="promotion__percentage">{PROMOTIONAL_CAMPAIGN_DISCOUNT_PERCENTAGE}%</strong>
 	</div>
 	<div class="promotion__date">
 		<span>{PROMOTIONAL_CAMPAIGN_BEGINNING_TIME | date('d.m.Y')}</span>
