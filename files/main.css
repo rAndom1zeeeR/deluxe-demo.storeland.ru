@@ -1759,8 +1759,9 @@ header .contacts {display: none;}
 /* Сопутствующие и С этим товаром смотрят */
 .related > div + div {margin-top: 2rem;}
 
-
-
+/*** Товары из категорий на главной ***/
+[class^="pdt__cat-"] {position: relative;}
+[class^="pdt__cat-"] + [class^="pdt__cat-"] {margin-top: 2rem;}
 
 
 

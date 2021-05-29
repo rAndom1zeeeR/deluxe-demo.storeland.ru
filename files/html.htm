@@ -272,9 +272,7 @@
 	<!-- Слайдшоу -->
 	<div id="slideshow">
 		<div class="container">
-			<div class="preloader">
-				<div class="loading"></div>
-			</div>
+			<div class="preloader"><div class="loading"></div></div>
 			<!-- Слайдер -->
 			<div class="slider owl-carousel">
 				<div class="slider__item lozad" data-background-image="{ASSETS_IMAGES_PATH}slide_1.jpg?design=THEMENAME" data-slide="1">
@@ -1223,6 +1221,38 @@
 			</div>
 		</div>
 	</section>
+	
+	<!-- Товары из категорий на главной -->
+	{% IFNOT catalog_full_empty %}
+	<section id="pdt__cat">
+		<div class="container">
+		<!-- Категории каталога с товарами на главной -->
+		<script>
+			var catalog_full = [];
+		</script>
+		{% FOR catalog_full %}
+			{% IF catalog_full.LEVEL = 0 && catalog_full.GOODS_COUNT > 0  && catalog_full.HIDE=0 %}
+			<div class="pdt__cat-{catalog_full.ID} products__container" data-id="{catalog_full.ID}">
+				<script>
+					catalog_full.push({
+						'id': 'pdt__cat-{catalog_full.ID}',
+						'href': '{catalog_full.URL}'
+					})
+				</script>
+				<div class="block__title block__nav">
+					<div class="nav__tabs">
+						<a href="{catalog_full.URL}" class="title">{catalog_full.NAME}</a>
+					</div>
+					<div class="owl-nav"></div>
+				</div>
+				<div class="preloader"><div class="loading"></div></div>
+				<div class="products__grid owl-carousel"></div>
+			</div>
+			{% ENDIF %}
+		{% ENDFOR %}
+		</div>
+	</section>
+	{% ENDIF %}
 	
 	<!-- Описание на Главной -->
 	<section id="index">
