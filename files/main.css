@@ -339,14 +339,13 @@ progress::-moz-progress-bar {background: #ffaf88 fixed;}
 section {margin: 2rem 0;}
 #main {position: relative;}
 .main-block {display: flex;flex-wrap: wrap;}
-.main-block__left {width: 25%;padding-right: 1rem;flex-grow: 1;}
-.main-block__left.hide {display: none;}
-.main-block__right {width: 100%;}
-.main-block__right.hasSidebar {width: 75%;padding-left: 1rem;flex-grow: 1;}
+.main-block__left {width: 25%;padding-right: 1rem;}
+.main-block__right {width: 100%;flex-grow: 1;}
+.main-block__right.hasSidebar {width: 75%;padding-left: 1rem;}
 @media all and (max-width: 1199.98px) {
 .main-block__left {width: 100%;order: 2;padding: 0;margin-top: 2rem;}
 .main-block__right {order: 1;}
-.main-block__right.hasSidebar {width: 100%;order: 1;padding: 0;}
+.main-block__right.hasSidebar {width: 100%;padding: 0;}
 }
 
 /*** Наверх ***/
