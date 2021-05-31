@@ -174,11 +174,34 @@
 	<div id="menu">
 		<div class="container">
 			<div class="inner">
-				<!--Каталог-->
-				<div class="catalog--icon dropdown__open" data-open="catalogMenu">
-					<i class="icon-menu"></i>
-					<span>Каталог</span>
+				<!-- Каталог -->
+				<div class="catalog dropdown">
+					<div class="catalog--icon dropdown__open" data-open="catalog">
+						<i class="icon-menu"></i>
+						<span>Каталог</span>
+					</div>
+					<div class="dropdown__content" data-content="catalog">
+						<div class="catalog__items">
+							{% FOR catalog_full %}
+							{% IF catalog_full.FIRST %}{% IFNOT catalog_full.LEVEL = 0 %}
+							<div data-level="{catalog_full.LEVEL}" class="sub">{% ENDIF %}{% ENDIF %}
+								<div {% IF catalog_full.HIDE %}style="display:none;" {% ENDIF %} data-level="{catalog_full.LEVEL}" class="catalog__item {% IF catalog_full.ISSET_VISIBLE_SUB %}parent{% ENDIF %} {% IF catalog_full.CURRENT_PARENT %}opened{% ENDIF %}">
+									<a href="{catalog_full.URL}" data-level="{catalog_full.LEVEL}" class="catalog__link {% IF catalog_full.CURRENT %}opened{% ENDIF %}">
+										<span>{catalog_full.NAME}</span>
+										{% IF catalog_full.ISSET_VISIBLE_SUB %}<span class="open"></span>{% ENDIF %}
+									</a>
+									{% IF catalog_full.ISSET_SUB=0 %}
+								</div>
+								{% ENDIF %}
+								{% IF catalog_full.LAST %}{%FOR out%}
+							</div>
+							{%IFNOT catalog_full.out.LAST%}
+						</div>
+						{%ENDIF%}{%ENDFOR%}{% ENDIF %}
+						{% ENDFOR %}
+					</div>
 				</div>
+				
 				<!-- Меню. Адаптив. -->
 				<div class="mainnav--icon dropdown__open" data-open="catalogMenu">
 					<span>Меню</span>

@@ -430,6 +430,7 @@ section {margin: 2rem 0;}
 .dropdown__close:hover i {transform: rotate(90deg);}
 .dropdown__content.right .dropdown__close {right: auto;left: -60px;}
 .dropdown__inner {padding: 1rem;}
+.dropdown .dropdown__content {width: 100%;margin-top: 4rem;position: absolute;}
 /*@media all and (min-width: 768px) {
 .dropdown:hover .dropdown__content {transform: translate(0px, 0px);}
 }*/
@@ -491,7 +492,7 @@ section {margin: 2rem 0;}
 .addto__catalog .catalog__link {padding: 1rem;display: flex;flex-wrap: nowrap;align-items: center;}
 .addto__catalog .catalog__item + .catalog__item {border-top: 1px solid #f8e9e6;}
 .addto__catalog .catalog__item .open {margin-left: 0.5rem;vertical-align: middle;width: 1.25rem;height: 1.25rem;line-height: 1.25rem;display: inline-block;text-align: center;}
-.addto__catalog .catalog__item .open:before {content: "\e917";font-family: 'icomoon';font-size: 1rem;}
+.addto__catalog .catalog__item .open:before {content: "\e917";font-family: 'icomoon';font-size: .5rem;}
 .addto__catalog .catalog__item .open.opened:before {content: "\e915";}
 .addto__catalog .catalog__item .sub {padding-left: 1rem;display: none;}
 .mainnav__links a {padding: 1rem;display: block;}
@@ -972,6 +973,18 @@ header .contacts {display: none;}
 .catalog--icon {width: 140px;height: 60px;font-size: 18px;color: #FFFFFF;background-color: #DF5642;display: flex;align-items: center;justify-content: center;}
 .catalog--icon:hover {cursor: pointer;}
 .catalog--icon i {display: none;}
+.catalog .catalog__items {display: flex;flex-wrap: wrap;height: 400px;overflow-y: auto;}
+.catalog .catalog__items::-webkit-scrollbar {width: 0.5rem;height: 0;}
+.catalog .catalog__item[data-level="0"] {width: 25%;padding: 1rem;}
+.catalog .catalog__link[data-level="0"] {color: #df5642;}
+.catalog .catalog__link[data-level="0"] .open {display: none;}
+.catalog .catalog__link {line-height: 24px;}
+.catalog .sub[data-level="1"] {margin-top: .5rem;}
+.catalog .catalog__item[data-level="1"] {border-bottom: 1px solid #ecdfd4;padding-bottom: .25rem;margin-bottom: .25rem;}
+.catalog .sub[data-level="2"] {padding-left: 1rem;margin-top: 0.5rem;display: none;}
+.catalog .catalog__item .open {margin-left: 0.5rem;vertical-align: middle;width: 1.25rem;height: 1.25rem;line-height: 1.25rem;display: inline-block;text-align: center;}
+.catalog .catalog__item .open:before {content: "\e917";font-family: 'icomoon';font-size: .75rem;}
+.catalog .catalog__item .open.opened:before {content: "\e915";}
 /* Меню */
 #menu .mainnav {background-color: #ffffff;width: 608px;position: relative;}
 #menu .mainnav ul {margin: 0;padding: 0 1rem;list-style: none;overflow: hidden;display: flex;align-items: center;flex-wrap: nowrap;}
@@ -1027,7 +1040,7 @@ header .contacts {display: none;}
 }
 /* Поиск */
 .search {background-color: #ffffff;height: 50px;flex-grow: 1;}
-.search.search__focused {right: 0;width: calc(100% - 140px);position: absolute;z-index: 2;}
+.search.search__focused {width: calc(100% - 140px);right: 0;position: absolute;z-index: 2;}
 .search.search__focused .search__input {max-width: 100%;}
 .search__form {position: relative;display: flex;align-items: center;}
 .search__input {max-width: 240px;height: 30px;margin: 10px 0;padding: 0 4rem 0 2rem;border-top: 0;border-bottom: 0;border-color: #ecdfd4;}
@@ -1062,13 +1075,14 @@ header .contacts {display: none;}
 #search__result .result__category a {font-weight: bold;}
 #search__result .result__showAll {margin: 1rem auto 0;width: 200px;display: inline-block;}
 #search__result::-webkit-scrollbar {width: 0.5rem;height: 0;}
-#search__result::-webkit-scrollbar-thumb {border-radius: 0.5rem;background-color: #ffae89;}
-#search__result::-webkit-scrollbar-track {border-radius: 0.5rem;background-color: #ebded6;}
+#search__result::-webkit-scrollbar-thumb {background-color: #ffae89;}
+#search__result::-webkit-scrollbar-track {background-color: #ebded6;}
 @media (max-width: 1199.98px) {
 .search__input {max-width: 220px;}
 }
 @media (max-width: 767.98px) {
 .search {flex-grow: 1;}
+.search.search__focused {width: calc(100% - 120px);}
 .search__input {max-width: 100%;}
 }
 @media (max-width: 479.98px) {
@@ -1777,6 +1791,8 @@ header .contacts {display: none;}
 .products__gridSmall .product__item .product__links a {margin: 0 .25rem;width: 40px;height: 40px;background-color: #fff4f2;display: flex;align-items: center;justify-content: center;}
 .products__gridSmall .product__item .product__links a:hover, .products__gridSmall .product__item .product__links a.added {background-color: #FFAF88;color: #FFFFFF;}
 .products__gridSmall .product__available {display: none;}
+
+
 
 
 
