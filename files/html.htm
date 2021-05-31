@@ -1228,7 +1228,7 @@
 		<div class="container">
 		<!-- Категории каталога с товарами на главной -->
 		<script>
-			var catalog_full = [];
+			var catalog_full = []
 		</script>
 		{% FOR catalog_full %}
 			{% IF catalog_full.LEVEL = 0 && catalog_full.GOODS_COUNT > 0  && catalog_full.HIDE=0 %}
@@ -1669,8 +1669,8 @@
 			</div>
 			{% ENDIF %}
 			<div class="main-block">
-				{% IFNOT IS_FULL_CATALOG && recently_viewed_goods_empty=0 || SHOW_GOODS_FILTERS %}
-				<div class="main-block__left sidebar {% IFNOT MOD_LNAME = user && ACT=favorites || MOD_LNAME = cart || MOD_LNAME = user || MOD_LNAME = order || MOD_LNAME = compare || MOD_LNAME = goods || MOD_LNAME = callback || MOD_LNAME = news || MOD_LNAME = feedback || MOD_LNAME = page %}hide{% ENDIF %}">
+				{% IFNOT IS_FULL_CATALOG && MOD_LNAME = catalog %}
+				<div class="main-block__left sidebar">
 					<!--Каталог-->
 					<div class="sidebar__block catalog">
 						<div class="sidebar__title block__nav">
@@ -1698,7 +1698,6 @@
 							{% ENDFOR %}
 						</div>
 					</div>
-					
 					<!-- Если в тарифном плане подключен модуль фильтров по товарам -->
 					{% IF SHOW_GOODS_PRICE_FILTERS || SHOW_GOODS_FILTERS %}
 					<div id="filters" data-content="filters" class="sidebar__block filters {% FOR filter_attr_list %}{% FOR values %}{% IF filter_attr_list.values.CHECKED %}hasFilters {% ENDIF %}{% ENDFOR %}{% ENDFOR %} {% FOR filter_prop_list %}{% FOR values %}{% IF filter_prop_list.values.CHECKED %}hasFilters {% ENDIF %}{% ENDFOR %}{% ENDFOR %}">
@@ -1766,7 +1765,6 @@
 						</div>
 					</div>
 					{% ENDIF %}
-					
 					<!-- Вы смотрели -->
 					{% IFNOT recently_viewed_goods_empty %}
 					<div class="sidebar__block viewed" data-content="viewed">
@@ -1944,7 +1942,8 @@
 					{% ENDIF %}
 				</div>
 				{% ENDIF %}
-				<div class="main-block__right {% IFNOT IS_FULL_CATALOG && recently_viewed_goods_empty=0 || SHOW_GOODS_FILTERS %}hasSidebar {% ENDIF %} {% IFNOT MOD_LNAME = user && ACT=favorites || MOD_LNAME = cart || MOD_LNAME = user || MOD_LNAME = order || MOD_LNAME = compare || MOD_LNAME = goods || MOD_LNAME = callback || MOD_LNAME = news || MOD_LNAME = feedback || MOD_LNAME = page %}full{% ENDIF %}">
+				
+				<div class="main-block__right {% IFNOT IS_FULL_CATALOG && MOD_LNAME = catalog %}hasSidebar{% ENDIF %}">
 					<div class="body">{BODY}</div>
 				</div>
 			</div>
