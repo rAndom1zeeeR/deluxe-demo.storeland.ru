@@ -1762,7 +1762,21 @@ header .contacts {display: none;}
 /*** Товары из категорий на главной ***/
 [class^="pdt__cat-"] {position: relative;}
 [class^="pdt__cat-"] + [class^="pdt__cat-"] {margin-top: 2rem;}
-
+.products__gridSmall {display: flex;flex-wrap: wrap;align-items: center;}
+.products__gridSmall .product__item {}
+.products__gridSmall .product__item form {display: flex;flex-wrap: wrap;}
+.products__gridSmall .product__item .product__image {margin-bottom: 0;}
+.products__gridSmall .product__item .product__image .product__img {width: 100px;height: 100px;}
+.products__gridSmall .product__item .product__image img {max-width: 100%;max-height: 100%;width: auto;}
+.products__gridSmall .product__item .product__ico {display: none;}
+.products__gridSmall .product__item .product__shop {width: calc(100% - 100px);padding-left: 1rem;text-align: left;position: relative;overflow: hidden;}
+.products__gridSmall .product__item .product__name {max-height: 60px;}
+.products__gridSmall .product__item .product__price {border: 0;padding: 0;margin: 0;}
+.products__gridSmall .product__item .product__links {height: 0;position: absolute;bottom: -3rem;left: .75rem;width: 100%;background-color: #ffffff;transition: all 0.3s ease-in-out;}
+.products__gridSmall .product__item:hover .product__links {height: auto;bottom: 0;}
+.products__gridSmall .product__item .product__links a {margin: 0 .25rem;width: 40px;height: 40px;background-color: #fff4f2;display: flex;align-items: center;justify-content: center;}
+.products__gridSmall .product__item .product__links a:hover, .products__gridSmall .product__item .product__links a.added {background-color: #FFAF88;color: #FFFFFF;}
+.products__gridSmall .product__available {display: none;}
 
 
 
