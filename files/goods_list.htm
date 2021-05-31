@@ -195,6 +195,17 @@
 										rel="nofollow"
 								></a>
 								{% ENDIF %}
+								<!-- Добавление в корзину -->
+								{% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && goods.MAX_REST_VALUE=0 %}
+								<a class="add-notify" title="Уведомить" data-tooltipOFF="Уведомить" rel="nofollow" data-fancybox data-src="#fancybox__notify" href="javascript:;" data-name="{goods.NAME}" data-art="{goods.ART_NUMBER}"><span>Уведомить</span></a>
+								{% ELSE %}
+								{% IF goods.COUNT_MODIFICATION > 1 %}
+								<a class="add-mod" title="Добавить в корзину &laquo;{goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{goods.URL_MIN_PRICE_NOW}" data-prodname="{goods.NAME}"><span>Выбрать модификацию</span></a>
+								{% ELSE %}
+								<!--a class="add-cart quick button" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a-->
+								<a class="add-cart" title="Добавить в корзину &laquo;{goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={goods.MIN_PRICE_NOW_ID}"><span>Добавить в корзину</span></a>
+								{% ENDIF %}
+								{% ENDIF %}
 								<!-- Если в тарифном плане подключен модуль сравнения товаров и он не выключен в настройках магазина -->
 								{% IFNOT SETTINGS_COMPARE_DISABLE && goods.IS_HAS_IN_COMPARE_LIST %}
 								<a class="add-compare added"
@@ -240,19 +251,6 @@
 										href="{COMPARE_ADD_URL}?id={goods.MIN_PRICE_NOW_ID}&amp;from={goods.GOODS_FROM}&amp;return_to={CURRENT_URL | urlencode}"
 										rel="nofollow"
 								></a>
-								{% ENDIF %}
-							</div>
-							<!-- Добавление в корзину -->
-							<div class="product__addCart">
-								{% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && goods.MAX_REST_VALUE=0 %}
-								<a class="add-notify" title="Уведомить" data-tooltipOFF="Уведомить" rel="nofollow" data-fancybox data-src="#fancybox__notify" href="javascript:;" data-name="{goods.NAME}" data-art="{goods.ART_NUMBER}"><span>Уведомить</span></a>
-								{% ELSE %}
-								{% IF goods.COUNT_MODIFICATION > 1 %}
-								<a class="add-mod" title="Добавить в корзину &laquo;{goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{goods.URL_MIN_PRICE_NOW}" data-prodname="{goods.NAME}"><span>Выбрать модификацию</span></a>
-								{% ELSE %}
-								<!--a class="add-cart quick button" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a-->
-								<a class="add-cart" title="Добавить в корзину &laquo;{goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={goods.MIN_PRICE_NOW_ID}"><span>Добавить в корзину</span></a>
-								{% ENDIF %}
 								{% ENDIF %}
 							</div>
 							<!-- Рейтинг -->
@@ -408,6 +406,17 @@
 								rel="nofollow"
 							></a>
 							{% ENDIF %}
+							<!-- Добавление в корзину -->
+							{% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && goods.MAX_REST_VALUE=0 %}
+							<a class="add-notify" title="Уведомить" data-tooltipOFF="Уведомить" rel="nofollow" data-fancybox data-src="#fancybox__notify" href="javascript:;" data-name="{goods.NAME}" data-art="{goods.ART_NUMBER}"><span>Уведомить</span></a>
+							{% ELSE %}
+							{% IF goods.COUNT_MODIFICATION > 1 %}
+							<a class="add-mod" title="Добавить в корзину &laquo;{goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{goods.URL_MIN_PRICE_NOW}" data-prodname="{goods.NAME}"><span>Купить</span></a>
+							{% ELSE %}
+							<!--a class="add-cart quick button" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a-->
+							<a class="add-cart" title="Добавить в корзину &laquo;{goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a>
+							{% ENDIF %}
+							{% ENDIF %}
 							<!-- Если в тарифном плане подключен модуль сравнения товаров и он не выключен в настройках магазина -->
 							{% IFNOT SETTINGS_COMPARE_DISABLE && goods.IS_HAS_IN_COMPARE_LIST %}
 							<a class="add-compare added"
@@ -454,19 +463,6 @@
 								rel="nofollow"
 							></a>
 							{% ENDIF %}
-							<!-- Добавление в корзину -->
-							<div class="product__addCart">
-								{% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && goods.MAX_REST_VALUE=0 %}
-								<a class="add-notify" title="Уведомить" data-tooltipOFF="Уведомить" rel="nofollow" data-fancybox data-src="#fancybox__notify" href="javascript:;" data-name="{goods.NAME}" data-art="{goods.ART_NUMBER}"><span>Уведомить</span></a>
-								{% ELSE %}
-								{% IF goods.COUNT_MODIFICATION > 1 %}
-								<a class="add-mod" title="Добавить в корзину &laquo;{goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{goods.URL_MIN_PRICE_NOW}" data-prodname="{goods.NAME}"><span>Купить</span></a>
-								{% ELSE %}
-								<!--a class="add-cart quick button" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a-->
-								<a class="add-cart" title="Добавить в корзину &laquo;{goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a>
-								{% ENDIF %}
-								{% ENDIF %}
-							</div>
 						</div>
 					</div>
 				</form>
@@ -578,6 +574,17 @@
 										rel="nofollow"
 								></a>
 								{% ENDIF %}
+								<!-- Добавление в корзину -->
+								{% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && goods.MAX_REST_VALUE=0 %}
+								<a class="add-notify" title="Уведомить" data-tooltipOFF="Уведомить" rel="nofollow" data-fancybox data-src="#fancybox__notify" href="javascript:;" data-name="{goods.NAME}" data-art="{goods.ART_NUMBER}"><span>Уведомить</span></a>
+								{% ELSE %}
+								{% IF goods.COUNT_MODIFICATION > 1 %}
+								<a class="add-mod" title="Добавить в корзину &laquo;{goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{goods.URL_MIN_PRICE_NOW}" data-prodname="{goods.NAME}"><span>Выбрать модификацию</span></a>
+								{% ELSE %}
+								<!--a class="add-cart quick button" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a-->
+								<a class="add-cart" title="Добавить в корзину &laquo;{goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={goods.MIN_PRICE_NOW_ID}"><span>Добавить в корзину</span></a>
+								{% ENDIF %}
+								{% ENDIF %}
 								<!-- Если в тарифном плане подключен модуль сравнения товаров и он не выключен в настройках магазина -->
 								{% IFNOT SETTINGS_COMPARE_DISABLE && goods.IS_HAS_IN_COMPARE_LIST %}
 								<a class="add-compare added"
@@ -623,19 +630,6 @@
 										href="{COMPARE_ADD_URL}?id={goods.MIN_PRICE_NOW_ID}&amp;from={goods.GOODS_FROM}&amp;return_to={CURRENT_URL | urlencode}"
 										rel="nofollow"
 								></a>
-								{% ENDIF %}
-							</div>
-							<!-- Добавление в корзину -->
-							<div class="product__addCart">
-								{% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && goods.MAX_REST_VALUE=0 %}
-								<a class="add-notify" title="Уведомить" data-tooltipOFF="Уведомить" rel="nofollow" data-fancybox data-src="#fancybox__notify" href="javascript:;" data-name="{goods.NAME}" data-art="{goods.ART_NUMBER}"><span>Уведомить</span></a>
-								{% ELSE %}
-								{% IF goods.COUNT_MODIFICATION > 1 %}
-								<a class="add-mod" title="Добавить в корзину &laquo;{goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{goods.URL_MIN_PRICE_NOW}" data-prodname="{goods.NAME}"><span>Выбрать модификацию</span></a>
-								{% ELSE %}
-								<!--a class="add-cart quick button" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a-->
-								<a class="add-cart" title="Добавить в корзину &laquo;{goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={goods.MIN_PRICE_NOW_ID}"><span>Добавить в корзину</span></a>
-								{% ENDIF %}
 								{% ENDIF %}
 							</div>
 						</div>

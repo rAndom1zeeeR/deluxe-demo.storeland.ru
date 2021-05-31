@@ -439,6 +439,17 @@
 														rel="nofollow"
 													></a>
 													{% ENDIF %}
+													<!-- Добавление в корзину -->
+													{% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_new_goods.MAX_REST_VALUE=0 %}
+													<a class="add-notify" title="Уведомить" data-tooltipOFF="Уведомить" rel="nofollow" data-fancybox data-src="#fancybox__notify" href="javascript:;" data-name="{index_page_new_goods.NAME}" data-art="{index_page_new_goods.ART_NUMBER}"><span>Уведомить</span></a>
+													{% ELSE %}
+													{% IF index_page_new_goods.COUNT_MODIFICATION > 1 %}
+													<a class="add-mod" title="Добавить в корзину &laquo;{index_page_new_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{index_page_new_goods.URL_MIN_PRICE_NOW}" data-prodname="{index_page_new_goods.NAME}"><span>Выбрать модификацию</span></a>
+													{% ELSE %}
+													<!--a class="add-cart quick button" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_new_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_new_goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a-->
+													<a class="add-cart" title="Добавить в корзину &laquo;{index_page_new_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_new_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_new_goods.MIN_PRICE_NOW_ID}"><span>Добавить в корзину</span></a>
+													{% ENDIF %}
+													{% ENDIF %}
 													<!-- Если в тарифном плане подключен модуль сравнения товаров и он не выключен в настройках магазина -->
 													{% IFNOT SETTINGS_COMPARE_DISABLE && index_page_new_goods.IS_HAS_IN_COMPARE_LIST %}
 													<a class="add-compare added"
@@ -484,19 +495,6 @@
 														href="{COMPARE_ADD_URL}?id={index_page_new_goods.MIN_PRICE_NOW_ID}&amp;from={index_page_new_goods.GOODS_FROM}&amp;return_to={CURRENT_URL | urlencode}"
 														rel="nofollow"
 													></a>
-													{% ENDIF %}
-												</div>
-												<!-- Добавление в корзину -->
-												<div class="product__addCart">
-													{% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_new_goods.MAX_REST_VALUE=0 %}
-													<a class="add-notify" title="Уведомить" data-tooltipOFF="Уведомить" rel="nofollow" data-fancybox data-src="#fancybox__notify" href="javascript:;" data-name="{index_page_new_goods.NAME}" data-art="{index_page_new_goods.ART_NUMBER}"><span>Уведомить</span></a>
-													{% ELSE %}
-													{% IF index_page_new_goods.COUNT_MODIFICATION > 1 %}
-													<a class="add-mod" title="Добавить в корзину &laquo;{index_page_new_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{index_page_new_goods.URL_MIN_PRICE_NOW}" data-prodname="{index_page_new_goods.NAME}"><span>Выбрать модификацию</span></a>
-													{% ELSE %}
-													<!--a class="add-cart quick button" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_new_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_new_goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a-->
-													<a class="add-cart" title="Добавить в корзину &laquo;{index_page_new_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_new_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_new_goods.MIN_PRICE_NOW_ID}"><span>Добавить в корзину</span></a>
-													{% ENDIF %}
 													{% ENDIF %}
 												</div>
 												<!-- Рейтинг -->
@@ -636,6 +634,17 @@
 														rel="nofollow"
 													></a>
 													{% ENDIF %}
+													<!-- Добавление в корзину -->
+													{% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_goods.MAX_REST_VALUE=0 %}
+													<a class="add-notify" title="Уведомить" data-tooltipOFF="Уведомить" rel="nofollow" data-fancybox data-src="#fancybox__notify" href="javascript:;" data-name="{index_page_goods.NAME}" data-art="{index_page_goods.ART_NUMBER}"><span>Уведомить</span></a>
+													{% ELSE %}
+													{% IF index_page_goods.COUNT_MODIFICATION > 1 %}
+													<a class="add-mod" title="Добавить в корзину &laquo;{index_page_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{index_page_goods.URL_MIN_PRICE_NOW}" data-prodname="{index_page_goods.NAME}"><span>Выбрать модификацию</span></a>
+													{% ELSE %}
+													<!--a class="add-cart quick button" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a-->
+													<a class="add-cart" title="Добавить в корзину &laquo;{index_page_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_goods.MIN_PRICE_NOW_ID}"><span>Добавить в корзину</span></a>
+													{% ENDIF %}
+													{% ENDIF %}
 													<!-- Если в тарифном плане подключен модуль сравнения товаров и он не выключен в настройках магазина -->
 													{% IFNOT SETTINGS_COMPARE_DISABLE && index_page_goods.IS_HAS_IN_COMPARE_LIST %}
 													<a class="add-compare added"
@@ -681,19 +690,6 @@
 														href="{COMPARE_ADD_URL}?id={index_page_goods.MIN_PRICE_NOW_ID}&amp;from={index_page_goods.GOODS_FROM}&amp;return_to={CURRENT_URL | urlencode}"
 														rel="nofollow"
 													></a>
-													{% ENDIF %}
-												</div>
-												<!-- Добавление в корзину -->
-												<div class="product__addCart">
-													{% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_goods.MAX_REST_VALUE=0 %}
-													<a class="add-notify" title="Уведомить" data-tooltipOFF="Уведомить" rel="nofollow" data-fancybox data-src="#fancybox__notify" href="javascript:;" data-name="{index_page_goods.NAME}" data-art="{index_page_goods.ART_NUMBER}"><span>Уведомить</span></a>
-													{% ELSE %}
-													{% IF index_page_goods.COUNT_MODIFICATION > 1 %}
-													<a class="add-mod" title="Добавить в корзину &laquo;{index_page_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{index_page_goods.URL_MIN_PRICE_NOW}" data-prodname="{index_page_goods.NAME}"><span>Выбрать модификацию</span></a>
-													{% ELSE %}
-													<!--a class="add-cart quick button" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a-->
-													<a class="add-cart" title="Добавить в корзину &laquo;{index_page_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_goods.MIN_PRICE_NOW_ID}"><span>Добавить в корзину</span></a>
-													{% ENDIF %}
 													{% ENDIF %}
 												</div>
 												<!-- Рейтинг -->
@@ -833,6 +829,17 @@
 														rel="nofollow"
 													></a>
 													{% ENDIF %}
+													<!-- Добавление в корзину -->
+													{% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_favorites_goods.MAX_REST_VALUE=0 %}
+													<a class="add-notify" title="Уведомить" data-tooltipOFF="Уведомить" rel="nofollow" data-fancybox data-src="#fancybox__notify" href="javascript:;" data-name="{index_page_favorites_goods.NAME}" data-art="{index_page_favorites_goods.ART_NUMBER}"><span>Уведомить</span></a>
+													{% ELSE %}
+													{% IF index_page_favorites_goods.COUNT_MODIFICATION > 1 %}
+													<a class="add-mod" title="Добавить в корзину &laquo;{index_page_favorites_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{index_page_favorites_goods.URL_MIN_PRICE_NOW}" data-prodname="{index_page_favorites_goods.NAME}"><span>Выбрать модификацию</span></a>
+													{% ELSE %}
+													<!--a class="add-cart quick button" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_favorites_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_favorites_goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a-->
+													<a class="add-cart" title="Добавить в корзину &laquo;{index_page_favorites_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_favorites_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_favorites_goods.MIN_PRICE_NOW_ID}"><span>Добавить в корзину</span></a>
+													{% ENDIF %}
+													{% ENDIF %}
 													<!-- Если в тарифном плане подключен модуль сравнения товаров и он не выключен в настройках магазина -->
 													{% IFNOT SETTINGS_COMPARE_DISABLE && index_page_favorites_goods.IS_HAS_IN_COMPARE_LIST %}
 													<a class="add-compare added"
@@ -878,19 +885,6 @@
 														href="{COMPARE_ADD_URL}?id={index_page_favorites_goods.MIN_PRICE_NOW_ID}&amp;from={index_page_favorites_goods.GOODS_FROM}&amp;return_to={CURRENT_URL | urlencode}"
 														rel="nofollow"
 													></a>
-													{% ENDIF %}
-												</div>
-												<!-- Добавление в корзину -->
-												<div class="product__addCart">
-													{% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_favorites_goods.MAX_REST_VALUE=0 %}
-													<a class="add-notify" title="Уведомить" data-tooltipOFF="Уведомить" rel="nofollow" data-fancybox data-src="#fancybox__notify" href="javascript:;" data-name="{index_page_favorites_goods.NAME}" data-art="{index_page_favorites_goods.ART_NUMBER}"><span>Уведомить</span></a>
-													{% ELSE %}
-													{% IF index_page_favorites_goods.COUNT_MODIFICATION > 1 %}
-													<a class="add-mod" title="Добавить в корзину &laquo;{index_page_favorites_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{index_page_favorites_goods.URL_MIN_PRICE_NOW}" data-prodname="{index_page_favorites_goods.NAME}"><span>Выбрать модификацию</span></a>
-													{% ELSE %}
-													<!--a class="add-cart quick button" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_favorites_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_favorites_goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a-->
-													<a class="add-cart" title="Добавить в корзину &laquo;{index_page_favorites_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_favorites_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_favorites_goods.MIN_PRICE_NOW_ID}"><span>Добавить в корзину</span></a>
-													{% ENDIF %}
 													{% ENDIF %}
 												</div>
 												<!-- Рейтинг -->
@@ -955,6 +949,11 @@
 						</div>
 					</div>
 					{% ENDIF %}
+					<div class="block__nav-bottom">
+						{% IFNOT index_page_new_goods_empty %}<div class="owl-nav active" data-content="pdt__new"></div>{% ENDIF %}
+						{% IFNOT index_page_goods_empty %}<div class="owl-nav {% IF index_page_new_goods_empty %}active{% ENDIF %}" data-content="pdt__sale"></div>{% ENDIF %}
+						{% IFNOT index_page_favorites_goods_empty %}<div class="owl-nav {% IF index_page_new_goods_empty && index_page_goods_empty %}active{% ENDIF %}" data-content="pdt__best"></div>{% ENDIF %}
+					</div>
 				</div>
 				<!-- Распродажа -->
 				{% IFNOT index_page_sale_goods_empty %}
@@ -1035,6 +1034,17 @@
 														rel="nofollow"
 													></a>
 													{% ENDIF %}
+													<!-- Добавление в корзину -->
+													{% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_sale_goods.MAX_REST_VALUE=0 %}
+													<a class="add-notify" title="Уведомить" data-tooltipOFF="Уведомить" rel="nofollow" data-fancybox data-src="#fancybox__notify" href="javascript:;" data-name="{index_page_sale_goods.NAME}" data-art="{index_page_sale_goods.ART_NUMBER}"><span>Уведомить</span></a>
+													{% ELSE %}
+													{% IF index_page_sale_goods.COUNT_MODIFICATION > 1 %}
+													<a class="add-mod" title="Добавить в корзину &laquo;{index_page_sale_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{index_page_sale_goods.URL_MIN_PRICE_NOW}" data-prodname="{index_page_sale_goods.NAME}"><span>Выбрать модификацию</span></a>
+													{% ELSE %}
+													<!--a class="add-cart quick button" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_sale_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_sale_goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a-->
+													<a class="add-cart" title="Добавить в корзину &laquo;{index_page_sale_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_sale_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_sale_goods.MIN_PRICE_NOW_ID}"><span>Добавить в корзину</span></a>
+													{% ENDIF %}
+													{% ENDIF %}
 													<!-- Если в тарифном плане подключен модуль сравнения товаров и он не выключен в настройках магазина -->
 													{% IFNOT SETTINGS_COMPARE_DISABLE && index_page_sale_goods.IS_HAS_IN_COMPARE_LIST %}
 													<a class="add-compare added"
@@ -1080,19 +1090,6 @@
 														href="{COMPARE_ADD_URL}?id={index_page_sale_goods.MIN_PRICE_NOW_ID}&amp;from={index_page_sale_goods.GOODS_FROM}&amp;return_to={CURRENT_URL | urlencode}"
 														rel="nofollow"
 													></a>
-													{% ENDIF %}
-												</div>
-												<!-- Добавление в корзину -->
-												<div class="product__addCart">
-													{% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_sale_goods.MAX_REST_VALUE=0 %}
-													<a class="add-notify" title="Уведомить" data-tooltipOFF="Уведомить" rel="nofollow" data-fancybox data-src="#fancybox__notify" href="javascript:;" data-name="{index_page_sale_goods.NAME}" data-art="{index_page_sale_goods.ART_NUMBER}"><span>Уведомить</span></a>
-													{% ELSE %}
-													{% IF index_page_sale_goods.COUNT_MODIFICATION > 1 %}
-													<a class="add-mod" title="Добавить в корзину &laquo;{index_page_sale_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{index_page_sale_goods.URL_MIN_PRICE_NOW}" data-prodname="{index_page_sale_goods.NAME}"><span>Выбрать модификацию</span></a>
-													{% ELSE %}
-													<!--a class="add-cart quick button" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_sale_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_sale_goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a-->
-													<a class="add-cart" title="Добавить в корзину &laquo;{index_page_sale_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_sale_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_sale_goods.MIN_PRICE_NOW_ID}"><span>Добавить в корзину</span></a>
-													{% ENDIF %}
 													{% ENDIF %}
 												</div>
 												<!-- Рейтинг -->
@@ -1164,6 +1161,10 @@
 								{% IF index_page_sale_goods.last %}</div>{% ENDIF %}
 							{% ENDFOR %}
 						</div>
+					</div>
+					
+					<div class="block__nav-bottom">
+						<div class="owl-nav"></div>
 					</div>
 				</div>
 				{% ENDIF %}
@@ -1891,6 +1892,17 @@
 													rel="nofollow"
 												></a>
 												{% ENDIF %}
+												<!-- Добавление в корзину -->
+												{% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && recently_viewed_goods.MAX_REST_VALUE=0 %}
+												<a class="add-notify" title="Уведомить" data-tooltipOFF="Уведомить" rel="nofollow" data-fancybox data-src="#fancybox__notify" href="javascript:;" data-name="{recently_viewed_goods.NAME}" data-art="{recently_viewed_goods.ART_NUMBER}"><span>Уведомить</span></a>
+												{% ELSE %}
+												{% IF recently_viewed_goods.COUNT_MODIFICATION > 1 %}
+												<a class="add-mod" title="Добавить в корзину &laquo;{recently_viewed_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{recently_viewed_goods.URL_MIN_PRICE_NOW}" data-prodname="{recently_viewed_goods.NAME}"><span>Купить</span></a>
+												{% ELSE %}
+												<!--a class="add-cart quick button" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={recently_viewed_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={recently_viewed_goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a-->
+												<a class="add-cart" title="Добавить в корзину &laquo;{recently_viewed_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={recently_viewed_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={recently_viewed_goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a>
+												{% ENDIF %}
+												{% ENDIF %}
 												<!-- Если в тарифном плане подключен модуль сравнения товаров и он не выключен в настройках магазина -->
 												{% IFNOT SETTINGS_COMPARE_DISABLE && recently_viewed_goods.IS_HAS_IN_COMPARE_LIST %}
 												<a class="add-compare added"
@@ -1937,19 +1949,6 @@
 													rel="nofollow"
 												></a>
 												{% ENDIF %}
-												<!-- Добавление в корзину -->
-												<div class="product__addCart">
-													{% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && recently_viewed_goods.MAX_REST_VALUE=0 %}
-														<a class="add-notify" title="Уведомить" data-tooltipOFF="Уведомить" rel="nofollow" data-fancybox data-src="#fancybox__notify" href="javascript:;" data-name="{recently_viewed_goods.NAME}" data-art="{recently_viewed_goods.ART_NUMBER}"><span>Уведомить</span></a>
-													{% ELSE %}
-														{% IF recently_viewed_goods.COUNT_MODIFICATION > 1 %}
-															<a class="add-mod" title="Добавить в корзину &laquo;{recently_viewed_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{recently_viewed_goods.URL_MIN_PRICE_NOW}" data-prodname="{recently_viewed_goods.NAME}"><span>Купить</span></a>
-														{% ELSE %}
-														<!--a class="add-cart quick button" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={recently_viewed_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={recently_viewed_goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a-->
-														<a class="add-cart" title="Добавить в корзину &laquo;{recently_viewed_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={recently_viewed_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={recently_viewed_goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a>
-														{% ENDIF %}
-													{% ENDIF %}
-												</div>
 											</div>
 										</div>
 									</form>
@@ -2152,7 +2151,6 @@
 				</div>
 				<!-- Подвал.Контакты -->
 				<div class="footer__block contacts">
-					<div class="footer__title">Контакты</div>
 					<div class="footer__content">
 						<div class="contacts" itemscope itemtype="https://schema.org/Organization">
 							<!-- Телефон 1 -->
