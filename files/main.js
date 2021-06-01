@@ -3054,7 +3054,7 @@ function pdtSlider() {
   $('.pdt__left .nav__tab').on('click', function (event) {
     event.preventDefault();
     let content = $(this).attr('data-content');
-    $('.pdt__left [id^="pdt__"]').prepend('<div class="preloader"><div class="loading"></div></div>');
+    $('.pdt__left [id^="pdt__"]').prepend('<div class="preloader top"><div class="loading"></div></div>');
     preload();
     $('.pdt__left .nav__tab').removeClass('active')
     $('.pdt__left [id^="pdt__"][data-content]').removeClass('active');
