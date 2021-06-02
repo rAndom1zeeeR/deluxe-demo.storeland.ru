@@ -1131,7 +1131,7 @@ header .contacts {display: none;}
 }
 
 /*** Категории на главной ***/
-#catalog .owl-carousel {display: flex;height: 331px;overflow: hidden;}
+#catalog .owl-carousel {display: flex;max-height: 335px;overflow: hidden;}
 .owl-carousel.owl-loaded .categories__item {width: 100%;margin: 0;}
 #catalog .owl-dots {margin-top: 1.5rem;width: 100%;}
 @media (max-width: 479.98px) {
@@ -1250,6 +1250,11 @@ header .contacts {display: none;}
 #news .news__image {position: relative;top: auto;left: auto;width: 100%;}
 #news .news__content {margin-top: 0;}
 #news .nav__tab {line-height: 30px;}
+}
+
+@media (max-width: 639.98px) {
+#news [class^="news_list_"] {height: auto;}
+#news .news__inner {height: auto;}
 }
 
 
