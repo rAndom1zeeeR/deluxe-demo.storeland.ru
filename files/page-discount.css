@@ -1,0 +1,24 @@
+/*** Страница: Просмотр акции ***/
+.promotion__percentage {}
+.promotion__date .separator {margin: 0 0.25rem;}
+.promotion__content {text-align: center;padding: 2rem;margin: 0 0 2rem 0;background-color: #fff8ef;box-shadow: -10px 10px 0px 0px #ffdcca;}
+.promotion__title strong {margin: 0 0.5rem;}
+.promotion__text {margin-top: 1rem;}
+.promotion__date {margin-top: 1rem;}
+
+/*** Страница: Список акций ***/
+.promotion__grid.products__grid {align-items: stretch;}
+.promotion__inner {height: 100%;background-color: #fff3e5;padding: 2rem;display: flex;flex-wrap: wrap;flex-direction: column;align-items: center;}
+.promotion__image {margin: 1rem 1rem 2rem 1rem;width: 90px;height: 90px;background-color: #df5642;box-shadow: -10px 10px 0 0 #ffd6bc;display: flex;align-items: center;justify-content: center;}
+.promotion__item .promotion__percentage {font-size: 28px;font-weight: bold;color: #ffffff;}
+.promotion__item .button {position: absolute;bottom: -20px;}
+.promotion__item .promotion__date {display: none;margin: 1rem 0;font-size: 16px;}
+.promotion__name {font-size: 22px;font-weight: 800;text-align: center;height: 56px;display: block;overflow: hidden;}
+.promotion__desc {margin-bottom: 1rem;max-height: 3.75rem;overflow: hidden;text-align: center;}
+.promotion__item.empty {opacity: 0.7;}
+@media all and (max-width: 639.98px) {
+.promotion__image {padding: 3rem 1rem;}
+}
+@media all and (max-width: 479px) {
+.promotion__campaign .promotion__item {width: 100%;}
+}

@@ -23,12 +23,75 @@
 	{% ENDIF %}
 	<!-- Подключаемые шрифты -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="/design/mplusrounded1c.css?design=THEMENAME" />
+	<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/design/icomoon.css?design=THEMENAME" />
-	<!-- Стили магазина -->
+	<!-- Основные Стили магазина для всех страниц -->
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}min.css?design=THEMENAME" />
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}main.css?design=THEMENAME" />
+	<!-- Страница: Главная и НЕ главная -->
+	{% IF index_page %}
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-index.css?design=THEMENAME" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME" />
+	{% ELSE %}
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-not-index.css?design=THEMENAME" />
+	{% ENDIF %}
+	<!-- Страница: Акции -->
+	{% IF MOD_LNAME = discount %}
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-discount.css?design=THEMENAME" />
+	{% ENDIF %}
+	<!-- Страница: Сравнение -->
+	{% IF MOD_LNAME = compare %}
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-compare.css?design=THEMENAME" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME" />
+	{% ENDIF %}
+	<!-- Страница: Обратная связь -->
+	{% IF MOD_LNAME = feedback %}
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-feedback.css?design=THEMENAME" />
+	{% ENDIF %}
+	<!-- Страница: Новости -->
+	{% IF MOD_LNAME = news %}
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-news.css?design=THEMENAME" />
+	{% ENDIF %}
+	<!-- Страница: ЛК -->
+	{% IF MOD_LNAME = user %}
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-user.css?design=THEMENAME" />
+	{% ENDIF %}
+	<!-- Стили: Товары -->
+	{% IF index_page || MOD_LNAME = catalog || MOD_LNAME = goods || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = user && ACT=favorites %}
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-products.css?design=THEMENAME" />
+	{% ENDIF %}
+	<!-- Стили: Категории -->
+	{% IF index_page || MOD_LNAME = catalog %}
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-categories.css?design=THEMENAME" />
+	{% ENDIF %}
+	<!-- Страница: Каталог -->
+	{% IF MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search %}
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-catalog.css?design=THEMENAME" />
+	{% ENDIF %}
+	<!-- Страница: Оформление заказа -->
+	{% IF MOD_LNAME = order %}
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-order.css?design=THEMENAME" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-cart.css?design=THEMENAME" />
+	{% ENDIF %}
+	<!-- Страница: Корзина -->
+	{% IF MOD_LNAME = cart %}
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-cart.css?design=THEMENAME" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-orderfast.css?design=THEMENAME" />
+	{% ENDIF %}
+	<!-- Страница: Быстрый заказ -->
+	<link id="page-orderfast-css" rel="stylesheet" type="text/css" data-href="{ASSETS_STYLES_PATH}page-orderfast.css?design=THEMENAME" />
+	<!-- Страница: Товар -->
+	<link id="page-goods-css" rel="stylesheet" type="text/css"
+		{% IF MOD_LNAME = goods %}
+		href="{ASSETS_STYLES_PATH}page-goods.css?design=THEMENAME"
+		{% ELSE %}
+		data-href="{ASSETS_STYLES_PATH}page-goods.css?design=THEMENAME"
+		{% ENDIF %}
+	/>
+	<!-- Страница: Товар. Слайдер -->
+	{% IF MOD_LNAME = goods %}
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME" />
+	{% ENDIF %}
 	<!-- Скрипты магазина -->
 	<script type="text/javascript" src="{ASSETS_JS_PATH}jquery-3.4.1.min.js?design=THEMENAME"></script>
 </head>
@@ -49,15 +112,11 @@
 		</style>
 	</noscript>
 	
-	<!-- Скролл бар -->
-	<progress max="100" value="0"></progress>
-	
 	<!-- Фон для закрытия всплывающих окон -->
 	<div id="overlay"></div>
 	
-	<!-- Шапка -->
-	<div id="pre-header">
-	</div>
+	<!-- Фон в Шапке -->
+	<div id="pre-header"></div>
 	<!-- Шапка -->
 	<header id="header">
 		<div class="container">
@@ -368,9 +427,8 @@
 					<div id="pdt__new" data-content="pdt__new" class="active">
 						<div class="products__grid owl-carousel">
 							{% FOR index_page_new_goods %}
-							{% IF index_page_new_goods.first %}
-							<div class="product__items">{% ENDIF %}
-								<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_new_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
+								{% IF index_page_new_goods.first %}<div class="product__items">{% ENDIF %}
+								<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_new_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF index_page_new_goods.COUNT_MODIFICATION > 1 %}hasMod{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
 									<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{index_page_new_goods.MIN_PRICE_NOW_ID} goodsListForm">
 										<input type="hidden" name="hash" value="{HASH}" />
 										<input type="hidden" name="form[goods_from]" value="{index_page_new_goods.GOODS_FROM}" />
@@ -563,9 +621,8 @@
 					<div id="pdt__sale" data-content="pdt__sale" {% IF index_page_new_goods_empty %}class="active" {% ENDIF %}>
 						<div class="products__grid owl-carousel">
 							{% FOR index_page_goods %}
-							{% IF index_page_goods.first %}
-							<div class="product__items">{% ENDIF %}
-								<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
+								{% IF index_page_goods.first %}<div class="product__items">{% ENDIF %}
+								<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF index_page_goods.COUNT_MODIFICATION > 1 %}hasMod{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
 									<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{index_page_goods.MIN_PRICE_NOW_ID} goodsListForm">
 										<input type="hidden" name="hash" value="{HASH}" />
 										<input type="hidden" name="form[goods_from]" value="{index_page_goods.GOODS_FROM}" />
@@ -758,9 +815,8 @@
 					<div id="pdt__best" data-content="pdt__best" {% IF index_page_new_goods_empty && index_page_goods_empty %}class="active" {% ENDIF %}>
 						<div class="products__grid owl-carousel">
 							{% FOR index_page_favorites_goods %}
-							{% IF index_page_favorites_goods.first %}
-							<div class="product__items">{% ENDIF %}
-								<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_favorites_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
+								{% IF index_page_favorites_goods.first %}<div class="product__items">{% ENDIF %}
+								<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_favorites_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF index_page_favorites_goods.COUNT_MODIFICATION > 1 %}hasMod{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
 									<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{index_page_favorites_goods.MIN_PRICE_NOW_ID} goodsListForm">
 										<input type="hidden" name="hash" value="{HASH}" />
 										<input type="hidden" name="form[goods_from]" value="{index_page_favorites_goods.GOODS_FROM}" />
@@ -963,9 +1019,8 @@
 					<div id="pdt__sales" data-content="pdt__sales">
 						<div class="products__grid owl-carousel">
 							{% FOR index_page_sale_goods %}
-							{% IF index_page_sale_goods.first %}
-							<div class="product__items">{% ENDIF %}
-								<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_sale_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
+								{% IF index_page_sale_goods.first %}<div class="product__items">{% ENDIF %}
+								<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_sale_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF index_page_sale_goods.COUNT_MODIFICATION > 1 %}hasMod{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
 									<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{index_page_sale_goods.MIN_PRICE_NOW_ID} goodsListForm">
 										<input type="hidden" name="hash" value="{HASH}" />
 										<input type="hidden" name="form[goods_from]" value="{index_page_sale_goods.GOODS_FROM}" />
@@ -1692,7 +1747,7 @@
 			</div>
 			{% ENDIF %}
 			<div class="main-block">
-				{% IFNOT IS_FULL_CATALOG && MOD_LNAME = catalog %}
+				{% IFNOT IS_FULL_CATALOG && MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search %}
 				<div class="main-block__left sidebar">
 					<!--Каталог-->
 					<div class="sidebar__block catalog">
@@ -1797,9 +1852,8 @@
 						</div>
 						<div class="viewed__items owl-carousel">
 							{% FOR recently_viewed_goods %}
-							{% IF recently_viewed_goods.first %}
-							<div class="product__items">{% ENDIF %}
-								<div class="viewed__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && recently_viewed_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
+								{% IF recently_viewed_goods.first %}<div class="product__items">{% ENDIF %}
+								<div class="viewed__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && recently_viewed_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF recently_viewed_goods.COUNT_MODIFICATION > 1 %}hasMod{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
 									<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{recently_viewed_goods.MIN_PRICE_NOW_ID} goodsListForm">
 										<input type="hidden" name="hash" value="{HASH}" />
 										<input type="hidden" name="form[goods_from]" value="{recently_viewed_goods.GOODS_FROM}" />
@@ -1964,7 +2018,7 @@
 				</div>
 				{% ENDIF %}
 				
-				<div class="main-block__right {% IFNOT IS_FULL_CATALOG && MOD_LNAME = catalog %}hasSidebar{% ENDIF %}">
+				<div class="main-block__right {% IFNOT IS_FULL_CATALOG && MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search %}hasSidebar{% ENDIF %}">
 					<div class="body">{BODY}</div>
 				</div>
 			</div>
@@ -2561,12 +2615,10 @@
 <script type="text/javascript" src="{JAVASCRIPT_BUG_HUNTING_URL}"></script>
 {% ENDIF %}
 <!-- Стили магазина -->
-<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}animate.css?design=THEMENAME" />
-<!-- Скрипты магазина -->
+<!--<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}animate.css?design=THEMENAME" />-->
+ Скрипты магазина
 <script type="text/javascript" src="{ASSETS_JS_PATH}forall.js?design=THEMENAME"></script>
 <script type="text/javascript" src="{ASSETS_JS_PATH}main.js?design=THEMENAME"></script>
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>-->
 <!-- Если отключен JS -->
 <!--<script type="text/javascript">
 	$(document).ready(function () {
@@ -2587,7 +2639,6 @@
 		goodspage();
 		goodsModification();
 		newModification();
-		/*gsapAnimGoods();*/
 	});
 	{% ENDIF %}
 	// Скрипты для страницы "Сравнение"
@@ -2607,7 +2658,6 @@
 	$(document).ready(function () {
 		priceFilter();
 		catalog();
-		gsapAnimCatalog();
 	});
 	{% ENDIF %}
 	// Запуск основных скриптов для "главной" страницы
@@ -2619,7 +2669,6 @@
 		pdtCatalog();
 		pdtBrands();
 		counterDate();
-		/*gsapAnimIndex();*/
 	});
 	{% ENDIF %}
 	// Модальное окно уведомления при отправке сообщения
@@ -2651,7 +2700,6 @@
 		preload();
 	});
 </script>
-
 <style>
 	#ui-datepicker-div {
 		display: none;

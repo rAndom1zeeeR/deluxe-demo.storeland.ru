@@ -1,6 +1,5 @@
 <div>
-<div class="preloader"><div class="loading"></div></div>
-<div class="fastOrder">
+	<div class="preloader top"><div class="loading"></div></div>
   {% IF FORM_NOTICE %}<div class="modal__title {% IF FORM_NOTICE_IS_GOOD %}success{% ELSE %}warning{% ENDIF %}">{FORM_NOTICE | nl2br}</div>{% ENDIF %}
   {% IF cart_count_empty %}
     <div class="attention">Ваша корзина пуста, пожалуйста, выберите другой товар для оформления заказа</div>
@@ -308,7 +307,6 @@
     </form>
   </div>
   {% ENDIF %}
-</div>
 </div>
 
 <!-- Блок для обновления данных корзины. Не виден пользователю -->

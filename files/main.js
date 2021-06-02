@@ -2136,64 +2136,60 @@ $(function(){
 
 // Функция Быстрого просмотра товара
 function quickView() {
-// Получение центральной разметки страницы (для быстрого просмотра)
-$(document).ready(function(){
-  $.fn.getColumnContent = function() {
-    let block = ($(this).length && $(this).hasClass('productViewBlock') ? $(this).filter('.productViewBlock') : $('.productViewBlock:eq(0)'));
-    block.each(function(){
-      // Удаляем все блоки, которые не отображаются в быстром просмотре.
-      $(this).children().not('.productView').remove();
-    });
-    return block;
-  }
-});
-// Быстрый просмотр товара
-$(document).ready(function(){
-  // При наведении на блок товара загружаем контент этого товара, который будет использоваться для быстрого просмотра, чтобы загрузка происходила быстрее.
-  $('.product__item').mouseover(function() {
-    // Если в блоке нет ссылки на быстрый просмотр, то не подгружаем никаких данных
-    let link = $(this).find('a.quickview');
-    if(link.length < 1) {
-      return true;
-    }
-    // Если массив с подгруженными заранее карточками товара для быстрого просмотра ещё не создан - создадим его.
-    if(typeof(document.quickviewPreload) == 'undefined') {
-      document.quickviewPreload = [];
-    }
-    let href = link.attr('href');
-    href += (false !== href.indexOf('?') ? '&' : '?') + 'only_body=1';
-    // Если контент по данной ссылке ещё не загружен
-    if(typeof(document.quickviewPreload[href]) == 'undefined') {
-      // Ставим отметку о том, что мы начали загрузку страницы товара
-      document.quickviewPreload[href] = 1;
-      // Делаем запрос на загрузку страницы товара
-      $.get(href, function(content) {
-        // Сохраняем контент, необходимый для быстрого просмотра в специально созданный для этого массив
-        document.quickviewPreload[href] = $(content).getColumnContent();
-      })
-      // Если загрузить страницу не удалось, удаляем отметку о том, что мы подгрузили эту страницу
-      .fail(function() {
-        delete document.quickviewPreload[href];
+  // Получение центральной разметки страницы (для быстрого просмотра)
+  $(document).ready(function(){
+    $.fn.getColumnContent = function() {
+      let block = ($(this).length && $(this).hasClass('productViewBlock') ? $(this).filter('.productViewBlock') : $('.productViewBlock:eq(0)'));
+      block.each(function(){
+        // Удаляем все блоки, которые не отображаются в быстром просмотре.
+        $(this).children().not('.productView').remove();
       });
+      return block;
     }
-  });
-});
-// Действие при нажатии на кнопку быстрого просмотра.  
-$(document).ready(function(){
-  $(document).on('click', 'a.quickview', function() {
-    let href = $(this).attr('href');
-    href += (false !== href.indexOf('?') ? '&' : '?') + 'only_body=1';
-    quickViewShow(href);
-    $(function(){
-      const observer = lozad(); // lazy loads elements with default selector as '.lozad'
-      observer.observe();
+    // Быстрый просмотр товара
+    // При наведении на блок товара загружаем контент этого товара, который будет использоваться для быстрого просмотра, чтобы загрузка происходила быстрее.
+    $('.product__item').mouseover(function() {
+      // Если в блоке нет ссылки на быстрый просмотр, то не подгружаем никаких данных
+      let link = $(this).find('a.quickview');
+      if(link.length < 1) {
+        return true;
+      }
+      // Если массив с подгруженными заранее карточками товара для быстрого просмотра ещё не создан - создадим его.
+      if(typeof(document.quickviewPreload) == 'undefined') {
+        document.quickviewPreload = [];
+      }
+      let href = link.attr('href');
+      href += (false !== href.indexOf('?') ? '&' : '?') + 'only_body=1';
+      // Если контент по данной ссылке ещё не загружен
+      if(typeof(document.quickviewPreload[href]) == 'undefined') {
+        // Ставим отметку о том, что мы начали загрузку страницы товара
+        document.quickviewPreload[href] = 1;
+        // Делаем запрос на загрузку страницы товара
+        $.get(href, function(content) {
+          // Сохраняем контент, необходимый для быстрого просмотра в специально созданный для этого массив
+          document.quickviewPreload[href] = $(content).getColumnContent();
+        })
+        // Если загрузить страницу не удалось, удаляем отметку о том, что мы подгрузили эту страницу
+        .fail(function() {
+          delete document.quickviewPreload[href];
+        });
+      }
     });
-    preload();
-    $('.fancybox-content .productView').removeClass('productViewMod');
-    $('.fancybox-content .productView').addClass('productViewQuick');
-    return false;
+    // Действие при нажатии на кнопку быстрого просмотра.
+    $(document).on('click', 'a.quickview', function() {
+      let href = $(this).attr('href');
+      href += (false !== href.indexOf('?') ? '&' : '?') + 'only_body=1';
+      quickViewShow(href);
+      $(function(){
+        const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+        observer.observe();
+      });
+      preload();
+      $('.fancybox-content .productView').removeClass('productViewMod');
+      $('.fancybox-content .productView').addClass('productViewQuick');
+      return false;
+    });
   });
-});
 }
 // Быстрый просмотр товара
 function quickViewShow(href, atempt) {
@@ -2246,64 +2242,61 @@ function quickViewShow(href, atempt) {
 
 // Функция выбора модификаций
 function quickViewMod() {
-// Получение центральной разметки страницы (для быстрого просмотра)
-$(document).ready(function(){
-  $.fn.getColumnContent = function() {
-    let block = ($(this).length && $(this).hasClass('productViewBlock') ? $(this).filter('.productViewBlock') : $('.productViewBlock:eq(0)'));
-    block.each(function(){
-      // Удаляем все блоки, которые не отображаются в быстром просмотре.
-      $(this).children().not('.productView').remove();
-    });
-    return block;
-  }
-});
-// Быстрый просмотр товара
-$(document).ready(function(){
-  // При наведении на блок товара загружаем контент этого товара, который будет использоваться для быстрого просмотра, чтобы загрузка происходила быстрее.
-  $('.product__item').mouseover(function() {
-    // Если в блоке нет ссылки на быстрый просмотр, то не подгружаем никаких данных
-    let link = $(this).find('a.add-mod');
-    if(link.length < 1) {
-      return true;
-    }
-    // Если массив с подгруженными заранее карточками товара для быстрого просмотра ещё не создан - создадим его.
-    if(typeof(document.quickviewPreload) == 'undefined') {
-      document.quickviewPreload = [];
-    }
-    let href = link.attr('href');
-    href += (false !== href.indexOf('?') ? '&' : '?') + 'only_body=1';
-    // Если контент по данной ссылке ещё не загружен
-    if(typeof(document.quickviewPreload[href]) == 'undefined') {
-      // Ставим отметку о том, что мы начали загрузку страницы товара
-      document.quickviewPreload[href] = 1;
-      // Делаем запрос на загрузку страницы товара
-      $.get(href, function(content) {
-        // Сохраняем контент, необходимый для быстрого просмотра в специально созданный для этого массив
-        document.quickviewPreload[href] = $(content).getColumnContent();
-      })
-      // Если загрузить страницу не удалось, удаляем отметку о том, что мы подгрузили эту страницу
-      .fail(function() {
-        delete document.quickviewPreload[href];
+  // Получение центральной разметки страницы (для быстрого просмотра)
+  $(document).ready(function(){
+    $.fn.getColumnContent = function() {
+      let block = ($(this).length && $(this).hasClass('productViewBlock') ? $(this).filter('.productViewBlock') : $('.productViewBlock:eq(0)'));
+      block.each(function(){
+        // Удаляем все блоки, которые не отображаются в быстром просмотре.
+        $(this).children().not('.productView').remove();
       });
+      return block;
     }
-  });
-});
-// Действие при нажатии на кнопку быстрого просмотра.  
-$(document).ready(function(){
-  $(document).on('click', 'a.add-mod', function() {
-    let href = $(this).attr('href');
-    href += (false !== href.indexOf('?') ? '&' : '?') + 'only_body=1';
-    quickViewShowMod(href);
-    $(function(){
-      const observer = lozad(); // lazy loads elements with default selector as '.lozad'
-      observer.observe();
+    // Быстрый просмотр товара
+    // При наведении на блок товара загружаем контент этого товара, который будет использоваться для быстрого просмотра, чтобы загрузка происходила быстрее.
+    $('.product__item.hasMod').mouseover(function() {
+      // Если в блоке нет ссылки на быстрый просмотр, то не подгружаем никаких данных
+      let link = $(this).find('a.add-mod');
+      if(link.length < 1) {
+        return true;
+      }
+      // Если массив с подгруженными заранее карточками товара для быстрого просмотра ещё не создан - создадим его.
+      if(typeof(document.quickviewPreload) == 'undefined') {
+        document.quickviewPreload = [];
+      }
+      let href = link.attr('href');
+      href += (false !== href.indexOf('?') ? '&' : '?') + 'only_body=1';
+      // Если контент по данной ссылке ещё не загружен
+      if(typeof(document.quickviewPreload[href]) == 'undefined') {
+        // Ставим отметку о том, что мы начали загрузку страницы товара
+        document.quickviewPreload[href] = 1;
+        // Делаем запрос на загрузку страницы товара
+        $.get(href, function(content) {
+          // Сохраняем контент, необходимый для быстрого просмотра в специально созданный для этого массив
+          document.quickviewPreload[href] = $(content).getColumnContent();
+          loadFile('page-goods', 'css');
+        })
+        // Если загрузить страницу не удалось, удаляем отметку о том, что мы подгрузили эту страницу
+        .fail(function() {
+          delete document.quickviewPreload[href];
+        });
+      }
     });
-    preload();
-    $('.fancybox-content .productView').removeClass('productViewQuick');
-    $('.fancybox-content .productView').addClass('productViewMod');
-    return false;
+    // Действие при нажатии на кнопку быстрого просмотра.
+    $(document).on('click', 'a.add-mod', function() {
+      let href = $(this).attr('href');
+      href += (false !== href.indexOf('?') ? '&' : '?') + 'only_body=1';
+      quickViewShowMod(href);
+      $(function(){
+        const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+        observer.observe();
+      });
+      preload();
+      $('.fancybox-content .productView').removeClass('productViewQuick');
+      $('.fancybox-content .productView').addClass('productViewMod');
+      return false;
+    });
   });
-});
 }
 // Быстрый просмотр модификаций
 function quickViewShowMod(href, atempt) {
@@ -2375,20 +2368,28 @@ function quickOrder(formSelector) {
 		cache	  : false,
 		url		  : formBlock.attr('action'),
 		data		: formData,
+    beforeSend: function () {
+      loadFile('page-orderfast', 'css');
+    },
 		success: function(data) {
-			$.fancybox.open(data);
-			preload();
-			showPass();
-			OrderScripts();
-			OrderScriptsSelect();
-      coupons();
-      // Стили для новых селектов
-      /*setTimeout(() => $('.select').styler(), 100);*/
-      $('.fastOrder__form').validate({
-        errorPlacement: function(error, element) { }
-      });
-      // Скрытое обновление корзины
-      $('.hiddenUpdate').html(data);
+      $.fancybox.open(data, {
+        keyboard: false,
+        baseClass: "fastOrder",
+        afterShow: function(){
+          let loaded = loadFile('page-orderfast', 'css');
+          if(loaded) {
+            preload();
+            showPass();
+            OrderScripts();
+            OrderScriptsSelect();
+            coupons();
+            $('.fastOrder__form').validate({
+              errorPlacement: function(error, element) { }
+            });
+          }
+        }
+      })
+
 		}
 	});
   return false;
@@ -3122,7 +3123,7 @@ function pdtSlider() {
           0:{items:1},
           320:{items:1},
           481:{items:1},
-          641:{items:1},
+          641:{items:2},
           768:{items:2},
           992:{items:3},
           1200:{items:4}
@@ -3863,4 +3864,22 @@ function removeActive(obj){obj.removeClass('active')}
 function addOpened(obj){obj.hasClass('opened') ? obj.removeClass('opened') : obj.addClass('opened')}
 
 
+// Загрузчик файлов
+function loadFile(fileName, ext, cb){
+  if(!fileName){console.error('Не передано имя загружаемого файла');return;}
+  if(!ext){console.error('Не передано расширение загружаемого файла');return;}
+  if(!(typeof cb === 'function')){cb = function(){}};
 
+  var $file = $('#' + fileName + '-' + ext);
+  var attrName = (ext === 'css') ? 'href' : 'src';
+
+  if(!$file.length){console.error('Файл не найден в разметке и не может быть загружен');return;}
+  // Если файл уже загружен
+  if($file.attr(attrName)){
+    cb();
+    // console.log('Already loaded');
+    return (true);
+  }
+  $file.on('load', cb)
+  $file.attr(attrName, $file.data(attrName));
+}
