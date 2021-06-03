@@ -26,7 +26,7 @@ body.compensate-for-scrollbar{overflow:hidden}.fancybox-active{height:auto}.fanc
 .noty_modal {position: fixed;width: 100%;height: 100%;background-color: #000;z-index: 10000;opacity: .3;left: 0;top: 0;}
 .noty_modal.noty_modal_open {opacity: 0;-webkit-animation: noty_modal_in .3s ease-out;animation: noty_modal_in .3s ease-out;}
 .noty_modal.noty_modal_close {-webkit-animation: noty_modal_out .3s ease-out;animation: noty_modal_out .3s ease-out;-webkit-animation-fill-mode: forwards;animation-fill-mode: forwards;}
-/*# sourceMappingURL=noty.css.map*/
+/*sourceMappingURL=noty.css.map*/
 .noty_theme__metroui.noty_bar {margin: 0 0 4px 0;overflow: hidden;position: relative;box-shadow: rgba(0, 0, 0, 0.3) 0 0 5px 0;}
 .noty_theme__metroui.noty_bar .noty_progressbar {position: absolute;left: 0;bottom: 0;height: 3px;width: 100%;background-color: #000;opacity: 0.2;filter: alpha(opacity=20);}
 .noty_theme__metroui.noty_bar .noty_body {padding: 0;font-size: 14px;}

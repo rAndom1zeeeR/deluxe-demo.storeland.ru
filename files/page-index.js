@@ -223,7 +223,7 @@ function pdtSlider() {
 	// Весь каталог на главной
 	if(catalog_full){
 		var promises = $.map(catalog_full, function(el){
-			return $.ajax(el.href + '?only_body=1&goods_view_type=3&per_page=20')
+			return $.ajax(el.href + '?only_body=1&goods_view_type=3&per_page=10')
 				.then(function(d){
 					let container = $('.products__container.' + el.id);
 					let $parentGridContainer = container.find('.products__gridSmall');
@@ -328,8 +328,8 @@ function newsCarousel() {
 			loop: false,
 			rewind: true,
 			lazyLoad: true,
-			nav: false,
-			navContainer: '',
+			nav: true,
+			navContainer: '#news .owl-nav[data-content="news_list_all"]',
 			navText: [ , ],
 			dots: false,
 			autoHeight: true,
@@ -346,9 +346,7 @@ function newsCarousel() {
 				0:{items:1},
 				320:{items:1},
 				640:{items:2}
-			},
-			onInitialized: carouselInitialized,
-			onChanged: carouselInitialized
+			}
 		});
 	}else{
 		$("#news .news_list_articles.owl-carousel").owlCarousel({
@@ -357,8 +355,8 @@ function newsCarousel() {
 			loop: false,
 			rewind: true,
 			lazyLoad: true,
-			nav: false,
-			navContainer: '',
+			nav: true,
+			navContainer: '#news .owl-nav[data-content="news_list_articles"]',
 			navText: [ , ],
 			dots: false,
 			autoHeight: true,
@@ -375,10 +373,7 @@ function newsCarousel() {
 				0:{items:1},
 				320:{items:1},
 				640:{items:2}
-			},
-			onInitialize: carouselInitialized,
-			onInitialized: carouselInitialized,
-			onChanged: carouselInitialized
+			}
 		});
 		$("#news .news_list_mass_media.owl-carousel").owlCarousel({
 			items: 2,
@@ -386,8 +381,8 @@ function newsCarousel() {
 			loop: false,
 			rewind: true,
 			lazyLoad: true,
-			nav: false,
-			navContainer: '',
+			nav: true,
+			navContainer: '#news .owl-nav[data-content="news_list_mass_media"]',
 			navText: [ , ],
 			dots: false,
 			autoHeight: true,
@@ -404,10 +399,7 @@ function newsCarousel() {
 				0:{items:1},
 				320:{items:1},
 				640:{items:2}
-			},
-			onInitialize: carouselInitialized,
-			onInitialized: carouselInitialized,
-			onChanged: carouselInitialized
+			}
 		});
 		$("#news .news_list_shop.owl-carousel").owlCarousel({
 			items: 2,
@@ -415,8 +407,8 @@ function newsCarousel() {
 			loop: false,
 			rewind: true,
 			lazyLoad: true,
-			nav: false,
-			navContainer: '',
+			nav: true,
+			navContainer: '#news .owl-nav[data-content="news_list_shop"]',
 			navText: [ , ],
 			dots: false,
 			autoHeight: true,
@@ -433,26 +425,9 @@ function newsCarousel() {
 				0:{items:1},
 				320:{items:1},
 				640:{items:2}
-			},
-			onInitialize: carouselInitialized,
-			onInitialized: carouselInitialized,
-			onChanged: carouselInitialized
+			}
 		});
 	}
-	// Кнопки навигации
-	function carouselInitialized(event){
-		if (event.item.count > event.page.size) {
-			$('#news .block__nav .owl-nav').css('display', 'block');
-		}else{
-			$('#news .block__nav .owl-nav').css('display', 'none');
-		}
-	}
-	$('#news .block__nav .owl-prev').click(function(event) {
-		$('#news .owl-carousel').trigger('prev.owl.carousel');
-	});
-	$('#news .block__nav .owl-next').click(function(event) {
-		$('#news .owl-carousel').trigger('next.owl.carousel');
-	});
 	// Табы в новостях
 	$('#news .nav__tab').on('click', function (event) {
 		event.preventDefault();
@@ -460,9 +435,11 @@ function newsCarousel() {
 		$('#news [class^="news_list_"]').prepend('<div class="preloader"><div class="loading"></div></div>');
 		preload();
 		$('#news .nav__tab').removeClass('active')
-		$('#news [class^="news_list_"]').removeClass('active');
+		$('#news [class^="news_list_"][data-content]').removeClass('active');
+		$('#news .owl-nav[data-content]').removeClass('active');
 		$(this).addClass('active');
 		$('#news [class^="news_list_"][data-content="'+ content +'"').addClass('active');
+		$('#news .owl-nav[data-content="'+ content +'"').addClass('active');
 	});
 }
 

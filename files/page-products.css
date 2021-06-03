@@ -97,7 +97,7 @@
 .products__gridSmall .product__item .product__price {border: 0;padding: 0;margin: 0;}
 .products__gridSmall .product__item .product__links {height: 0;position: absolute;bottom: -3rem;left: .75rem;width: 100%;background-color: #ffffff;transition: all 0.3s ease-in-out;}
 .products__gridSmall .product__item:hover .product__links {height: auto;bottom: 0;}
-.products__gridSmall .product__item .product__links a {margin: 0 .25rem;width: 40px;height: 40px;background-color: #fff4f2;display: flex;align-items: center;justify-content: center;}
+.products__gridSmall .product__item .product__links a {font-size: 24px;margin: 0 .25rem;width: 40px;height: 40px;background-color: #fff4f2;display: flex;align-items: center;justify-content: center;}
 .products__gridSmall .product__item .product__links a:hover, .products__gridSmall .product__item .product__links a.added {background-color: #FFAF88;color: #FFFFFF;}
 .products__gridSmall .product__available {display: none;}
 @media (max-width: 767.98px) {

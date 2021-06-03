@@ -1360,13 +1360,13 @@
 				<div class="nav__tabs">
 					{% IFNOT news_list_all_empty %}<a href="#" class="nav__tab active" data-content="news_list_all">Новости</a>{% ENDIF %}
 					{% IFNOT news_list_shop_empty %}<a href="#" class="nav__tab active" data-content="news_list_shop">Новости</a>{% ENDIF %}
-					{% IFNOT news_list_articles_empty %}<a href="#" class="nav__tab" data-content="news_list_articles">Статьи</a>{% ENDIF %}
-					{% IFNOT news_list_mass_media_empty %}<a href="#" class="nav__tab" data-content="news_list_mass_media">Блог</a>{% ENDIF %}
+					{% IFNOT news_list_articles_empty %}<a href="#" class="nav__tab {% IF news_list_shop_empty %}active{% ENDIF %}" data-content="news_list_articles">Статьи</a>{% ENDIF %}
+					{% IFNOT news_list_mass_media_empty %}<a href="#" class="nav__tab {% IF news_list_shop_empty || news_list_articles_empty %}active{% ENDIF %}" data-content="news_list_mass_media">Блог</a>{% ENDIF %}
 				</div>
-				<div class="owl-nav" data-content="" style="display: none;">
-					<div class="owl-prev"></div>
-					<div class="owl-next"></div>
-				</div>
+				{% IFNOT news_list_all_empty %}<div class="owl-nav active" data-content="news_list_all"></div>{% ENDIF %}
+				{% IFNOT news_list_shop_empty %}<div class="owl-nav active" data-content="news_list_shop"></div>{% ENDIF %}
+				{% IFNOT news_list_articles_empty %}<div class="owl-nav {% IF news_list_shop_empty %}active{% ENDIF %}" data-content="news_list_articles"></div>{% ENDIF %}
+				{% IFNOT news_list_mass_media_empty %}<div class="owl-nav {% IF news_list_shop_empty || news_list_articles_empty %}active{% ENDIF %}" data-content="news_list_mass_media"></div>{% ENDIF %}
 			</div>
 			<!-- Список ВСЕХ новостей магазина. Если в настройках отмечено "Группировать новости в блоке навигации на сайте" -->
 			{% IFNOT news_list_all_empty %}
@@ -1480,6 +1480,12 @@
 				{% ENDFOR %}
 			</div>
 			{% ENDIF %}
+			<div class="block__nav-bottom">
+				{% IFNOT news_list_all_empty %}<div class="owl-nav active" data-content="news_list_all"></div>{% ENDIF %}
+				{% IFNOT news_list_shop_empty %}<div class="owl-nav active" data-content="news_list_shop"></div>{% ENDIF %}
+				{% IFNOT news_list_articles_empty %}<div class="owl-nav {% IF news_list_shop_empty %}active{% ENDIF %}" data-content="news_list_articles"></div>{% ENDIF %}
+				{% IFNOT news_list_mass_media_empty %}<div class="owl-nav {% IF news_list_shop_empty || news_list_articles_empty %}active{% ENDIF %}" data-content="news_list_mass_media"></div>{% ENDIF %}
+			</div>
 		</div>
 	</section>
 	{% ENDIF %}
@@ -1529,7 +1535,7 @@
 					{% ELSEIF MOD_LNAME=callback %}
 					<h1 class="title">Заказ обратного звонка</h1>
 					{% ELSEIF MOD_LNAME=catalog %}
-					<h1 class="title">{CATEGORY_NAME}</h1>
+					<h1 class="title"><span>{CATEGORY_NAME}</span><span class="results">{GOODS_PAGES_RESULTS} товар{GOODS_PAGES_RESULTS | gen_word_end("","а","ов")}</span></h1>
 					{% ELSEIF MOD_LNAME=cart %}
 					<h1 class="title"><a href="{CART_URL}" title="Корзина">Корзина</a></h1>
 					{% ELSEIF MOD_LNAME=goods %}

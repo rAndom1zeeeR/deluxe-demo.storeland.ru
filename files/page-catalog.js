@@ -154,4 +154,5 @@ function viewed() {
 $(document).ready(function(){
 	catalog();
 	priceFilter();
+	viewed();
 });
