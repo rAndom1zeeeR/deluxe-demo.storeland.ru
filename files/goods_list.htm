@@ -127,7 +127,7 @@
 		{% IF GOODS_VIEW_TYPE=1 %}
 		<div class="products__grid">
 			{% FOR goods %}
-			<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && goods.MAX_REST_VALUE=0 %}empty{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
+			<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF goods.COUNT_MODIFICATION > 1 %}hasMod{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
 				<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{goods.MIN_PRICE_NOW_ID} productView__form">
 					<input type="hidden" name="hash" value="{HASH}"/>
 					<input type="hidden" name="form[goods_from]" value="{goods.GOODS_FROM}"/>
@@ -314,7 +314,7 @@
 		{% ELSEIF GOODS_VIEW_TYPE=3 %}
 		<div class="products__gridSmall">
 			{% FOR goods %}
-			<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && goods.MAX_REST_VALUE=0 %}empty{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
+			<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF goods.COUNT_MODIFICATION > 1 %}hasMod{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
 				<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{goods.MIN_PRICE_NOW_ID} productView__form">
 					<input type="hidden" name="hash" value="{HASH}" />
 					<input type="hidden" name="form[goods_from]" value="{goods.GOODS_FROM}" />
@@ -473,7 +473,7 @@
 		<!-- Вывод товаров СПИСКОМ -->
 		<div class="products__list">
 			{% FOR goods %}
-			<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && goods.MAX_REST_VALUE=0 %}empty{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
+			<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF goods.COUNT_MODIFICATION > 1 %}hasMod{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
 				<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{goods.MIN_PRICE_NOW_ID} productView__form">
 					<input type="hidden" name="hash" value="{HASH}"/>
 					<input type="hidden" name="form[goods_from]" value="{goods.GOODS_FROM}"/>

@@ -39,6 +39,15 @@ body.compensate-for-scrollbar{overflow:hidden}.fancybox-active{height:auto}.fanc
 .noty_theme__metroui.noty_type__alert, .noty_theme__metroui.noty_type__notification {background-color: #fff;color: #1d1d1d;}
 .noty_type__success a, .noty_type__success a:visited, .noty_type__success a:focus, .noty_type__success a:hover {color: #C8E6C9;}
 .noty_type__warning a, .noty_type__warning a:visited, .noty_type__warning a:focus, .noty_type__warning a:hover {color: #FFCCBC;}
+/*** Страница: Ajax добавление товара в корзину ***/
+.noty__addto {background: #ffffff;padding: 1rem;border: 1px solid #ecdfd4;display: flex;align-items: center;flex-wrap: wrap;}
+.noty__addto i {width: 60px;height: 60px;font-size: 2.5rem;display: flex;align-items: center;justify-content: center;}
+.noty__addto a {font-weight: bold;}
+.noty__message {width: calc(100% - 60px);padding-left: 1rem;}
+.noty_type__success a, .noty_type__success a:visited, .noty_type__success a:focus, .noty_type__success a:hover {color: inherit;}
+.noty_type__warning .noty__addto {background-color: #ffdec5;}
+.noty_type__success .noty__addto {background-color: #c5ffd1;}
+.noty_has_timeout.noty_has_progressbar .noty_progressbar {background-color: #df5642;opacity: 1;height: 5px;}
 
 
 .animated {

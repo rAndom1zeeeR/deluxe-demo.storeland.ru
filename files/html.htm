@@ -67,6 +67,7 @@
 	<!-- Страница: Каталог -->
 	{% IF MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search %}
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-catalog.css?design=THEMENAME" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME" />
 	{% ENDIF %}
 	<!-- Страница: Оформление заказа -->
 	{% IF MOD_LNAME = order %}
@@ -1281,9 +1282,9 @@
 						'href': '{catalog_full.URL}'
 					})
 				</script>
-				<div class="block__title block__nav">
+				<div class="block__nav">
 					<div class="nav__tabs">
-						<a href="{catalog_full.URL}" class="title">{catalog_full.NAME}</a>
+						<a href="{catalog_full.URL}">{catalog_full.NAME}</a>
 					</div>
 					<div class="owl-nav"></div>
 				</div>
@@ -2614,63 +2615,18 @@
 {% IF JAVASCRIPT_BUG_HUNTING_URL %}
 <script type="text/javascript" src="{JAVASCRIPT_BUG_HUNTING_URL}"></script>
 {% ENDIF %}
-<!-- Стили магазина -->
-<!--<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}animate.css?design=THEMENAME" />-->
- Скрипты магазина
-<script type="text/javascript" src="{ASSETS_JS_PATH}forall.js?design=THEMENAME"></script>
-<script type="text/javascript" src="{ASSETS_JS_PATH}main.js?design=THEMENAME"></script>
-<!-- Если отключен JS -->
-<!--<script type="text/javascript">
+<script type="text/javascript">
+	// Если отключен JS
 	$(document).ready(function () {
 		$('body').removeClass('nojs');
-		// Прогрес скрола страницы
-		gsap.to('progress', {
-			value: 100,
-			ease: 'none',
-			scrollTrigger: {scrub: 0.3}
-		});
 	});
-</script>-->
+	// Анимация перед загружаемым объектом
+	$(window).on('load', function () {
+		preload();
+	});
+</script>
 <!-- ВНИМАНИЕ! Если Вы удалите код ниже, то это повлияет на работу вашего сайта. Пожалуйста ничего не удаляйте без консультации у специалистов. -->
 <script type="text/javascript">
-	// Запуск основных скриптов для страницы "Товар"
-	{% IF MOD_LNAME = goods %}
-	$(document).ready(function () {
-		goodspage();
-		goodsModification();
-		newModification();
-	});
-	{% ENDIF %}
-	// Скрипты для страницы "Сравнение"
-	{% IF MOD_LNAME = compare %}
-	$(document).ready(function () {
-		Compare();
-	});
-	{% ENDIF %}
-	// Скрипты для страницы "Корзина"
-	{% IF MOD_LNAME = cart %}
-	$(document).ready(function () {
-		cartQuantity();
-	});
-	{% ENDIF %}
-	// Скрипты для страницы "Товары, Акции, Поиск"
-	{% IF MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search %}
-	$(document).ready(function () {
-		priceFilter();
-		catalog();
-	});
-	{% ENDIF %}
-	// Запуск основных скриптов для "главной" страницы
-	{% IF index_page %}
-	$(document).ready(function () {
-		slideShow();
-		newsCarousel();
-		pdtSlider();
-		pdtCatalog();
-		pdtBrands();
-		counterDate();
-	});
-	{% ENDIF %}
 	// Модальное окно уведомления при отправке сообщения
 	{% IF FORM_NOTICE %}
 	new Noty({
@@ -2695,11 +2651,47 @@
 		killer: false
 	}).show();
 	{% ENDIF %}
-	// Анимация перед загружаемым объектом
-	$(window).on('load', function () {
-		preload();
-	});
 </script>
+
+<!-- Скрипты: Корзина -->
+{% IF MOD_LNAME = cart || MOD_LNAME = order %}
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-cart.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-orderfast.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}debounce.js?design=THEMENAME"></script>
+{% ENDIF %}
+<!-- Скрипты: Сравнение -->
+{% IF MOD_LNAME = compare %}
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-compare.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-products.js?design=THEMENAME"></script>
+{% ENDIF %}
+<!-- Скрипты: Главная  -->
+{% IF index_page %}
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-index.js?design=THEMENAME"></script>
+<!--<script defer src="{ASSETS_JS_PATH}owl-carousel.js?design=THEMENAME"></script>-->
+{% ENDIF %}
+<!-- Скрипты: Товары, Акции, Поиск -->
+{% IF MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search %}
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-catalog.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}jqueryui.js?design=THEMENAME"></script>
+{% ENDIF %}
+<!-- Скрипты: Товары -->
+{% IF index_page || MOD_LNAME = catalog || MOD_LNAME = goods || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = user && ACT=favorites %}
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-products.js?design=THEMENAME"></script>
+{% ENDIF %}
+<!-- Страница: Товар -->
+{% IF MOD_LNAME = goods %}
+<script id="page-goods-js" defer src="{ASSETS_JS_PATH}page-goods.js?design=THEMENAME"></script>
+<script defer src="{ASSETS_JS_PATH}jquery-star-rating.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-orderfast.js?design=THEMENAME"></script>
+<!--<script defer src="{ASSETS_JS_PATH}owl-carousel.js?design=THEMENAME"></script>-->
+{% ELSE %}
+<script id="page-goods-js" defer data-src="{ASSETS_JS_PATH}page-goods.js?design=THEMENAME"></script>
+{% ENDIF %}
+<!-- Скрипты магазина-->
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}main.js?design=THEMENAME"></script>
+<script defer src="{ASSETS_JS_PATH}owl-carousel.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}forall.js?design=THEMENAME"></script>
+
 <style>
 	#ui-datepicker-div {
 		display: none;

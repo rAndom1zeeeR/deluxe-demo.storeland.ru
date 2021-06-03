@@ -1,0 +1,477 @@
+// Переименование названий Месяца
+function monthNames() {
+	$('#news .month').each(function (){
+		if ($(this).text() === 'Jan') {
+			$(this).text('Января')
+		}else if ($(this).text() === 'Feb') {
+			$(this).text('Февраля')
+		}else if ($(this).text() === 'Mar') {
+			$(this).text('Марта')
+		}else if ($(this).text() === 'Apr') {
+			$(this).text('Апреля')
+		}else if ($(this).text() === 'May') {
+			$(this).text('Мая')
+		}else if ($(this).text() === 'Jun') {
+			$(this).text('Июня')
+		}else if ($(this).text() === 'Jul') {
+			$(this).text('Июля')
+		}else if ($(this).text() === 'Aug') {
+			$(this).text('Августа')
+		}else if ($(this).text() === 'Sep') {
+			$(this).text('Сентября')
+		}else if ($(this).text() === 'Nov') {
+			$(this).text('Ноября')
+		}else if ($(this).text() === 'Dec') {
+			$(this).text('Декабря')
+		}
+	});
+}
+
+// Отсчет даты до окончания акции
+function counterDate() {
+	// Устанавливаем дату обратного отсчета ММ-ДД-ГГ
+	let end = $('.counter').attr('end');
+	let countDownDate = new Date(end).getTime();
+	// Обновление счетчика каждую секунду
+	let x = setInterval(function() {
+		let now = new Date().getTime();
+		let distance = countDownDate - now;
+		let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+		let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+		// Вывод
+		$('.counter .days span').text(days);
+		$('.counter .hours span').text(hours);
+		$('.counter .minutes span').text(minutes);
+		$('.counter .seconds span').text(seconds);
+		// Счетчик завершен
+		if (distance < 0) {
+			clearInterval(x);
+			$('.counter').hide();
+		}
+	}, 1000);
+}
+
+// Функция показать больше для Каталога на главной странице
+function pdtCatalog() {
+	$('#catalog .owl-carousel').owlCarousel({
+		items: 4,
+		margin: 32,
+		loop: false,
+		rewind: true,
+		lazyLoad: true,
+		nav: true,
+		navContainer: '#catalog .owl-nav',
+		navText: [ , ],
+		dots: true,
+		autoHeight: false,
+		autoHeightClass: 'owl-height',
+		autoplay: false,
+		autoplayHoverPause: true,
+		smartSpeed: 500,
+		mouseDrag: true,
+		touchDrag: true,
+		pullDrag: true,
+		responsiveClass: true,
+		responsiveRefreshRate: 100,
+		responsive: {
+			0:{items:1},
+			320:{items:2},
+			481:{items:2},
+			641:{items:2},
+			768:{items:3},
+			992:{items:3},
+			1200:{items:4}
+		}
+	});
+}
+
+// Функция слайдеров на главной
+function pdtSlider() {
+	// Функция слайдер для "Акции" на главной странице
+	$('#pdt__sales .owl-carousel').owlCarousel({
+		items: 1,
+		margin: 0,
+		loop: false,
+		rewind: true,
+		lazyLoad: true,
+		nav: true,
+		navContainer: '.pdt__right .owl-nav',
+		navText: [ , ],
+		dots: false,
+		dotsContainer: '',
+		autoHeight: false,
+		autoHeightClass: 'owl-height',
+		autoplay: false,
+		autoplayHoverPause: true,
+		smartSpeed: 500,
+		mouseDrag: true,
+		touchDrag: true,
+		pullDrag: true,
+		responsiveClass: true,
+		responsiveRefreshRate: 100
+	});
+	// Функция слайдера для "Лидеры продаж" на главной странице
+	$('#pdt__best .owl-carousel').owlCarousel({
+		items: 3,
+		margin: 32,
+		loop: false,
+		rewind: true,
+		lazyLoad: true,
+		nav: true,
+		navContainer: '.pdt__left .owl-nav[data-content="pdt__best"]',
+		navText: [ , ],
+		dots: false,
+		dotsContainer: '',
+		autoHeight: false,
+		autoHeightClass: 'owl-height',
+		autoplay: false,
+		autoplayHoverPause: true,
+		smartSpeed: 500,
+		mouseDrag: true,
+		touchDrag: true,
+		pullDrag: true,
+		responsiveClass: true,
+		responsiveRefreshRate: 100,
+		responsive: {
+			0:{items:1},
+			320:{items:1},
+			481:{items:1},
+			641:{items:1},
+			768:{items:2},
+			992:{items:3},
+			1200:{items:3}
+		}
+	});
+	// Функция слайдера для Новинок на главной странице
+	$('#pdt__new .owl-carousel').owlCarousel({
+		items: 3,
+		margin: 32,
+		loop: false,
+		rewind: true,
+		lazyLoad: true,
+		nav: true,
+		navContainer: '.pdt__left .owl-nav[data-content="pdt__new"]',
+		navText: [ , ],
+		dots: false,
+		autoHeight: false,
+		autoHeightClass: 'owl-height',
+		autoplay: false,
+		autoplayHoverPause: true,
+		smartSpeed: 500,
+		mouseDrag: true,
+		touchDrag: true,
+		pullDrag: true,
+		responsiveClass: true,
+		responsiveRefreshRate: 100,
+		responsive: {
+			0:{items:1},
+			320:{items:1},
+			481:{items:1},
+			641:{items:1},
+			768:{items:2},
+			992:{items:2},
+			1200:{items:3}
+		}
+	});
+	// Функция слайдера для Хитов продаж на главной странице
+	$('#pdt__sale .owl-carousel').owlCarousel({
+		items: 3,
+		margin: 16,
+		loop: false,
+		rewind: true,
+		lazyLoad: true,
+		nav: true,
+		navContainer: '.pdt__left .owl-nav[data-content="pdt__sale"]',
+		navText: [ , ],
+		dots: false,
+		autoHeight: false,
+		autoHeightClass: 'owl-height',
+		autoplay: false,
+		autoplayHoverPause: true,
+		smartSpeed: 500,
+		mouseDrag: true,
+		touchDrag: true,
+		pullDrag: true,
+		responsiveClass: true,
+		responsiveRefreshRate: 100,
+		responsive: {
+			0:{items:1},
+			320:{items:1},
+			481:{items:1},
+			641:{items:1},
+			768:{items:2},
+			992:{items:3},
+			1200:{items:3}
+		}
+	});
+	// Табы в товарах
+	$('.pdt__left .nav__tab').on('click', function (event) {
+		event.preventDefault();
+		let content = $(this).attr('data-content');
+		$('.pdt__left [id^="pdt__"]').prepend('<div class="preloader top"><div class="loading"></div></div>');
+		preload();
+		$('.pdt__left .nav__tab').removeClass('active')
+		$('.pdt__left [id^="pdt__"][data-content]').removeClass('active');
+		$('.pdt__left .owl-nav[data-content]').removeClass('active');
+		$(this).addClass('active');
+		$('.pdt__left [id^="pdt__"][data-content="'+ content +'"').addClass('active');
+		$('.pdt__left .owl-nav[data-content="'+ content +'"').addClass('active');
+	});
+
+	// Весь каталог на главной
+	if(catalog_full){
+		var promises = $.map(catalog_full, function(el){
+			return $.ajax(el.href + '?only_body=1&goods_view_type=3')
+				.then(function(d){
+					let container = $('.products__container.' + el.id);
+					let $parentGridContainer = container.find('.products__gridSmall');
+					let $data = $(d);
+					let $newProducts = $data.find('.products__gridSmall').find('.product__item').parent();
+					$newProducts = $newProducts.html();
+					// Вывод товаров
+					if(!$parentGridContainer.find('.products__gridSmall').length){
+						$parentGridContainer.append($newProducts);
+					}
+					// Загрузка скриптов
+					lozad().observe ();
+					addTo();
+					addCart();
+					quantity();
+				});
+		});
+		$.when.apply(this, promises).then()
+	}
+
+	// Товары из категорий на главной
+	setTimeout(function(){
+		$('[class^="pdt__cat-"]').each(function(){
+			let cat = $(this).attr('data-id')
+			$('[class^="pdt__cat-'+ cat +'"] .owl-carousel').owlCarousel({
+				items: 4,
+				margin: 32,
+				loop: false,
+				rewind: true,
+				lazyLoad: true,
+				nav: true,
+				navContainer: '[class^="pdt__cat-'+ cat +'"] .owl-nav',
+				navText: [ , ],
+				dots: false,
+				dotsContainer: '',
+				autoHeight: false,
+				autoHeightClass: 'owl-height',
+				autoplay: false,
+				autoplayHoverPause: true,
+				smartSpeed: 500,
+				mouseDrag: true,
+				touchDrag: true,
+				pullDrag: true,
+				responsiveClass: true,
+				responsiveRefreshRate: 100,
+				responsive: {
+					0:{items:1},
+					320:{items:1},
+					481:{items:1},
+					641:{items:2},
+					768:{items:2},
+					992:{items:3},
+					1200:{items:4}
+				}
+			})
+		});
+	}, 2000);
+
+}
+
+// Слайдер для главной страницы
+function slideShow() {
+	// Слайдер на главной
+	let owlS = $('#slideshow .owl-carousel');
+	owlS.owlCarousel({
+		items: 1,
+		loop: false,
+		rewind: true,
+		lazyLoad: true,
+		nav: true,
+		navText: [ , ],
+		navContainer: '#slideshow .owl-nav',
+		dots: false,
+		dotsContainer: '',
+		URLhashListener: true,
+		autoplay: false,
+		autoplayHoverPause: true,
+		autoHeight: true,
+		autoHeightClass: 'owl-height',
+		smartSpeed: 500,
+		dotsSpeed: 400,
+		mouseDrag: true,
+		touchDrag: true,
+		pullDrag: true,
+		onInitialized: counter,
+		onChanged: counter
+	});
+	function counter(event) {
+		let items = event.item.count;     // Number of items
+		let item = event.item.index + 1;  // Position of the current item
+		$('#slideshow .count').remove();
+		$('#slideshow .owl-next').before('<span class="count">'+ item + '/' + items +'</span>')
+	}
+}
+
+// Новости
+function newsCarousel() {
+	if ($("#news .news_list_all.owl-carousel").length){
+		$("#news .news_list_all.owl-carousel").owlCarousel({
+			items: 2,
+			margin: 32,
+			loop: false,
+			rewind: true,
+			lazyLoad: true,
+			nav: false,
+			navContainer: '',
+			navText: [ , ],
+			dots: false,
+			autoHeight: true,
+			autoHeightClass: 'owl-height',
+			autoplay: false,
+			autoplayHoverPause: true,
+			smartSpeed: 500,
+			mouseDrag: true,
+			touchDrag: true,
+			pullDrag: true,
+			responsiveClass: true,
+			responsiveRefreshRate: 100,
+			responsive: {
+				0:{items:1},
+				320:{items:1},
+				640:{items:2}
+			},
+			onInitialized: carouselInitialized,
+			onChanged: carouselInitialized
+		});
+	}else{
+		$("#news .news_list_articles.owl-carousel").owlCarousel({
+			items: 2,
+			margin: 32,
+			loop: false,
+			rewind: true,
+			lazyLoad: true,
+			nav: false,
+			navContainer: '',
+			navText: [ , ],
+			dots: false,
+			autoHeight: true,
+			autoHeightClass: 'owl-height',
+			autoplay: false,
+			autoplayHoverPause: true,
+			smartSpeed: 500,
+			mouseDrag: true,
+			touchDrag: true,
+			pullDrag: true,
+			responsiveClass: true,
+			responsiveRefreshRate: 100,
+			responsive: {
+				0:{items:1},
+				320:{items:1},
+				640:{items:2}
+			},
+			onInitialize: carouselInitialized,
+			onInitialized: carouselInitialized,
+			onChanged: carouselInitialized
+		});
+		$("#news .news_list_mass_media.owl-carousel").owlCarousel({
+			items: 2,
+			margin: 32,
+			loop: false,
+			rewind: true,
+			lazyLoad: true,
+			nav: false,
+			navContainer: '',
+			navText: [ , ],
+			dots: false,
+			autoHeight: true,
+			autoHeightClass: 'owl-height',
+			autoplay: false,
+			autoplayHoverPause: true,
+			smartSpeed: 500,
+			mouseDrag: true,
+			touchDrag: true,
+			pullDrag: true,
+			responsiveClass: true,
+			responsiveRefreshRate: 100,
+			responsive: {
+				0:{items:1},
+				320:{items:1},
+				640:{items:2}
+			},
+			onInitialize: carouselInitialized,
+			onInitialized: carouselInitialized,
+			onChanged: carouselInitialized
+		});
+		$("#news .news_list_shop.owl-carousel").owlCarousel({
+			items: 2,
+			margin: 32,
+			loop: false,
+			rewind: true,
+			lazyLoad: true,
+			nav: false,
+			navContainer: '',
+			navText: [ , ],
+			dots: false,
+			autoHeight: true,
+			autoHeightClass: 'owl-height',
+			autoplay: false,
+			autoplayHoverPause: true,
+			smartSpeed: 500,
+			mouseDrag: true,
+			touchDrag: true,
+			pullDrag: true,
+			responsiveClass: true,
+			responsiveRefreshRate: 100,
+			responsive: {
+				0:{items:1},
+				320:{items:1},
+				640:{items:2}
+			},
+			onInitialize: carouselInitialized,
+			onInitialized: carouselInitialized,
+			onChanged: carouselInitialized
+		});
+	}
+	// Кнопки навигации
+	function carouselInitialized(event){
+		if (event.item.count > event.page.size) {
+			$('#news .block__nav .owl-nav').css('display', 'block');
+		}else{
+			$('#news .block__nav .owl-nav').css('display', 'none');
+		}
+	}
+	$('#news .block__nav .owl-prev').click(function(event) {
+		$('#news .owl-carousel').trigger('prev.owl.carousel');
+	});
+	$('#news .block__nav .owl-next').click(function(event) {
+		$('#news .owl-carousel').trigger('next.owl.carousel');
+	});
+	// Табы в новостях
+	$('#news .nav__tab').on('click', function (event) {
+		event.preventDefault();
+		let content = $(this).attr('data-content');
+		$('#news [class^="news_list_"]').prepend('<div class="preloader"><div class="loading"></div></div>');
+		preload();
+		$('#news .nav__tab').removeClass('active')
+		$('#news [class^="news_list_"]').removeClass('active');
+		$(this).addClass('active');
+		$('#news [class^="news_list_"][data-content="'+ content +'"').addClass('active');
+	});
+}
+
+// Загрузка основных функций шаблона
+$(document).ready(function(){
+	monthNames();
+	counterDate();
+	slideShow();
+	newsCarousel();
+	pdtCatalog();
+	pdtSlider();
+});

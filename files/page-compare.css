@@ -32,6 +32,7 @@
 .CompareGoodsTableTbody .CompareGoodsHeader .mod {display: block;margin-top: 5px;font-size: 13px;line-height: 15px;text-align: left;}
 .CompareGoodsTableTbody .actions {width: 100%;padding: 3px;display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-align: center;-webkit-align-items: center;-webkit-box-align: center;align-items: center;-ms-flex-wrap: wrap;-webkit-flex-wrap: wrap;flex-wrap: wrap;-webkit-justify-content: space-between;justify-content: space-between;}
 .CompareGoodsTableTbody .actions [class^="add-"] {font-size: 24px;}
+.CompareGoodsTableTbody .actions [class^="add-"] span {display: none;}
 .CompareGoodsTableTbody .product__price {border: 0;}
 .CompareGoodsTableTbody .owl-stage-outer {margin-right: -1px;}
 @media all and (max-width: 479px) {
