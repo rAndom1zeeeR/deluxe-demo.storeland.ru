@@ -223,7 +223,7 @@ function pdtSlider() {
 	// Весь каталог на главной
 	if(catalog_full){
 		var promises = $.map(catalog_full, function(el){
-			return $.ajax(el.href + '?only_body=1&goods_view_type=3')
+			return $.ajax(el.href + '?only_body=1&goods_view_type=3&per_page=20')
 				.then(function(d){
 					let container = $('.products__container.' + el.id);
 					let $parentGridContainer = container.find('.products__gridSmall');

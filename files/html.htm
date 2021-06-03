@@ -398,7 +398,7 @@
 				{% FOR catalog_full %}
 				{% IF catalog_full.LEVEL = 0 %}
 				<div class="categories__item" data-id="{catalog_full.ID}">
-					<a href="{catalog_full.URL}" class="categories__image"><img src="{% IF catalog_full.IMAGE_MEDIUM %}{catalog_full.IMAGE_MEDIUM}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=THEMENAME{% ENDIF %}" class="goods-image-medium" /></a>
+					<a href="{catalog_full.URL}" class="categories__image"><img class="owl-lazy" data-src="{% IF catalog_full.IMAGE_MEDIUM %}{catalog_full.IMAGE_MEDIUM}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=THEMENAME{% ENDIF %}" class="goods-image-medium" /></a>
 					<a href="{catalog_full.URL}" class="categories__name"><span>{catalog_full.NAME}</span></a>
 				</div>
 				{% ENDIF %}
@@ -1327,7 +1327,7 @@
 					</form>
 				</div>
 				<div class="callback__image">
-					<img src="{ASSETS_IMAGES_PATH}callback.jpg?design=THEMENAME" />
+					<img class="lozad" data-src="{ASSETS_IMAGES_PATH}callback.jpg?design=THEMENAME" />
 				</div>
 			</div>
 		</div>
@@ -1339,7 +1339,7 @@
 			<div class="inner">
 				<div class="index__left">
 					<div class="index__image">
-						<img src="{ASSETS_IMAGES_PATH}index.jpg?design=THEMENAME" />
+						<img class="lozad" data-src="{ASSETS_IMAGES_PATH}index.jpg?design=THEMENAME" />
 					</div>
 				</div>
 				<div class="index__right">
@@ -2657,17 +2657,18 @@
 {% IF MOD_LNAME = cart || MOD_LNAME = order %}
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}page-cart.js?design=THEMENAME"></script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}page-orderfast.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}air-datepicker.js?design=THEMENAME"></script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}debounce.js?design=THEMENAME"></script>
 {% ENDIF %}
 <!-- Скрипты: Сравнение -->
 {% IF MOD_LNAME = compare %}
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}page-compare.js?design=THEMENAME"></script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}page-products.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}owl-carousel.js?design=THEMENAME"></script>
 {% ENDIF %}
 <!-- Скрипты: Главная  -->
 {% IF index_page %}
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}page-index.js?design=THEMENAME"></script>
-<!--<script defer src="{ASSETS_JS_PATH}owl-carousel.js?design=THEMENAME"></script>-->
 {% ENDIF %}
 <!-- Скрипты: Товары, Акции, Поиск -->
 {% IF MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search %}
@@ -2677,19 +2678,19 @@
 <!-- Скрипты: Товары -->
 {% IF index_page || MOD_LNAME = catalog || MOD_LNAME = goods || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = user && ACT=favorites %}
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}page-products.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}owl-carousel.js?design=THEMENAME"></script>
 {% ENDIF %}
 <!-- Страница: Товар -->
 {% IF MOD_LNAME = goods %}
-<script id="page-goods-js" defer src="{ASSETS_JS_PATH}page-goods.js?design=THEMENAME"></script>
-<script defer src="{ASSETS_JS_PATH}jquery-star-rating.js?design=THEMENAME"></script>
+<script id="page-goods-js" defer type="text/javascript" src="{ASSETS_JS_PATH}page-goods.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery-star-rating.js?design=THEMENAME"></script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}page-orderfast.js?design=THEMENAME"></script>
-<!--<script defer src="{ASSETS_JS_PATH}owl-carousel.js?design=THEMENAME"></script>-->
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}air-datepicker.js?design=THEMENAME"></script>
 {% ELSE %}
-<script id="page-goods-js" defer data-src="{ASSETS_JS_PATH}page-goods.js?design=THEMENAME"></script>
+<script id="page-goods-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}page-goods.js?design=THEMENAME"></script>
 {% ENDIF %}
 <!-- Скрипты магазина-->
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}main.js?design=THEMENAME"></script>
-<script defer src="{ASSETS_JS_PATH}owl-carousel.js?design=THEMENAME"></script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}forall.js?design=THEMENAME"></script>
 
 <style>
