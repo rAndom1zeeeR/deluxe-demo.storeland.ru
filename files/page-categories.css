@@ -5,7 +5,7 @@
 .categories__image img {width: auto;max-width: 100%;max-height: 100%;}
 .categories__item:hover .categories__image {opacity: .3;}
 .categories__name {margin: -30px auto 0;padding: 0 1rem;width: calc(100% - 4rem);height: 60px;background-color: #fff4f2;overflow: hidden;text-align: center;position: relative;display: flex;align-items: center;justify-content: center;transition: all 0.3s ease;}
-.categories__item:hover .categories__name {background-color: #df5642;color: #FFFFFF;}
+.categories__item:hover .categories__name {background-color: var(--primary-color);color: #FFFFFF;}
 .categories__name a {padding: .5rem;text-align: center;display: block;width: 100%;}
 .categories__name span {display: block;max-height: 40px;text-overflow: ellipsis;overflow: hidden;}
 @media (min-width: 1200px) {

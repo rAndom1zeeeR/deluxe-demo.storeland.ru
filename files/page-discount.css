@@ -9,7 +9,7 @@
 /*** Страница: Список акций ***/
 .promotion__grid.products__grid {align-items: stretch;}
 .promotion__inner {height: 100%;background-color: #fff3e5;padding: 2rem;display: flex;flex-wrap: wrap;flex-direction: column;align-items: center;}
-.promotion__image {margin: 1rem 1rem 2rem 1rem;width: 90px;height: 90px;background-color: #df5642;box-shadow: -10px 10px 0 0 #ffd6bc;display: flex;align-items: center;justify-content: center;}
+.promotion__image {margin: 1rem 1rem 2rem 1rem;width: 90px;height: 90px;background-color: var(--primary-color);box-shadow: -10px 10px 0 0 #ffd6bc;display: flex;align-items: center;justify-content: center;}
 .promotion__item .promotion__percentage {font-size: 28px;font-weight: bold;color: #ffffff;}
 .promotion__item .button {position: absolute;bottom: -20px;}
 .promotion__item .promotion__date {display: none;margin: 1rem 0;font-size: 16px;}

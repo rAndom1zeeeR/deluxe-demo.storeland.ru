@@ -15,7 +15,7 @@
 .CompareGoods .price__old {margin-right: 1rem;}
 /** Таблица сравнений **/
 .CompareGoodsTableTbody {width: 100%;display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-wrap: wrap;-webkit-flex-wrap: wrap;flex-wrap: wrap;-webkit-justify-content: space-between;justify-content: space-between;}
-.CompareGoodsTableTbody > div {border-top: 1px solid #ecdfd4;width: 100%;margin-bottom: 1rem;display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-wrap: wrap;-webkit-flex-wrap: wrap;flex-wrap: wrap;}
+.CompareGoodsTableTbody > div {border-top: 1px solid var(--border-color);width: 100%;margin-bottom: 1rem;display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-wrap: wrap;-webkit-flex-wrap: wrap;flex-wrap: wrap;}
 .CompareGoodsTableTbody > div:not(.CompareGoodsTableTbodyComparisonLine) {border: 0;text-align: center;}
 .CompareGoodsTableTbody > div:not(.CompareGoodsTableTbodyComparisonLine) .cell {display: none;}
 .CompareGoodsTableTbody > div .cell {width: 100%;padding: 1rem 0 0.625rem;}
@@ -23,8 +23,8 @@
 .CompareGoodsTableTbody > div .cell input {display: none;}
 .CompareGoodsTableTbody .image a:not(.remove) {display: block;line-height: 130px;}
 .CompareGoodsTableTbody .owl-item .image img {display: inline-block;width: auto;max-width: 100%;}
-.CompareGoodsTableTbody .remove {color: #e0e0e0;background: #ffffff;border: 1px solid #ecdfd4;position: absolute;top: 0;right: 0;z-index: 2;width: 2rem;height: 2rem;}
-.CompareGoodsTableTbody .remove:hover {color: #ffffff;background: #231803;border-color: #231803;}
+.CompareGoodsTableTbody .remove {color: #e0e0e0;background: #ffffff;border: 1px solid var(--border-color);position: absolute;top: 0;right: 0;z-index: 2;width: 2rem;height: 2rem;}
+.CompareGoodsTableTbody .remove:hover {color: #ffffff;background: var(--text-color);border-color: var(--text-color);}
 .CompareGoodsTableTbody .remove i {display: block;font-size: 1rem;line-height: 1.95rem;}
 .CompareGoodsTableTbody .CompareCheckbox {display: none;margin: 0 0.625rem 0 0;vertical-align: middle;}
 .CompareGoodsTableTbody .htmlDataBlock {text-align: left;overflow: hidden;}

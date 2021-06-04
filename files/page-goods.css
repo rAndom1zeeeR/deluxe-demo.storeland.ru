@@ -14,7 +14,7 @@
 .productView__price .price__now {font-size: 26px;font-weight: 600;}
 .productView__price .price__old {margin-right: 1rem;font-size: 18px;}
 .productView__articles {margin-bottom: .5rem;color: #c1b1a9;position: absolute;top: 0;right: 0;}
-.productView__campaign {margin-bottom: 2rem;background-color: #ffaf88;color: #ffffff;padding: 1rem 3rem;font-size: 18px;text-align: center;box-shadow: -10px 10px 0px 0px #ffe0d1;display: inline-block;}
+.productView__campaign {margin-bottom: 2rem;background-color: var(--secondary-color);color: #ffffff;padding: 1rem 3rem;font-size: 18px;text-align: center;box-shadow: -10px 10px 0px 0px #ffe0d1;display: inline-block;}
 .productView__campaign > span {display: block;}
 .productView__text {margin-bottom: 1rem;}
 /* Модификации */
@@ -27,7 +27,7 @@
 /* Кол-во */
 .productView__qty {margin: 0 1rem 1rem 1rem;}
 .qty {display: flex;align-items: center;flex-wrap: wrap;}
-.qty a {color: #231803;font-size: 14px;width: 50px;height: 50px;background-color: #fff8ef;position: relative;display: flex;align-items: center;justify-content: center;}
+.qty a {width: 50px;height: 50px;background-color: #fff8ef;position: relative;display: flex;align-items: center;justify-content: center;}
 .qty a:hover {background-color: #ffb38e;color: #ffffff;}
 .qty input {width: 50px;height: 50px;background-color: #fff8ef;margin: 0 .5rem;padding: 0 0.25rem;border: 0;text-align: center;}
 /* Добавить в корзину */
@@ -40,7 +40,7 @@
 .productView__links [class^="add-"] span {display: none;}
 .productView__links {display: flex;flex-wrap: wrap;margin: 0 1rem 1rem 1rem;}
 .productView__links a {width: 50px;height: 50px;font-size: 24px;background-color: #fff8ef;display: flex;align-items: center;justify-content: center;}
-.productView__links a:hover, .productView__links a.added {background-color: #FFAF88;color: #FFFFFF;}
+.productView__links a:hover, .productView__links a.added {background-color: var(--secondary-color);color: #FFFFFF;}
 .productView__links a + a {margin-left: .5rem;}
 /* Нет в наличии */
 .productView__addto .add-notify {display: none;}
@@ -72,7 +72,7 @@
 .tabs__nav::-webkit-scrollbar-thumb {background-color: #ffae89;}
 .tabs__nav::-webkit-scrollbar-track {background-color: #ebded6;}
 .tab {height: 40px;margin: 0 .5rem;padding: 0 1rem;font-size: 18px;display: flex;align-items: center;justify-content: center;transition: all 0.3s ease;}
-.tab:hover, .tab.active {color: #FFFFFF;background-color: #ffaf88;cursor: pointer;}
+.tab:hover, .tab.active {color: #FFFFFF;background-color: var(--secondary-color);cursor: pointer;}
 .tabs__content {position: relative;padding: 2rem 0;}
 .tabs__content > div {display: none;}
 .tabs__content > .active {display: flex;flex-wrap: wrap;align-items: flex-start;}
@@ -81,7 +81,7 @@
 }
 /* Товар: Характеристики */
 .features__items {display: flex;flex-wrap: wrap;}
-.features__item {margin: 0 1rem 1rem 1rem;width: calc(50% - 2rem);padding-bottom: .25rem;border-bottom: 1px solid #ecdfd4;position: relative;display: flex;flex-wrap: nowrap;justify-content: space-between;align-items: flex-end;}
+.features__item {margin: 0 1rem 1rem 1rem;width: calc(50% - 2rem);padding-bottom: .25rem;border-bottom: 1px solid var(--border-color);position: relative;display: flex;flex-wrap: nowrap;justify-content: space-between;align-items: flex-end;}
 .features__name {width: 50%;color: #c1b1a9;}
 .features__value {width: 50%;}
 @media (max-width: 639.98px) {
@@ -92,7 +92,7 @@
 .delivery__items {display: flex;flex-wrap: wrap;}
 .delivery__item {width: 50%;margin-bottom: 2rem;}
 .delivery__name {font-size: 18px;font-weight: bold;margin-bottom: 1rem;}
-.delivery__index {margin-right: 2rem;width: 40px;height: 40px;line-height: 40px;font-size: 18px;color: #ffffff;background-color: #ffaf88;box-shadow: -5px 5px 0 0 #ffe0d1;text-align: center;display: inline-block;}
+.delivery__index {margin-right: 2rem;width: 40px;height: 40px;line-height: 40px;font-size: 18px;color: #ffffff;background-color: var(--secondary-color);box-shadow: -5px 5px 0 0 #ffe0d1;text-align: center;display: inline-block;}
 .delivery__text {margin-bottom: 1rem;word-break: break-all;}
 .delivery__price strong {margin-left: 4px;}
 .zone__open {display: flex;align-items: center;font-size: 1rem;font-weight: 700;margin-top: 1rem;}
@@ -107,7 +107,7 @@
 }
 /* Товар: Отзывы */
 .opinion__round {margin-bottom: 2rem;width: 100%;display: flex;flex-wrap: wrap;align-items: center;}
-.rating__value {width: 60px;height: 60px;line-height: 60px;font-size: 26px;color: #ffffff;background-color: #ffaf88;box-shadow: -5px 5px 0 0 #ffe0d1;text-align: center;display: inline-block;}
+.rating__value {width: 60px;height: 60px;line-height: 60px;font-size: 26px;color: #ffffff;background-color: var(--secondary-color);box-shadow: -5px 5px 0 0 #ffe0d1;text-align: center;display: inline-block;}
 .rating__roundRatings {margin-left: 2rem;}
 .rating__roundRatings .rating__label {margin-top: .5rem;}
 .rating__roundRatings .ratings:before {font-size: 20px;color: #cabdb6;}
@@ -115,7 +115,7 @@
 /* Отзывы: Список */
 .opinion__items {width: calc(100% - 360px);padding-right: 2rem;}
 .opinion__item {margin-bottom: 2rem;display: flex;flex-wrap: wrap;align-items: center;}
-.opinion__text {width: 100%;margin-top: .5rem;padding-top: 1rem;border-top: 1px solid #ecdfd4}
+.opinion__text {width: 100%;margin-top: .5rem;padding-top: 1rem;border-top: 1px solid var(--border-color)}
 .opinion__text > div + div {margin-top: .5rem;}
 .opinion__name {margin-right: 2rem;font-weight: 600;display: inline-block;text-overflow: ellipsis;overflow: hidden;max-width: 50%;}
 .opinion__date {color: #c1b1a9;font-size: 14px;}
@@ -125,7 +125,7 @@
 .opinion__addForm {width: 360px;padding: 1rem;background-color: #fff4f2;overflow: hidden;position: sticky;top: 0;}
 .opinion__label {text-align: center;font-size: 18px;font-weight: bold;}
 .opinion__labelText {text-align: center;font-size: 14px;margin-top: .5rem;}
-.opinion__form {margin-top: .5rem;border-top: 1px solid #ecdfd4;}
+.opinion__form {margin-top: .5rem;border-top: 1px solid var(--border-color);}
 .opinion__block {margin-bottom: 1rem;}
 .opinion__block.rating .goodsOpinionRating {width: 120px;margin: 1rem auto;}
 .opinion__block label {display: none;}
@@ -134,7 +134,7 @@
 .opinion__block textarea + i {height: 100%;}
 .captcha__image {position: absolute;top: 0;right: 0;height: 40px;}
 .captcha__refresh {position: absolute;top: .75rem;right: 4rem;cursor: pointer;}
-.captcha__refresh:hover {color: #df5642;}
+.captcha__refresh:hover {color: var(--primary-color);}
 .opinion__captcha {position: relative;}
 .opinion__captcha input {padding: 0 5rem 0 1rem;}
 .opinion__block .button {width: 100%;}

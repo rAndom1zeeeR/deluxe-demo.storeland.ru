@@ -246,9 +246,9 @@
 			<div class="inner">
 				<!-- Каталог -->
 				<div class="catalog dropdown">
-					<div class="catalog--icon dropdown__open" data-open="catalog">
-						<i class="icon-menu"></i>
-						<span>Каталог</span>
+					<div class="catalog--icon">
+						<i class="icon-menu dropdown__open" data-open="catalogMenu"></i>
+						<span class="dropdown__open" data-open="catalog">Каталог</span>
 					</div>
 					<div class="dropdown__content" data-content="catalog">
 						<div class="catalog__items">
@@ -318,9 +318,16 @@
 				</div>
 				<!-- Избр, Срав, ЛК -->
 				<div id="addto">
+					<!-- Войти -->
+					<div class="addto__block login">
+						<a href="{USER_LOGIN_URL}" class="addto__label dropdown__open login__icon" title="Личный кабинет" data-open="login">
+							<i class="icon-user"></i>
+							<span>Войти</span>
+						</a>
+					</div>
 					<!-- Сравнение -->
 					{% IFNOT MOD_LNAME = compare && SETTINGS_COMPARE_DISABLE=0 %}
-					<div class="addto__block compare dropdown {% IF COMPARE_GOODS_COUNT > 0 %}hasItems{% ENDIF %}">
+					<div class="addto__block compare {% IF COMPARE_GOODS_COUNT > 0 %}hasItems{% ENDIF %}">
 						<a href="{COMPARE_URL}" class="addto__label dropdown__open compare__icon" title="Сравнение" data-open="compare">
 							<i class="icon-compare"></i>
 							<span>Сравнение</span>
@@ -328,27 +335,20 @@
 						</a>
 					</div>
 					{% ENDIF %}
-					<!-- Избранное -->
-					<div class="addto__block favorites dropdown {% IF FAVORITES_GOODS_COUNT > 0 %}hasItems{% ENDIF %}">
-						<a href="{FAVORITES_URL}" class="addto__label dropdown__open favorites__icon" title="Избранное" data-open="favorites">
-							<i class="icon-favorites"></i>
-							<span>Избранное</span>
-							<span class="favorites__count" data-count="{FAVORITES_GOODS_COUNT}">{FAVORITES_GOODS_COUNT}</span>
-						</a>
-					</div>
 					<!-- Корзина. Адаптив -->
-					<div class="addto__block cart dropdown {% IF CART_COUNT_TOTAL > 0 %}hasItems{% ENDIF %}">
+					<div class="addto__block cart {% IF CART_COUNT_TOTAL > 0 %}hasItems{% ENDIF %}">
 						<a href="{CART_URL}" class="addto__label dropdown__open cart__icon" title="Корзина" data-open="cart">
 							<i class="icon-cart"></i>
 							<span>Корзина</span>
 							<span class="cart__count" data-count="{CART_COUNT_TOTAL}">{CART_COUNT_TOTAL}</span>
 						</a>
 					</div>
-					<!-- Войти -->
-					<div class="addto__block login dropdown">
-						<a href="{USER_LOGIN_URL}" class="addto__label dropdown__open login__icon" title="Личный кабинет" data-open="login">
-							<i class="icon-user"></i>
-							<span>Войти</span>
+					<!-- Избранное -->
+					<div class="addto__block favorites {% IF FAVORITES_GOODS_COUNT > 0 %}hasItems{% ENDIF %}">
+						<a href="{FAVORITES_URL}" class="addto__label dropdown__open favorites__icon" title="Избранное" data-open="favorites">
+							<i class="icon-favorites"></i>
+							<span>Избранное</span>
+							<span class="favorites__count" data-count="{FAVORITES_GOODS_COUNT}">{FAVORITES_GOODS_COUNT}</span>
 						</a>
 					</div>
 					<!-- Наверх. Адаптив -->
@@ -2327,7 +2327,7 @@
 			<i class="icon-arrow_up"></i>
 		</div>
 		<!-- Каталог Меню -->
-		<div id="catalogMenu" class="dropdown__content" data-content="catalogMenu">
+		<div id="catalogMenu" class="dropdown__content left" data-content="catalogMenu">
 			<div class="dropdown__title">
 				<div class="dropdown__label menu" data-open="menu"><span>Меню сайта</span></div>
 				<div class="dropdown__label catalog active" data-open="catalog"><span>Каталог</span></div>
@@ -2421,7 +2421,7 @@
 			{% ENDIF %}
 		</div>
 		<!-- Корзина -->
-		<div id="addtoCart" class="addto__cart dropdown__content right {% IF CART_COUNT_TOTAL > 0 %}hasItems{% ENDIF %}" data-content="cart">
+		<div id="addtoCart" class="addto__cart dropdown__content {% IF CART_COUNT_TOTAL > 0 %}hasItems{% ENDIF %}" data-content="cart">
 			<div class="dropdown__title">
 				<span class="dropdown__label">Корзина</span>
 				<span class="dropdown__close"><i class="icon-close"></i></span>
