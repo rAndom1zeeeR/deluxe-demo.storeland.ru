@@ -103,12 +103,13 @@
 
 
 /*** Новости ***/
-#news [class^="news_list_"] {display: none;flex-wrap: wrap;height: 284px;overflow: hidden;}
+#news [class^="news_list_"] {display: none;flex-wrap: wrap;height: 278px;overflow: hidden;}
 #news [class^="news_list_"].active {display: flex;}
+#news .block__nav-bottom {display: none;}
 #news .owl-nav {display: none;}
 #news .owl-nav.active {display: block;}
 #news .news__item {width: 50%;position: relative;display: flex;justify-content: flex-end;}
-#news .owl-carousel .news__item {width: 100%;}
+#news .owl-loaded .news__item {width: 100%;}
 #news .news__image {position: absolute;top: 0;left: 0;width: 320px;height: 250px;display: flex;align-items: center;justify-content: center;}
 #news .news__content {width: 290px;margin-top: 3rem;padding: 0 10px 10px 0;position: relative;}
 #news .news__content:before {content:'';width: 80%;height: 80%;position: absolute;right: 0;bottom: 0;background-color: #f8e9e6;z-index: 1;}
@@ -131,6 +132,7 @@
 @media (max-width: 479.98px) {
 #news .block__nav {width: 100%;}
 #news .block__nav .owl-nav.active {display: none;}
+#news .block__nav-bottom {display: block;}
 }
 
 
