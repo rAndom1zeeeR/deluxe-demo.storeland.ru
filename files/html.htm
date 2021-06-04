@@ -53,7 +53,7 @@
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-news.css?design=THEMENAME" />
 	{% ENDIF %}
 	<!-- Страница: ЛК -->
-	{% IF MOD_LNAME = user %}
+	{% IF MOD_LNAME = user || MOD_LNAME = feedback %}
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-user.css?design=THEMENAME" />
 	{% ENDIF %}
 	<!-- Стили: Товары -->
@@ -95,6 +95,16 @@
 	{% ENDIF %}
 	<!-- Скрипты магазина -->
 	<script type="text/javascript" src="{ASSETS_JS_PATH}jquery-3.4.1.min.js?design=THEMENAME"></script>
+	<script type="text/javascript">
+		// Если отключен JS
+		$(document).ready(function () {
+			$('body').removeClass('nojs');
+		});
+		// Анимация перед загружаемым объектом
+		$(window).on('load', function () {
+			preload();
+		});
+	</script>
 </head>
 <body class="nojs {% IF index_page %}index{% ENDIF %} {% IF MOD_LNAME=user && ACT=favorites %}page__favorites{% ENDIF %} {% IF MOD_LNAME = cart %}page__cart{% ENDIF %} {% IF MOD_LNAME = user %}page__user{% ENDIF %}">
 <div class="wrapper">
@@ -191,7 +201,7 @@
 					{% ENDIF %}
 					{% IF SETTINGS_STORE_EMAIL_MAIN %}
 					<div class="header__block mail">
-						<div class="header__block-icon dropdown__open" data-open="contacts">
+						<div class="header__block-icon" data-fancybox="" data-src="#fancybox__feedback">
 							<i class="icon-mail"></i>
 						</div>
 						<div class="header__block-content">
@@ -2662,16 +2672,6 @@
 {% IF JAVASCRIPT_BUG_HUNTING_URL %}
 <script type="text/javascript" src="{JAVASCRIPT_BUG_HUNTING_URL}"></script>
 {% ENDIF %}
-<script type="text/javascript">
-	// Если отключен JS
-	$(document).ready(function () {
-		$('body').removeClass('nojs');
-	});
-	// Анимация перед загружаемым объектом
-	$(window).on('load', function () {
-		preload();
-	});
-</script>
 <!-- ВНИМАНИЕ! Если Вы удалите код ниже, то это повлияет на работу вашего сайта. Пожалуйста ничего не удаляйте без консультации у специалистов. -->
 <script type="text/javascript">
 	// Модальное окно уведомления при отправке сообщения
@@ -2700,6 +2700,10 @@
 	{% ENDIF %}
 </script>
 
+<!-- Скрипты: Главная  -->
+{% IF MOD_LNAME = feedback || MOD_LNAME = callback %}
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-feedback.js?design=THEMENAME"></script>
+{% ENDIF %}
 <!-- Скрипты: Корзина -->
 {% IF MOD_LNAME = cart || MOD_LNAME = order %}
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}page-cart.js?design=THEMENAME"></script>

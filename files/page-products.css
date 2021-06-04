@@ -13,7 +13,7 @@
 /*** Товары таблицей ***/
 .products__grid {display: flex;flex-wrap: wrap;align-items: center;}
 .product__item {margin: 0 0 2rem 0;padding: 0 1rem;width: 33.333333%;position: relative;}
-.product__item.empty {opacity: 0.3;}
+.product__item.empty .product__img {opacity: 0.3;}
 .product__image {margin-bottom: 1rem;position: relative;}
 .product__image .product__img {height: 260px;position: relative;overflow: hidden;display: flex;align-items: center;justify-content: center;}
 .product__image img {max-width: 100%;max-height: 100%;width: auto;}
@@ -97,7 +97,7 @@
 .products__gridSmall .product__item .product__price {border: 0;padding: 0;margin: 0;}
 .products__gridSmall .product__item .product__links {height: 0;position: absolute;bottom: -3rem;left: .75rem;width: 100%;background-color: #ffffff;transition: all 0.3s ease-in-out;}
 .products__gridSmall .product__item:hover .product__links {height: auto;bottom: 0;}
-.products__gridSmall .product__item .product__links a {font-size: 24px;margin: 0 .25rem;width: 40px;height: 40px;background-color: #fff4f2;display: flex;align-items: center;justify-content: center;}
+.products__gridSmall .product__item .product__links a {font-size: 20px;margin: 0 .25rem;width: 40px;height: 40px;background-color: #fff4f2;display: flex;align-items: center;justify-content: center;}
 .products__gridSmall .product__item .product__links a:hover, .products__gridSmall .product__item .product__links a.added {background-color: #FFAF88;color: #FFFFFF;}
 .products__gridSmall .product__available {display: none;}
 @media (max-width: 767.98px) {
