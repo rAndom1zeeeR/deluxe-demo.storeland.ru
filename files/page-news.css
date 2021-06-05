@@ -1,5 +1,5 @@
 /*** Страница: Список новостей ***/
-.news__list .news__item {border-bottom: 1px solid var(--border-color);margin-bottom: 2rem;padding-bottom: 2rem;border-radius: 0;}
+.news__list .news__item {border-bottom: 1px solid #ecdfd4;margin-bottom: 2rem;padding-bottom: 2rem;border-radius: 0;}
 .news__list .news__item:last-child {margin-bottom: 0;}
 .news__list .news__title {margin: 0 0 1rem 0;font-weight: 700;}
 .news__list .news__text {word-break: break-all;font-size: 0.875rem;}

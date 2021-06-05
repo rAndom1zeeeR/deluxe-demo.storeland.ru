@@ -15,7 +15,7 @@
 .slider__button span {z-index: 2;padding-left: 1.5rem;}
 #slideshow .owl-nav {right: 2rem;bottom: 2rem;width: 102px;}
 #slideshow .owl-nav:before {display: none;}
-#slideshow .owl-nav .count {padding: 0 .5rem;margin: 0 .5rem;border: 1px solid var(--border-color);border-top: 0;border-bottom: 0;}
+#slideshow .owl-nav .count {padding: 0 .5rem;margin: 0 .5rem;border: 1px solid #ecdfd4;border-top: 0;border-bottom: 0;}
 @media (max-width: 1199.98px) {
 #slideshow {height: 360px;}
 .slider__item {height: 360px;}
@@ -115,7 +115,7 @@
 #news .news__content:before {content:'';width: 80%;height: 80%;position: absolute;right: 0;bottom: 0;background-color: #f8e9e6;z-index: 1;}
 #news .news__inner {height: 220px;padding: 1rem;background-color: #fff8ef;position: relative;z-index: 2;}
 #news .news__date {margin-bottom: 1rem;color: #c1b1a9;font-size: 14px;}
-#news .news__date i {margin-right: .5rem;color: var(--primary-color);}
+#news .news__date i {margin-right: .5rem;color: #df5642;}
 #news .news__title {margin-bottom: 1rem;font-weight: 800;max-height: 2.5rem;display: block;overflow: hidden;}
 #news .news__text {margin-bottom: 1rem;max-height: 3.75rem;display: block;overflow: hidden;}
 #news .news__more {margin-bottom: 1rem;}
@@ -145,7 +145,7 @@
 .pdt__left .owl-nav.active {display: block;}
 .pdt__left {width: calc(100% - 300px);padding-right: 1rem;}
 .pdt__right {width: 300px;padding-left: 1rem;}
-.pdt__title a {padding: 1rem;font-size: 18px;line-height: 24px;color: #FFFFFF;background-color: var(--primary-color);display: block;text-align: center;}
+.pdt__title a {padding: 1rem;font-size: 18px;line-height: 24px;color: #FFFFFF;background-color: #df5642;display: block;text-align: center;}
 #pdt .owl-carousel {display: flex;overflow: hidden;}
 #pdt .product__item {width: 100%;}
 @media (max-width: 1199.98px) {
@@ -174,7 +174,7 @@
 #pdt__sales .product__price {border: 0;padding: 0;}
 #pdt__sales .product__name {height: 40px;}
 /* Счетчик акции */
-.product__counter {width: 200px;margin: 0 auto;padding: .75rem;color: #ffffff;background-color: var(--secondary-color);display: flex;align-items: center;justify-content: center;}
+.product__counter {width: 200px;margin: 0 auto;padding: .75rem;color: #ffffff;background-color: #ffaf88;display: flex;align-items: center;justify-content: center;}
 .product__counter label {display: none;}
 .product__counter > div:after {content: ':';display: inline-block;margin: 0 .5rem 0 .25rem;}
 .product__counter > div:last-child:after {display: none;}
