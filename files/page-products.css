@@ -32,7 +32,7 @@
 .product__ratings .ratings:before {font-size: 12px;}
 .product__ratings .ratings .rating:before {font-size: 12px;}
 @media (min-width: 1200px) {
-.page__favorites .product__item {width: 25%;}
+.page-favorites .product__item {width: 25%;}
 }
 @media (min-width: 992px) {
 .products__grid .product__addto {opacity: 0;width: 200px;margin: 0 auto;position: absolute;right: 0;left:0;bottom: -3.5rem;padding: 1rem 0 .5rem 0;background-color: rgba(236,223,212,0.8);}

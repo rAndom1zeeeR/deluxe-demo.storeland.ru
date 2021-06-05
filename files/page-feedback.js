@@ -1,6 +1,6 @@
 // Валидаторы для телефона на странице обратного звонка page-callback.js
 function validNamePC(){
-	let name = $('.page__сallback').find('.form__person');
+	let name = $('.page-сallback').find('.form__person');
 	if(name.val() != ''){
 		name.removeClass('error');
 		name.parent().removeClass('error');
@@ -14,7 +14,7 @@ function validNamePC(){
 	}
 }
 function validPhonePC(){
-	let tel = $('.page__сallback').find('.form__phone');
+	let tel = $('.page-сallback').find('.form__phone');
 	let check = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{5,10}$/.test(tel.val());
 	if(check == true && check != ''){
 		tel.removeClass('error');
@@ -37,5 +37,5 @@ function validSubmitPC(){
 }
 // Проверка отправки формы
 $(function(){
-	$('.page__сallback .form__callback').submit(validSubmitPC);
+	$('.page-сallback .form__callback').submit(validSubmitPC);
 });
