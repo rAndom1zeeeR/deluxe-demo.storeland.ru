@@ -60,7 +60,7 @@
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-products.css?design=THEMENAME" />
 	{% ENDIF %}
 	<!-- Стили: Категории -->
-	{% IF index_page || MOD_LNAME = catalog %}
+	{% IF MOD_LNAME = catalog || index_page %}
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-categories.css?design=THEMENAME" />
 	{% ENDIF %}
 	<!-- Страница: Каталог -->
@@ -70,15 +70,15 @@
 	<!-- Страница: Оформление заказа -->
 	{% IF MOD_LNAME = order %}
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-order.css?design=THEMENAME" />
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-cart.css?design=THEMENAME" />
 	{% ENDIF %}
 	<!-- Страница: Корзина -->
-	{% IF MOD_LNAME = cart %}
+	{% IF MOD_LNAME = cart || MOD_LNAME = order %}
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-cart.css?design=THEMENAME" />
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-orderfast.css?design=THEMENAME" />
 	{% ENDIF %}
 	<!-- Страница: Быстрый заказ -->
+	{% IF index_page || MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = goods || MOD_LNAME = user && ACT=favorites || MOD_LNAME = cart || MOD_LNAME = order || MOD_LNAME = compare %}
 	<link id="page-orderfast-css" rel="stylesheet" type="text/css" data-href="{ASSETS_STYLES_PATH}page-orderfast.css?design=THEMENAME" />
+	{% ENDIF %}
 	{% IF MOD_LNAME = goods %}
 	<!-- Страница: Товар -->
 	<link id="page-goods-css" rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-goods.css?design=THEMENAME" />
