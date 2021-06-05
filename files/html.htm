@@ -27,11 +27,11 @@
 	<link rel="stylesheet" type="text/css" href="/design/icomoon.css?design=THEMENAME" />
 	<!-- Основные Стили магазина для всех страниц -->
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}min.css?design=THEMENAME" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}jquery.fancybox.min.css?design=THEMENAME" />
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}main.css?design=THEMENAME" />
 	<!-- Страница: Главная и НЕ главная -->
 	{% IF index_page %}
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-index.css?design=THEMENAME" />
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME" />
 	{% ELSE %}
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-not-index.css?design=THEMENAME" />
 	{% ENDIF %}
@@ -42,7 +42,6 @@
 	<!-- Страница: Сравнение -->
 	{% IF MOD_LNAME = compare %}
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-compare.css?design=THEMENAME" />
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME" />
 	{% ENDIF %}
 	<!-- Страница: Обратная связь -->
 	{% IF MOD_LNAME = feedback %}
@@ -67,7 +66,6 @@
 	<!-- Страница: Каталог -->
 	{% IF MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search %}
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-catalog.css?design=THEMENAME" />
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME" />
 	{% ENDIF %}
 	<!-- Страница: Оформление заказа -->
 	{% IF MOD_LNAME = order %}
@@ -84,13 +82,12 @@
 	{% IF MOD_LNAME = goods %}
 	<!-- Страница: Товар -->
 	<link id="page-goods-css" rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-goods.css?design=THEMENAME" />
-	<!-- Слайдер -->
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME" />
 	{% ELSE %}
 	<link id="page-goods-css" rel="stylesheet" type="text/css" data-href="{ASSETS_STYLES_PATH}page-goods.css?design=THEMENAME" />
 	{% ENDIF %}
 	<!-- Скрипты магазина -->
 	<script type="text/javascript" src="{ASSETS_JS_PATH}jquery-3.4.1.min.js?design=THEMENAME"></script>
+	<!-- Дополнительные скрипты -->
 	<script type="text/javascript">
 		// Если отключен JS
 		$(document).ready(function () {
@@ -1289,10 +1286,10 @@
 	</section>
 	
 	<!-- Товары из категорий на главной -->
-	{% IFNOT catalog_full_empty %}
+	<!--{% IFNOT catalog_full_empty %}
 	<section id="pdt__cat">
 		<div class="container">
-		<!-- Категории каталога с товарами на главной -->
+		&lt;!&ndash; Категории каталога с товарами на главной &ndash;&gt;
 		<script>
 			var catalog_full = []
 		</script>
@@ -1318,7 +1315,7 @@
 		{% ENDFOR %}
 		</div>
 	</section>
-	{% ENDIF %}
+	{% ENDIF %}-->
 	
 	<!-- Обратный звонок -->
 	<section id="callback">
@@ -2696,6 +2693,14 @@
 	{% ENDIF %}
 </script>
 
+<!-- Слайдер. Карусель -->
+{% IF index_page || MOD_LNAME = compare || MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = goods %}
+<link rel="preload" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME">
+</noscript>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}owl-carousel.js?design=THEMENAME"></script>
+{% ENDIF %}
 <!-- Скрипты: Главная  -->
 {% IF MOD_LNAME = feedback || MOD_LNAME = callback %}
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}page-feedback.js?design=THEMENAME"></script>
@@ -2711,7 +2716,6 @@
 {% IF MOD_LNAME = compare %}
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}page-compare.js?design=THEMENAME"></script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}page-products.js?design=THEMENAME"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}owl-carousel.js?design=THEMENAME"></script>
 {% ENDIF %}
 <!-- Скрипты: Главная  -->
 {% IF index_page %}
@@ -2723,9 +2727,8 @@
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}jqueryui.js?design=THEMENAME"></script>
 {% ENDIF %}
 <!-- Скрипты: Товары -->
-{% IF index_page || MOD_LNAME = catalog || MOD_LNAME = goods || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = user && ACT=favorites %}
+{% IF index_page || MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = goods || MOD_LNAME = user && ACT=favorites %}
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}page-products.js?design=THEMENAME"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}owl-carousel.js?design=THEMENAME"></script>
 {% ENDIF %}
 <!-- Страница: Товар -->
 {% IF MOD_LNAME = goods %}
