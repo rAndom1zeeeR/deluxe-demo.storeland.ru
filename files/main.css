@@ -164,7 +164,7 @@ label.error:after {content: ' ';position: absolute;top: -7px;left: 0.875rem;widt
 .button5 {color: #ffaf88;background: transparent;border: 0;border-radius: 0;box-shadow: none;text-transform: none;line-height: 1;padding: 0;}
 .button5:hover, .button5.added {color: #231803;background: transparent;border-color: transparent;box-shadow: none;}
 .button.big {font-size: 1.25rem;padding: 0 4rem;line-height: 4rem;border-radius: 1.875rem;text-transform: uppercase;letter-spacing: 3px;}
-.button.small {font-size: 0.75rem;padding: 0 1rem;line-height: 2rem;font-weight: 400;letter-spacing: 1px;}
+.button.small {font-size: 0.75rem;padding: 0 1rem;line-height: 2rem;letter-spacing: 1px;}
 .button.medium {line-height: 40px;}
 .button.disabled, .button[disabled] {background: #ecdfd4;border-color: #ecdfd4;color: #FFFFFF;box-shadow: none;cursor: default;}
 .more {color: #ffaf88;font-size: 1rem;display: flex;align-items: center;}
@@ -173,7 +173,7 @@ label.error:after {content: ' ';position: absolute;top: -7px;left: 0.875rem;widt
 .more:hover i {margin: 0 0 0 1rem;}
 .more span {border-bottom: 1px solid #ffaf88;}
 .more:hover span {border-color: #df5642;}
-.remove.x {display: inline-block;color: #dddddd;font-size: 1.5rem;line-height: 1;text-align: center;font-weight: 400;text-rendering: auto;-webkit-font-smoothing: antialiased;}
+.remove.x {display: inline-block;color: #dddddd;font-size: 1.5rem;line-height: 1;text-align: center;text-rendering: auto;-webkit-font-smoothing: antialiased;}
 .remove.x:hover {color: #231803;}
 .remove.x:after {content: '\e903';font-family: 'icomoon';display: inline-block;}
 .remove.x:hover:after {transform: rotate(90deg);}
@@ -321,7 +321,7 @@ h5 {font-size: 1rem;}
 h6 {font-size: 0.875rem;}
 /*** Заголовки ***/
 .block__title {margin-bottom: 1rem;width: 100%;position: relative;}
-.block__title .title {font-weight: 500;line-height: 1.2;text-transform: uppercase;}
+.block__title .title {line-height: 1.2;text-transform: uppercase;}
 #page__title {text-align: center;margin-bottom: 2rem;}
 /* Заголовки с навигацией */
 .block__title.block__nav {padding: 1.25rem;}
@@ -542,9 +542,11 @@ header .contacts {display: none;}
 .catalog--icon:hover {cursor: pointer;}
 .catalog--icon .dropdown__open {width: 100%;height: 100%;display: flex;align-items: center;justify-content: center;}
 .catalog--icon i.dropdown__open {display: none;}
-#menu .catalog__items {display: flex;flex-wrap: wrap;height: 450px;overflow-y: auto;}
+#menu .catalog__items {padding: .5rem 0;height: 450px;overflow-y: auto;display: flex;flex-wrap: wrap;}
 #menu .catalog__items::-webkit-scrollbar {width: 0.5rem;height: 0;}
-#menu .catalog__item[data-level="0"] {width: 25%;padding: 1rem;}
+#menu .catalog__item[data-level="0"] {width: 25%;padding: .5rem 1rem;}
+#menu .catalog__item[data-level="1"] {display: none;}
+#menu .catalog__item[data-level="1"]:nth-child(-n+4) {display: block;}
 #menu .catalog__link[data-level="0"] {color: #df5642;}
 #menu .catalog__link[data-level="0"] .open {display: none;}
 #menu .catalog__link {line-height: 24px;}
@@ -694,7 +696,7 @@ header .contacts {display: none;}
 
 /*** Преимушества ***/
 #advantage {margin: 3rem 0;position: relative;overflow: hidden;}
-.advantage__title {margin-bottom: .5rem;font-size: 18px;font-weight: 500;}
+.advantage__title {margin-bottom: .5rem;font-size: 18px;}
 .advantage__item {width: 33.333333%;min-width: 333px;display: flex;align-items: center;flex-wrap: wrap;}
 .advantage__icon {font-size: 64px;color: #FFFFFF;background-color: #ffaf88;box-shadow: -.5rem .5rem 0px 0px rgba(255, 83, 0, 0.18);width: 100px;height: 100px;margin: .5rem;display: flex;align-items: center;justify-content: center;}
 .advantage__content {width: calc(100% - 116px);padding: 0 1rem;}
@@ -717,7 +719,7 @@ header .contacts {display: none;}
 .footer__middle ul {margin: 0;padding: 0;list-style: none;}
 .footer__middle ul li {margin-bottom: .75rem;}
 .footer__block {width: 25%;padding: 3rem 2rem;position: relative;overflow: hidden;}
-.footer__title {font-size: 18px;font-weight: 500;display: flex;justify-content: space-between;position: relative;}
+.footer__title {font-size: 18px;display: flex;justify-content: space-between;position: relative;}
 .footer__content {margin-top: 1rem;}
 .footer__block.contacts .footer__content {margin-top: 0;}
 .footer__open {display: none;}

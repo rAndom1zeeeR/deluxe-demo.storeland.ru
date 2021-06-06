@@ -95,7 +95,7 @@
 .delivery__index {margin-right: 2rem;width: 40px;height: 40px;line-height: 40px;font-size: 18px;color: #ffffff;background-color: #ffaf88;box-shadow: -5px 5px 0 0 #ffe0d1;text-align: center;display: inline-block;}
 .delivery__text {margin-bottom: 1rem;word-break: break-all;}
 .delivery__price strong {margin-left: 4px;}
-.zone__open {display: flex;align-items: center;font-size: 1rem;font-weight: 700;margin-top: 1rem;}
+.zone__open {display: flex;align-items: center;font-size: 1rem;font-weight: bold;margin-top: 1rem;}
 .zone__open:after {content: "\e915";font-family: 'icomoon';font-size: 1rem;margin-left: 1rem;line-height: 1;}
 .zone__open.active:after {content: "\e918";}
 .zone__list {display: none;}

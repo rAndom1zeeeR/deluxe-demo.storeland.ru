@@ -887,6 +887,20 @@ function openMenu() {
     }
   });
 
+  // "Еще" в выпадающем каталоге
+  function catalogItemsMore(){
+    let item = $('#menu .catalog__item[data-level="0"]');
+    item.each(function (){
+      let t = $(this);
+      let item1 = t.find('.catalog__item[data-level="1"]');
+      let href = t.find('a').attr('href');
+      if(item1.length > 4) {
+        t.append('<div class="catalog__more"><a href="'+ href +'" class="catalog__link">Еще...</a></div>');
+      }
+    });
+  }
+  catalogItemsMore();
+
   //Кнопка выбора меню/каталога
   const button = $('.dropdown__label');
   //Скрываем меню
