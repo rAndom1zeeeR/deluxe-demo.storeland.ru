@@ -373,7 +373,7 @@ h6 {font-size: 0.875rem;}
 .dropdown__title {margin-left: -5px;width: calc(100% + 10px);height: 60px;padding: 0;display: flex;align-items: center;flex-wrap: wrap;position: relative;}
 .dropdown__label {background-color: #f8e9e6;border-bottom: 1px solid #fff4f2;width: 100%;font-size: 24px;padding: 0 2rem;height: 60px;display: flex;align-items: center;cursor: pointer;}
 .dropdown__label.active {background-color: #ffaf88;}
-.dropdown__close {height: 60px;padding: 0 1.25rem;top: 0;right: 0;position: absolute;display: flex;align-items: center;justify-content: center;z-index: 12;transition: all 0.3s ease;}
+.dropdown__close {height: 60px;padding: 0 1.25rem;top: 0;right: 5px;position: absolute;display: flex;align-items: center;justify-content: center;z-index: 12;transition: all 0.3s ease;}
 .dropdown__close:hover {background-color: #df5642;color: #ffffff;cursor: pointer;}
 .dropdown__close i {font-size: 20px;transition: all 0.2s ease;}
 .dropdown__close:hover i {transform: rotate(90deg);}
@@ -435,7 +435,8 @@ h6 {font-size: 0.875rem;}
 
 
 /*** Адаптивный Каталог и Меню ***/
-[data-content="catalogMenu"] [data-content] {max-height: calc(100vh - 174px);overflow-y: auto;}
+/*[data-content="catalogMenu"] [data-content] {max-height: calc(100vh - 174px);overflow-y: auto;}*/
+[data-content="catalogMenu"] {max-height: calc(100vh - 50px);overflow-y: auto;}
 #catalogMenu .dropdown__title {height: 120px;}
 #addtoMenu ul {margin: 0;padding: 0;list-style: none;}
 #addtoMenu li {padding: 1rem;}
@@ -448,6 +449,11 @@ h6 {font-size: 0.875rem;}
 .addto__catalog .catalog__item .sub {padding-left: 1rem;display: none;}
 .mainnav__links a {padding: 1rem;display: block;}
 .mainnav__links a + a {border-top: 1px solid #f8e9e6;}
+#addtoContacts {background-color: #fffaf7;}
+#addtoContacts .contacts__block {margin: 0;padding: 1rem;border-bottom: 1px solid #ecdfd4;}
+#addtoContacts .contacts__block i {font-size: 30px;color: #ffaf88;}
+#addtoContacts .contacts__block a {display: block;}
+#addtoContacts .social-links {justify-content: center;padding: .75rem 0;}
 
 /******************************************************************************
 Все Основные страницы
@@ -473,7 +479,7 @@ h6 {font-size: 0.875rem;}
 }
 
 /*** Шапка ***/
-header {padding: 2rem 0;position: relative;z-index: 2;}
+header {padding: 2rem 0;position: relative;}
 .logo {flex-grow: 1;}
 .logo a {max-width: 225px;display: inline-block;}
 /* Иконка */
@@ -486,7 +492,7 @@ header {padding: 2rem 0;position: relative;z-index: 2;}
 .header__block-contacts {margin-left: .5rem;position: relative;}
 .header__block-contacts .dropdown__open i {font-size: 20px;}
 .header__block-contacts .dropdown__open:hover, .header__block-contacts .dropdown__open.opened {color: #ffaf88;}
-.header__block-contacts .contacts {opacity: 0;transform: scale(0);width: 220px;position: absolute;top: 4rem;right: 0;padding: 1rem;border-top: 5px solid #f8e9e6;flex-direction: column;justify-content: flex-start;align-items: flex-start;height: auto;left: auto;}
+.header__block-contacts .contacts {opacity: 0;transform: scale(0);width: 220px;position: absolute;top: 4rem;right: 0;padding: 1rem;border-top: 5px solid #f8e9e6;flex-direction: column;justify-content: flex-start;align-items: flex-start;height: auto;left: auto;z-index: 10;}
 .header__block-contacts.opened .contacts, .header__block-contacts .contacts.opened {opacity: 1;transform: scale(1);}
 .header__block-contacts .contacts__block {width: 100%;}
 .header__block-contacts .contacts__block i {font-size: 30px;color: #ffaf88;}
