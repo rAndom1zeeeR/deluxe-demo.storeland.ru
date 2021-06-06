@@ -889,13 +889,25 @@ function openMenu() {
 
   // "Еще" в выпадающем каталоге
   function catalogItemsMore(){
+    // Определяем главные категории
     let item = $('#menu .catalog__item[data-level="0"]');
-    item.each(function (){
+    // Удаляем скрытые категории
+    item.find('.hide').remove();
+    // Проверяем категории
+    item.each(function (event){
       let t = $(this);
       let item1 = t.find('.catalog__item[data-level="1"]');
       let href = t.find('a').attr('href');
+      // Добавляем порядок главных категорий
+      let count = event + 1;
+      t.css('order', count)
+      // Добавляем кнопку "Еще" если больше 4 подкатегорий
       if(item1.length > 4) {
         t.append('<div class="catalog__more"><a href="'+ href +'" class="catalog__link">Еще...</a></div>');
+      }
+      // Если в категории нет подкатегорий, переносим ее в конец
+      if(item1.length == 0) {
+        t.css('order', item.length + 1)
       }
     });
   }
