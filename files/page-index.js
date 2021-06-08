@@ -30,16 +30,16 @@ function monthNames() {
 // Отсчет даты до окончания акции
 function counterDate() {
 	// Устанавливаем дату обратного отсчета ММ-ДД-ГГ
-	let end = $('.counter').attr('end');
-	let countDownDate = new Date(end).getTime();
+	var end = $('.counter').attr('end');
+	var countDownDate = new Date(end).getTime();
 	// Обновление счетчика каждую секунду
-	let x = setInterval(function() {
-		let now = new Date().getTime();
-		let distance = countDownDate - now;
-		let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-		let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-		let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-		let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+	var x = setInterval(function() {
+		var now = new Date().getTime();
+		var distance = countDownDate - now;
+		var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+		var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 		// Вывод
 		$('.counter .days span').text(days);
 		$('.counter .hours span').text(hours);
@@ -209,7 +209,7 @@ function pdtSlider() {
 	// Табы в товарах
 	$('.pdt__left .nav__tab').on('click', function (event) {
 		event.preventDefault();
-		let content = $(this).attr('data-content');
+		var content = $(this).attr('data-content');
 		$('.pdt__left [id^="pdt__"]').prepend('<div class="preloader top"><div class="loading"></div></div>');
 		preload();
 		$('.pdt__left .nav__tab').removeClass('active')
@@ -226,10 +226,10 @@ function pdtSlider() {
 		var promises = $.map(catalog_full, function(el){
 			return $.ajax(el.href + '?only_body=1&goods_view_type=3&per_page=10')
 				.then(function(d){
-					let container = $('.products__container.' + el.id);
-					let $parentGridContainer = container.find('.products__gridSmall');
-					let $data = $(d);
-					let $newProducts = $data.find('.products__gridSmall').find('.product__item').parent();
+					var container = $('.products__container.' + el.id);
+					var $parentGridContainer = container.find('.products__gridSmall');
+					var $data = $(d);
+					var $newProducts = $data.find('.products__gridSmall').find('.product__item').parent();
 					$newProducts = $newProducts.html();
 					// Вывод товаров
 					if(!$parentGridContainer.find('.products__gridSmall').length){
@@ -247,7 +247,7 @@ function pdtSlider() {
 	// Товары из категорий на главной
 	setTimeout(function(){
 		$('[class^="pdt__cat-"]').each(function(){
-			let cat = $(this).attr('data-id')
+			var cat = $(this).attr('data-id')
 			$('[class^="pdt__cat-'+ cat +'"] .owl-carousel').owlCarousel({
 				items: 4,
 				margin: 32,
@@ -287,7 +287,7 @@ function pdtSlider() {
 // Слайдер для главной страницы
 function slideShow() {
 	// Слайдер на главной
-	let owlS = $('#slideshow .owl-carousel');
+	var owlS = $('#slideshow .owl-carousel');
 	owlS.owlCarousel({
 		items: 1,
 		loop: false,
@@ -312,8 +312,8 @@ function slideShow() {
 		onChanged: counter
 	});
 	function counter(event) {
-		let items = event.item.count;     // Number of items
-		let item = event.item.index + 1;  // Position of the current item
+		var items = event.item.count;     // Number of items
+		var item = event.item.index + 1;  // Position of the current item
 		$('#slideshow .count').remove();
 		$('#slideshow .owl-next').before('<span class="count">'+ item + '/' + items +'</span>')
 	}
@@ -431,7 +431,7 @@ function newsCarousel() {
 	// Табы в новостях
 	$('#news .nav__tab').on('click', function (event) {
 		event.preventDefault();
-		let content = $(this).attr('data-content');
+		var content = $(this).attr('data-content');
 		$('#news [class^="news_list_"]').prepend('<div class="preloader"><div class="loading"></div></div>');
 		preload();
 		$('#news .nav__tab').removeClass('active')

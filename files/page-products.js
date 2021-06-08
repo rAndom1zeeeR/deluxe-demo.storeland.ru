@@ -3,7 +3,7 @@ function quickViewMod() {
 	// Получение центральной разметки страницы (для быстрого просмотра)
 	$(document).ready(function(){
 		$.fn.getColumnContent = function() {
-			let block = ($(this).length && $(this).hasClass('productViewBlock') ? $(this).filter('.productViewBlock') : $('.productViewBlock:eq(0)'));
+			var block = ($(this).length && $(this).hasClass('productViewBlock') ? $(this).filter('.productViewBlock') : $('.productViewBlock:eq(0)'));
 			block.each(function(){
 				// Удаляем все блоки, которые не отображаются в быстром просмотре.
 				$(this).children().not('.productView').remove();
@@ -14,7 +14,7 @@ function quickViewMod() {
 		// При наведении на блок товара загружаем контент этого товара, который будет использоваться для быстрого просмотра, чтобы загрузка происходила быстрее.
 		$('.product__item.hasMod').mouseover(function() {
 			// Если в блоке нет ссылки на быстрый просмотр, то не подгружаем никаких данных
-			let link = $(this).find('a.add-mod');
+			var link = $(this).find('a.add-mod');
 			if(link.length < 1) {
 				return true;
 			}
@@ -22,7 +22,7 @@ function quickViewMod() {
 			if(typeof(document.quickviewPreload) == 'undefined') {
 				document.quickviewPreload = [];
 			}
-			let href = link.attr('href');
+			var href = link.attr('href');
 			href += (false !== href.indexOf('?') ? '&' : '?') + 'only_body=1';
 			// Если контент по данной ссылке ещё не загружен
 			if(typeof(document.quickviewPreload[href]) == 'undefined') {
@@ -43,7 +43,7 @@ function quickViewMod() {
 		});
 		// Действие при нажатии на кнопку быстрого просмотра.
 		$(document).on('click', 'a.add-mod', function() {
-			let href = $(this).attr('href');
+			var href = $(this).attr('href');
 			href += (false !== href.indexOf('?') ? '&' : '?') + 'only_body=1';
 			quickViewShowMod(href);
 			$(function(){
@@ -108,9 +108,9 @@ function quickViewShowMod(href, atempt) {
 
 // Разница в цене в процентах %
 function priceDiff() {
-	let old = parseFloat($('.productView .price__old .num').text().replace(' ',''));
-	let now = parseFloat($('.productView .price__now .num').text().replace(' ',''));
-	let diff = 0;
+	var old = parseFloat($('.productView .price__old .num').text().replace(' ',''));
+	var now = parseFloat($('.productView .price__now .num').text().replace(' ',''));
+	var diff = 0;
 	if(old > now){
 		diff = (((old - now)/old)*100).toFixed();
 		$('.productView .ico__sales').text('-' + diff + '%');
@@ -118,9 +118,9 @@ function priceDiff() {
 		$('.productView .ico__sales').hide();
 	}
 	$('.product__item').each(function(){
-		let old = parseFloat($(this).find('.price__old .num').text().replace(' ',''));
-		let now = parseFloat($(this).find('.price__now .num').text().replace(' ',''));
-		let diff = 0;
+		var old = parseFloat($(this).find('.price__old .num').text().replace(' ',''));
+		var now = parseFloat($(this).find('.price__now .num').text().replace(' ',''));
+		var diff = 0;
 		if(old > now){
 			diff = (((old - now)/old)*100).toFixed();
 			$(this).find('.ico__sales').text('-' + diff + '%');
@@ -133,7 +133,7 @@ function priceDiff() {
 // Много и Мало вместо точного количества
 function goodsModRest() {
 	$('.goodsModRestValue').each(function(){
-		let value = $(this).data('value');
+		var value = $(this).data('value');
 		if (value > 10) {
 			$(this).html('В наличии много');
 			$(this).css('opacity', '1');
@@ -158,15 +158,15 @@ function addCart() {
 		$('.cart__count').animate({opacity: 0,display: "none"},500);
 		$('.cart__count').animate({display: "inline",opacity: 1},500);
 		// Находим форму, которую отправляем на сервер, для добавления товара в корзину
-		let formBlock = $($(this).get(0));
-		let addressCart = '/cart';
+		var formBlock = $($(this).get(0));
+		var addressCart = '/cart';
 		// Проверка на существование формы отправки запроса на добавление товара в корзину
 		if (1 > formBlock.length || formBlock.get(0).tagName != 'FORM') {
 			alert('Не удалось найти форму добавления товара в корзину');
 			return false;
 		}
 		// Получаем данные формы, которые будем отправлять на сервер
-		let formData = formBlock.serializeArray();
+		var formData = formBlock.serializeArray();
 		// Сообщаем серверу, что мы пришли через ajax запрос
 		formData.push({name: 'ajax_q', value: 1});
 		// Так же сообщим ему, что нужно сразу отобразить форму быстрого заказа
@@ -180,7 +180,7 @@ function addCart() {
 			success: function(data) {
 				//$.fancybox.open(data);
 				// Анализ системного сообщения в коризне
-				let str = $(data).html();
+				var str = $(data).html();
 				// Проверяем текст сообщения на наличие ошибки
 				if (str.indexOf("Не удалось добавить товар") != -1) {
 					// Сообщение с ошибкой
@@ -270,9 +270,9 @@ function addTo() {
 				delTooltip = a.attr('data-action-text-del'),
 				requestUrl = a.attr('href');
 
-		let atl = $(this).closest('.product__links');
-		let atlS = $(this).closest('.product__shop');
-		let flag = 0;
+		var atl = $(this).closest('.product__links');
+		var atlS = $(this).closest('.product__shop');
+		var flag = 0;
 		$('.addto__compare .addto__item').each(function(){
 			if($(this).attr('data-id') == pDataid){
 				flag = 1;
@@ -342,7 +342,7 @@ function addTo() {
 						// Если указано, что изменилось число товаров на сравнении
 						if(typeof(data.compare_goods_count) != 'undefined') {
 							// Блок информации о том, что есть товары на сравнении
-							let sidecount = $('.compare__count');
+							var sidecount = $('.compare__count');
 							// Если на сравнении больше нет товаров
 							// Указываем информацию о новом количестве товаров на сравнении
 							// Блок обновления списка сравнения в каталога
@@ -452,9 +452,9 @@ function addTo() {
 				delTooltip = a.attr('data-action-text-del'),
 				requestUrl = a.attr('href');
 
-		let atl = $(this).closest('.product__links');
-		let atlS = $(this).closest('.product__shop');
-		let flag = 0;
+		var atl = $(this).closest('.product__links');
+		var atlS = $(this).closest('.product__shop');
+		var flag = 0;
 		$('.addto__favorites .addto__item').each(function(){
 			if($(this).attr('data-id') == pDataid){
 				flag = 1;
@@ -523,7 +523,7 @@ function addTo() {
 						// Если указано, что изменилось число товаров на сравнении
 						if(typeof(data.favorites_goods_count) != 'undefined') {
 							// Блок информации о том, что есть товары на сравнении
-							let sidecount = $('.favorites__count');
+							var sidecount = $('.favorites__count');
 							// Если на сравнении больше нет товаров
 							// Указываем информацию о новом количестве товаров на сравнении
 							// Блок обновления списка сравнения в каталога
@@ -614,8 +614,8 @@ function addTo() {
 
 // Валидаторы для телефона в "Уведомить" в карточке товара
 function validPhoneNotify(){
-	let tel = $('#fancybox__notify').find('.form__phone');
-	let check = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{5,10}$/.test(tel.val());
+	var tel = $('#fancybox__notify').find('.form__phone');
+	var check = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{5,10}$/.test(tel.val());
 	if(check == true && check != ''){
 		tel.removeClass('error');
 		tel.parent().removeClass('error');
@@ -631,8 +631,8 @@ function validPhoneNotify(){
 }
 // Подписаться. Валидатор почты в "Уведомить"
 function validEmailNotify(){
-	let email = $('#fancybox__notify').find('.form__email');
-	let check = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email.val());
+	var email = $('#fancybox__notify').find('.form__email');
+	var check = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email.val());
 	if(check == true && check != ''){
 		email.removeClass('error');
 		email.parent().removeClass('error');
@@ -647,8 +647,8 @@ function validEmailNotify(){
 	}
 }
 function validSubmitNotify(){
-	let email = validEmailNotify();
-	let phone = validPhoneNotify();
+	var email = validEmailNotify();
+	var phone = validPhoneNotify();
 	return email || phone;
 }
 // Проверка отправки формы
@@ -665,11 +665,11 @@ $(document).ready(function(){
 	addTo();
 	// Добавление товара в корзину
 	$('.add-cart').on('click', function() {
-		let form = $(this).closest('form');
+		var form = $(this).closest('form');
 		if ($(this).hasClass('quick')) {
 			form.attr('rel', 'quick');
 		} else {
-			let rel = form.attr('rel');
+			var rel = form.attr('rel');
 			if (rel) {
 				form.attr('rel', rel.replace('quick', ''));
 			}

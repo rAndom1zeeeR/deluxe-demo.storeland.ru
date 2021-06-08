@@ -79,7 +79,7 @@ function priceFilter() {
 	});
 	// При изменении минимального значения цены
 	priceInputMin.keyup(function(){
-		let newVal = parseInt($(this).val());
+		var newVal = parseInt($(this).val());
 		if(newVal < priceFilterMinAvailable) {
 			newVal = priceFilterMinAvailable;
 		}
@@ -89,7 +89,7 @@ function priceFilter() {
 	});
 	// При изменении максимального значения цены
 	priceInputMax.keyup(function(){
-		let newVal = parseInt($(this).val());
+		var newVal = parseInt($(this).val());
 		if(newVal > priceFilterMaxAvailable) {
 			newVal = priceFilterMaxAvailable;
 		}
@@ -113,8 +113,8 @@ function priceFilter() {
 
 // Функция слайдера для "Вы смотрели" на главной странице
 function viewed() {
-	/*let viewedContent = $('.viewed');
-	let viewedCount = viewedContent.find('.viewed__item').length;
+	/*var viewedContent = $('.viewed');
+	var viewedCount = viewedContent.find('.viewed__item').length;
 	if(viewedCount>3){ viewedContent.find('.viewed__buttons').show(); }
 	$('.viewed__buttons .showAll').on('click',function(){
 		if($(this).hasClass('active')){

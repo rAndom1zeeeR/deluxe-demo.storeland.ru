@@ -108,8 +108,8 @@ function pageGoods() {
 	});
 
 	// Функция показать больше для Отзывов
-	let opinionContent = $('.productView__opinion');
-	let opinionCount = opinionContent.find('.opinion__item').length;
+	var opinionContent = $('.productView__opinion');
+	var opinionCount = opinionContent.find('.opinion__item').length;
 	if(opinionCount<=3){ opinionContent.find('.opinion__buttons').hide(); }
 	opinionContent.find('.opinion__buttons .showAll').on('click',function(event){
 		event.preventDefault();
@@ -147,7 +147,7 @@ function pageGoods() {
 	});
 	// Валидация формы на странице оформления заказа, а так же формы на страницы связи с администрацией
 	$(".opinion__form .button").on('click', function(){
-		let form = $(".opinion__form");
+		var form = $(".opinion__form");
 		form.validate({
 			errorPlacement: function(error, element) { }
 		});
@@ -162,15 +162,15 @@ function pageGoods() {
 	});
 	// Переключение табов
 	function tabSwitch() {
-		let tabs = $('.productView__tabs');
-		let tab = tabs.find('.tab');
-		let block = $('.tabs__content > div');
+		var tabs = $('.productView__tabs');
+		var tab = tabs.find('.tab');
+		var block = $('.tabs__content > div');
 		tab.first().addClass('active');
 		block.first().addClass('active');
 		// Табы в карточке
 		tab.on('click', function(){
-			let id = $(this).data('tab');
-			let content = tabs.find('.tabs__content > div[data-tab="'+ id +'"]');
+			var id = $(this).data('tab');
+			var content = tabs.find('.tabs__content > div[data-tab="'+ id +'"]');
 			tab.removeClass('active');
 			block.removeClass('active');
 			$(this).addClass('active');
@@ -195,9 +195,9 @@ function pageGoods() {
 	$('.opinion__more').on('click', function(event) {
 		event.preventDefault();
 		// Старый текст ссылки
-		let txtOld = $(this).text();
+		var txtOld = $(this).text();
 		// Новый текст ссылки
-		let txtNew = $(this).attr('rel');
+		var txtNew = $(this).attr('rel');
 		if ($(this).hasClass('active')) {
 			$(this).removeClass('active');
 			$(this).parent().find('.opinion__text.comment').addClass('mask').removeClass('active');
@@ -212,7 +212,7 @@ function pageGoods() {
 	});
 	// Свернуть и Развернуть отображение кнопок
 	$('.opinion__text.comment').each(function (){
-		let contentHeight = $(this).height();
+		var contentHeight = $(this).height();
 		if(contentHeight >= 90){
 			$(this).parent().find('.opinion__more').show();
 			$(this).parent().find('.opinion__text.comment').addClass('mask');
@@ -326,8 +326,8 @@ function goodsModification() {
 				goodsPriceNow.attr('data-price', modificationPriceNow);
 				goodsPriceNow.attr('content', modificationPriceNow);
 				$('.related .checkbox__input').each(function(i, checkbox){
-					let $checkbox = $(checkbox);
-					let checkboxActive = $checkbox.prop('checked');
+					var $checkbox = $(checkbox);
+					var checkboxActive = $checkbox.prop('checked');
 					if(checkboxActive) {
 						changePrice($checkbox, checkboxActive);
 					}
@@ -419,12 +419,12 @@ function goodsModification() {
 	});
 
 	$('.related .checkbox__input').on('change', function(){
-		let $checkbox = $(this);
-		let modId = $checkbox.data('mod-id');
-		let checkboxActive = $checkbox.prop('checked');
+		var $checkbox = $(this);
+		var modId = $checkbox.data('mod-id');
+		var checkboxActive = $checkbox.prop('checked');
 		if (checkboxActive) {
 			// Создаём инпут с доп товаром
-			let $input = $('<input class="goodsID-' + modId + '">')
+			var $input = $('<input class="goodsID-' + modId + '">')
 					.attr('type', 'hidden')
 					.attr('name', 'form[goods_mod_id][' + modId + ']')
 					.attr('data-price', $checkbox.data('mod-price'))
@@ -441,11 +441,11 @@ function goodsModification() {
 	});
 
 	function changePrice(currentCheckbox, checkboxActive){
-		let $checkbox = currentCheckbox;
-		let checkboxPrice = $checkbox.data('mod-price');
-		let $priceNowBlock = $('.productView__price .price__now');
-		let nowPrice = $priceNowBlock.attr('data-price');
-		let newPrice = 0;
+		var $checkbox = currentCheckbox;
+		var checkboxPrice = $checkbox.data('mod-price');
+		var $priceNowBlock = $('.productView__price .price__now');
+		var nowPrice = $priceNowBlock.attr('data-price');
+		var newPrice = 0;
 		if (checkboxActive) {
 			newPrice = String(parseInt(nowPrice) + parseInt(checkboxPrice));
 			$priceNowBlock.attr('data-price', parseInt(nowPrice) + parseInt(checkboxPrice))
@@ -467,10 +467,10 @@ function prodQty(){
 		// Обновление кол-ва для функций "Добавить"
 		$('.goodsDataMainModificationId').val($(this).val());
 		// Количество
-		let val = parseInt($(this).val());
+		var val = parseInt($(this).val());
 		// Цена товара без изменений
-		let price = parseInt($('.productView__price .price__now').attr('content'));
-		let newPrice = 0;
+		var price = parseInt($('.productView__price .price__now').attr('content'));
+		var newPrice = 0;
 		// Проверяем наличие добавленных товаров вместе с основным
 		if ($('.productView__form [class^="goodsID-"]').length) {
 			$('.productView__form [class^="goodsID-"]').each(function(){
@@ -479,7 +479,7 @@ function prodQty(){
 			});
 		}
 		// Считаем новую сумму товара с учетом добавленных
-		let multi = String(val * price + newPrice);
+		var multi = String(val * price + newPrice);
 		// Обновляем новую сумму
 		$('.productView__price .price__now').attr('data-price', multi);
 		$('.productView__price .price__now').find('.num').text(addSpaces(multi));

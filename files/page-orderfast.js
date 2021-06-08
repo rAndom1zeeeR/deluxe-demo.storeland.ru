@@ -1,14 +1,14 @@
 // Быстрый заказ
 function quickOrder(formSelector) {
 	// Находим форму, которую отправляем на сервер, для добавления товара в корзину
-	let formBlock = $($(formSelector).get(0));
+	var formBlock = $($(formSelector).get(0));
 	// Проверка на существование формы отправки запроса на добавление товара в корзину
 	if(1 > formBlock.length || formBlock.get(0).tagName != 'FORM') {
 		alert('Не удалось найти форму добавления товара в корзину');
 		return false;
 	}
 	// Получаем данные формы, которые будем отправлять на сервер
-	let formData = formBlock.serializeArray();
+	var formData = formBlock.serializeArray();
 	// Сообщаем серверу, что мы пришли через ajax запрос
 	formData.push({name: 'ajax_q', value: 1});
 	// Так же сообщим ему, что нужно сразу отобразить форму быстрого заказа
@@ -85,7 +85,7 @@ function orderScripts() {
 	// Действия при выборе варианта доставки на этапе оформления заказа
 	$('.delivery__radio').click(function(d){
 		// Отображение вариантов оплаты при выборе доставки
-		let ID = $('input[name="form[delivery][id]"]:checked').val();
+		var ID = $('input[name="form[delivery][id]"]:checked').val();
 		$('.order__payment').hide();
 		$('.order__payment[rel="' + ID + '"]').show();
 		$('.order__payment[rel="' + ID + '"]').find('input:first').click();
@@ -97,16 +97,16 @@ function orderScripts() {
 			$(this).prop('checked',false);
 			$(this).parent().removeClass('active');
 		});
-		let val = $(this).val();
-		let fz = $($('.zone__radio[deliveryid='+val+']')[0]);
+		var val = $(this).val();
+		var fz = $($('.zone__radio[deliveryid='+val+']')[0]);
 		$(this).prop('checked',true);
 		fz.prop('checked',true);
 		$(this).parent().addClass('active');
-		let price = $(this).attr('price');
-		let priceBlock = $('.delivery__option[rel='+ val +']').find('.delivery__price').find('.num');
+		var price = $(this).attr('price');
+		var priceBlock = $('.delivery__option[rel='+ val +']').find('.delivery__price').find('.num');
 		// Обновление цены при наличии зоны
-		let cartSumTotal = $('.cartSumTotal').data('value');
-		let zonePrice =  $('.zone__radio:checked').attr('price');
+		var cartSumTotal = $('.cartSumTotal').data('value');
+		var zonePrice =  $('.zone__radio:checked').attr('price');
 		if(zonePrice > 0){
 			priceBlock.text(zonePrice);
 			$('.cartSumDelivery .num').text(zonePrice);
@@ -115,8 +115,8 @@ function orderScripts() {
 			$('.cartSumDelivery .num').text(price);
 		}
 		// Обновление цены с учетом доставки
-		let cartSumTotalHide = $('.cartSumDiscount:eq(0) .num').text().toString().replace(/\s/g, '');
-		let newSum = parseInt(cartSumTotalHide) + parseInt(priceBlock.text());
+		var cartSumTotalHide = $('.cartSumDiscount:eq(0) .num').text().toString().replace(/\s/g, '');
+		var newSum = parseInt(cartSumTotalHide) + parseInt(priceBlock.text());
 		$('.cartSumTotal .num').text(newSum);
 		// Скрытие необязательных полей при выборе самовывоза
 		if($(this).data('name') == 'Самовывоз'){
@@ -133,9 +133,9 @@ function orderScripts() {
 	});
 	// Действия при выборе зоны внутри варианта доставки на этапе оформления заказа
 	$('.zone__radio').click(function(){
-		let val = $(this).attr('deliveryid');
-		let price = $(this).attr('price');
-		let priceBlock = $('.delivery__option[rel='+ val +']').find('.delivery__price').find('.num');
+		var val = $(this).attr('deliveryid');
+		var price = $(this).attr('price');
+		var priceBlock = $('.delivery__option[rel='+ val +']').find('.delivery__price').find('.num');
 		// Обновление цены
 		priceBlock.text(price);
 		//
@@ -148,13 +148,13 @@ function orderScripts() {
 			}
 		});
 		// Выбор варианта оплаты при выборе зоны доставки
-		let ID = $('input[name="form[delivery][id]"]:checked').val();
+		var ID = $('input[name="form[delivery][id]"]:checked').val();
 		$('.order__payment').hide();
 		$('.order__payment[rel="' + ID + '"]').show();
 		$('.order__payment[rel="' + ID + '"]').find('input:first').click();
 		// Обновление цены с учетом доставки
-		let cartSumTotalHide = $('.cartSumTotalHide:eq(0) .num').text().toString().replace(/\s/g, '');
-		let newSum = parseInt(cartSumTotalHide) + parseInt(priceBlock.text());
+		var cartSumTotalHide = $('.cartSumTotalHide:eq(0) .num').text().toString().replace(/\s/g, '');
+		var newSum = parseInt(cartSumTotalHide) + parseInt(priceBlock.text());
 		$('.cartSumTotal .num').text(newSum);
 		$('.cartSumDelivery .num').text(price);
 	});
@@ -164,14 +164,14 @@ function orderScripts() {
 function orderScriptsSelect() {
 	// Выбор доставки
 	$('.delivery__select select').change(function(){
-		let selectedDelId = $(this).find('option:selected').attr('delid');
+		var selectedDelId = $(this).find('option:selected').attr('delid');
 		$('.delivery__zoneSelect').hide();
 		$('.delivery__zoneSelect[del="'+selectedDelId+'"]').show();
 		$('.delivery__zoneSelect option').attr('selected',false)
 		$('.delivery__zoneSelect[del="'+selectedDelId+'"] option:first-of-type').attr('selected',true);
 		$('.delivery__option .delivery__radio[value="'+selectedDelId+'"]').click();
-		let WithoutZone = $('div[rel='+ selectedDelId +'] .delivery__radio:checked').attr('pricewithoutzones');
-		let WithZone = $('div[rel='+ selectedDelId +'] .zone__radio:checked').attr('price');
+		var WithoutZone = $('div[rel='+ selectedDelId +'] .delivery__radio:checked').attr('pricewithoutzones');
+		var WithZone = $('div[rel='+ selectedDelId +'] .zone__radio:checked').attr('price');
 		if(WithZone >= 0){
 			startprice = WithZone;
 		}else{
@@ -181,7 +181,7 @@ function orderScriptsSelect() {
 		$('.cartSumDelivery .num').text(startprice);
 		$('.order__payment').hide();
 		$('.order__payment[rel="'+ selectedDelId +'"]').show();
-		let startInputId = $('.delivery__radio:checked').attr('value');
+		var startInputId = $('.delivery__radio:checked').attr('value');
 		$('.hiddenRadio .order__payment input').attr('checked',false);
 		$('.hiddenRadio .order__payment[rel="'+startInputId+'"] input').each(function(){
 			$(this).click();
@@ -189,7 +189,7 @@ function orderScriptsSelect() {
 		});
 		$('.order__paymentSelect option:first-child').prop('selected', true);
 		// Вывод описания доставки
-		let DeliveryDescription = $('.delivery__radio:checked').parent().find('.delivery__desc').html()
+		var DeliveryDescription = $('.delivery__radio:checked').parent().find('.delivery__desc').html()
 		$('.delivery__description').html(DeliveryDescription);
 		if (DeliveryDescription == undefined ) {
 			$('.delivery__description').css("display", "none");
@@ -197,7 +197,7 @@ function orderScriptsSelect() {
 			$('.delivery__description').css("display", "block");
 		}
 		// Вывод описания оплаты
-		let PaymentDescription = $('.hiddenRadio .paymentRadio:checked').parent().find('.delivery__desc').html()
+		var PaymentDescription = $('.hiddenRadio .paymentRadio:checked').parent().find('.delivery__desc').html()
 		$('.payment__description').html(PaymentDescription);
 		if (PaymentDescription == undefined ) {
 			$('.payment__description').css("display", "none");
@@ -208,14 +208,14 @@ function orderScriptsSelect() {
 
 	// Обновление цены и описания при выборе доставки
 	$('.delivery__select select').each(function(){
-		let selectedDelId = $(this).find('option:selected').attr('delid');
+		var selectedDelId = $(this).find('option:selected').attr('delid');
 		$('.delivery__zoneSelect').hide();
 		$('.delivery__zoneSelect[del="'+selectedDelId+'"]').show();
 		$('.delivery__zoneSelect option').attr('selected',false)
 		$('.delivery__zoneSelect[del="'+selectedDelId+'"] option:first-of-type').attr('selected',true);
 		$('.delivery__option .delivery__radio[value="'+selectedDelId+'"]').click();
-		let WithoutZone = $('div[rel='+ selectedDelId +'] .delivery__radio:checked').attr('pricewithoutzones');
-		let WithZone = $('div[rel='+ selectedDelId +'] .zone__radio:checked').attr('price');
+		var WithoutZone = $('div[rel='+ selectedDelId +'] .delivery__radio:checked').attr('pricewithoutzones');
+		var WithZone = $('div[rel='+ selectedDelId +'] .zone__radio:checked').attr('price');
 		if(WithZone >= 0){
 			startprice = WithZone;
 		}else{
@@ -225,7 +225,7 @@ function orderScriptsSelect() {
 		$('.cartSumDelivery .num').text(startprice);
 		$('.order__payment').hide();
 		$('.order__payment[rel="'+ selectedDelId +'"]').show();
-		let startInputId = $('.delivery__radio:checked').attr('value');
+		var startInputId = $('.delivery__radio:checked').attr('value');
 		$('.hiddenRadio .order__payment input').attr('checked',false);
 		$('.hiddenRadio .order__payment[rel="'+startInputId+'"] input').each(function(){
 			$(this).click();
@@ -233,7 +233,7 @@ function orderScriptsSelect() {
 		});
 		$('.order__paymentSelect option:first-child').prop('selected', true);
 		// Вывод описания доставки
-		let DeliveryDescription = $('.delivery__radio:checked').parent().find('.delivery__desc').html();
+		var DeliveryDescription = $('.delivery__radio:checked').parent().find('.delivery__desc').html();
 		$('.delivery__description').html(DeliveryDescription);
 		if (DeliveryDescription == undefined ) {
 			$('.delivery__description').css("display", "none");
@@ -241,7 +241,7 @@ function orderScriptsSelect() {
 			$('.delivery__description').css("display", "block");
 		}
 		// Вывод описания оплаты
-		let PaymentDescription = $('.hiddenRadio .paymentRadio:checked').parent().find('.payment__desc').html();
+		var PaymentDescription = $('.hiddenRadio .paymentRadio:checked').parent().find('.payment__desc').html();
 		$('.payment__description').html(PaymentDescription);
 		if (PaymentDescription == undefined ) {
 			$('.payment__description').css("display", "none");
@@ -252,27 +252,27 @@ function orderScriptsSelect() {
 
 	// Выбор зоны доставки
 	$('.delivery__zoneSelect select').each(function(){
-		let optValue = $(this).find('option:selected').attr('value');
+		var optValue = $(this).find('option:selected').attr('value');
 		$('.delivery__zones input[value="'+optValue+'"]').click();
-		let WithZone = $('.zone__radio:checked').attr('price');
+		var WithZone = $('.zone__radio:checked').attr('price');
 		$('.changeprice').text(WithZone);
 		$('.cartSumDelivery .num').text(startprice);
 	});
 
 	// Выбор зоны доставки
 	$('.delivery__zoneSelect select').change(function(){
-		let optValue = $(this).find('option:selected').attr('value');
+		var optValue = $(this).find('option:selected').attr('value');
 		$('.delivery__zones input[value="'+optValue+'"]').click();
-		let WithZone = $('.zone__radio:checked').attr('price');
+		var WithZone = $('.zone__radio:checked').attr('price');
 		$('.changeprice').text(WithZone);
 		$('.cartSumDelivery .num').text(startprice);
 	});
 
 	// Выбор оплаты
 	$('.paymentSelect').change(function(){
-		let selectedDelId = $(this).find('option:selected').attr('value');
+		var selectedDelId = $(this).find('option:selected').attr('value');
 		$('.hiddenRadio .paymentRadio[value="'+selectedDelId+'"]').click();
-		let PaymentDescription = $('.hiddenRadio .paymentRadio:checked').parent().find('.payment__desc').html();
+		var PaymentDescription = $('.hiddenRadio .paymentRadio:checked').parent().find('.payment__desc').html();
 		$('.payment__description').html(PaymentDescription);
 		if (PaymentDescription == undefined ) {
 			$('.payment__description').css("display", "none");
@@ -315,20 +315,20 @@ function coupons() {
 			url: url,
 			data: formData,
 			success: function(data) {
-				let oldQuickPrice = $('.cartSumTotal:eq(0) .num').text().toString().replace(/\s/g, '')
-				let discountBlock = $(data).closest('#myform').find('.discount');
-				let discountName = discountBlock.find('.name').text();
-				let discountPercent = discountBlock.find('.percent').text();
-				let totalBlock = $(data).closest('#myform').find('.total');
+				var oldQuickPrice = $('.cartSumTotal:eq(0) .num').text().toString().replace(/\s/g, '')
+				var discountBlock = $(data).closest('#myform').find('.discount');
+				var discountName = discountBlock.find('.name').text();
+				var discountPercent = discountBlock.find('.percent').text();
+				var totalBlock = $(data).closest('#myform').find('.total');
 				// Записываем название и размер скидки по купону
 				$('.total__coupons .total__label span').html(discountName);
 				$('.total__coupons .cartSumCoupons').html(discountPercent);
 				$('.total__discount').hide();
 				$('.total__coupons').show();
 				// Получаем новую итоговую стоимость заказа
-				let totalSum = totalBlock.find('.total-sum').data('total-sum');
-				let deliveryPrice = parseInt($('.cartSumDelivery .num').text());
-				let newTotalSum = totalSum + deliveryPrice;
+				var totalSum = totalBlock.find('.total-sum').data('total-sum');
+				var deliveryPrice = parseInt($('.cartSumDelivery .num').text());
+				var newTotalSum = totalSum + deliveryPrice;
 				if (totalSum > oldQuickPrice) {
 					couponInput.parent().addClass('error');
 					couponInput.parent().removeClass('active');
@@ -359,7 +359,7 @@ function coupons() {
 		setTimeout(function(){
 			$('.total__coupons').hide();
 			$('.total__discount').show();
-			let cartSum = $('.cartSumDiscount .num').data('value');
+			var cartSum = $('.cartSumDiscount .num').data('value');
 			$('.cartSumTotal .num').text(cartSum);
 			$('.cartSumTotal').attr('data-value', cartSum);
 			$('.cartSumCoupons').attr('data-value', cartSum);

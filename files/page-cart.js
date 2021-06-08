@@ -1,12 +1,12 @@
 // Корзина
 function cartQuantity(){
 	$('.cartqty').change($.debounce(300, function(){
-		let quantity = $(this);
-		let qVal = $(this).val();
+		var quantity = $(this);
+		var qVal = $(this).val();
 		if(qVal >= '1'){
-			let id = $(this).closest('.cart__item').data('id');
-			let qty = $(this).val();
-			let data = $('.cartForm').serializeArray();
+			var id = $(this).closest('.cart__item').data('id');
+			var qty = $(this).val();
+			var data = $('.cartForm').serializeArray();
 			data.push({name: 'only_body', value: 1});
 			$.ajax({
 				data: data,
@@ -40,7 +40,7 @@ function cartQuantity(){
 
 // Удаление товара из корзины
 function cartDelete(s){
-	let yep = confirm('Вы точно хотите удалить товар из корзины?');
+	var yep = confirm('Вы точно хотите удалить товар из корзины?');
 	if(yep == true){
 		s.closest('.cart__item').fadeOut();
 		url = s.data('href');
@@ -63,15 +63,15 @@ function cartDelete(s){
 
 // Функция быстрого оформления заказа в корзине
 function startOrder(){
-	let globalOrder = $('#globalOrder');
-	let cartTable = $('.cartTable');
-	let closeOrder = $('#closeOrder');
-	let startOrder = $('#startOrder');
+	var globalOrder = $('#globalOrder');
+	var cartTable = $('.cartTable');
+	var closeOrder = $('#closeOrder');
+	var startOrder = $('#startOrder');
 	//объект блока куда будет выводиться форма быстрого заказа
-	let OrderAjaxBlock = $('#OrderAjaxBlock');
-	let urlQuickForm = '/cart/add'; // адрес страницы с формой
+	var OrderAjaxBlock = $('#OrderAjaxBlock');
+	var urlQuickForm = '/cart/add'; // адрес страницы с формой
 	// данные которые отарвятся на сервер чтобы получить только форму быстрого заказа без нижней части и верхней части сайта
-	let quickFormData = [
+	var quickFormData = [
 		{name: 'ajax_q', value: 1},
 		{name: 'fast_order', value: 1}
 	];
@@ -107,7 +107,7 @@ function startOrder(){
 			// Валидация формы на странице оформления заказа
 			$(".total__buttons button").on('click', function(){
 				console.log('start')
-				let form = $(".fastOrder__form");
+				var form = $(".fastOrder__form");
 				form.validate({
 					errorPlacement: function(error, element) { }
 				});

@@ -73,10 +73,10 @@ function SearchFieldInit(obj) {
   });
 
   //Считываем нажатие клавиш, уже после вывода подсказки
-  let suggestCount;
-  let suggestSelected = 0;
+  var suggestCount;
+  var suggestSelected = 0;
   function keyActivate(n){
-    let $links = $('#search__result .result__item a');
+    var $links = $('#search__result .result__item a');
     $links.eq(suggestSelected-1).removeClass('active');	
     if(n == 1 && suggestSelected < suggestCount){
       suggestSelected++;
@@ -97,8 +97,8 @@ function SearchFieldInit(obj) {
     // Нажатие enter при выделенном пункте из поиска
     case 13: // enter
     if(suggestSelected){
-      let $link = $('#search__result .result__item').eq(suggestSelected - 1).find('a');
-      let href = $link.attr('href');
+      var $link = $('#search__result .result__item').eq(suggestSelected - 1).find('a');
+      var href = $link.attr('href');
       if(href){
         document.location = href
       } else {
@@ -161,7 +161,7 @@ return substr(md5(parseInt(new Date().getTime() / 1000, 10)),rand(0,24),8);
 // Живой поиск
 $(function() {
   // Навигационная таблица над таблицей с данными
-  let searchBlock = $('.search');
+  var searchBlock = $('.search');
   var options = {
     target: 'form.store_ajax_catalog',
     url:  '/admin/store_catalog',
@@ -169,7 +169,7 @@ $(function() {
     last_search_query:  '',
   };
   // По этому хэшу будем обращаться к объекту извне
-  let randHash = GenMd5Hash();
+  var randHash = GenMd5Hash();
   // Если объекта со списком ajax функций не существует, создаём её
   if(typeof(document.SearchInCatalogAjaxQuerySender) == 'undefined') {
   document.SearchInCatalogAjaxQuerySender = {};
@@ -184,7 +184,7 @@ $(function() {
   }
   // Отправляет запрос к серверу с задачей поиска товаров
   document.SearchInCatalogAjaxQuerySender[randHash] = function (old_val) {
-    let last_search_query_array = [];
+    var last_search_query_array = [];
     // sessionStorage is available
     if (typeof sessionStorage !== 'undefined') {
       try {
@@ -361,12 +361,12 @@ function genWordEnd(num, e, m, mm) {
 function GetSum(val,precision) {
   if(typeof (precision) == "undefined" || precision < 0) { precision = 0; }
   // Возводим в степень точности 10 для округления
-  let p = Math.pow(10,precision);
+  var p = Math.pow(10,precision);
   try {return Math.round(parseFloat(eval(val.toString().replace(/\s/gi, "").replace(/,/gi, ".")))*p)/p;} catch (e) {return 0;}
 }
 
 // Форматирует цену
-function number_format(n,e,t,r){var i=n,a=e,o=function(n,e){var t=Math.pow(10,e);return(Math.round(n*t)/t).toString()};i=isFinite(+i)?+i:0,a=isFinite(+a)?Math.abs(a):0;var u,d,f="undefined"==typeof r?",":r,h="undefined"==typeof t?".":t,l=a>0?o(i,a):o(Math.round(i),a),s=o(Math.abs(i),a);s>=1e3?(u=s.split(/\D/),d=u[0].length%3||3,u[0]=l.slice(0,d+(0>i))+u[0].slice(d).replace(/(\d{3})/g,f+"$1"),l=u.join(h)):l=l.replace(".",h);let c=l.indexOf(h);return a>=1&&-1!==c&&l.length-c-1<a?l+=new Array(a-(l.length-c-1)).join(0)+"0":a>=1&&-1===c&&(l+=h+new Array(a).join(0)+"0"),l}
+function number_format(n,e,t,r){var i=n,a=e,o=function(n,e){var t=Math.pow(10,e);return(Math.round(n*t)/t).toString()};i=isFinite(+i)?+i:0,a=isFinite(+a)?Math.abs(a):0;var u,d,f="undefined"==typeof r?",":r,h="undefined"==typeof t?".":t,l=a>0?o(i,a):o(Math.round(i),a),s=o(Math.abs(i),a);s>=1e3?(u=s.split(/\D/),d=u[0].length%3||3,u[0]=l.slice(0,d+(0>i))+u[0].slice(d).replace(/(\d{3})/g,f+"$1"),l=u.join(h)):l=l.replace(".",h);var c=l.indexOf(h);return a>=1&&-1!==c&&l.length-c-1<a?l+=new Array(a-(l.length-c-1)).join(0)+"0":a>=1&&-1===c&&(l+=h+new Array(a).join(0)+"0"),l}
 
 // Функция определения ширины экрана пользователя
 function getClientWidth() {return document.compatMode=='CSS1Compat' && !window.opera?document.documentElement.clientWidth:document.body.clientWidth;}
@@ -383,7 +383,7 @@ function getCookie(name) {
 // Установка переменной в cookie
 function setCookie(name, value, options) {
   options = options || {};
-  let expires = options.expires;
+  var expires = options.expires;
   if (typeof expires == "number" && expires) {
     var d = new Date();
     d.setTime(d.getTime() + expires*1000);
@@ -413,7 +413,7 @@ function deleteCookie(name, options ) {
 
 // Отправляет ошибку на сервер, для того чтобы служба тех поддержки могла разобраться в проблеме как можно быстрее.
 function sendError (desc, page, line) {
-  let img=document.createElement('img');
+  var img=document.createElement('img');
   img.src = 'https://storeland.ru/error/js?desc='+encodeURIComponent(desc)+'&page='+encodeURIComponent(window.location)+'&line=0';
   img.style.position = 'absolute';
   img.style.top = '-9999px';
@@ -423,7 +423,7 @@ function sendError (desc, page, line) {
 
 // Функция определения браузера
 function userAgent(){
-  let ua = detect.parse(navigator.userAgent);
+  var ua = detect.parse(navigator.userAgent);
   if (ua.browser.family === 'Safari') {
     $('body').addClass('Safari');
   }
@@ -470,8 +470,8 @@ function toTop() {
 
 // Предзагрузчик
 function preload() {
-  let preloader = $('.preloader');
-  let spinner = preloader.find('.loading');
+  var preloader = $('.preloader');
+  var spinner = preloader.find('.loading');
   spinner.fadeOut();
   preloader.delay(1000).fadeOut('slow');
   console.log('preload')
@@ -483,7 +483,7 @@ function preload() {
 //////////////////////////////////////////////////////
 // Валидаторы для телефона в "консультация" на главной
 function validName(){
-  let name = $('#callback').find('.form__person');
+  var name = $('#callback').find('.form__person');
   if(name.val() != ''){
     name.removeClass('error');
     name.parent().removeClass('error');
@@ -497,8 +497,8 @@ function validName(){
   } 
 }
 function validPhone(){ 
-  let tel = $('#callback').find('.form__phone');
-  let check = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{5,10}$/.test(tel.val());
+  var tel = $('#callback').find('.form__phone');
+  var check = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{5,10}$/.test(tel.val());
   if(check == true && check != ''){
     tel.removeClass('error');
     tel.parent().removeClass('error');
@@ -514,8 +514,8 @@ function validPhone(){
 }
 // Проверка телефона в обратном звонке.
 function validSubmit(){
-  let name = validName();
-  let phone = validPhone();
+  var name = validName();
+  var phone = validPhone();
   return name && phone;
 }
 // Проверка отправки формы
@@ -525,7 +525,7 @@ $(function(){
 
 // Валидаторы для Имени и телефона в "Обратный звонок" модальное окно
 function validNameFancy(){
-  let name = $('#fancybox__callback').find('.form__person');
+  var name = $('#fancybox__callback').find('.form__person');
   if(name.val() != ''){
     name.removeClass('error');
     name.parent().removeClass('error');
@@ -539,8 +539,8 @@ function validNameFancy(){
   } 
 }
 function validPhoneFancy(){
-  let tel = $('#fancybox__callback').find('.form__phone');
-  let check = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{5,10}$/.test(tel.val());
+  var tel = $('#fancybox__callback').find('.form__phone');
+  var check = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{5,10}$/.test(tel.val());
   if(check == true && check != ''){
     tel.removeClass('error');
     tel.parent().removeClass('error');
@@ -555,8 +555,8 @@ function validPhoneFancy(){
   }
 }
 function validSubmitFancy(){
-  let name = validNameFancy();
-  let phone = validPhoneFancy();
+  var name = validNameFancy();
+  var phone = validPhoneFancy();
   return name && phone;
 }
 // Проверка отправки формы
@@ -566,7 +566,7 @@ $(function(){
 
 // Валидаторы для Имени и телефона в "Обратная связь" модальное окно
 function validNameFeedback(){
-  let name = $('#fancybox__feedback').find('.form__person');
+  var name = $('#fancybox__feedback').find('.form__person');
   if(name.val() != ''){
     name.removeClass('error');
     name.parent().removeClass('error');
@@ -580,8 +580,8 @@ function validNameFeedback(){
   }
 }
 function validPhoneFeedback(){
-  let tel = $('#fancybox__feedback').find('.form__phone');
-  let check = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{5,10}$/.test(tel.val());
+  var tel = $('#fancybox__feedback').find('.form__phone');
+  var check = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{5,10}$/.test(tel.val());
   if(check == true && check != ''){
     tel.removeClass('error');
     tel.parent().removeClass('error');
@@ -596,8 +596,8 @@ function validPhoneFeedback(){
   }
 }
 function validSubmitFeedback(){
-  let name = validNameFeedback();
-  let phone = validPhoneFeedback();
+  var name = validNameFeedback();
+  var phone = validPhoneFeedback();
   return name && phone;
 }
 // Проверка отправки формы
@@ -607,8 +607,8 @@ $(function(){
 
 // Валидаторы для телефона в "Подписаться" в подвале
 function validPhoneSubscribe(){
-  let tel = $('.subscribe').find('.form__phone');
-  let check = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{5,10}$/.test(tel.val());
+  var tel = $('.subscribe').find('.form__phone');
+  var check = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{5,10}$/.test(tel.val());
   if(check == true && check != ''){
     tel.removeClass('error');
     tel.parent().removeClass('error');
@@ -624,8 +624,8 @@ function validPhoneSubscribe(){
 }
 // Подписаться. Валидатор почты в "Подписаться"
 function validEmailSubscribe(){
-  let email = $('.subscribe').find('.form__email');
-  let check = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email.val());
+  var email = $('.subscribe').find('.form__email');
+  var check = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email.val());
   if(check == true && check != ''){
     email.removeClass('error');
     email.parent().removeClass('error');
@@ -640,8 +640,8 @@ function validEmailSubscribe(){
   }
 }
 function validSubmitSubscribe(){
-  let email = validEmailSubscribe();
-  let phone = validPhoneSubscribe();
+  var email = validEmailSubscribe();
+  var phone = validPhoneSubscribe();
   return email || phone;
 }
 // Проверка отправки формы
@@ -658,16 +658,16 @@ function removeFromFavorites(e){
   event.preventDefault();
   if(confirm('Вы точно хотите удалить товар из Избранного?')){
     e.parent().parent().parent().fadeOut().remove();
-    let href = e.attr('href');
-    let oldCount = $('.favorites__count').attr('data-count');
-    let goodsModId = e.attr('data-goods-mod-id');
+    var href = e.attr('href');
+    var oldCount = $('.favorites__count').attr('data-count');
+    var goodsModId = e.attr('data-goods-mod-id');
     $.ajax({
       cache : false,
       url		: href,
       success: function(d){
-        let newCount = oldCount - 1;
+        var newCount = oldCount - 1;
         $('.favorites__count').attr('data-count', newCount).text(newCount);
-        let flag = 0;
+        var flag = 0;
         if(newCount != 0){
           $('.addto__favorites .addto__item').each(function(){
             if(flag == 0){
@@ -681,7 +681,7 @@ function removeFromFavorites(e){
           $('.favorites').removeClass("hasItems");
           $('.favorites__count').attr('data-count', '0').text('0');
         }
-        let obj = $('.add-favorites[data-mod-id="' + goodsModId + '"]');
+        var obj = $('.add-favorites[data-mod-id="' + goodsModId + '"]');
         if(obj.length) {
           obj.attr("data-action-is-add", "1")
               .removeAttr("title")
@@ -698,7 +698,7 @@ function removeFromFavoritesAll(e){
   if(confirm('Вы точно хотите очистить Избранное?')){
     // Предзагрузчик анимации
     $('.addto__favorites').prepend('<div class="preloader small"><div class="loading"></div></div>');
-    let href = e.attr('href');
+    var href = e.attr('href');
     $.ajax({
       cache  : false,
       url		 : href,
@@ -718,16 +718,16 @@ function removeFromCompare(e){
   event.preventDefault();
   if(confirm('Вы точно хотите удалить товар из сравнения?')){
     e.parent().parent().parent().fadeOut().remove();
-    let href = e.attr('href');
-    let oldCount = $('.compare__count').attr('data-count');
-    let goodsModId = e.attr('data-goods-mod-id');
+    var href = e.attr('href');
+    var oldCount = $('.compare__count').attr('data-count');
+    var goodsModId = e.attr('data-goods-mod-id');
     $.ajax({
       cache : false,
       url		: href,
       success: function(d){
-        let newCount = oldCount - 1;
+        var newCount = oldCount - 1;
         $('.compare__count').attr('data-count', newCount).text(newCount);
-        let flag = 0;
+        var flag = 0;
         if(newCount != 0){
           $('.addto__compare .addto__item').each(function(){
             if(flag == 0){
@@ -741,7 +741,7 @@ function removeFromCompare(e){
           $('.compare').removeClass("hasItems");
           $('.compare__count').attr('data-count', '0').text('0');
         }
-        let obj = $('.add-compare[data-mod-id="' + goodsModId + '"]');
+        var obj = $('.add-compare[data-mod-id="' + goodsModId + '"]');
         if(obj.length) {
           obj.attr("data-action-is-add", "1")
               .removeAttr("title")
@@ -758,7 +758,7 @@ function removeFromCompareAll(e){
   if(confirm('Вы точно хотите очистить сравнение?')){
     // Предзагрузчик анимации
     $('.addto__compare').prepend('<div class="preloader small"><div class="loading"></div></div>');
-    let href = e.attr('href');
+    var href = e.attr('href');
     $.ajax({
       cache  : false,
       url		 : href,
@@ -778,18 +778,18 @@ function removeFromCart(e){
   event.preventDefault();
   if(confirm('Вы точно хотите удалить товар из корзины?')){
     e.parent().parent().parent().fadeOut().remove();
-    let href = e.attr('href');
-    let qty = e.data('qty');
-    let oldCount = $('.cart__count').attr('data-count');
+    var href = e.attr('href');
+    var qty = e.data('qty');
+    var oldCount = $('.cart__count').attr('data-count');
     $.ajax({
       cache  : false,
       url		 : href,
       success: function(d){
-        let newCount = oldCount - qty;
+        var newCount = oldCount - qty;
         $('.cart__count').attr('data-count', newCount).text(newCount);
         $('.addto__cart .cartSumNow').html($(d).find('.cartSumNow').html());
         $('header .cartSumNow').html($(d).find('.cartSumNow').html());
-        let flag = 0;
+        var flag = 0;
         if(newCount != 0){
           $('.addto__cart .addto__item').each(function(){
             if(flag == 0){
@@ -815,7 +815,7 @@ function removeFromCartAll(e){
     // Предзагрузчик анимации
     $('.addto__cart').prepend('<div class="preloader small"><div class="loading"></div></div>');
     e.parent().fadeOut().remove();
-    let href = e.attr('href');
+    var href = e.attr('href');
     $.ajax({
       cache  : false,
       url		 : href,
@@ -857,7 +857,7 @@ function openMenu() {
   $('.dropdown__open').on('click', function(event){
     event.preventDefault();
     $('div').removeClass('opened');
-    let value = $(this).data('open');
+    var value = $(this).data('open');
     if ($('.dropdown__content[data-content="'+ value +'"]').hasClass('opened')){
       $(this).removeClass('opened');
       $(this).parent().removeClass('opened');
@@ -890,16 +890,16 @@ function openMenu() {
   // "Еще" в выпадающем каталоге
   function catalogItemsMore(){
     // Определяем главные категории
-    let item = $('#menu .catalog__item[data-level="0"]');
+    var item = $('#menu .catalog__item[data-level="0"]');
     // Удаляем скрытые категории
     item.find('.hide').remove();
     // Проверяем категории
     item.each(function (event){
-      let t = $(this);
-      let item1 = t.find('.catalog__item[data-level="1"]');
-      let href = t.find('a').attr('href');
+      var t = $(this);
+      var item1 = t.find('.catalog__item[data-level="1"]');
+      var href = t.find('a').attr('href');
       // Добавляем порядок главных категорий
-      let count = event + 1;
+      var count = event + 1;
       t.css('order', count)
       // Добавляем кнопку "Еще" если больше 4 подкатегорий
       if(item1.length > 4) {
@@ -918,8 +918,8 @@ function openMenu() {
   //Скрываем меню
   $('[data-content="menu"]').hide();
   button.on('click', function(){
-    let name = $(this).attr('data-open');
-    let content = $(this).parents().find('[data-content="'+ name +'"]');
+    var name = $(this).attr('data-open');
+    var content = $(this).parents().find('[data-content="'+ name +'"]');
     button.removeClass('active');
     $(this).addClass('active');
     $('.dropdown__content [data-content]').hide();
@@ -946,16 +946,16 @@ function openMenu() {
 
   //Открытие меню в подвале
   $('.footer__open').on('click', function (){
-    let p = $(this).parent().parent(); //parent
-    let c = $(this).parent().next();  //content
+    var p = $(this).parent().parent(); //parent
+    var c = $(this).parent().next();  //content
     p.hasClass('opened') ? p.removeClass('opened') && c.slideUp() : p.addClass('opened') && c.slideDown();
   });
 }
 
 // Дополнительные пункты меню в шапке Перенос пунктов меню
 function mainnavHeader(){
-  let mainnav = $('#menu .mainnav');
-  let overMenuExist = mainnav.find('.overflowMenu li').length;
+  var mainnav = $('#menu .mainnav');
+  var overMenuExist = mainnav.find('.overflowMenu li').length;
   if(overMenuExist){
     mainnav.find('.overflowMenu li').removeClass('mainnav__replaced');
     mainnav.find('.mainnav__more').remove();
@@ -963,14 +963,14 @@ function mainnavHeader(){
       mainnav.find('.mainnav__list').append($(this));
     });
   }
-  let menuWidth = mainnav.width();
-  let menuCount = mainnav.find('.mainnav__list li').length + 1;
-  let nextCheck = 0;
-  for(let i=1; i < menuCount;  i++){
-    let currentWidth = parseInt(Math.ceil(mainnav.find('.mainnav__list li:nth-child('+i+')').width())) + 16;
+  var menuWidth = mainnav.width();
+  var menuCount = mainnav.find('.mainnav__list li').length + 1;
+  var nextCheck = 0;
+  for(var i=1; i < menuCount;  i++){
+    var currentWidth = parseInt(Math.ceil(mainnav.find('.mainnav__list li:nth-child('+i+')').width())) + 16;
     nextCheck += currentWidth;
     if(nextCheck > menuWidth){
-      let a = i;
+      var a = i;
       for(a;a < menuCount;a++){
         mainnav.find('.mainnav__list li:nth-child('+ a +')').addClass('mainnav__replaced');
       }
@@ -984,8 +984,8 @@ function mainnavHeader(){
       });
       $(function($){
         $(document).mouseup(function (e){
-          let div =  mainnav.find('.overflowMenu.opened');
-          let btn =  mainnav.find('.mainnav__more');
+          var div =  mainnav.find('.overflowMenu.opened');
+          var btn =  mainnav.find('.mainnav__more');
           if (!div.is(e.target) && div.has(e.target).length === 0 && !btn.is(e.target)) {
             div.removeClass('opened');
             mainnav.removeClass('opened');
@@ -1052,8 +1052,8 @@ function keyPress(oToCheckField, oKeyEvent) {
 function quantity() {
   //Regulator Up копки + в карточке товара при добавлении в корзину
   $('.qty__plus').off('click').click(function(){
-    let quantity = $(this).parent().find('.quantity, .cartqty');
-    let currentVal = parseInt(quantity.val());
+    var quantity = $(this).parent().find('.quantity, .cartqty');
+    var currentVal = parseInt(quantity.val());
     if (!isNaN(currentVal)){
       quantity.val(currentVal + 1);
       quantity.trigger('keyup');
@@ -1063,8 +1063,8 @@ function quantity() {
   });
   //Regulator Down копки - в карточке товара при добавлении в корзину
   $('.qty__minus').off('click').click(function(){
-    let quantity = $(this).parent().find('.quantity, .cartqty');
-    let currentVal = parseInt(quantity.val());
+    var quantity = $(this).parent().find('.quantity, .cartqty');
+    var currentVal = parseInt(quantity.val());
     if (!isNaN(currentVal)){
       quantity.val(currentVal - 1);
       quantity.trigger('keyup');
@@ -1140,8 +1140,8 @@ function loadFile(fileName, ext, cb){
   if(!ext){console.error('Не передано расширение загружаемого файла');return;}
   if(!(typeof cb === 'function')){cb = function(){}};
 
-  let $file = $('#' + fileName + '-' + ext);
-  let attrName = (ext === 'css') ? 'href' : 'src';
+  var $file = $('#' + fileName + '-' + ext);
+  var attrName = (ext === 'css') ? 'href' : 'src';
 
   if(!$file.length){console.error('Файл не найден в разметке и не может быть загружен');return;}
   // Если файл уже загружен
@@ -1154,6 +1154,7 @@ function loadFile(fileName, ext, cb){
   $file.attr(attrName, $file.data(attrName));
 }
 
+// Уведомления
 function notyStart(text, type) {
   new Noty({
     text: text,
@@ -1177,3 +1178,14 @@ function notyStart(text, type) {
     killer: false
   }).show();
 }
+
+// Закрытие в модальных окнах
+function fancyClose(){
+  var btnClose = $('.fancybox-slide--html .fancybox-close-small');
+  var modalClose = $('.modal__close');
+  btnClose.hide();
+  modalClose.on('click', function (){
+    $.fancybox.close();
+  });
+}
+fancyClose()

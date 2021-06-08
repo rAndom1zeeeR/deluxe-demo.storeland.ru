@@ -1,6 +1,6 @@
 // Сравнение товаров
 function compare() {
-	let owlCompare = $('.CompareGoodsTableTbody .owl-carousel');
+	var owlCompare = $('.CompareGoodsTableTbody .owl-carousel');
 	owlCompare.owlCarousel({
 		items: 4,
 		margin: 15,
