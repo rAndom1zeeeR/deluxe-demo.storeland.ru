@@ -914,7 +914,7 @@ function openMenu() {
   catalogItemsMore();
 
   //Кнопка выбора меню/каталога
-  const button = $('.dropdown__label');
+  const button = $('.dropdown__label [data-open]');
   //Скрываем меню
   $('[data-content="menu"]').hide();
   button.on('click', function(){
@@ -941,7 +941,7 @@ function openMenu() {
     $('#addtoMenu').hide();
     $('#addtoCatalog').show();
     button.removeClass('active');
-    $('.dropdown__label[data-open="catalog"]').addClass('active');
+    $('.dropdown__label [data-open="catalog"]').addClass('active');
   });
 
   //Открытие меню в подвале
@@ -1017,9 +1017,9 @@ function ChangePasswordFieldType (LinkObject, InputObject) {
     return false;
   }
   // Изменяем у ссылки текст со старого на новый
-  LObject.html(txtNew);
+  //LObject.html(txtNew);
   // Старый текст ссылки сохраняем в атрибуте rel
-  LObject.attr('rel', txtOld);
+  //LObject.attr('rel', txtOld);
   // Изменяем тип input поля
   if(IObject[0].type == 'text') {
     IObject[0].type = 'password';
@@ -1030,13 +1030,13 @@ function ChangePasswordFieldType (LinkObject, InputObject) {
 
 // Показать пароль
 function showPass() {
-  $('.showPass').on('click', function(event){
+  $('.showPassBlock').on('click', function(event){
     ChangePasswordFieldType(this, $('#sites_client_pass'));
     ChangePasswordFieldType(this, $('.sites_client_pass'));
-    if ($(this).closest('.showPassBlock').hasClass('active')) {
-      $(this).closest('.showPassBlock').removeClass('active');
+    if ($(this).hasClass('active')) {
+      $(this).removeClass('active');
     } else {
-      $(this).closest('.showPassBlock').addClass('active');
+      $(this).addClass('active');
     }
     return false;
   });

@@ -2327,8 +2327,16 @@
 		<!-- Каталог Меню -->
 		<div id="catalogMenu" class="dropdown__content left" data-content="catalogMenu">
 			<div class="dropdown__title">
-				<div class="dropdown__label menu" data-open="menu"><span>Меню сайта</span></div>
-				<div class="dropdown__label catalog active" data-open="catalog"><span>Каталог</span></div>
+				<div class="dropdown__label">
+					<span class="catalog active" data-open="catalog">
+						<span>Каталог</span>
+						<i class="icon-arrow_right"></i>
+					</span>
+					<span class="menu" data-open="menu">
+						<span>Меню</span>
+						<i class="icon-arrow_right"></i>
+					</span>
+				</div>
 				<span class="dropdown__close"><i class="icon-close"></i></span>
 			</div>
 			<div id="addtoCatalog" class="addto__catalog" data-content="catalog">
@@ -2443,6 +2451,7 @@
 					<input type="hidden" name="from" value="{FROM}" />
 					<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
 					{ANTISPAM_CODE}
+					<div class="form__text">Для входа в ЛК заполните поля ниже</div>
 					<div class="form__list">
 						<div class="form__fields">
 							<div class="form__field">
@@ -2466,8 +2475,12 @@
 						</div>
 					</div>
 					<div class="client__buttons addto__buttons">
-						<button type="submit" name="send" class="button button3" title="Войти">Войти</button>
-						<a href="{USER_REGISTER_URL}" class="button">Зарегистрироваться</a>
+						<button type="submit" name="send" class="button" title="Войти">Войти</button>
+						<a href="{USER_RECOVERY_URL}" class="button button5">Забыли пароль?</a>
+					</div>
+					<div class="form__text">Или пройдите простую регистрацию</div>
+					<div class="client__buttons addto__buttons">
+						<a href="{USER_REGISTER_URL}" class="button button4">Зарегистрироваться</a>
 					</div>
 				</form>
 			</div>
@@ -2502,7 +2515,7 @@
 					{% ENDFOR %}
 				</div>
 				<div class="addto__total {CURRENCY_CHAR_CODE}">
-					<span>Итого:</span>
+					<span class="cartCountTotal">{CART_COUNT_TOTAL} товар{CART_COUNT_TOTAL | gen_word_end("","а","ов")} на сумму</span>
 					<span class="price__now cartSumNow">{CART_SUM_NOW | money_format}</span>
 				</div>
 				{% ENDIF %}
@@ -2511,8 +2524,8 @@
 					<a href="{CATALOG_URL}" class="button addto__close" title="Продолжить покупки">Продолжить покупки</a>
 				</div>
 				<div class="addto__buttons">
-					<a href="{CART_TRUNCATE_URL}" onclick="removeFromCartAll($(this))" class="button button2 removeAll" title="Очистить корзину"><span>Очистить корзину</span></a>
-					<a href="{CART_URL}" class="button" title="Перейти в Корзину"><span>Оформить заказ</span></a>
+					<a href="{CART_URL}" class="button" title="Перейти в Корзину"><span>В корзину</span></a>
+					<a href="{CART_TRUNCATE_URL}" onclick="removeFromCartAll($(this))" class="button button4 removeAll" title="Очистить корзину"><span>Очистить</span></a>
 				</div>
 			</div>
 		</div>
@@ -2545,8 +2558,8 @@
 					<a href="{CATALOG_URL}" class="button addto__close" title="Продолжить покупки">Продолжить покупки</a>
 				</div>
 				<div class="addto__buttons">
-					<a href="{COMPARE_RESET_URL}" onclick="removeFromCompareAll($(this))" class="button button2 removeAll" title="Очистить список сравнения"><span>Очистить сравнение</span></a>
-					<a href="{COMPARE_URL}" class="button" title="Перейти к Сравнению">Перейти к Сравнению</a>
+					<a href="{COMPARE_URL}" class="button" title="Перейти к Сравнению">В Сравнение</a>
+					<a href="{COMPARE_RESET_URL}" onclick="removeFromCompareAll($(this))" class="button button4 removeAll" title="Очистить список сравнения"><span>Очистить</span></a>
 				</div>
 			</div>
 		</div>
@@ -2579,8 +2592,8 @@
 					<a href="{CATALOG_URL}" class="button addto__close" title="Продолжить покупки">Продолжить покупки</a>
 				</div>
 				<div class="addto__buttons">
-					<a href="{FAVORITES_RESET_URL}" onclick="removeFromFavoritesAll($(this))" class="button button2 removeAll" title="Очистить список Избранного"><span>Очистить Избранное</span></a>
-					<a href="{FAVORITES_URL}" class="button" title="Перейти к Избранному">Перейти к Избранному</a>
+					<a href="{FAVORITES_URL}" class="button" title="Перейти к Избранному">В Избранное</a>
+					<a href="{FAVORITES_RESET_URL}" onclick="removeFromFavoritesAll($(this))" class="button button4 removeAll" title="Очистить список Избранного"><span>Очистить</span></a>
 				</div>
 			</div>
 		</div>
