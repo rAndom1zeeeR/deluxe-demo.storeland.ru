@@ -10,9 +10,9 @@
 .cart__image {width: 100px;height: 100px;display: flex;align-items: center;justify-content: center;}
 .cart__image img {max-width: 100px;max-height: 100px;}
 .cart__inner {width: calc(100% - 100px);padding: 0 1rem;display: flex;flex-wrap: wrap;align-items: center;justify-content: center;}
-.cart__info {width: 60%;}
-.cart__actions {width: 40%;display: flex;align-items: center;justify-content: space-between;flex-wrap: wrap;}
-.cart__price {flex-grow: 1;font-size: 18px;text-align: right;}
+.cart__info {width: calc(100% - 360px);}
+.cart__actions {width: 360px;display: flex;align-items: center;justify-content: space-between;flex-wrap: wrap;}
+.cart__price {flex-grow: 1;font-size: 18px;text-align: center;}
 .cart__price .price__old {margin-top: 0.5rem;}
 .cart__name {display: block;}
 .cart__art {color: #c1b1a9;margin-top: 1rem;font-size: 0.75rem;word-break: break-word;overflow: hidden;}
@@ -21,7 +21,7 @@
 .cart__buttons {padding: 0;display: flex;align-items: center;justify-content: space-between;flex-wrap: wrap;}
 .cart__buttons a {display: inline-block;margin: 2rem 0 0 0;border: 0;}
 .cart__delete {line-height: 1;transition: all 0.3s ease;}
-.cart__delete a {color: #cabdb6;width: 30px;display: block;text-align: right;}
+.cart__delete a {color: #cabdb6;width: 20px;display: block;text-align: center;}
 .cart__delete a:hover {color: #df5642;}
 .cart__delete a span {display: none;}
 /* Кол-во. Дублирован в page-goods */
@@ -38,7 +38,7 @@
 .total__price {display: inline-block;}
 .total__cart .total__price {font-size: 1.125rem;font-weight: bold;}
 .total__buttons {width: 70%;display: flex;align-items: center;justify-content: flex-end;flex-direction: row;flex-wrap: wrap;}
-.total__buttons .total__pp {width: 100%;padding: 0 1rem;text-align: right;color: #afb9b8;font-size: 12px;}
+.total__buttons .total__pp {width: 100%;padding: 0 1rem;text-align: right;color: #c1b1a9;font-size: 12px;}
 .total__buttons .button {margin: 0 1rem 1rem 1rem;}
 .total__cart .total__label {text-transform: uppercase;}
 @media all and (max-width: 991.98px) {

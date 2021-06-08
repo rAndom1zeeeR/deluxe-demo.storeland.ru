@@ -74,14 +74,17 @@
 	<!-- Страница: Корзина -->
 	{% IF MOD_LNAME = cart || MOD_LNAME = order %}
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-cart.css?design=THEMENAME" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-orderfast.css?design=THEMENAME" />
 	{% ENDIF %}
 	<!-- Страница: Быстрый заказ -->
-	{% IF index_page || MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = goods || MOD_LNAME = user && ACT=favorites || MOD_LNAME = cart || MOD_LNAME = order || MOD_LNAME = compare %}
-	<link id="page-orderfast-css" rel="stylesheet" type="text/css" data-href="{ASSETS_STYLES_PATH}page-orderfast.css?design=THEMENAME" />
+	{% IF index_page || MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = goods || MOD_LNAME = user && ACT=favorites || MOD_LNAME = compare %}
+	<link rel="stylesheet" type="text/css" data-href="{ASSETS_STYLES_PATH}page-orderfast.css?design=THEMENAME" />
 	{% ENDIF %}
-	{% IF MOD_LNAME = goods %}
 	<!-- Страница: Товар -->
-	<link id="page-goods-css" rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-goods.css?design=THEMENAME" />
+	{% IF MOD_LNAME = goods %}
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-goods.css?design=THEMENAME" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-orderfast.css?design=THEMENAME" />
+	<link id="page-orderfast-css" rel="stylesheet" type="text/css" data-href="{ASSETS_STYLES_PATH}page-orderfast.css?design=THEMENAME" />
 	{% ELSE %}
 	<link id="page-goods-css" rel="stylesheet" type="text/css" data-href="{ASSETS_STYLES_PATH}page-goods.css?design=THEMENAME" />
 	{% ENDIF %}
@@ -99,7 +102,7 @@
 		});
 	</script>
 </head>
-<body class="nojs {% IF index_page %}index{% ENDIF %} {% IF MOD_LNAME=user && ACT=favorites %}page-favorites{% ENDIF %} {% IF MOD_LNAME = cart %}page-cart{% ENDIF %} {% IF MOD_LNAME = user %}page-user{% ENDIF %}">
+<body class="nojs {% IF index_page %}index{% ENDIF %} {% IF MOD_LNAME=user && ACT=favorites %}page-favorites{% ENDIF %} {% IF MOD_LNAME = cart %}page-cart{% ENDIF %} {% IF MOD_LNAME = user %}page-user{% ENDIF %} {% IF MOD_LNAME = goods %}page-goods{% ENDIF %}">
 <div class="wrapper">
 	<!-- Сообщение для инвалидов -->
 	<noscript>
@@ -244,18 +247,28 @@
 						<span class="dropdown__open" data-open="catalog">Каталог</span>
 					</div>
 					<div class="dropdown__content" data-content="catalog">
-						<div class="catalog__items">
-							{% FOR catalog_full %}
-								{% IF catalog_full.FIRST %}{% IFNOT catalog_full.LEVEL = 0 %}<div data-level="{catalog_full.LEVEL}" class="sub">{% ENDIF %}{% ENDIF %}
-									<div {% IF catalog_full.HIDE %}style="display: none;"{% ENDIF %} data-level="{catalog_full.LEVEL}" class="catalog__item {% IF catalog_full.ISSET_VISIBLE_SUB %}parent{% ENDIF %} {% IF catalog_full.CURRENT_PARENT %}opened{% ENDIF %} {% IF catalog_full.HIDE %}hide{% ENDIF %}">
-										<a href="{catalog_full.URL}" data-level="{catalog_full.LEVEL}" class="catalog__link {% IF catalog_full.CURRENT %}opened{% ENDIF %}">
-											<span>{catalog_full.NAME}</span>
-											{% IF catalog_full.ISSET_VISIBLE_SUB %}<span class="open"></span>{% ENDIF %}
-										</a>
-									{% IF catalog_full.ISSET_SUB=0 %}</div>{% ENDIF %}
+						<div class="catalog__inner">
+							<div class="catalog__items">
+								{% FOR catalog_full %}
+									{% IF catalog_full.FIRST %}{% IFNOT catalog_full.LEVEL = 0 %}<div data-level="{catalog_full.LEVEL}" class="sub">{% ENDIF %}{% ENDIF %}
+										<div {% IF catalog_full.HIDE %}style="display: none;"{% ENDIF %} data-level="{catalog_full.LEVEL}" class="catalog__item {% IF catalog_full.ISSET_VISIBLE_SUB %}parent{% ENDIF %} {% IF catalog_full.CURRENT_PARENT %}opened{% ENDIF %} {% IF catalog_full.HIDE %}hide{% ENDIF %}">
+											<a href="{catalog_full.URL}" data-level="{catalog_full.LEVEL}" class="catalog__link {% IF catalog_full.CURRENT %}opened{% ENDIF %}">
+												<span>{catalog_full.NAME}</span>
+												{% IF catalog_full.ISSET_VISIBLE_SUB %}<span class="open"></span>{% ENDIF %}
+											</a>
+										{% IF catalog_full.ISSET_SUB=0 %}</div>{% ENDIF %}
 									{% IF catalog_full.LAST %}{%FOR out%}</div>{%IFNOT catalog_full.out.LAST%}</div>{%ENDIF%}{%ENDFOR%}
 								{% ENDIF %}
 							{% ENDFOR %}
+							<div class="catalog__banner lozad" data-background-image="{ASSETS_IMAGES_PATH}catalog_banner.png?design=THEMENAME">
+								<div class="catalog__banner-content">
+									<div class="catalog__banner-inner">
+										<div class="catalog__banner-title">Скидка 30%</div>
+										<div class="catalog__banner-subtitle">Практичное постельное белье из сатина</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<!-- Меню. Адаптив. -->
@@ -1279,7 +1292,7 @@
 	</section>
 	
 	<!-- Товары из категорий на главной -->
-	{% IFNOT catalog_full_empty %}
+	<!--{% IFNOT catalog_full_empty %}
 	<section id="pdt__cat">
 		<div class="container">
 		<script>
@@ -1307,7 +1320,7 @@
 		{% ENDFOR %}
 		</div>
 	</section>
-	{% ENDIF %}
+	{% ENDIF %}-->
 	
 	<!-- Обратный звонок -->
 	<section id="callback">
@@ -1888,10 +1901,10 @@
 							<span>Вы смотрели</span>
 							<div class="owl-nav"></div>
 						</div>
-						<div class="viewed__items owl-carousel">
+						<div class="products__gridSmall viewed__items owl-carousel">
 							{% FOR recently_viewed_goods %}
 								{% IF recently_viewed_goods.first %}<div class="product__items">{% ENDIF %}
-								<div class="viewed__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && recently_viewed_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF recently_viewed_goods.COUNT_MODIFICATION > 1 %}hasMod{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
+								<div class="viewed__item product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && recently_viewed_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF recently_viewed_goods.COUNT_MODIFICATION > 1 %}hasMod{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
 									<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{recently_viewed_goods.MIN_PRICE_NOW_ID} goodsListForm">
 										<input type="hidden" name="hash" value="{HASH}" />
 										<input type="hidden" name="form[goods_from]" value="{recently_viewed_goods.GOODS_FROM}" />
@@ -2408,7 +2421,7 @@
 			
 		</div>
 		<!-- Личный кабинет -->
-		<div id="addtoLogin" class="addto__login dropdown__content" data-content="login">
+		<div id="addtoLogin" class="addto__login login dropdown__content" data-content="login">
 			<div class="dropdown__title">
 				<span class="dropdown__label">Личный кабинет</span>
 				<span class="dropdown__close"><i class="icon-close"></i></span>
@@ -2461,7 +2474,7 @@
 			{% ENDIF %}
 		</div>
 		<!-- Корзина -->
-		<div id="addtoCart" class="addto__cart dropdown__content {% IF CART_COUNT_TOTAL > 0 %}hasItems{% ENDIF %}" data-content="cart">
+		<div id="addtoCart" class="addto__cart cart dropdown__content {% IF CART_COUNT_TOTAL > 0 %}hasItems{% ENDIF %}" data-content="cart">
 			<div class="dropdown__title">
 				<span class="dropdown__label">Корзина</span>
 				<span class="dropdown__close"><i class="icon-close"></i></span>
@@ -2504,7 +2517,7 @@
 			</div>
 		</div>
 		<!-- Сравнение -->
-		<div id="addtoCompare" class="addto__compare dropdown__content {% IF COMPARE_GOODS_COUNT > 0 %}hasItems{% ENDIF %}" data-content="compare">
+		<div id="addtoCompare" class="addto__compare compare dropdown__content {% IF COMPARE_GOODS_COUNT > 0 %}hasItems{% ENDIF %}" data-content="compare">
 			<div class="dropdown__title">
 				<span class="dropdown__label">В Сравнении</span>
 				<span class="dropdown__close"><i class="icon-close"></i></span>
@@ -2538,7 +2551,7 @@
 			</div>
 		</div>
 		<!-- Избранное -->
-		<div id="addtoFavorites" class="addto__favorites dropdown__content {% IF FAVORITES_GOODS_COUNT > 0 %}hasItems{% ENDIF %}" data-content="favorites">
+		<div id="addtoFavorites" class="addto__favorites favorites dropdown__content {% IF FAVORITES_GOODS_COUNT > 0 %}hasItems{% ENDIF %}" data-content="favorites">
 			<div class="dropdown__title">
 				<span class="dropdown__label">В Избранном</span>
 				<span class="dropdown__close"><i class="icon-close"></i></span>
@@ -2713,35 +2726,19 @@
 <script type="text/javascript" src="{JAVASCRIPT_BUG_HUNTING_URL}"></script>
 {% ENDIF %}
 <!-- ВНИМАНИЕ! Если Вы удалите код ниже, то это повлияет на работу вашего сайта. Пожалуйста ничего не удаляйте без консультации у специалистов. -->
-<script type="text/javascript">
+<script async type="text/javascript">
 	// Модальное окно уведомления при отправке сообщения
 	{% IF FORM_NOTICE %}
-	new Noty({
-		text: '<div class="noty__addto"><i class="icon-{% IF FORM_NOTICE_IS_GOOD %}check{% ELSE %}warning{% ENDIF %}"></i><div class="noty__message">{FORM_NOTICE | nl2br}</div></div>',
-		layout: "bottomCenter",
-		type: "{% IF FORM_NOTICE_IS_GOOD %}success{% ELSE %}warning{% ENDIF %}",
-		theme: "",
-		textAlign: "center",
-		animation: {
-			open: 'animated fadeInUp',
-			close: 'animated fadeOutDown',
-			easing: 'swing',
-			speed: 400
-		},
-		timeout: "2000",
-		progressBar: true,
-		closable: true,
-		closeOnSelfClick: true,
-		modal: false,
-		dismissQueue: false,
-		onClose: true,
-		killer: false
-	}).show();
+	var type = '{% IF FORM_NOTICE_IS_GOOD %}success{% ELSE %}warning{% ENDIF %}';
+	var text = '<div class="noty__addto"><i class="icon-{% IF FORM_NOTICE_IS_GOOD %}check{% ELSE %}warning{% ENDIF %}"></i><div class="noty__message">{FORM_NOTICE | nl2br}</div></div>'
+	setTimeout(function () {
+		notyStart(text, type)
+	},2000);
 	{% ENDIF %}
 </script>
 
 <!-- Слайдер. Карусель -->
-{% IF index_page || MOD_LNAME = compare || MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = goods %}
+{% IF index_page || MOD_LNAME = compare || MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = goods || MOD_LNAME = user && ACT=favorites %}
 <link rel="preload" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript>
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME">
@@ -2776,13 +2773,15 @@
 <!-- Скрипты: Товары -->
 {% IF index_page || MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = goods || MOD_LNAME = user && ACT=favorites %}
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}page-products.js?design=THEMENAME"></script>
+<script id="air-datepicker-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}air-datepicker.js?design=THEMENAME"></script>
+<script id="page-orderfast-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}page-orderfast.js?design=THEMENAME"></script>
 {% ENDIF %}
 <!-- Страница: Товар -->
 {% IF MOD_LNAME = goods %}
-<script id="page-goods-js" defer type="text/javascript" src="{ASSETS_JS_PATH}page-goods.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-goods.js?design=THEMENAME"></script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery-star-rating.js?design=THEMENAME"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-orderfast.js?design=THEMENAME"></script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}air-datepicker.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-orderfast.js?design=THEMENAME"></script>
 {% ELSE %}
 <script id="page-goods-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}page-goods.js?design=THEMENAME"></script>
 {% ENDIF %}

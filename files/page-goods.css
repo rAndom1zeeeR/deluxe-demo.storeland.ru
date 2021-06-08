@@ -19,7 +19,7 @@
 .productView__text {margin-bottom: 1rem;}
 /* Модификации */
 .goodsModificationsBlock {display: flex;flex-wrap: wrap;align-items: center;}
-.goodsModificationsProperty {margin: 0 1rem 1rem 1rem;width: calc(50% - 2rem);}
+.goodsModificationsProperty {margin: 0 1rem 1rem 1rem;width: calc(50% - 2rem);flex-grow: 1;}
 .goodsModificationsProperty .selectBox .select {background-color: #ffffff;}
 .goodsModificationsProperty .selectBox:after {background-color: #ffffff;}
 .goodsModificationsProperty label {font-size: 14px;color: #c1b1a9;display: block;margin-bottom: .25rem;}
@@ -54,14 +54,19 @@
 @media (max-width: 991.98px) {
 .productView__imageBox {width: 100%;}
 .productView__image {width: 100%;height: auto;}
-.productView__shop {width: 100%;padding: 1rem 0 0 0;}
+.productView__shop {width: 100%;padding: 2rem 0 0 0;}
+.page-goods #page__title .block__title {display: none;}
+.productView__name {display: block;margin-bottom: 1rem;}
+.productView__articles {position: relative;margin-bottom: 1rem;}
 }
 @media (max-width: 767.98px) {
 .productView__addto .button {flex-basis: 50%;}
 }
 @media (max-width: 479.98px) {
 .goodsModificationsProperty {width: 100%;}
-.productView__addto .button {margin-left: 0;flex-basis: 30%;padding: 0;}
+.productView__qty, .productView__links {margin-right: 0;}
+.productView__addto .button {flex-basis: 30%;padding: 0;}
+.empty .productView__addto .button {margin-left: 1rem;}
 }
 
 /* Товар: Табы */
@@ -75,7 +80,7 @@
 .tab:hover, .tab.active {color: #FFFFFF;background-color: #ffaf88;cursor: pointer;}
 .tabs__content {position: relative;padding: 2rem 0;}
 .tabs__content > div {display: none;}
-.tabs__content > .active {display: flex;flex-wrap: wrap;align-items: flex-start;}
+.tabs__content > .active {display: block;}
 @media (max-width: 639.98px) {
 .tabs__nav {justify-content: flex-start;}
 }
@@ -106,11 +111,12 @@
 .delivery__item {width: 100%;}
 }
 /* Товар: Отзывы */
+.opinion__content {display: flex;flex-wrap: wrap;align-items: flex-start;}
 .opinion__round {margin-bottom: 2rem;width: 100%;display: flex;flex-wrap: wrap;align-items: center;}
 .rating__value {width: 60px;height: 60px;line-height: 60px;font-size: 26px;color: #ffffff;background-color: #ffaf88;box-shadow: -5px 5px 0 0 #ffe0d1;text-align: center;display: inline-block;}
 .rating__roundRatings {margin-left: 2rem;}
 .rating__roundRatings .rating__label {margin-top: .5rem;}
-.rating__roundRatings .ratings:before {font-size: 20px;color: #cabdb6;}
+.rating__roundRatings .ratings:before {font-size: 20px;}
 .rating__roundRatings .ratings .rating:before {font-size: 20px;}
 /* Отзывы: Список */
 .opinion__items {width: calc(100% - 360px);padding-right: 2rem;}

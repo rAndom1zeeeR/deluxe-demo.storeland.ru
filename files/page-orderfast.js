@@ -21,19 +21,21 @@ function quickOrder(formSelector) {
 		data		: formData,
 		beforeSend: function () {
 			loadFile('page-orderfast', 'css');
+			loadFile('page-orderfast', 'js');
+			loadFile('air-datepicker', 'js');
 		},
 		success: function(data) {
 			$.fancybox.open(data, {
 				keyboard: false,
 				baseClass: "fastOrder",
 				afterShow: function(){
-					let loaded = loadFile('page-orderfast', 'css');
+					var loaded = loadFile('page-orderfast', 'css') && loadFile('page-orderfast', 'js') && loadFile('air-datepicker', 'js');
 					if(loaded) {
-						preload();
 						showPass();
 						orderScripts();
 						orderScriptsSelect();
 						coupons();
+						preload();
 						$('.fastOrder__form').validate({
 							errorPlacement: function(error, element) { }
 						});
@@ -276,6 +278,20 @@ function orderScriptsSelect() {
 			$('.payment__description').css("display", "none");
 		}else{
 			$('.payment__description').css("display", "block");
+		}
+	});
+
+	// Выбор оплаты
+	$('.payment__option input').on('click', function (){
+		var t = $(this).parent()
+		$('.payment__option').removeClass('active')
+		t.addClass('active')
+	});
+	// Проверяем выбранную оплату
+	$('.payment__option input').each(function (){
+		var t = $(this).parent()
+		if($(this).attr('checked')){
+			t.addClass('active')
 		}
 	});
 }

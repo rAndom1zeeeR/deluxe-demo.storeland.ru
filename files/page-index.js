@@ -221,6 +221,7 @@ function pdtSlider() {
 	});
 
 	// Весь каталог на главной
+	/*
 	if(catalog_full){
 		var promises = $.map(catalog_full, function(el){
 			return $.ajax(el.href + '?only_body=1&goods_view_type=3&per_page=10')
@@ -243,7 +244,6 @@ function pdtSlider() {
 		});
 		$.when.apply(this, promises).then()
 	}
-
 	// Товары из категорий на главной
 	setTimeout(function(){
 		$('[class^="pdt__cat-"]').each(function(){
@@ -281,7 +281,7 @@ function pdtSlider() {
 			})
 		});
 	}, 2000);
-
+	*/
 }
 
 // Слайдер для главной страницы

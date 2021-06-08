@@ -29,7 +29,7 @@
 					{% FOR goods_images %}
 					<!--{% IF goods_images.ID = GOODS_IMAGE_ID %}{continue}{% ENDIF %}-->
 					<div class="thumblist__item" data-id="{goods_images.ID}" data-index="{goods_images.index}">
-						<a href="{goods_images.LARGE}" data-fancybox="thumblist-images">
+						<a href="{goods_images.LARGE}" data-fancybox="images">
 							<img class="goods-image-icon lozad" src="{ASSETS_IMAGES_PATH}placeholder.png?design=marketplace" data-src="{goods_images.ICON}" alt="{goods_images.NAME}" itemprop="image" />
 						</a>
 					</div>
@@ -400,132 +400,134 @@
 			<!-- Отзывы -->
 			{% IFNOT SETTINGS_OPINION_DISABLE %}
 			<div class="productView__opinion" data-tab="4">
-				<div class="opinion__round">
-					<div class="rating__roundValue">
-						<div class="rating__value">{GOODS_OPINION_RATING_VALUE_ROUND | divide("2")}</div>
+				<div class="opinion__content">
+					{% IFNOT opinion_list_empty %}
+					<div class="opinion__round">
+						<div class="rating__roundValue">
+							<div class="rating__value">{GOODS_OPINION_RATING_VALUE_ROUND | divide("2")}</div>
+						</div>
+						<div class="rating__roundRatings">
+							<div class="ratings">
+								<div class="rating" style="width:{GOODS_OPINION_RATING_VALUE_ROUND}0%"></div>
+							</div>
+							<div class="rating__label">на основании {GOODS_OPINION_RATING_CNT_ALL} отзыв{GOODS_OPINION_RATING_CNT_ALL | gen_word_end("а","ов","ов")}</div>
+						</div>
 					</div>
-					<div class="rating__roundRatings">
-						<div class="ratings">
-							<div class="rating" style="width:{GOODS_OPINION_RATING_VALUE_ROUND}0%"></div>
+					<!-- Список отзывов о товарах -->
+					<div class="opinion__items" itemprop="review" itemscope itemtype="https://schema.org/Review">
+						{% FOR opinion_list %}
+						<div class="opinion__item {% IF opinion_list.GENERALLY_IS_GOOD %}good{% ELSE %}bad{% ENDIF %}" data-rating='{opinion_list.RATING | divide("2")}'>
+							{% IF opinion_list.NAME %}
+							<div class="opinion__name" itemprop="author">{opinion_list.NAME}</div>
+							{% ENDIF %}
+							{% IF opinion_list.TITLE %}
+							<div class="opinion__title" itemprop="name" style="display: none">{opinion_list.TITLE}</div>
+							{% ENDIF %}
+							{% IF opinion_list.DATE %}
+							<meta itemprop="datePublished" content="{opinion_list.DATE | date('d.m.Y')}">
+							<div class="opinion__date">{opinion_list.DATE | date('d.m.Y')}</div>
+							{% ENDIF %}
+							{% IF opinion_list.RATING %}
+							<div class="opinion__ratings">
+								<div class="ratings" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+									<meta itemprop="worstRating" content="1">
+									<meta itemprop="bestRating" content="10">
+									<meta itemprop="ratingValue" content="{opinion_list.RATING}">
+									<meta itemprop="reviewCount" content="{GOODS_OPINION_RATING_CNT_ALL}">
+									<div class="rating" style="width:{opinion_list.RATING}0%" alt="{opinion_list.RATING}" title="Рейтинг товара"></div>
+								</div>
+							</div>
+							{% ENDIF %}
+							<div class="opinion__text">
+							{% IF opinion_list.ACCOMPLISHMENTS %}
+							<div class="accomplishments" itemprop="description">
+								<span>{opinion_list.ACCOMPLISHMENTS | nl2br}</span></div>
+							{% ENDIF %}
+							{% IF opinion_list.LIMITATIONS %}
+							<div class="limitations" itemprop="description">
+								<span>{opinion_list.LIMITATIONS | nl2br}</span></div>
+							{% ENDIF %}
+							{% IF opinion_list.COMMENT %}
+							<div class="comment" itemprop="reviewBody"><span>{opinion_list.COMMENT | nl2br}</span></div>
+							{% ENDIF %}
+							</div>
+							{% IF opinion_list.ANSWER %}
+							<div class="opinion__answer"><span>{opinion_list.ANSWER | nl2br}</span></div>
+							{% ENDIF %}
+							{% IF opinion_list.DELETE_URL %}<a class="opinion__delete button small" href="{opinion_list.DELETE_URL}?return_to={CURRENT_URL | urlencode}%3Fgenerally_is_good%3D{GOODS_OPINION_GENERALLY_IS_GOOD | urlencode}%26page={OPINION_PAGES_LIST_CURRENT}" onclick="alert('Вы действительно хотите удалить отзыв?')">Удалить</a>{% ENDIF %}
 						</div>
-						<div class="rating__label">на основании {GOODS_OPINION_RATING_CNT_ALL} отзыв{GOODS_OPINION_RATING_CNT_ALL | gen_word_end("а","ов","ов")}</div>
+						{% ENDFOR %}
 					</div>
-				</div>
-				<!-- Список отзывов о товарах -->
-				{% IFNOT opinion_list_empty %}
-				<div class="opinion__items" itemprop="review" itemscope itemtype="https://schema.org/Review">
-					{% FOR opinion_list %}
-					<div class="opinion__item {% IF opinion_list.GENERALLY_IS_GOOD %}good{% ELSE %}bad{% ENDIF %}" data-rating='{opinion_list.RATING | divide("2")}'>
-						{% IF opinion_list.NAME %}
-						<div class="opinion__name" itemprop="author">{opinion_list.NAME}</div>
-						{% ENDIF %}
-						{% IF opinion_list.TITLE %}
-						<div class="opinion__title" itemprop="name" style="display: none">{opinion_list.TITLE}</div>
-						{% ENDIF %}
-						{% IF opinion_list.DATE %}
-						<meta itemprop="datePublished" content="{opinion_list.DATE | date('d.m.Y')}">
-						<div class="opinion__date">{opinion_list.DATE | date('d.m.Y')}</div>
-						{% ENDIF %}
-						{% IF opinion_list.RATING %}
-						<div class="opinion__ratings">
-							<div class="ratings" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-								<meta itemprop="worstRating" content="1">
-								<meta itemprop="bestRating" content="10">
-								<meta itemprop="ratingValue" content="{opinion_list.RATING}">
-								<meta itemprop="reviewCount" content="{GOODS_OPINION_RATING_CNT_ALL}">
-								<div class="rating" style="width:{opinion_list.RATING}0%" alt="{opinion_list.RATING}" title="Рейтинг товара"></div>
+					{% ENDIF %}
+					<!-- Форма добавления отзыва -->
+					<div class="opinion__addForm">
+						<div class="opinion__label">Мой отзыв о товаре</div>
+						<div class="opinion__labelText">Вы пишете отзыв на товар: {GOODS_NAME}</div>
+						<!-- Форма добавления нового отзыва о товаре -->
+						<form method="post" action="{CURRENT_URL}" class="opinion__form" enctype="multipart/form-data">
+							<input type="hidden" name="hash" value="{HASH}" />
+							<input type="hidden" name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_FROM}]" value="{GOODS_FROM}" />
+							<input type="hidden" name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_ID}]" value="{GOODS_ID}" />
+							<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
+							{ANTISPAM_CODE}
+							<!-- Форма добавления отзыва о товаре -->
+							<div class="opinion__block rating">
+								<div class="goodsOpinionRating">
+									<input name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_OPINION_RATING}]" type="radio" value="2" {% IF FORM_GOODS_OPINION_RATING=2 %}checked="checked" {% ENDIF %} title="Ужасно" />
+									<input name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_OPINION_RATING}]" type="radio" value="4" {% IF FORM_GOODS_OPINION_RATING=4 %}checked="checked" {% ENDIF %} title="Плохо" />
+									<input name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_OPINION_RATING}]" type="radio" value="6" {% IF FORM_GOODS_OPINION_RATING=6 %}checked="checked" {% ENDIF %} title="Средне" />
+									<input name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_OPINION_RATING}]" type="radio" value="8" {% IF FORM_GOODS_OPINION_RATING=8 %}checked="checked" {% ENDIF %} title="Хорошо" />
+									<input name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_OPINION_RATING}]" type="radio" value="10" {% IF FORM_GOODS_OPINION_RATING=10 %}checked="checked" {% ENDIF %} title="Превосходно" />
+								</div>
 							</div>
-						</div>
-						{% ENDIF %}
-						<div class="opinion__text">
-						{% IF opinion_list.ACCOMPLISHMENTS %}
-						<div class="accomplishments" itemprop="description">
-							<span>{opinion_list.ACCOMPLISHMENTS | nl2br}</span></div>
-						{% ENDIF %}
-						{% IF opinion_list.LIMITATIONS %}
-						<div class="limitations" itemprop="description">
-							<span>{opinion_list.LIMITATIONS | nl2br}</span></div>
-						{% ENDIF %}
-						{% IF opinion_list.COMMENT %}
-						<div class="comment" itemprop="reviewBody"><span>{opinion_list.COMMENT | nl2br}</span></div>
-						{% ENDIF %}
-						</div>
-						{% IF opinion_list.ANSWER %}
-						<div class="opinion__answer"><span>{opinion_list.ANSWER | nl2br}</span></div>
-						{% ENDIF %}
-						{% IF opinion_list.DELETE_URL %}<a class="opinion__delete button small" href="{opinion_list.DELETE_URL}?return_to={CURRENT_URL | urlencode}%3Fgenerally_is_good%3D{GOODS_OPINION_GENERALLY_IS_GOOD | urlencode}%26page={OPINION_PAGES_LIST_CURRENT}" onclick="alert('Вы действительно хотите удалить отзыв?')">Удалить</a>{% ENDIF %}
+							<div class="opinion__block form__field">
+								<label for="goods_opinion_name">Представьтесь, пожалуйста:</label>
+								<input id="goods_opinion_name" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_OPINION_NAME}]" value="{% IF CLIENT_IS_LOGIN %}{CLIENT_NAME}{% ELSE %}{FORM_GOODS_OPINION_NAME}{% ENDIF %}" maxlength="50" class="form__input" placeholder="Ваше имя:" required />
+								<i class="icon-user"></i>
+							</div>
+							<div class="opinion__block" style="display: none;">
+								<label for="goods_opinion_title">Заголовок:</label>
+								<input type="text" id="goods_opinion_title" name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_OPINION_TITLE}]" value="{FORM_GOODS_OPINION_TITLE}" maxlength="255" class="form__input" />
+							</div>
+							<div class="opinion__block" style="display: none;">
+								<label for="goods_opinion_accomplishments">Достоинства:</label>
+								<textarea id="goods_opinion_accomplishments" name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_OPINION_ACCOMPLISHMENTS}]" cols="100" rows="3" class="textarea">{FORM_GOODS_OPINION_ACCOMPLISHMENTS}</textarea>
+							</div>
+							<div class="opinion__block" style="display: none;">
+								<label for="goods_opinion_limitations">Недостатки:</label>
+								<textarea id="goods_opinion_limitations" name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_OPINION_LIMITATIONS}]" cols="100" rows="3" class="textarea">{FORM_GOODS_OPINION_LIMITATIONS}</textarea>
+							</div>
+							<div class="opinion__block form__field">
+								<label for="goods_opinion_comment">Комментарий:</label>
+								<textarea id="goods_opinion_comment" name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_OPINION_COMMENT}]" cols="100" rows="7" class="textarea" placeholder="Сообщение" required>{FORM_GOODS_OPINION_COMMENT}</textarea>
+								<i class="icon-message"></i>
+							</div>
+							<div class="opinion__block" style="display: none;">
+								<label for="opinion_generally_is_good1">Порекомендовали бы товар друзьям?</label>
+								<div class="generally">
+									<label for="opinion_generally_is_good1"><i class="material-icons">mood</i><span>Да</span></label>
+									<input id="opinion_generally_is_good1" name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_OPINION_GENERALLY_IS_GOOD}]" type="radio" value="1" {% IF FORM_GOODS_OPINION_GENERALLY_IS_GOOD=1 %}checked="checked" {% ENDIF %} />
+									<label for="opinion_generally_is_good0"><i class="material-icons">mood_bad</i><span>Нет</span></label>
+									<input id="opinion_generally_is_good0" name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_OPINION_GENERALLY_IS_GOOD}]" type="radio" value="0" {% IF FORM_GOODS_OPINION_GENERALLY_IS_GOOD=0 %}checked="checked" {% ENDIF %} />
+								</div>
+							</div>
+							{% IF USE_CAPTCHA %}
+							<div class="opinion__block">
+								<label for="opinion_captcha_string" title="Введите код с картинки">Введите код:</label>
+								<div class="opinion__captcha">
+									<input type="text" id="opinion_captcha_string" name="form[{ANTISPAM_FORM_FIELD_NAME_CAPTCHA_STRING}]" autocomplete="off" class="captcha form__input" value="{FORM_}" />
+									<img src="{CAPTCHA_URL}" class="captcha__image" alt="Код" title="Проверочный код, который нужно ввести в соседнее поле" />
+									<i class="icon-refresh captcha__refresh"></i>
+								</div>
+							</div>
+							{% ENDIF %}
+							<!-- Кнопка отправки формы -->
+							<div class="opinion__block">
+								<button class="button" type="button" title="Добавить отзыв о &laquo;{GOODS_NAME}&raquo;">Оставить отзыв</button>
+							</div>
+						</form>
+						<!-- Если по товару есть хотя бы один отзыв -->
 					</div>
-					{% ENDFOR %}
-				</div>
-				{% ENDIF %}
-				<!-- Форма добавления отзыва -->
-				<div class="opinion__addForm">
-					<div class="opinion__label">Мой отзыв о товаре</div>
-					<div class="opinion__labelText">Вы пишете отзыв на товар: {GOODS_NAME}</div>
-					<!-- Форма добавления нового отзыва о товаре -->
-					<form method="post" action="{CURRENT_URL}" class="opinion__form" enctype="multipart/form-data">
-						<input type="hidden" name="hash" value="{HASH}" />
-						<input type="hidden" name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_FROM}]" value="{GOODS_FROM}" />
-						<input type="hidden" name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_ID}]" value="{GOODS_ID}" />
-						<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
-						{ANTISPAM_CODE}
-						<!-- Форма добавления отзыва о товаре -->
-						<div class="opinion__block rating">
-							<div class="goodsOpinionRating">
-								<input name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_OPINION_RATING}]" type="radio" value="2" {% IF FORM_GOODS_OPINION_RATING=2 %}checked="checked" {% ENDIF %} title="Ужасно" />
-								<input name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_OPINION_RATING}]" type="radio" value="4" {% IF FORM_GOODS_OPINION_RATING=4 %}checked="checked" {% ENDIF %} title="Плохо" />
-								<input name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_OPINION_RATING}]" type="radio" value="6" {% IF FORM_GOODS_OPINION_RATING=6 %}checked="checked" {% ENDIF %} title="Средне" />
-								<input name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_OPINION_RATING}]" type="radio" value="8" {% IF FORM_GOODS_OPINION_RATING=8 %}checked="checked" {% ENDIF %} title="Хорошо" />
-								<input name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_OPINION_RATING}]" type="radio" value="10" {% IF FORM_GOODS_OPINION_RATING=10 %}checked="checked" {% ENDIF %} title="Превосходно" />
-							</div>
-						</div>
-						<div class="opinion__block form__field">
-							<label for="goods_opinion_name">Представьтесь, пожалуйста:</label>
-							<input id="goods_opinion_name" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_OPINION_NAME}]" value="{% IF CLIENT_IS_LOGIN %}{CLIENT_NAME}{% ELSE %}{FORM_GOODS_OPINION_NAME}{% ENDIF %}" maxlength="50" class="form__input" placeholder="Ваше имя:" required />
-							<i class="icon-user"></i>
-						</div>
-						<div class="opinion__block" style="display: none;">
-							<label for="goods_opinion_title">Заголовок:</label>
-							<input type="text" id="goods_opinion_title" name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_OPINION_TITLE}]" value="{FORM_GOODS_OPINION_TITLE}" maxlength="255" class="form__input" />
-						</div>
-						<div class="opinion__block" style="display: none;">
-							<label for="goods_opinion_accomplishments">Достоинства:</label>
-							<textarea id="goods_opinion_accomplishments" name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_OPINION_ACCOMPLISHMENTS}]" cols="100" rows="3" class="textarea">{FORM_GOODS_OPINION_ACCOMPLISHMENTS}</textarea>
-						</div>
-						<div class="opinion__block" style="display: none;">
-							<label for="goods_opinion_limitations">Недостатки:</label>
-							<textarea id="goods_opinion_limitations" name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_OPINION_LIMITATIONS}]" cols="100" rows="3" class="textarea">{FORM_GOODS_OPINION_LIMITATIONS}</textarea>
-						</div>
-						<div class="opinion__block form__field">
-							<label for="goods_opinion_comment">Комментарий:</label>
-							<textarea id="goods_opinion_comment" name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_OPINION_COMMENT}]" cols="100" rows="7" class="textarea" placeholder="Сообщение" required>{FORM_GOODS_OPINION_COMMENT}</textarea>
-							<i class="icon-message"></i>
-						</div>
-						<div class="opinion__block" style="display: none;">
-							<label for="opinion_generally_is_good1">Порекомендовали бы товар друзьям?</label>
-							<div class="generally">
-								<label for="opinion_generally_is_good1"><i class="material-icons">mood</i><span>Да</span></label>
-								<input id="opinion_generally_is_good1" name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_OPINION_GENERALLY_IS_GOOD}]" type="radio" value="1" {% IF FORM_GOODS_OPINION_GENERALLY_IS_GOOD=1 %}checked="checked" {% ENDIF %} />
-								<label for="opinion_generally_is_good0"><i class="material-icons">mood_bad</i><span>Нет</span></label>
-								<input id="opinion_generally_is_good0" name="form[{ANTISPAM_FORM_FIELD_NAME_GOODS_OPINION_GENERALLY_IS_GOOD}]" type="radio" value="0" {% IF FORM_GOODS_OPINION_GENERALLY_IS_GOOD=0 %}checked="checked" {% ENDIF %} />
-							</div>
-						</div>
-						{% IF USE_CAPTCHA %}
-						<div class="opinion__block">
-							<label for="opinion_captcha_string" title="Введите код с картинки">Введите код:</label>
-							<div class="opinion__captcha">
-								<input type="text" id="opinion_captcha_string" name="form[{ANTISPAM_FORM_FIELD_NAME_CAPTCHA_STRING}]" autocomplete="off" class="captcha form__input" value="{FORM_}" />
-								<img src="{CAPTCHA_URL}" class="captcha__image" alt="Код" title="Проверочный код, который нужно ввести в соседнее поле" />
-								<i class="icon-refresh captcha__refresh"></i>
-							</div>
-						</div>
-						{% ENDIF %}
-						<!-- Кнопка отправки формы -->
-						<div class="opinion__block">
-							<button class="button" type="button" title="Добавить отзыв о &laquo;{GOODS_NAME}&raquo;">Оставить отзыв</button>
-						</div>
-					</form>
-					<!-- Если по товару есть хотя бы один отзыв -->
 				</div>
 			</div>
 			{% ENDIF %}

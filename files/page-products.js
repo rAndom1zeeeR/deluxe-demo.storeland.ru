@@ -151,7 +151,7 @@ function addCart() {
 		// Выносим функции из шаблонов
 		if ($(this).attr('rel') === 'quick') {
 			quickOrder(this);
-			$('.cart').addClass("hasItems");
+			$('.cart, .addto__cart').addClass("hasItems");
 			return (false);
 		}
 		$('.cart, .addto__cart').addClass("hasItems");
@@ -250,9 +250,9 @@ function addTo() {
 // Добавление/удаление товара на сравнение/Сохраненное через ajax
 	$('.add-compare').off('click').click(function(){
 		// Объект ссылки, по которой кликнули
-		let
+		var
 				a = $(this)
-		isAdd = a.attr('data-action-is-add'),
+				isAdd = a.attr('data-action-is-add'),
 				addUrl = a.attr('data-action-add-url'),
 				delUrl = a.attr('data-action-delete-url'),
 				addTitle = a.attr('data-action-add-title'),

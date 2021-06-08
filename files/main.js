@@ -474,6 +474,7 @@ function preload() {
   let spinner = preloader.find('.loading');
   spinner.fadeOut();
   preloader.delay(1000).fadeOut('slow');
+  console.log('preload')
 }
 
 
@@ -799,7 +800,7 @@ function removeFromCart(e){
             }
           })
         }else{
-          $('.cart, .addto__cart').removeClass("hasItems");
+          $('.cart').removeClass("hasItems");
           $('.cart__count').attr('data-count', '0').text("0");
           $('.addto__cart .addto__item').remove();
         }
@@ -848,7 +849,6 @@ function closeMenu() {
     $('.dropdown__open').removeClass('opened');
     $('.dropdown__content').removeClass('opened');
     $('#overlay').removeClass('opened');
-    console.log('click')
   });
 }
 // Открытие Контактов, Меню, Сравнения, Избранного
@@ -1131,6 +1131,8 @@ function removeActive(obj){obj.removeClass('active')}
 //if (addOpened(t));
 function addOpened(obj){obj.hasClass('opened') ? obj.removeClass('opened') : obj.addClass('opened')}*/
 
+function addActive(obj){obj.hasClass('active') ? obj.removeClass('active') : obj.addClass('active')}
+
 
 // Загрузчик файлов
 function loadFile(fileName, ext, cb){
@@ -1150,4 +1152,28 @@ function loadFile(fileName, ext, cb){
   }
   $file.on('load', cb)
   $file.attr(attrName, $file.data(attrName));
+}
+
+function notyStart(text, type) {
+  new Noty({
+    text: text,
+    layout: "bottomCenter",
+    type: type,
+    theme: "",
+    textAlign: "center",
+    animation: {
+      open: 'animated fadeInUp',
+      close: 'animated fadeOutDown',
+      easing: 'swing',
+      speed: 400
+    },
+    timeout: "2000",
+    progressBar: true,
+    closable: true,
+    closeOnSelfClick: true,
+    modal: false,
+    dismissQueue: false,
+    onClose: true,
+    killer: false
+  }).show();
 }
