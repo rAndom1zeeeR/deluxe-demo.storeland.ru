@@ -47,7 +47,7 @@ function quickViewMod() {
 			href += (false !== href.indexOf('?') ? '&' : '?') + 'only_body=1';
 			quickViewShowMod(href);
 			$(function(){
-				const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+				var observer = lozad(); // lazy loads elements with default selector as '.lozad'
 				observer.observe();
 			});
 			preload();

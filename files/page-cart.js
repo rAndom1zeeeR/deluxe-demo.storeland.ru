@@ -93,7 +93,6 @@ function startOrder(){
 			orderScriptsSelect();
 			coupons();
 			// Стили для новых селектов
-			/*setTimeout(() => $('.select').styler(), 100)*/
 			$(".form__phone").mask("+7 (999) 999-9999");
 			$("#sites_client_phone").mask("+7 (999) 999-9999");
 			$('#closeOrder').on('click', function() {
@@ -105,7 +104,7 @@ function startOrder(){
 				return false;
 			});
 			// Валидация формы на странице оформления заказа
-			$(".total__buttons button").on('click', function(){
+			$(".total__buttons button, #makeOrder").on('click', function(){
 				console.log('start')
 				var form = $(".fastOrder__form");
 				form.validate({
@@ -119,9 +118,13 @@ function startOrder(){
 				if($('.fastOrder__form').valid()) {
 					$(".total__buttons button").removeClass('disabled');
 					$(".total__buttons button").attr('data-tooltip', 'Оформить заказ');
+					$("#makeOrder").removeClass('disabled');
+					$("#makeOrder").attr('data-tooltip', 'Оформить заказ');
 				} else {
 					$(".total__buttons button").addClass('disabled');
 					$(".total__buttons button").attr('data-tooltip', 'Заполните все поля');
+					$("#makeOrder").addClass('disabled');
+					$("#makeOrder").attr('data-tooltip', 'Заполните все поля');
 				}
 			});
 			// Выключение кнопки оформления заказа если не все поля заполнены
@@ -129,6 +132,8 @@ function startOrder(){
 				if($('.fastOrder__form').valid()) {
 					$(".total__buttons button").removeClass('disabled');
 					$(".total__buttons button").attr('data-tooltip', 'Оформить заказ');
+					$("#makeOrder").removeClass('disabled');
+					$("#makeOrder").attr('data-tooltip', 'Оформить заказ');
 				}else{
 					$(".fastOrder__form input, .fastOrder__form textarea, .fastOrder__form select").removeClass('error');
 				}

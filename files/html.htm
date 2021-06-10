@@ -89,7 +89,7 @@
 	<link id="page-goods-css" rel="stylesheet" type="text/css" data-href="{ASSETS_STYLES_PATH}page-goods.css?design=THEMENAME" />
 	{% ENDIF %}
 	<!-- Скрипты магазина -->
-	<script type="text/javascript" src="{ASSETS_JS_PATH}jquery-3.4.1.min.js?design=THEMENAME"></script>
+	<script type="text/javascript" src="{ASSETS_JS_PATH}jquery-3.6.0.min.js?design=THEMENAME"></script>
 	<!-- Дополнительные скрипты -->
 	<script type="text/javascript">
 		// Если отключен JS
@@ -117,6 +117,7 @@
 				display: none;
 			}
 		</style>
+		<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}fix-nojs.css?design=THEMENAME">
 	</noscript>
 	
 	<!-- Фон для закрытия всплывающих окон -->
@@ -318,12 +319,14 @@
 				<!-- Избр, Срав, ЛК -->
 				<div id="addto">
 					<!-- Войти -->
+					{% IFNOT MOD_LNAME = user || CLIENT_IS_LOGIN %}
 					<div class="addto__block login">
 						<a href="{USER_LOGIN_URL}" class="addto__label dropdown__open login__icon" title="Личный кабинет" data-open="login">
 							<i class="icon-user"></i>
 							<span>Войти</span>
 						</a>
 					</div>
+					{% ENDIF %}
 					<!-- Сравнение -->
 					{% IFNOT MOD_LNAME = compare && SETTINGS_COMPARE_DISABLE=0 %}
 					<div class="addto__block compare {% IF COMPARE_GOODS_COUNT > 0 %}hasItems{% ENDIF %}">
@@ -448,6 +451,7 @@
 										<input type="hidden" name="hash" value="{HASH}" />
 										<input type="hidden" name="form[goods_from]" value="{index_page_new_goods.GOODS_FROM}" />
 										<input type="hidden" name="form[goods_mod_id]" value="{index_page_new_goods.MIN_PRICE_NOW_ID}" />
+										<link itemprop="image" href="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=THEMENAME{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 										<div class="product__image">
 											<a href="{index_page_new_goods.URL_MIN_PRICE_NOW | url_amp}" class="product__img" title="{index_page_new_goods.NAME}" itemprop="url">
 												<noscript>
@@ -1291,37 +1295,6 @@
 		</div>
 	</section>
 	
-	<!-- Товары из категорий на главной -->
-	<!--{% IFNOT catalog_full_empty %}
-	<section id="pdt__cat">
-		<div class="container">
-		<script>
-			var catalog_full = []
-		</script>
-		{% FOR catalog_full %}
-			{% IF catalog_full.LEVEL = 0 && catalog_full.GOODS_COUNT > 0  && catalog_full.HIDE=0 %}
-			<div class="pdt__cat-{catalog_full.ID} products__container" data-id="{catalog_full.ID}">
-				<script>
-					catalog_full.push({
-						'id': 'pdt__cat-{catalog_full.ID}',
-						'href': '{catalog_full.URL}'
-					})
-				</script>
-				<div class="block__nav">
-					<div class="nav__tabs">
-						<a href="{catalog_full.URL}">{catalog_full.NAME}</a>
-					</div>
-					<div class="owl-nav"></div>
-				</div>
-				<div class="preloader"><div class="loading"></div></div>
-				<div class="products__gridSmall owl-carousel"></div>
-			</div>
-			{% ENDIF %}
-		{% ENDFOR %}
-		</div>
-	</section>
-	{% ENDIF %}-->
-	
 	<!-- Обратный звонок -->
 	<section id="callback">
 		<div class="container">
@@ -1877,13 +1850,15 @@
 								{% FOR filter_prop_list %}
 								<div class="filter__list {% FOR values %}{% IF filter_prop_list.values.CHECKED %}checked {% ENDIF %}{% ENDFOR %}">
 									<div class="filter__name"><span>{filter_prop_list.NAME}</span></div>
-									<div class="filter__items collapsible__content">
+									<div class="filter__content">
+									<div class="filter__items">
 										{% FOR values %}
 										<div class="filter__item {% IF filter_prop_list.values.CHECKED %}checked{% ELSEIF filter_prop_list.values.NB_GOODS_FILTERED=0 %}disabled{% ENDIF %}">
 											<input type="checkbox" name="form[filter][prop][{filter_prop_list.ID}][{filter_prop_list.values.ID}]" value="1" id="filterPropVal{filter_prop_list.values.ID}" class="square" {% IF filter_prop_list.values.CHECKED %}checked="checked" {% ELSEIF filter_prop_list.values.NB_GOODS_FILTERED=0 %}disabled="disabled" {% ENDIF %} />
 											<label for="filterPropVal{filter_prop_list.values.ID}"><span>{filter_prop_list.values.VALUE}</span></label>
 										</div>
 										{% ENDFOR %}
+									</div>
 									</div>
 								</div>
 								{% ENDFOR %}
@@ -2339,6 +2314,7 @@
 				</div>
 				<span class="dropdown__close"><i class="icon-close"></i></span>
 			</div>
+			<!-- Каталог -->
 			<div id="addtoCatalog" class="addto__catalog" data-content="catalog">
 				<div class="catalog__items">
 					{% FOR catalog_full %}
@@ -2359,6 +2335,7 @@
 				{%ENDIF%}{%ENDFOR%}{% ENDIF %}
 				{% ENDFOR %}
 			</div>
+			<!-- Меню -->
 			<div id="addtoMenu" class="addto__menu" data-content="menu">
 				<ul class="mainnav__list">
 					{% FOR menu %}
@@ -2372,8 +2349,7 @@
 					{% ENDFOR %}
 				</ul>
 			</div>
-			
-			
+			<!-- Контакты -->
 			<div id="addtoContacts" class="addto__contacts">
 				<div class="contacts">
 					<!-- Телефон 1 -->
@@ -2426,7 +2402,6 @@
 					<a style="display: none;" class="viber" href="https://viber.com/" title="viber.com" target="_blank"><i class="icon-viber" aria-hidden="true"></i><span>viber</span></a>
 				</div>
 			</div>
-			
 		</div>
 		<!-- Личный кабинет -->
 		<div id="addtoLogin" class="addto__login login dropdown__content" data-content="login">
@@ -2444,46 +2419,48 @@
 				<a href="{USER_LOGOUT_URL}" title="Выход" rel="nofollow"><span>Выход</span></a>
 			</div>
 			{% ELSE %}
-			<div class="dropdown__inner">
-				<!-- Форма входа и регистрации -->
-				<form action="{USER_LOGIN_URL}" method="post" class="form__client">
-					<input type="hidden" name="hash" value="{HASH}" />
-					<input type="hidden" name="from" value="{FROM}" />
-					<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
-					{ANTISPAM_CODE}
-					<div class="form__text">Для входа в ЛК заполните поля ниже</div>
-					<div class="form__list">
-						<div class="form__fields">
-							<div class="form__field">
-								<input type="email" name="form[sites_client_mail]" value="{FORM_SITES_CLIENT_MAIL}" maxlength="255" class="form__input sites_client_mail email" placeholder="Email" required />
-								<i class="icon-mail"></i>
+				{% IFNOT MOD_LNAME = user %}
+				<div class="dropdown__inner">
+					<!-- Форма входа и регистрации -->
+					<form action="{USER_LOGIN_URL}" method="post" class="form__client">
+						<input type="hidden" name="hash" value="{HASH}" />
+						<input type="hidden" name="from" value="{FROM}" />
+						<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
+						{ANTISPAM_CODE}
+						<div class="form__text">Для входа в ЛК заполните поля ниже</div>
+						<div class="form__list">
+							<div class="form__fields">
+								<div class="form__field">
+									<input type="email" name="form[sites_client_mail]" value="{FORM_SITES_CLIENT_MAIL}" maxlength="255" class="form__input sites_client_mail email" placeholder="Email" required />
+									<i class="icon-mail"></i>
+								</div>
+							</div>
+							<div class="form__fields">
+								<div class="form__field">
+									<input type="password" name="form[sites_client_pass]" value="{FORM_SITES_CLIENT_PASS}" maxlength="50" minlength="6" class="form__input sites_client_pass" placeholder="Пароль" onkeyup="checkCapsWarning(event)" onfocus="checkCapsWarning(event)" onblur="removeCapsWarning()" required />
+									<i class="icon-padlock"></i>
+								</div>
+								{% IFNOT user_agent_ie %}
+								<div class="showPassBlock"><a href="#" rel="Скрыть пароль" class="showPass">Показать пароль</a></div>
+								{% ENDIF %}
+								<div id="capslock">
+									<div><i class="icon-warning"></i></div>
+									<div><strong>Caps Lock включен.</strong></div>
+									<div>Пароль может быть введен неверно.</div>
+								</div>
 							</div>
 						</div>
-						<div class="form__fields">
-							<div class="form__field">
-								<input type="password" name="form[sites_client_pass]" value="{FORM_SITES_CLIENT_PASS}" maxlength="50" minlength="6" class="form__input sites_client_pass" placeholder="Пароль" onkeyup="checkCapsWarning(event)" onfocus="checkCapsWarning(event)" onblur="removeCapsWarning()" required />
-								<i class="icon-padlock"></i>
-							</div>
-							{% IFNOT user_agent_ie %}
-							<div class="showPassBlock"><a href="#" rel="Скрыть пароль" class="showPass">Показать пароль</a></div>
-							{% ENDIF %}
-							<div id="capslock">
-								<div><i class="icon-warning"></i></div>
-								<div><strong>Caps Lock включен.</strong></div>
-								<div>Пароль может быть введен неверно.</div>
-							</div>
+						<div class="client__buttons addto__buttons">
+							<button type="submit" name="send" class="button" title="Войти">Войти</button>
+							<a href="{USER_RECOVERY_URL}" class="button button5">Забыли пароль?</a>
 						</div>
-					</div>
-					<div class="client__buttons addto__buttons">
-						<button type="submit" name="send" class="button" title="Войти">Войти</button>
-						<a href="{USER_RECOVERY_URL}" class="button button5">Забыли пароль?</a>
-					</div>
-					<div class="form__text">Или пройдите простую регистрацию</div>
-					<div class="client__buttons addto__buttons">
-						<a href="{USER_REGISTER_URL}" class="button button4">Зарегистрироваться</a>
-					</div>
-				</form>
-			</div>
+						<div class="form__text">Или пройдите простую регистрацию</div>
+						<div class="client__buttons addto__buttons">
+							<a href="{USER_REGISTER_URL}" class="button button4">Зарегистрироваться</a>
+						</div>
+					</form>
+				</div>
+				{% ENDIF %}
 			{% ENDIF %}
 		</div>
 		<!-- Корзина -->
@@ -2738,6 +2715,18 @@
 	</noindex>
 </div>
 
+<!-- Фиксы для IE -->
+{% IF user_agent_ie || user_agent_mozilla %}
+<script src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.find,Promise,Object.assign"></script>
+<script>
+	// Picture element HTML5 shiv
+	document.createElement( "picture" );
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/picturefill/3.0.3/picturefill.min.js" async></script>
+<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME">
+<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}fix-ie.css?design=THEMENAME">
+{% ENDIF %}
+
 <!-- В случае их возникновения JS ошибок, отображаем их владельцу магазина для возможности отладки. Покупатели сообщений о JS ошибках не видят -->
 {% IF JAVASCRIPT_BUG_HUNTING_URL %}
 <script type="text/javascript" src="{JAVASCRIPT_BUG_HUNTING_URL}"></script>
@@ -2750,10 +2739,9 @@
 	var text = '<div class="noty__addto"><i class="icon-{% IF FORM_NOTICE_IS_GOOD %}check{% ELSE %}warning{% ENDIF %}"></i><div class="noty__message">{FORM_NOTICE | nl2br}</div></div>'
 	setTimeout(function () {
 		notyStart(text, type)
-	},2000);
+	},1000);
 	{% ENDIF %}
 </script>
-
 <!-- Слайдер. Карусель -->
 {% IF index_page || MOD_LNAME = compare || MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = goods || MOD_LNAME = user && ACT=favorites %}
 <link rel="preload" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -2804,6 +2792,7 @@
 {% ENDIF %}
 <!-- Скрипты магазина-->
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}main.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}search.js?design=THEMENAME"></script>
 <!-- Уведомления о действиях -->
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}noty.min.js?design=THEMENAME"></script>
 <!-- Маска ввода-->

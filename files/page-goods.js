@@ -8,7 +8,9 @@ function RefreshImageAction(img,num,cnt) {
 	if(cnt>13) { return false; }
 	$(img).attr('src', $(img).attr('rel') + 'icon/refresh/' + num + '.gif');
 	num = (num==6)?0:num;
-	setTimeout(() => RefreshImageAction(img, num+1, cnt+1), 50);
+	setTimeout(function () {
+		RefreshImageAction(img, num+1, cnt+1)
+	}, 50);
 }
 
 // Товар. Карточка товара
@@ -392,11 +394,11 @@ function goodsModification() {
 					}
 					var
 							// Блок с изображением выбранной модификации товара
-							goodsModImageBlock = $('.thumblist [data-id="' + parseInt(goods_mod_image_id) + '"'),
+							goodsModImageBlock = $('.productView__imageBox [data-id="' + parseInt(goods_mod_image_id) + '"'),
 							// Блок, в котором находится главное изображение товара
-							MainImageBlock = $('.owl-item.active .productView__image'),
+							MainImageBlock = $('.productView__image'),
 							// Изображение модификации товара, на которое нужно будет изменить главное изображение товара.
-							MediumImageUrl = goodsModImageBlock.find('a').attr('href'),
+							MediumImageUrl = goodsModImageBlock.attr('data-href'),
 							// Главное изображение, в которое будем вставлять новое изображение
 							MainImage = MainImageBlock.find('img')
 					;
@@ -418,7 +420,7 @@ function goodsModification() {
 		});
 	});
 
-	$('.related .checkbox__input').on('change', function(){
+	/*$('.related .checkbox__input').on('change', function(){
 		var $checkbox = $(this);
 		var modId = $checkbox.data('mod-id');
 		var checkboxActive = $checkbox.prop('checked');
@@ -438,7 +440,7 @@ function goodsModification() {
 			// Пересчёт цены
 			changePrice($checkbox, checkboxActive)
 		}
-	});
+	});*/
 
 	function changePrice(currentCheckbox, checkboxActive){
 		var $checkbox = currentCheckbox;

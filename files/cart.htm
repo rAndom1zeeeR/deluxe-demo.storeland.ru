@@ -2,9 +2,20 @@
   {% IF cart_items_empty %}
     <div class="attention">Корзина покупок пуста. Вы можете выбрать нужный товар из <a href="{CATALOG_URL}">каталога</a>.</div>
   {% ELSE %}
+		<!-- Сюда грузится форма оформления быстрого заказа -->
+		<div id="globalOrder" style="display: none">
+			<div class="preloader top"><div class="loading"></div></div>
+			<div id="OrderAjaxBlock" style="display:none"></div>
+		</div>
+		<!-- Форма корзины -->
     <form action="{CART_URL}" method="post" class="cartForm">
 	    <input type="hidden" name="fast_order" value="1" />
 	    <input type="hidden" name="hash" value="{HASH}" />
+	    <div class="cart__head">
+		    <div>Товар</div>
+		    <div>Кол-во</div>
+		    <div>Итого</div>
+	    </div>
       <div class="cart__items">
         {% FOR cart_items %}
         <div class="cart__item" data-id="{cart_items.GOODS_MOD_ID}">
@@ -73,7 +84,8 @@
         <!-- Корзина: Оформление -->
         <div class="total__buttons">
 	        <a href="{CART_TRUNCATE_URL}" class="cart__clear button button4" title="Очистить корзину" onclick="return confirm('Вы действительно хотите удалить все товары из корзины?')"><span>Очистить </span><span>корзину</span></a>
-          <a id="startOrder" class="button" title="Перейти к быстрому оформлению заказа"><span>Оформить </span><span>заказ</span></a>
+	        <a id="makeOrder" class="button disabled" title="Перейти к быстрому оформлению заказа"><span>Оформить </span><span>заказ</span></a>
+	        <a id="startOrder" class="button" title="Перейти к быстрому оформлению заказа"><span>Оформить </span><span>заказ</span></a>
           <a id="closeOrder" class="button button3" title="Отменить заказ"><span>Отменить </span><span>заказ</span></a>
           <div class="total__pp">Нажимая на кнопку &laquo;Заказать звонок&raquo;, Вы соглашаетесь с <a data-fancybox data-src="#fancybox__pp" href="javascript:;">правилами обработки данных</a></div>
           <noscript>
@@ -84,11 +96,6 @@
       </div>
     </form> 
   {% ENDIF %}
-  <div id="globalOrder" style="display: none">
-    <div class="preloader top"><div class="loading"></div></div>
-	  <!-- Сюда грузится форма оформления быстрого заказа -->
-    <div id="OrderAjaxBlock" style="display:none"></div>
-  </div>
 </div>
 
 <style>

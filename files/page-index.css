@@ -184,10 +184,3 @@
 /* Вывод по 2 товара в каруселе */
 .product__items .product__item + .product__item {margin-top: 2rem;}
 #pdt__sales .product__items .product__item + .product__item {margin-top: 3rem;}
-
-/*** Товары из категорий на главной ***/
-[class^="pdt__cat-"] {display: none;position: relative;height: 210px;overflow: hidden;}
-[class^="pdt__cat-"]:nth-child(-n+4) {display: block;}
-[class^="pdt__cat-"] + [class^="pdt__cat-"] {margin-top: 2rem;}
-[class^="pdt__cat-"] .products__gridSmall .product__item {width: 100%;padding: 0;}
-[class^="pdt__cat-"] .nav__tabs {padding: 1.25rem;}

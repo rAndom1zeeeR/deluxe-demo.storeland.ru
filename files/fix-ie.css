@@ -1,0 +1,22 @@
+/******************************************************************************
+  Фиксы для IE 11
+*******************************************************************************/
+.IE .owl-carousel .animated {animation-duration:0;animation-fill-mode:both}
+.IE .slider__item:nth-child(1) {background-image: url("{ASSETS_IMAGES_PATH}slide_1.jpg?design=THEMENAME");}
+.IE .slider__item:nth-child(2) {background-image: url("{ASSETS_IMAGES_PATH}slide_2.jpg?design=THEMENAME");}
+.IE .slider__item:nth-child(3) {background-image: url("{ASSETS_IMAGES_PATH}slide_3.jpg?design=THEMENAME");}
+.IE .banners__item[data-item="1"] {background-image: url("{ASSETS_IMAGES_PATH}banner_1.jpg?design=THEMENAME");}
+.IE .banners__item[data-item="2"] {background-image: url("{ASSETS_IMAGES_PATH}banner_2.jpg?design=THEMENAME");}
+.IE .banners__item[data-item="3"] {background-image: url("{ASSETS_IMAGES_PATH}banner_3.jpg?design=THEMENAME");}
+.IE .search__submit {top: 12px;}
+.IE #callback .callback__image {top: -1.5rem;}
+.IE .slider__button:before {top: -1rem;}
+.IE .selectBox:after {top: 1rem;}
+.IE .selectBox select::-ms-expand {display: none;}
+.IE .coupon__button {top: 0;}
+
+
+/******************************************************************************
+  Фиксы для Firefox
+*******************************************************************************/
+.Firefox .inputText {-moz-appearance: textfield;}

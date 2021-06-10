@@ -1,4 +1,4 @@
-<div class="client">
+<div class="">
 {% IF favorites_goods_empty %}
   <div class="attention">Ваш список избранных товаров пуст. Вы можете выбрать товары из <a href="{CATALOG_URL}" title="Перейти в каталог">Каталога</a>.</div>
 {% ELSE %}
@@ -198,6 +198,10 @@
 {% ENDIF %}
 </div>
 
-<style>
-	#sidebar .favorites {display: none;}
-</style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		setTimeout(function () {
+			$('.add-favorites').off('click');
+		},1000);
+	});
+</script>
