@@ -173,7 +173,7 @@
 #pdt__sales .product__name {height: 40px;}
 #pdt__sales .product__items .product__item + .product__item {margin-top: 3rem;}
 /* Счетчик акции */
-.product__counter {width: 200px;margin: 0 auto;padding: .75rem;color: #ffffff;background-color: #ffaf88;display: flex;align-items: center;justify-content: center;}
+.product__counter {width: 200px;margin: 0 auto;padding: .5rem;color: #ffffff;background-color: #ffaf88;display: flex;align-items: center;justify-content: center;}
 .product__counter label {display: none;}
 .product__counter > div:after {content: ':';display: inline-block;margin: 0 .5rem 0 .25rem;}
 .product__counter > div:last-child:after {display: none;}

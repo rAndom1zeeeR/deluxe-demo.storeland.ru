@@ -403,6 +403,7 @@ a.dropdown__label:hover {color: #ffffff;background-color: #ffaf88;}
 .dropdown__content {width: 288px;}
 .dropdown__content.right .dropdown__close {left: auto;right: 0;}
 .dropdown__content .dropdown__close {left: auto;right: 0;}
+.dropdown__label {padding: .75rem 1rem;}
 }
 
 /*** Элементы в списках. Корзина, Избранное, Сравнение ***/
@@ -456,17 +457,18 @@ a.dropdown__label:hover {color: #ffffff;background-color: #ffaf88;}
 .addto__buttons .button:nth-child(n) {margin: 1rem 0 0 0;width: 100%;}
 }
 
-/*** Адаптивный Каталог и Меню ***/
+/*** Адаптивный Каталог и Меню ffb38e***/
 /*[data-content="catalogMenu"] [data-content] {max-height: calc(100vh - 174px);overflow-y: auto;}*/
 [data-content="catalogMenu"] {max-height: 100vh;overflow-y: auto;}
-#catalogMenu .dropdown__label {font-size: 1rem;padding: 0;}
+#catalogMenu .dropdown__label {font-size: 1rem;padding: 0;background-color: #ffb38e;}
 #catalogMenu .dropdown__label > span {width: 50%;padding: 1rem;text-align: center}
-#catalogMenu .dropdown__label span + i {margin-left: .5rem;}
-#catalogMenu .dropdown__label .active {background-color: #ffb38e;}
+#catalogMenu .dropdown__label span {vertical-align: middle;}
+#catalogMenu .dropdown__label span + i {margin-left: .25rem;vertical-align: middle;}
+#catalogMenu .dropdown__label .active {background-color: #df5642;}
 #catalogMenu .dropdown__label .active i:before {content: '\e915';}
 /* Меню */
 #addtoMenu ul {margin: 0;padding: 0;list-style: none;}
-#addtoMenu li {padding: 1rem;}
+#addtoMenu li {padding: .75rem;}
 #addtoMenu li + li {border-top: 1px solid #f8e9e6;}
 /* Каталог */
 .addto__catalog .catalog__link {padding: .75rem;display: flex;flex-wrap: nowrap;align-items: center;}
