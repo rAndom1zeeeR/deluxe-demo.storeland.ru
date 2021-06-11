@@ -5,9 +5,9 @@
 .nojs #toTop, .nojs .quickview, .nojs .filters-price #goods-filter-price-slider {display: none;}
 .nojs .owl-carousel {display: block;}
 .nojs .script__on {display: none;}
-.nojs #pdt {height: auto;}
-.nojs .pdt__left .product__items {width: 33.333333%;padding: 0 1rem;}
-.nojs .pdt__left [id^="pdt__"] {margin: 0 -1rem;}
+.nojs .pdt {height: auto;}
+.nojs .pdt .product__items {width: 33.333333%;padding: 0 1rem;}
+.nojs .pdt [id^="pdt__"] {margin: 0 -1rem;}
 .nojs .slider__item:nth-child(1) {background-image: url("{ASSETS_IMAGES_PATH}slide_1.jpg?design=THEMENAME");}
 .nojs .slider__item:nth-child(2) {background-image: url("{ASSETS_IMAGES_PATH}slide_2.jpg?design=THEMENAME");}
 .nojs .slider__item:nth-child(3) {background-image: url("{ASSETS_IMAGES_PATH}slide_3.jpg?design=THEMENAME");}

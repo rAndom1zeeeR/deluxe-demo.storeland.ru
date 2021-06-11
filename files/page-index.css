@@ -141,41 +141,37 @@
 
 
 /*** Товары на главной ***/
-#pdt {height: 1032px;overflow: hidden;}
-#pdt [id^="pdt__"] {display: none;position: relative;}
-#pdt [id^="pdt__"].active {display: block;}
-.pdt__left .owl-nav {display: none;}
-.pdt__left .owl-nav.active {display: block;}
+.pdt {height: 1026px;overflow: hidden;}
+.pdt [id^="pdt__"] {display: none;position: relative;}
+.pdt [id^="pdt__"].active {display: block;}
+.pdt .owl-nav {display: none;}
+.pdt .owl-nav.active {display: block;}
 .pdt__left {width: calc(100% - 300px);padding-right: 1rem;}
 .pdt__right {width: 300px;padding-left: 1rem;}
 .pdt__title a {padding: 1rem;font-size: 18px;line-height: 24px;color: #FFFFFF;background-color: #df5642;display: block;text-align: center;}
-#pdt .owl-carousel {display: flex;overflow: hidden;}
-#pdt .product__item {width: 100%;}
-@media (max-width: 1199.98px) {
-.pdt__left {width: 66.666666%;}
-.pdt__right {width: 33.333333%;}
-}
+.pdt .owl-carousel {display: flex;overflow: hidden;}
+.pdt .product__item {width: 100%;}
 @media (max-width: 991.98px) {
-#pdt {height: 1000px;}
 }
 @media (max-width: 767.98px) {
-#pdt {height: 948px;}
+.pdt {height: 966px;}
+.pdt .nav__tabs {width: 100%;}
 .pdt__left {width: 50%;}
 .pdt__right {width: 50%;}
-.pdt__left .nav__tabs {width: 100%;}
-.pdt__left .owl-nav.active {display: none;}
 }
 @media (max-width: 479.98px) {
-#pdt {height: auto;}
+.pdt {height: auto;}
+.pdt .block__nav .owl-nav.active {display: none;}
 .pdt__left {width: 100%;padding: 0;}
 .pdt__right {width: 100%;padding: 0;margin-top: 2rem;}
 .pdt__title a {padding: .75rem;}
 }
 
 /** Распродажа **/
-#pdt #pdt__sales {display: block;background-color: #fff4f2;padding: 2rem 0 1rem;}
+.pdt #pdt__sales {display: block;background-color: #fff4f2;padding: 2rem 0 1rem;}
 #pdt__sales .product__price {border: 0;padding: 0;}
 #pdt__sales .product__name {height: 40px;}
+#pdt__sales .product__items .product__item + .product__item {margin-top: 3rem;}
 /* Счетчик акции */
 .product__counter {width: 200px;margin: 0 auto;padding: .75rem;color: #ffffff;background-color: #ffaf88;display: flex;align-items: center;justify-content: center;}
 .product__counter label {display: none;}
@@ -183,4 +179,3 @@
 .product__counter > div:last-child:after {display: none;}
 /* Вывод по 2 товара в каруселе */
 .product__items .product__item + .product__item {margin-top: 2rem;}
-#pdt__sales .product__items .product__item + .product__item {margin-top: 3rem;}

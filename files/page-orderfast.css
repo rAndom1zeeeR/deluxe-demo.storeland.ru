@@ -11,7 +11,7 @@
 .fastOrderForm .form__list {display: flex;flex-wrap: wrap;}
 .fastOrderForm .form__fields {width: calc(33.333333% - 2rem);margin: 0 1rem 1rem 1rem;flex-grow: 1;}
 .fastOrderForm .form__fields:last-child {margin-bottom: 0;}
-.fastOrderForm .form__field input, .fastOrderForm .form__field select {padding-left: 3.5rem;}
+.fastOrderForm .form__field input, .fastOrderForm .form__field select, .fields__comment textarea {padding-left: 3.5rem;}
 .fastOrderForm .form__fields label {display: none;}
 .fastOrderForm label.error {display: none !important;}
 .fastOrderForm .form__wantRegister {width: 100%;margin-bottom: 0;}
@@ -58,7 +58,6 @@
 .payment__option label {width: calc(100% - 4rem);display: inline-block;vertical-align: middle;margin-bottom: 0;}
 .payment__desc {margin-top: 1rem;}
 .fields__comment label {display: none;}
-.fields__comment textarea {padding-left: 60px;}
 .fields__comment i {height: 100%;}
 /* Самовывоз */
 .fastOrder__form.pickup .address {display: none;}
@@ -73,9 +72,9 @@
 .fastOrderForm .form__fields {width: 100%;}
 }
 /** Купоны **/
-.coupon__button {line-height: 38px;right: 0px;position: absolute;display: flex;align-items: center;justify-content: center;transition: all 0.3s ease;}
-.coupon__button:before {font-family: 'icomoon';}
-/*.coupon__order.active .coupon__button span {display: none;}
+.coupon__button {line-height: 38px;top: 0;right: 0;position: absolute;display: flex;align-items: center;justify-content: center;transition: all 0.3s ease;}
+/*.coupon__button:before {font-family: 'icomoon';}
+.coupon__order.active .coupon__button span {display: none;}
 .coupon__order.active .coupon__button:before {content: '\e91b';}
 .coupon__order.error .coupon__button:before {content: '\e914';}*/
 .coupon__reset {display: none;position: absolute;right: 10rem;line-height: 1;cursor: pointer;}
@@ -83,7 +82,7 @@
 .coupon__reset:after {content: "\e91a";font-family: 'icomoon';}
 .coupon__order input:focus + .coupon__button {}
 .coupon__order.error input {border-color: red;}
-#coupon__code {padding: 0 10rem 0 1.5rem;}
+#coupon__code {padding: 0 10rem 0 3.5rem;}
 @media all and (max-width: 479px) {
 .coupon__button {position: relative;right: auto;margin-top: 1rem;}
 }
