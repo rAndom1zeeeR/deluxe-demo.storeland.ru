@@ -425,10 +425,11 @@
 	</section>
 	
 	<!-- Товары на главной. Распродажа. -->
-	{% IFNOT index_page_goods_empty=0 || index_page_sale_goods_empty=0 %}
+	{% IF index_page_goods_empty=0 || index_page_sale_goods_empty=0 %}
 	<section class="pdt">
 		<div class="container">
 			<div class="inner">
+				{% IFNOT index_page_goods_empty %}
 				<div class="pdt__left {% IF index_page_sale_goods_empty %}full{% ENDIF %}">
 					<div class="block__nav">
 						<div class="nav__tabs">
@@ -437,7 +438,6 @@
 						<div class="owl-nav active" data-content="pdt__sale"></div>
 					</div>
 					<!-- Товары на главной -->
-					{% IFNOT index_page_goods_empty %}
 					<div id="pdt__sale" data-content="pdt__sale" class="active">
 						<div class="products__grid owl-carousel">
 							{% FOR index_page_goods %}
@@ -635,8 +635,8 @@
 							<div class="owl-nav active" data-content="pdt__sale"></div>
 						</div>
 					</div>
-					{% ENDIF %}
 				</div>
+				{% ENDIF %}
 				<!-- Распродажа -->
 				{% IFNOT index_page_sale_goods_empty %}
 				<div class="pdt__right">
@@ -894,7 +894,7 @@
 	</section>
 	
 	<!-- Новинки. Хиты прода. -->
-	{% IFNOT index_page_new_goods_empty || index_page_favorites_goods_empty=0 %}
+	{% IF index_page_new_goods_empty=0 || index_page_favorites_goods_empty=0 %}
 	<section id="pdt" class="pdt">
 		<div class="container">
 			<div class="block__nav">
