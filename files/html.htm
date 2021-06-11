@@ -338,6 +338,7 @@
 					</div>
 					{% ENDIF %}
 					<!-- Корзина. Адаптив -->
+					{% IFNOT MOD_LNAME = cart %}
 					<div class="addto__block cart {% IF CART_COUNT_TOTAL > 0 %}hasItems{% ENDIF %}">
 						<a href="{CART_URL}" class="addto__label dropdown__open cart__icon" title="Корзина" data-open="cart">
 							<i class="icon-cart"></i>
@@ -345,7 +346,9 @@
 							<span class="cart__count" data-count="{CART_COUNT_TOTAL}">{CART_COUNT_TOTAL}</span>
 						</a>
 					</div>
+					{% ENDIF %}
 					<!-- Избранное -->
+					{% IFNOT MOD_LNAME = user && ACT=favorites %}
 					<div class="addto__block favorites {% IF FAVORITES_GOODS_COUNT > 0 %}hasItems{% ENDIF %}">
 						<a href="{FAVORITES_URL}" class="addto__label dropdown__open favorites__icon" title="Избранное" data-open="favorites">
 							<i class="icon-favorites"></i>
@@ -353,6 +356,7 @@
 							<span class="favorites__count" data-count="{FAVORITES_GOODS_COUNT}">{FAVORITES_GOODS_COUNT}</span>
 						</a>
 					</div>
+					{% ENDIF %}
 					<!-- Наверх. Адаптив -->
 					<div class="addto__block toTop">
 						<a href="#" class="addto__label"><i class="icon-arrow_up"></i></a>
@@ -2418,6 +2422,7 @@
 			</div>
 		</div>
 		<!-- Личный кабинет -->
+		{% IFNOT MOD_LNAME = user || CLIENT_IS_LOGIN %}
 		<div id="addtoLogin" class="addto__login login dropdown__content" data-content="login">
 			<div class="dropdown__title">
 				<a href="{USER_SETTINGS_URL}" class="dropdown__label">Личный кабинет</a>
@@ -2477,7 +2482,9 @@
 				{% ENDIF %}
 			{% ENDIF %}
 		</div>
+		{% ENDIF %}
 		<!-- Корзина -->
+		{% IFNOT MOD_LNAME = cart %}
 		<div id="addtoCart" class="addto__cart cart dropdown__content {% IF CART_COUNT_TOTAL > 0 %}hasItems{% ENDIF %}" data-content="cart">
 			<div class="dropdown__title">
 				<a href="{CART_URL}" class="dropdown__label">Корзина</a>
@@ -2520,7 +2527,9 @@
 				</div>
 			</div>
 		</div>
+		{% ENDIF %}
 		<!-- Сравнение -->
+		{% IFNOT MOD_LNAME = compare && SETTINGS_COMPARE_DISABLE=0 %}
 		<div id="addtoCompare" class="addto__compare compare dropdown__content {% IF COMPARE_GOODS_COUNT > 0 %}hasItems{% ENDIF %}" data-content="compare">
 			<div class="dropdown__title">
 				<a href="{COMPARE_URL}" class="dropdown__label">В Сравнении</a>
@@ -2554,7 +2563,9 @@
 				</div>
 			</div>
 		</div>
+		{% ENDIF %}
 		<!-- Избранное -->
+		{% IFNOT MOD_LNAME = user && ACT=favorites %}
 		<div id="addtoFavorites" class="addto__favorites favorites dropdown__content {% IF FAVORITES_GOODS_COUNT > 0 %}hasItems{% ENDIF %}" data-content="favorites">
 			<div class="dropdown__title">
 				<a href="{FAVORITES_URL}" class="dropdown__label">В Избранном</a>
@@ -2588,6 +2599,7 @@
 				</div>
 			</div>
 		</div>
+		{% ENDIF %}
 		<!-- Политика конфиденциальности в модальном окне -->
 		<div id="fancybox__pp" class="modal" style="display:none">
 			<div class="modal__title block__title">
