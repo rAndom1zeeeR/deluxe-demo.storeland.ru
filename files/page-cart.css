@@ -9,13 +9,11 @@
 .cartTable.disable #makeOrder {display: inline-block;}
 .cartForm {position: relative;display: flex;flex-wrap: wrap;align-items: flex-start;}
 
-.cart__head {margin-bottom: 1.5rem;padding: .5rem 0;border: 1px solid #ecdfd4;border-left: 0;border-right: 0;width: 100%;display: flex;flex-wrap: wrap;align-items: center;}
+.cart__head {margin-top: 1.5rem;padding: .5rem 0;border: 1px solid #ecdfd4;border-left: 0;border-right: 0;width: 100%;display: flex;flex-wrap: wrap;align-items: center;}
 .cart__head > div {text-align: center;}
 .cart__head > div:nth-child(1) {width: calc(100% - 360px);}
 .cart__head > div:nth-child(2) {width: 166px;}
 .cart__head > div:nth-child(3) {width: 194px;}
-.fastOrder__login {margin-bottom: 1rem;width: 100%;display: flex;align-items: center;justify-content: space-between;}
-.fastOrder__login span {font-size: 18px;}
 
 .cart__items {width: 100%;}
 .cart__item {border-bottom: 1px solid #ecdfd4;padding: 1rem 0;display: flex;flex-wrap: wrap;align-items: center;}

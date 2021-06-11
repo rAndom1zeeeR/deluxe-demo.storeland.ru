@@ -9,7 +9,7 @@
 .CompareGoods__filter .hide {margin-left: 3px;}
 .CompareGoods__switch {background: #bfbfbf;display: inline-block;position: relative;width: 60px;height: 30px;border-radius: 20px;z-index: 0;margin: 0 0.625rem 0 0;padding: 0;border: none;cursor: pointer;transition-duration: 300ms;}
 .CompareGoods__switch:after {background: #fff;content: '';position: absolute;top: 3px;left: 3px;height: 1.5rem;width: 1.5rem;border-radius: 17px;transition-duration: 300ms;z-index: 1;}
-.CompareGoods__switch.switch-on {background: #bdd6d3;}
+.CompareGoods__switch.switch-on {background: #df5642;}
 .CompareGoods__switch.switch-on:after {left: 33px;}
 .CompareGoods .price__now {margin: 0;}
 .CompareGoods .price__old {margin-right: 1rem;}

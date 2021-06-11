@@ -1,6 +1,9 @@
 /*** Страница: Быстрый заказ ***/
-#OrderAjaxBlock {margin-top: 2rem;}
+#OrderAjaxBlock {margin-bottom: 2rem;}
+#OrderAjaxBlock .fastOrderForm .total__buttons {display: none;}
 #closeOrder {display: none;}
+.fastOrder__login {margin-bottom: 1rem;width: 100%;display: flex;align-items: center;justify-content: space-between;}
+.fastOrder__login span {font-size: 18px;}
 .fastOrder .fastOrderForm {border: 5px solid #f8e9e6;border-top: 0;padding: 1rem;}
 .fastOrder__form {display: flex;flex-wrap: wrap;justify-content: space-between;}
 .fastOrderForm [order] {width: 100%;margin-bottom: 2rem;}
@@ -19,7 +22,7 @@
 .fastOrderForm .cart__total {display: flex;flex-wrap: wrap;align-items: center;width: 100%;padding: 2rem 0 0 0;margin-top: 0;}
 .fastOrderForm .total__items {width: 100%;}
 .fastOrderForm .total__title {margin: 0;font-weight: bold;}
-.fastOrderForm .total__buttons {width: 100%;margin: 0;display: none;text-align: center;}
+.fastOrderForm .total__buttons {width: 100%;margin: 0;display: block;text-align: center;}
 .fastOrderForm .total__buttons .button + .button {margin-left: 2rem;}
 .fastOrderForm .total__buttons .total__pp {text-align: center;margin-top: 1rem;}
 .fastOrderForm .selectBox select {height: 40px;background-color: transparent;}
@@ -29,7 +32,7 @@
 .zones__price {margin: 0.5rem 0 0 0;display: block;}
 .delivery__price .label {margin-right: 0.5rem;}
 .delivery__description {margin-top: 1rem;}
-.delivery__priceBox {background-color: #bdd6d3;padding: 0.5rem 2rem;display: inline-block;}
+.delivery__priceBox {background-color: #df5642;padding: 0.5rem 2rem;display: inline-block;}
 .delivery__zones {margin-top: 1rem;padding-left: 1rem;}
 .delivery__zone {margin-top: 0.5rem;}
 .delivery__zone > div {margin-top: 1rem;}
