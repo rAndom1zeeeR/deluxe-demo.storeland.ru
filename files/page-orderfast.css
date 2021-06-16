@@ -2,8 +2,9 @@
 #OrderAjaxBlock {margin-bottom: 2rem;}
 #OrderAjaxBlock .fastOrderForm .total__buttons {display: none;}
 #closeOrder {display: none;}
-.fastOrder__login {margin-bottom: 1rem;width: 100%;display: flex;align-items: center;justify-content: space-between;}
-.fastOrder__login span {font-size: 18px;}
+.fastOrderContent .modal__title {display: block;}
+.fastOrder__login {margin-bottom: 1rem;width: 100%;display: flex;flex-wrap: wrap;align-items: center;justify-content: space-between;}
+.fastOrder__login span {font-size: 16px;}
 .fastOrder .fastOrderForm {border: 5px solid #f8e9e6;border-top: 0;padding: 1rem;}
 .fastOrder__form {display: flex;flex-wrap: wrap;justify-content: space-between;}
 .fastOrderForm [order] {width: 100%;margin-bottom: 2rem;}
@@ -24,7 +25,7 @@
 .fastOrderForm .total__title {margin: 0;font-weight: bold;}
 .fastOrderForm .total__buttons {width: 100%;margin: 0;display: block;text-align: center;}
 .fastOrderForm .total__buttons .button + .button {margin-left: 2rem;}
-.fastOrderForm .total__buttons .total__pp {text-align: center;margin-top: 1rem;}
+.fastOrderForm .total__buttons .total__pp {text-align: center;margin-top: 1rem;font-size: 12px;}
 .fastOrderForm .selectBox select {height: 40px;background-color: transparent;}
 .fastOrderForm .selectBox:after {background-color: #ffffff;}
 .delivery__fields {margin-top: 1rem;}
@@ -38,7 +39,7 @@
 .delivery__zone > div {margin-top: 1rem;}
 .fastOrderForm .delivery {margin-bottom: 0;}
 .order__delivery {display: flex;flex-wrap: wrap;}
-.delivery__option {width: calc(33.333333% - 2rem);margin: 0 1rem 2rem 1rem;background-color: #fff4f2;padding: 1rem;transition: all 0.3s ease;}
+.delivery__option {width: calc(33.333333% - 2rem);margin: 0 1rem 2rem 1rem;background-color: #fff4f2;padding: 1rem;flex-grow: 1;transition: all 0.3s ease;}
 .delivery__option:hover {background-color: #ffaf88;color: #ffffff;}
 .delivery__option input {width: 2rem;height: 2rem;background-color: #ffffff;border: 1px solid #ffaf88;border-radius: 100%;display: inline-block;vertical-align: middle;}
 .delivery__option input:after {display: none;}
@@ -71,6 +72,11 @@
 .payment__option {width: 100%;}
 .fastOrderForm .form__fields {width: 100%;}
 }
+@media (max-width: 639.98px) {
+.fastOrder__login {margin-bottom: 1.5rem;}
+.fastOrder__login span {width: 100%;margin-bottom: .5rem;}
+}
+
 /** Купоны **/
 .coupon__button {line-height: 38px;top: 0;right: 0;position: absolute;display: flex;align-items: center;justify-content: center;transition: all 0.3s ease;}
 /*.coupon__button:before {font-family: 'icomoon';}

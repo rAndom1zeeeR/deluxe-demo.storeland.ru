@@ -348,7 +348,6 @@
 					</div>
 					{% ENDIF %}
 					<!-- Избранное -->
-					{% IFNOT MOD_LNAME = user && ACT=favorites %}
 					<div class="addto__block favorites {% IF FAVORITES_GOODS_COUNT > 0 %}hasItems{% ENDIF %}">
 						<a href="{FAVORITES_URL}" class="addto__label dropdown__open favorites__icon" title="Избранное" data-open="favorites">
 							<i class="icon-favorites"></i>
@@ -356,7 +355,6 @@
 							<span class="favorites__count" data-count="{FAVORITES_GOODS_COUNT}">{FAVORITES_GOODS_COUNT}</span>
 						</a>
 					</div>
-					{% ENDIF %}
 					<!-- Наверх. Адаптив -->
 					<div class="addto__block toTop">
 						<a href="#" class="addto__label"><i class="icon-arrow_up"></i></a>
@@ -413,6 +411,7 @@
 			<div class="categories__list owl-carousel">
 				{% FOR catalog_full %}
 				{% IF catalog_full.LEVEL = 0 %}
+				{% IF catalog_full.HIDE %}{continue}{% ENDIF %}
 				<div class="categories__item" data-id="{catalog_full.ID}">
 					<a href="{catalog_full.URL}" class="categories__image">
 						<noscript>
@@ -1769,22 +1768,22 @@
 			<!-- Баннеры в каталоге -->
 			{% IF MOD_LNAME = catalog %}
 			<div class="products__banners">
-				<div class="products__banner lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_products_1.jpg?design=THEMENAME">
+				<a href="{CATALOG_URL}" class="products__banner lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_products_1.jpg?design=THEMENAME">
 					<div class="products__banner-inner">
 						<div class="products__banner-content">
 							<div class="products__banner-title">Детский текстиль</div>
 							<div class="products__banner-subtitle">Гипоаллергенный, мягкий и красивый</div>
 						</div>
 					</div>
-				</div>
-				<div class="products__banner lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_products_2.jpg?design=THEMENAME">
+				</a>
+				<a href="{CATALOG_URL}" class="products__banner lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_products_2.jpg?design=THEMENAME">
 					<div class="products__banner-inner">
 						<div class="products__banner-content">
 							<div class="products__banner-title">Подарки</div>
 							<div class="products__banner-subtitle">При заказе от 3 000 рублей</div>
 						</div>
 					</div>
-				</div>
+				</a>
 			</div>
 			{% ENDIF %}
 			<div class="main-block">
@@ -1821,6 +1820,10 @@
 					<!-- Если в тарифном плане подключен модуль фильтров по товарам -->
 					{% IF SHOW_GOODS_PRICE_FILTERS || SHOW_GOODS_FILTERS %}
 					<div id="filters" data-content="filters" class="sidebar__block filters {% FOR filter_attr_list %}{% FOR values %}{% IF filter_attr_list.values.CHECKED %}hasFilters {% ENDIF %}{% ENDFOR %}{% ENDFOR %} {% FOR filter_prop_list %}{% FOR values %}{% IF filter_prop_list.values.CHECKED %}hasFilters {% ENDIF %}{% ENDFOR %}{% ENDFOR %}">
+						<div class="dropdown__title">
+							<div class="dropdown__label">Фильтры</div>
+							<span class="dropdown__close"><i class="icon-close"></i></span>
+						</div>
 						<div class="sidebar__content">
 							<form action="" method="get" class="form__filters">
 								<!-- Если есть возможность фильтрации товаров по ценам -->
@@ -2473,7 +2476,7 @@
 							<button type="submit" name="send" class="button" title="Войти">Войти</button>
 							<a href="{USER_RECOVERY_URL}" class="button button5">Забыли пароль?</a>
 						</div>
-						<div class="form__text">Или пройдите простую регистрацию</div>
+						<div class="form__text sm">Или пройдите простую регистрацию</div>
 						<div class="client__buttons addto__buttons">
 							<a href="{USER_REGISTER_URL}" class="button button4">Зарегистрироваться</a>
 						</div>
@@ -2565,7 +2568,6 @@
 		</div>
 		{% ENDIF %}
 		<!-- Избранное -->
-		{% IFNOT MOD_LNAME = user && ACT=favorites %}
 		<div id="addtoFavorites" class="addto__favorites favorites dropdown__content {% IF FAVORITES_GOODS_COUNT > 0 %}hasItems{% ENDIF %}" data-content="favorites">
 			<div class="dropdown__title">
 				<a href="{FAVORITES_URL}" class="dropdown__label">В Избранном</a>
@@ -2599,12 +2601,11 @@
 				</div>
 			</div>
 		</div>
-		{% ENDIF %}
 		<!-- Политика конфиденциальности в модальном окне -->
 		<div id="fancybox__pp" class="modal" style="display:none">
 			<div class="modal__title block__title">
 				<div class="title">Политика приватности</div>
-				<div class="modal__close"><i class="icon-close"></i></div>
+				<a href="javascript:;" class="modal__close"><i class="icon-close"></i></a>
 			</div>
 			<div class="modal__content">
 				<div>
@@ -2631,7 +2632,7 @@
 		<div id="fancybox__callback" class="modal" style="display:none">
 			<div class="modal__title block__title">
 				<div class="title">Обратный звонок</div>
-				<div class="modal__close"><i class="icon-close"></i></div>
+				<a href="javascript:;" class="modal__close"><i class="icon-close"></i></a>
 			</div>
 			<div class="modal__content">
 				<form method="post" action="{CALLBACK_URL}" class="form__callback" enctype="multipart/form-data">
@@ -2666,7 +2667,7 @@
 		<div id="fancybox__feedback" class="modal" style="display:none">
 			<div class="modal__title block__title">
 				<div class="title">Обратная связь</div>
-				<div class="modal__close"><i class="icon-close"></i></div>
+				<a href="javascript:;" class="modal__close"><i class="icon-close"></i></a>
 			</div>
 			<div class="modal__content">
 				<form method="post" action="{CALLBACK_URL}" class="form__callback" enctype="multipart/form-data">
@@ -2701,7 +2702,7 @@
 		<div id="fancybox__notify" class="modal" style="display:none">
 			<div class="modal__title block__title">
 				<div class="title">Уведомить о поступлении</div>
-				<div class="modal__close"><i class="icon-close"></i></div>
+				<a href="javascript:;" class="modal__close"><i class="icon-close"></i></a>
 			</div>
 			<div class="modal__content">
 				<form method="post" action="{CALLBACK_URL}" class="form__callback" enctype="multipart/form-data">
@@ -2813,6 +2814,7 @@
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery-star-rating.js?design=THEMENAME"></script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}air-datepicker.js?design=THEMENAME"></script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}page-orderfast.js?design=THEMENAME"></script>
+<script id="page-cart-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}page-cart.js?design=THEMENAME"></script>
 {% ELSE %}
 <script id="page-goods-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}page-goods.js?design=THEMENAME"></script>
 {% ENDIF %}

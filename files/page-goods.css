@@ -154,7 +154,9 @@
 
 /* Сопутствующие и С этим товаром смотрят */
 .related > div + div {margin-top: 2rem;}
-.related .block__nav {padding: 1.25rem;}
+.related .block__nav {padding: 10px;}
+.related .block__nav .title span {color: #ffffff;background-color: #ffaf88;font-size: 18px;padding: 0 1rem;line-height: 40px;display: inline-block;}
+
 .owl-carousel .owl-item img {max-width: 100%;max-height: 100%;width: auto;}
 
 

@@ -31,7 +31,7 @@
 .slider__subtitle {font-size: 14px;}
 .slider__title {font-size: 20px;}
 .slider__item {height: 310px;align-items: flex-end;background-size: contain;background-repeat: no-repeat;}
-.slider__content {margin-left: 1rem;padding-bottom: 1rem;width: calc(100% - 2rem);}
+.slider__content {margin-left: 10px;padding-bottom: 10px;width: calc(100% - 2rem);}
 }
 @media (max-width: 479.98px) {
 #slideshow {height: 280px;}
@@ -39,6 +39,7 @@
 .slider__inner {padding: 1rem 1rem 2rem 1rem;}
 .slider__button {display: none;}
 .slider__title {margin-bottom: 1rem;}
+.slider__content:after {top: -10px;bottom: auto;}
 #slideshow .owl-nav {bottom: 1rem;}
 }
 
@@ -91,8 +92,8 @@
 .index__left {width: 50%;}
 .index__right {width: 50%;padding-left: 1rem;}
 .index__image {position: relative;width: 500px;height: 300px;}
-.index__image:before {content: '';background-color: #F8E9E6;width: 50%;height: 80%;position: absolute;top: -1rem;left: -1rem;display: block;z-index: 1;}
-.index__image:after {content: '';background-color: #F8E9E6;width: 80%;height: 70%;position: absolute;bottom: -1rem;right: -1rem;display: block;z-index: 1;}
+.index__image:before {content: '';background-color: #F8E9E6;width: 50%;height: 80%;position: absolute;top: -10px;left: -10px;display: block;z-index: 1;}
+.index__image:after {content: '';background-color: #F8E9E6;width: 80%;height: 70%;position: absolute;bottom: -10px;right: -10px;display: block;z-index: 1;}
 .index__image img {z-index: 2;position: relative;}
 @media (max-width: 1199.98px) {
 .index__image {width: 430px;height: 260px;}
@@ -146,7 +147,7 @@
 .pdt [id^="pdt__"].active {display: block;}
 .pdt .owl-nav {display: none;}
 .pdt .owl-nav.active {display: block;}
-.pdt__left {width: calc(100% - 300px);padding-right: 1rem;}
+.pdt__left {width: calc(100% - 300px);padding-right: 1rem;flex-grow: 1;}
 .pdt__right {width: 300px;padding-left: 1rem;}
 .pdt__title a {padding: 1rem;font-size: 18px;line-height: 24px;color: #FFFFFF;background-color: #df5642;display: block;text-align: center;}
 .pdt .owl-carousel {display: flex;overflow: hidden;}
@@ -171,7 +172,8 @@
 .pdt #pdt__sales {display: block;background-color: #fff4f2;padding: 2rem 0 1rem;}
 #pdt__sales .product__price {border: 0;padding: 0;}
 #pdt__sales .product__name {height: 40px;}
-#pdt__sales .product__items .product__item + .product__item {margin-top: 3rem;}
+#pdt__sales .product__item {padding: 0 1rem;}
+#pdt__sales .product__item + .product__item {margin-top: 3rem;}
 /* Счетчик акции */
 .product__counter {width: 200px;margin: 0 auto;padding: .5rem;color: #ffffff;background-color: #ffaf88;display: flex;align-items: center;justify-content: center;}
 .product__counter label {display: none;}

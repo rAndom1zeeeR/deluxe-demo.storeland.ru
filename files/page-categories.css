@@ -1,13 +1,13 @@
 /*** Категории товаров ***/
 .categories__list {display: flex;flex-wrap: wrap;align-items: center;}
 .categories__item {margin: 0 1rem 2rem 1rem;width: calc(25% - 2rem);position: relative;}
-.categories__image {height: 260px;display: flex;align-items: center;justify-content: center;}
+.categories__image {height: 260px;border: 5px solid transparent;background-color: #ffffff;display: flex;align-items: center;justify-content: center;}
 .categories__image img {width: auto;max-width: 100%;max-height: 100%;}
-.categories__item:hover .categories__image {opacity: .3;}
-.categories__name {margin: -30px auto 0;padding: 0 1rem;width: calc(100% - 4rem);height: 60px;background-color: #fff4f2;overflow: hidden;text-align: center;position: relative;display: flex;align-items: center;justify-content: center;transition: all 0.3s ease;}
+.categories__item:hover .categories__image {border-color: #f8e9e6;}
+.categories__name {margin: -2rem auto 0;padding: 0 1rem;width: calc(100% - 4rem);height: 60px;background-color: #f8e9e6;overflow: hidden;text-align: center;position: relative;display: flex;align-items: center;justify-content: center;transition: all 0.3s ease;}
 .categories__item:hover .categories__name {background-color: #df5642;color: #FFFFFF;}
 .categories__name a {padding: .5rem;text-align: center;display: block;width: 100%;}
-.categories__name span {display: block;max-height: 40px;text-overflow: ellipsis;overflow: hidden;}
+.categories__name span {font-size: 18px;display: block;max-height: 44px;text-overflow: ellipsis;overflow: hidden;}
 @media (min-width: 1200px) {
 .hasSidebar .categories__item {width: calc(33.333333% - 2rem);}
 }

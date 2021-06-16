@@ -825,7 +825,7 @@ function loadFile(fileName, ext, cb){
 function notyStart(text, type) {
   new Noty({
     text: text,
-    layout: "bottomCenter",
+    layout: "bottomRight",
     type: type,
     theme: "",
     textAlign: "center",
@@ -851,7 +851,9 @@ function fancyClose(){
   var btnClose = $('.fancybox-slide--html .fancybox-close-small');
   var modalClose = $('.modal__close');
   btnClose.hide();
-  modalClose.on('click', function (){
+  modalClose.on('click', function (event){
+    event.preventDefault();
+    console.log('close')
     $.fancybox.close();
   });
 }

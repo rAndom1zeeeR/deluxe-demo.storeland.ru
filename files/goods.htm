@@ -544,7 +544,7 @@
 	{% IFNOT related_goods_empty %}
 	<div class="related__goods">
 		<div class="block__nav">
-			<div class="title">Сопутствующие</div>
+			<div class="title"><span>Сопутствующие</span></div>
 			<div class="owl-nav"></div>
 		</div>
 		<div class="products__grid owl-carousel">
@@ -744,9 +744,8 @@
 	{% IFNOT related_views_goods_empty %}
 	<div class="related__views">
 		<div class="block__nav">
-			<div class="title">Рекомендуем</div>
+			<div class="title"><span>Рекомендуем</span></div>
 			<div class="owl-nav"></div>
-			<div class="owl-dots"></div>
 		</div>
 		<div class="products__grid owl-carousel">
 			{% FOR related_views_goods %}

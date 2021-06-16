@@ -42,9 +42,10 @@
 .noty__addto a {font-weight: bold;}
 .noty__message {width: calc(100% - 60px);padding-left: 1rem;}
 .noty_type__success a, .noty_type__success a:visited, .noty_type__success a:focus, .noty_type__success a:hover {color: inherit;}
-.noty_type__warning .noty__addto {background-color: #ffdec5;}
-.noty_type__success .noty__addto {background-color: #c5ffd1;}
-.noty_has_timeout.noty_has_progressbar .noty_progressbar {background-color: #df5642;opacity: 1;height: 5px;}
+.noty_type__warning .noty__addto {color: #ffffff;background-color: #df5642;border-color: #df5642;}
+.noty_type__success .noty__addto {color: #ffffff;background-color: #4bb38e;border-color: #4bb38e;}
+.noty_type__success.noty_has_progressbar .noty_progressbar {background-color: #1E6F52;opacity: 1;height: 5px;}
+.noty_type__warning.noty_has_progressbar .noty_progressbar {background-color: #912615 ;opacity: 1;height: 5px;}
 
 
 .animated {
