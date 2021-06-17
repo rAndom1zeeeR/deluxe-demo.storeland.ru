@@ -643,8 +643,9 @@
 				<!-- Распродажа -->
 				{% IFNOT index_page_sale_goods_empty %}
 				<div class="pdt__right">
-					<div class="pdt__title">
-						<a href="{DISCOUNT_URL}" title="Распродажа">Распродажа</a>
+					<div class="block__nav pdt__title">
+						<a class="title" href="{DISCOUNT_URL}" title="Распродажа">Распродажа</a>
+						<div class="owl-nav active" data-content="pdt__sales"></div>
 					</div>
 					<div id="pdt__sales" data-content="pdt__sales" {% IF index_page_goods_empty %}class="active" {% ENDIF %}>
 						<div class="products__grid owl-carousel">
@@ -2807,6 +2808,7 @@
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}page-products.js?design=THEMENAME"></script>
 <script id="air-datepicker-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}air-datepicker.js?design=THEMENAME"></script>
 <script id="page-orderfast-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}page-orderfast.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-goods.js?design=THEMENAME"></script>
 {% ENDIF %}
 <!-- Страница: Товар -->
 {% IF MOD_LNAME = goods %}

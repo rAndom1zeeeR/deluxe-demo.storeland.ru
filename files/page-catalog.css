@@ -58,7 +58,7 @@
 }
 
 /*** Фильтры ***/
-#filters .dropdown__title {display: none;}
+#filters .dropdown__title {display: none;position: sticky;top: 0;z-index: 3;}
 /*.filter__items {max-height: 144px;overflow-y: auto;}
 .filter__items::-webkit-scrollbar {width: .5rem;}
 .filter__items::-webkit-scrollbar-thumb {border-radius: 0;background-color: #ffae89;}

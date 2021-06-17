@@ -247,7 +247,7 @@
 					    <div class="form__fields {% IF SETTINGS_ORDER_FIELDS_ADDRESS=1 %}required{% ENDIF %}">
 						    <div class="form__field">
 							    <label for="quickDeliveryAddress" {% IF SETTINGS_ORDER_FIELDS_ADDRESS=1 %}class="required"{% ENDIF %}><span>Адрес</span><em>*</em></label>
-							    <input id="quickDeliveryAddress" type="text" name="form[delivery][address]" value="{ORDER_FORM_DELIVERY_ADDRESS}" class="form__input" placeholder="Улица {% IF SETTINGS_ORDER_FIELDS_ADDRESS=1 %}*{% ENDIF %}" {% IF SETTINGS_ORDER_FIELDS_ADDRESS=1 %}required{% ENDIF %} />
+							    <input id="quickDeliveryAddress" type="text" name="form[delivery][address]" value="{ORDER_FORM_DELIVERY_ADDRESS}" class="form__input" placeholder="Адрес {% IF SETTINGS_ORDER_FIELDS_ADDRESS=1 %}*{% ENDIF %}" {% IF SETTINGS_ORDER_FIELDS_ADDRESS=1 %}required{% ENDIF %} />
 							    <i class="icon-location"></i>
 						    </div>
 					    </div>

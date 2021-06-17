@@ -84,7 +84,7 @@ function orderScripts() {
 	$('.order__payment[rel="' + ID + '"]').show();
 	$('.order__payment[rel="' + ID + '"]').find('input:first').click();
 	// Действия при выборе варианта доставки на этапе оформления заказа
-	$('.delivery__radio').click(function(d){
+	$('.delivery__radio').on('click', function(d){
 		// Отображение вариантов оплаты при выборе доставки
 		var ID = $('input[name="form[delivery][id]"]:checked').val();
 		$('.order__payment').hide();
@@ -96,7 +96,7 @@ function orderScripts() {
 		});
 		$('.zone__radio').each(function(){
 			$(this).prop('checked',false);
-			$(this).parent().removeClass('active');
+			$(this).parent().parent().removeClass('active');
 		});
 		var val = $(this).val();
 		var fz = $($('.zone__radio[deliveryid='+val+']')[0]);
@@ -133,26 +133,28 @@ function orderScripts() {
 		}
 	});
 	// Действия при выборе зоны внутри варианта доставки на этапе оформления заказа
-	$('.zone__radio').click(function(){
+	$('.zone__radio').on('click', function(){
 		var val = $(this).attr('deliveryid');
 		var price = $(this).attr('price');
 		var priceBlock = $('.delivery__option[rel='+ val +']').find('.delivery__price').find('.num');
-		// Обновление цены
-		priceBlock.text(price);
-		//
-		$('.delivery__radio').each(function(){
-			$(this).prop('checked',false);
-			if($(this).val() == val){
-				$(this).prop('checked',true);
-			}else{
-				$(this).prop('checked',false);
-			}
-		});
 		// Выбор варианта оплаты при выборе зоны доставки
 		var ID = $('input[name="form[delivery][id]"]:checked').val();
 		$('.order__payment').hide();
 		$('.order__payment[rel="' + ID + '"]').show();
 		$('.order__payment[rel="' + ID + '"]').find('input:first').click();
+		//
+		$('.delivery__radio').each(function(){
+			$(this).prop('checked',false);
+			if($(this).val() == val){
+				$(this).prop('checked',true);
+				$(this).parent().addClass('active');
+			}else{
+				$(this).prop('checked',false);
+				$(this).parent().removeClass('active');
+			}
+		});
+		// Обновление цены
+		priceBlock.text(price);
 		// Обновление цены с учетом доставки
 		var cartSumTotalHide = $('.cartSumTotalHide:eq(0) .num').text().toString().replace(/\s/g, '');
 		var newSum = parseInt(cartSumTotalHide) + parseInt(priceBlock.text());

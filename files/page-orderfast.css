@@ -11,7 +11,6 @@
 .fastOrder__title {margin-bottom: 1.5rem;padding: .25rem 0;border: 1px solid #ecdfd4;border-left: 0;border-right: 0;font-size: 18px;text-align: center;}
 .fastOrderForm .form__list {display: flex;flex-wrap: wrap;}
 .fastOrderForm .form__fields {width: calc(33.333333% - 2rem);margin: 0 1rem 1rem 1rem;flex-grow: 1;}
-.fastOrderForm .form__fields:last-child {margin-bottom: 0;}
 .fastOrderForm .form__field input, .fastOrderForm .form__field select, .fields__comment textarea {padding-left: 3.5rem;}
 .fastOrderForm .form__fields label {display: none;}
 .fastOrderForm label.error {display: none !important;}
@@ -83,7 +82,7 @@
 .coupon__order.active .coupon__button span {display: none;}
 .coupon__order.active .coupon__button:before {content: '\e91b';}
 .coupon__order.error .coupon__button:before {content: '\e914';}*/
-.coupon__reset {display: none;position: absolute;right: 10rem;line-height: 1;cursor: pointer;}
+.coupon__reset {display: none;position: absolute;top: .75rem;right: 10rem;line-height: 1;cursor: pointer;}
 .coupon__reset.active {display: block;}
 .coupon__reset:after {content: "\e91a";font-family: 'icomoon';}
 .coupon__order input:focus + .coupon__button {}
@@ -91,6 +90,8 @@
 #coupon__code {padding: 0 10rem 0 3.5rem;}
 @media all and (max-width: 479px) {
 .coupon__button {position: relative;right: auto;margin-top: 1rem;}
+.coupon__reset {right: .5rem}
+	#coupon__code {padding: 0 2rem 0 3.5rem;}
 }
 
 /******************************************************************************

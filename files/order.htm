@@ -189,7 +189,7 @@
           <!-- Если поле адреса доставки запрашивается -->
           {% IF SETTINGS_ORDER_FIELDS_ADDRESS < 3 %}
           <div class="form__fields">
-            <label for="quickDeliveryAddress" {% IF SETTINGS_ORDER_FIELDS_ADDRESS=1 %}class="required"{% ENDIF %}>Улица <em>*</em></label>
+            <label for="quickDeliveryAddress" {% IF SETTINGS_ORDER_FIELDS_ADDRESS=1 %}class="required"{% ENDIF %}>Адрес <em>*</em></label>
             <input id="quickDeliveryAddress" type="text" name="form[delivery][address]" value="{ORDER_FORM_DELIVERY_ADDRESS}" class="form__input" placeholder="Адрес" {% IF SETTINGS_ORDER_FIELDS_ADDRESS=1 %}required{% ENDIF %} />
           </div>
           {% ENDIF %}

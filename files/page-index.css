@@ -108,7 +108,6 @@
 /*** Новости ***/
 #news [class^="news_list_"] {display: none;flex-wrap: wrap;height: 278px;overflow: hidden;}
 #news [class^="news_list_"].active {display: flex;}
-#news .block__nav-bottom {display: none;}
 #news .owl-nav {display: none;}
 #news .owl-nav.active {display: block;}
 #news .news__item {width: 50%;position: relative;display: flex;justify-content: flex-end;}
@@ -136,7 +135,6 @@
 #news .block__nav {width: 100%;}
 #news .nav__tabs {width: 100%;}
 #news .block__nav .owl-nav.active {display: none;}
-#news .block__nav-bottom {display: block;}
 }
 
 
@@ -149,7 +147,8 @@
 .pdt .owl-nav.active {display: block;}
 .pdt__left {width: calc(100% - 300px);padding-right: 1rem;flex-grow: 1;}
 .pdt__right {width: 300px;padding-left: 1rem;}
-.pdt__title a {padding: 1rem;font-size: 18px;line-height: 24px;color: #FFFFFF;background-color: #df5642;display: block;text-align: center;}
+.pdt__title {padding: 1rem;background-color: #df5642;}
+.pdt__title a {font-size: 18px;line-height: 28px;color: #FFFFFF;display: block;}
 .pdt .owl-carousel {display: flex;overflow: hidden;}
 .pdt .product__item {width: 100%;}
 @media (max-width: 991.98px) {
@@ -162,18 +161,19 @@
 }
 @media (max-width: 479.98px) {
 .pdt {height: auto;}
-.pdt .block__nav .owl-nav.active {display: none;}
 .pdt__left {width: 100%;padding: 0;}
 .pdt__right {width: 100%;padding: 0;margin-top: 2rem;}
 .pdt__title a {padding: .75rem;}
 }
 
 /** Распродажа **/
-.pdt #pdt__sales {display: block;background-color: #fff4f2;padding: 2rem 0 1rem;}
+.pdt__right #pdt__sales {display: block;background-color: #fff4f2;padding: 2rem 0 1rem;}
 #pdt__sales .product__price {border: 0;padding: 0;}
 #pdt__sales .product__name {height: 40px;}
 #pdt__sales .product__item {padding: 0 1rem;}
 #pdt__sales .product__item + .product__item {margin-top: 3rem;}
+.pdt__right .owl-nav [class^="owl-"] {color: #ffffff;}
+.pdt__right .owl-nav [class^="owl-"]:hover {color: #ffffff;}
 /* Счетчик акции */
 .product__counter {width: 200px;margin: 0 auto;padding: .5rem;color: #ffffff;background-color: #ffaf88;display: flex;align-items: center;justify-content: center;}
 .product__counter label {display: none;}

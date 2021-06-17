@@ -337,6 +337,7 @@ h6 {font-size: 0.875rem;}
 .nav__tab {font-size: 18px;padding: 0 2rem;line-height: 40px;display: inline-block;}
 .nav__tab:hover, .nav__tab.active {color: #ffffff;background-color: #ffaf88;}
 .results {color: #c1b1a9;font-size: 14px;margin-left: .5rem;text-transform: lowercase;}
+.block__nav-bottom {display: none;}
 .block__nav-bottom .owl-nav {position: relative;margin: 2rem auto 0;height: 20px;}
 @media all and (max-width: 639.98px) {
 .block__title .title {font-size: 1.5rem;}
@@ -402,11 +403,13 @@ a.dropdown__label:hover {color: #ffffff;background-color: #ffaf88;}
 }
 @media all and (max-width: 991.98px) {
 }
-@media all and (max-width: 479px) {
-.dropdown__content {width: 288px;}
+@media all and (max-width: 479.98px) {
 .dropdown__content.right .dropdown__close {left: auto;right: 0;}
 .dropdown__content .dropdown__close {left: auto;right: 0;}
 .dropdown__label {padding: .75rem 1rem;}
+}
+@media all and (max-width: 374.98px) {
+.dropdown__content {width: 100%;}
 }
 
 /*** Элементы в списках. Корзина, Избранное, Сравнение ***/
@@ -446,7 +449,7 @@ a.dropdown__label:hover {color: #ffffff;background-color: #ffaf88;}
 .addto__total .price__now {font-weight: 800;}
 @media all and (max-width: 767.98px) {
 .addto__items {max-height: calc(100vh - 198px);}
-.addto__cart .addto__items {max-height: calc(100vh - 250px);}
+.addto__cart .addto__items {max-height: calc(100vh - 292px);}
 }
 @media all and (max-width: 639.98px) {
 .addto__image {width: 60px;height: 60px;}
@@ -664,6 +667,7 @@ header .contacts {display: none;}
 .addto__label i + span {display: none;}
 .addto__label [data-count] {display: none;}
 @media (max-width: 767.98px) {
+.wrapper {padding-bottom: 50px;}
 #addto {border: 1px solid #ecdfd4;background-color: #ffffff;padding: 0;justify-content: center;position: fixed;left: 0;bottom: 0;width: 100%;z-index: 19;}
 .addto__block {border-left: 1px solid #ecdfd4;padding: 0 1rem;}
 .addto__block:first-child {border-left: 0;}
@@ -678,10 +682,10 @@ header .contacts {display: none;}
 .search.search__focused, .search.search__filled {width: calc(100% - 140px);right: 0;position: absolute;z-index: 2;}
 .search.search__focused .search__input, .search.search__filled .search__input {max-width: 100%;border: 0;}
 .search__form {position: relative;display: flex;align-items: center;justify-content: flex-end;}
-.search__input {max-width: 240px;height: 30px;margin: 10px 0;padding: 0 4rem 0 2rem;border-top: 0;border-bottom: 0;border-color: #ecdfd4;}
+.search__input {max-width: 240px;height: 30px;line-height: 30px;margin: 10px 0;padding: 0 4rem 0 2rem;border-top: 0;border-bottom: 0;border-color: #ecdfd4;}
 .search__submit {color: #231803;font-size: 24px;line-height: 30px;padding: 0 1rem;position: absolute;right: 0;background-color: transparent;border: 0;}
 .search__submit:hover {background-color: transparent;color: #df5642;}
-.search__reset {display: none;align-items: center;position: absolute;left: 0.5rem;top: 0;height: 100%;cursor: pointer;font-size: 12px;}
+.search__reset {display: none;align-items: center;position: absolute;left: 0.5rem;top: 0;height: 100%;cursor: pointer;font-size: 12px;vertical-align: middle;line-height: 50px;}
 .search__filled .search__reset {display: flex;}
 .search__loading .lds-ring {display: block;}
 .lds-ring {display: none;position: absolute;right: 3rem;width: 1rem;height: 1rem;}
@@ -722,7 +726,7 @@ header .contacts {display: none;}
 }
 @media (max-width: 479.98px) {
 .search {width: calc(100% - 50px);}
-.search.search__focused {width: calc(100% - 50px);}
+.search.search__focused, .search.search__filled {width: calc(100% - 50px);}
 }
 
 /*** Обратный звонок. Бесплатная консультация ***/
@@ -799,7 +803,7 @@ header .contacts {display: none;}
 .footer__top .social-links a + a {margin-left: 0;}
 .footer__top .social-links a:hover {color: #FFFFFF;background-color: #ffaf88;}
 /* Оплата */
-.payments a {display: flex;align-items: center;}
+.payments a {display: flex;flex-wrap: wrap;align-items: center;}
 .payments i {margin-left: 1rem;font-size: 24px;color: #FFFFFF;background-color: #ffe0d1;width: 50px;height: 50px;display: flex;align-items: center;justify-content: center;transition: all 0.3s ease;}
 .payments i:hover {color: #FFFFFF;background-color: #ffaf88;}
 /* Контакты */
@@ -807,7 +811,7 @@ header .contacts {display: none;}
 .contacts__block + .contacts__block {margin-top: 2rem;}
 .contacts__icon {width: 60px;height: 60px;font-size: 32px;color: #FFFFFF;background-color: #ffaf88;box-shadow: -5px 4px 0px 0px rgba(255, 83, 0, 0.18);display: flex;align-items: center;justify-content: center;}
 .contacts__content {width: calc(100% - 60px);padding-left: 1rem;}
-.contacts__content a {line-height: 24px;}
+.contacts__content a {line-height: 24px;display: block;}
 .contacts__content .footer__title {margin-bottom: .5rem;}
 /* Подписаться */
 .footer__block.subscribe {background-color: #fff3e5;padding: 3rem 1rem;}
@@ -849,12 +853,13 @@ header .contacts {display: none;}
 .payments i {margin: 0 1rem 0 0;}
 .footer__block {width: 50%;padding: 2rem 1rem}
 .footer__block.contacts {width: 100%;padding-top: 0;}
-.footer__block.contacts .contacts {display: flex;flex-wrap: wrap;align-items: center;}
+.footer__block.contacts .contacts {display: flex;flex-wrap: wrap;align-items: flex-start;}
 .footer__block.contacts .contacts__block {width: 50%;}
 .footer__block.contacts .contacts__block:nth-child(2) {margin-top: 0;}
 .footer__block.subscribe .form__buttons .button {padding: 0 1.5rem;}
 }
 @media (max-width: 479.98px) {
+#footer:before {display: none;}
 .footer__block {width: 100%;order: 3;padding: 1rem;}
 .footer__block.subscribe {order: 1;}
 .footer__block.subscribe .form__field {width: 100%;}
