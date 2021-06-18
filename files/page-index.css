@@ -31,7 +31,7 @@
 .slider__subtitle {font-size: 14px;}
 .slider__title {font-size: 20px;}
 .slider__item {height: 310px;align-items: flex-end;background-size: contain;background-repeat: no-repeat;}
-.slider__content {margin-left: 10px;padding-bottom: 10px;width: calc(100% - 2rem);}
+.slider__content {margin-left: 10px;padding-bottom: 10px;width: calc(100% - 20px);}
 }
 @media (max-width: 479.98px) {
 #slideshow {height: 280px;}
@@ -140,7 +140,7 @@
 
 
 /*** Товары на главной ***/
-.pdt {height: 1026px;overflow: hidden;}
+.pdt {height: 974px;overflow: hidden;}
 .pdt [id^="pdt__"] {display: none;position: relative;}
 .pdt [id^="pdt__"].active {display: block;}
 .pdt .owl-nav {display: none;}
@@ -154,7 +154,7 @@
 @media (max-width: 991.98px) {
 }
 @media (max-width: 767.98px) {
-.pdt {height: 966px;}
+.pdt {height: 914px;}
 .pdt .nav__tabs {width: 100%;}
 .pdt__left {width: 50%;}
 .pdt__right {width: 50%;}
@@ -163,15 +163,14 @@
 .pdt {height: auto;}
 .pdt__left {width: 100%;padding: 0;}
 .pdt__right {width: 100%;padding: 0;margin-top: 2rem;}
-.pdt__title a {padding: .75rem;}
 }
 
 /** Распродажа **/
-.pdt__right #pdt__sales {display: block;background-color: #fff4f2;padding: 2rem 0 1rem;}
+.pdt__right #pdt__sales {display: block;background-color: #fff4f2;padding: 1.25rem 0;}
 #pdt__sales .product__price {border: 0;padding: 0;}
 #pdt__sales .product__name {height: 40px;}
 #pdt__sales .product__item {padding: 0 1rem;}
-#pdt__sales .product__item + .product__item {margin-top: 3rem;}
+#pdt__sales .product__item + .product__item {margin-top: 2rem;}
 .pdt__right .owl-nav [class^="owl-"] {color: #ffffff;}
 .pdt__right .owl-nav [class^="owl-"]:hover {color: #ffffff;}
 /* Счетчик акции */
