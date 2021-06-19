@@ -113,38 +113,6 @@ function pdtSlider() {
 		responsiveRefreshRate: 100
 	});
 	// Функция слайдера для "Лидеры продаж" на главной странице
-	$('#pdt__best .owl-carousel').owlCarousel({
-		items: 4,
-		margin: 32,
-		loop: false,
-		rewind: true,
-		lazyLoad: true,
-		nav: true,
-		navContainer: '.pdt .owl-nav[data-content="pdt__best"]',
-		navText: [ , ],
-		dots: false,
-		dotsContainer: '',
-		autoHeight: false,
-		autoHeightClass: 'owl-height',
-		autoplay: false,
-		autoplayHoverPause: true,
-		smartSpeed: 500,
-		mouseDrag: true,
-		touchDrag: true,
-		pullDrag: true,
-		responsiveClass: true,
-		responsiveRefreshRate: 100,
-		responsive: {
-			0:{items:1},
-			320:{items:1},
-			481:{items:2},
-			641:{items:3},
-			768:{items:3},
-			992:{items:3},
-			1200:{items:4}
-		}
-	});
-	// Функция слайдера для Новинок на главной странице
 	$('#pdt__new .owl-carousel').owlCarousel({
 		items: 4,
 		margin: 32,
@@ -155,6 +123,7 @@ function pdtSlider() {
 		navContainer: '.pdt .owl-nav[data-content="pdt__new"]',
 		navText: [ , ],
 		dots: false,
+		dotsContainer: '',
 		autoHeight: false,
 		autoHeightClass: 'owl-height',
 		autoplay: false,
@@ -221,6 +190,28 @@ function pdtSlider() {
 		parent.find('[id^="pdt__"][data-content="'+ content +'"').addClass('active');
 		parent.find('.owl-nav[data-content="'+ content +'"').addClass('active');
 	});
+
+	// Функция слайдера для Новинок на главной странице
+	var btn = $('#pdt__best').find('.showAll');
+	btn.on('click', function (event){
+		event.preventDefault();
+		var t = $(this);
+		var parents = t.parents().find('#pdt__best')
+		var btnText = t.find('span')
+		if(t.hasClass('active')){
+			t.removeClass('active')
+			parents.removeClass('active')
+			btnText.text('Показать все')
+			parents.find('.product__item').removeClass('show')
+			parents.css({height: ''})
+		}else{
+			t.addClass('active')
+			parents.addClass('active')
+			btnText.text('Скрыть')
+			parents.find('.product__item').addClass('show')
+			parents.css({height: '100%'})
+		}
+	})
 }
 
 // Слайдер для главной страницы

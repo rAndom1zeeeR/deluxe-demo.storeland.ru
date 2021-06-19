@@ -141,36 +141,55 @@
 
 /*** Товары на главной ***/
 .pdt {height: 974px;overflow: hidden;}
+#pdt__new {height: 517px;}
 .pdt [id^="pdt__"] {display: none;position: relative;}
 .pdt [id^="pdt__"].active {display: block;}
 .pdt .owl-nav {display: none;}
 .pdt .owl-nav.active {display: block;}
 .pdt__left {width: calc(100% - 300px);padding-right: 1rem;flex-grow: 1;}
 .pdt__right {width: 300px;padding-left: 1rem;}
-.pdt__title {padding: 1rem;background-color: #df5642;}
+.pdt__title {padding: 1rem;margin: 0;background-color: #df5642;}
 .pdt__title a {font-size: 18px;line-height: 28px;color: #FFFFFF;display: block;}
 .pdt .owl-carousel {display: flex;overflow: hidden;}
-.pdt .product__item {width: 100%;}
-@media (max-width: 991.98px) {
+.owl-carousel .product__item {width: 100%;}
+#pdt__best {height: 1046px;}
+#pdt__best .product__item {display: none;}
+#pdt__best .product__item.show {display: block;}
+#pdt__best .products__buttons {text-align: center;}
+@media (min-width: 640px) {
+#pdt__best .product__item:nth-child(-n+6) {display: block;}
+}
+@media (min-width: 1200px) {
+#pdt__best .product__item {width: 25%;}
+#pdt__best .product__item:nth-child(-n+8) {display: block;}
+}
+@media (max-width: 1199.98px) {
 }
 @media (max-width: 767.98px) {
 .pdt {height: 914px;}
+#pdt__new {height: 487px;}
+#pdt__best {height: 986px;}
 .pdt .nav__tabs {width: 100%;}
 .pdt__left {width: 50%;}
 .pdt__right {width: 50%;}
 }
+@media (max-width: 639.98px) {
+#pdt__best .product__item:nth-child(-n+4) {display: block;}
+}
 @media (max-width: 479.98px) {
 .pdt {height: auto;}
+#pdt__new {height: auto;}
+#pdt__best {height: auto;}
 .pdt__left {width: 100%;padding: 0;}
 .pdt__right {width: 100%;padding: 0;margin-top: 2rem;}
 }
 
 /** Распродажа **/
-.pdt__right #pdt__sales {display: block;background-color: #fff4f2;padding: 1.25rem 0;}
+.pdt__right #pdt__sales {display: block;background-color: #fff4f2;padding: 2rem 0;}
 #pdt__sales .product__price {border: 0;padding: 0;}
 #pdt__sales .product__name {height: 40px;}
 #pdt__sales .product__item {padding: 0 1rem;}
-#pdt__sales .product__item + .product__item {margin-top: 2rem;}
+#pdt__sales .product__item + .product__item {margin-top: 2.5rem;}
 .pdt__right .owl-nav [class^="owl-"] {color: #ffffff;}
 .pdt__right .owl-nav [class^="owl-"]:hover {color: #ffffff;}
 /* Счетчик акции */
