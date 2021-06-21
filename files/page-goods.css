@@ -28,7 +28,7 @@
 .productView__qty {margin: 0 1rem 1rem 1rem;}
 .qty {display: flex;align-items: center;flex-wrap: wrap;}
 .qty a {width: 50px;height: 50px;background-color: #fff8ef;position: relative;display: flex;align-items: center;justify-content: center;}
-.qty a:hover {background-color: #ffb38e;color: #ffffff;}
+.qty a:hover {background-color: #ffaf88;color: #ffffff;}
 .qty input {width: 50px;height: 50px;background-color: #fff8ef;margin: 0 .5rem;padding: 0 0.25rem;border: 0;text-align: center;}
 /* Добавить в корзину */
 .productView__addto {display: flex;flex-wrap: wrap;align-items: center;}

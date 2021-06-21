@@ -103,8 +103,8 @@ input, select, textarea {height: 40px;line-height: 40px;padding: 0 1.5rem;color:
 @media all and (max-width: 639.98px) {
 input, select, textarea {padding: 0 1rem;}
 }
-input:focus, select:focus, textarea:focus {outline: 0;border-color: #f69679;color: #231803;}
-input:focus + i, select:focus + i, textarea:focus + i {color: #f69679;}
+input:focus, select:focus, textarea:focus {outline: 0;border-color: #ffaf88;color: #231803;}
+input:focus + i, select:focus + i, textarea:focus + i {color: #ffaf88;}
 input.error + i, select.error + i, textarea.error + i {color: red;border-color: red;}
 textarea {height: auto;line-height: 1;padding: 1rem;}
 select {cursor: pointer;-webkit-appearance: menulist;}
@@ -112,7 +112,7 @@ input[type="file"] {margin-top: 0.25rem;height: auto;line-height: 1;border: 0;pa
 /*** Выпадающий список ***/
 .selectBox {position: relative;height: auto;display: flex;align-items: center;justify-content: flex-start;}
 .selectBox:after {content: '\e915';font-family: 'icomoon';background-color: #fff4f2;position: absolute;right: 1rem;line-height: 1;display: flex;align-items: center;justify-content: center;transition: all 0.3s ease;pointer-events: none;box-sizing: border-box;}
-.selectBox:hover:after {color: #f69679;}
+.selectBox:hover:after {color: #ffaf88;}
 .selectBox select, .selectBox .select {background-color: #fff4f2;width: 100%;height: 50px;padding: 0 2.5rem 0 1.5rem;font-size: 1rem;font-weight: 400;line-height: 1.2;-webkit-appearance: none;-moz-appearance: none;appearance: none;}
 @media all and (max-width: 479.98px) {
 .selectBox:after {right: .5rem;}
@@ -267,7 +267,7 @@ label.error:after {content: ' ';position: absolute;top: -7px;left: 0.875rem;widt
 .form__pp a {text-decoration: underline;}
 .form__buttons {margin-top: 1rem;}
 .form__field i {position: absolute;top: 0;left: 0;color: #c1b1a9;border-right: 1px solid #ecdfd4;font-size: 24px;width: 40px;height: 40px;display: flex;align-items: center;justify-content: center;}
-.form__field input:focus + i {color: #f69679;border-color: #f69679;}
+.form__field input:focus + i {color: #ffaf88;border-color: #ffaf88;}
 @media all and (max-width: 767.98px) {
 .form__fields {margin-bottom: 1rem;}
 }
@@ -356,7 +356,7 @@ h6 {font-size: 0.875rem;}
 .modal__title {text-align: center;margin-bottom: 0;display: flex;flex-wrap: wrap;align-items: stretch;}
 .modal__title .title {width: calc(100% - 50px);padding: 1rem;background-color: #df5642;color: #ffffff;font-size: 18px;font-weight: normal;text-transform: capitalize;}
 .modal__close {width: 50px;color: #ffffff;background-color: #df5642;position: relative;display: flex;align-items: center;justify-content: center;transition: all 0.3s ease;}
-.modal__close:hover {background-color: #ffb38e;cursor: pointer;}
+.modal__close:hover {background-color: #ffaf88;cursor: pointer;}
 .modal__close:before {content: '';background-color: #ffffff;width: 1px;height: 60%;top: 20%;left: 0;position: absolute;transition: all 0.3s ease;}
 .modal__close:hover:before {opacity: 0;}
 .modal__close i {transition: all 0.3s ease;}
@@ -370,7 +370,7 @@ h6 {font-size: 0.875rem;}
 .modal__content .form__field input {padding-left: 3.5rem;}
 .dropdown__content .form__field input {padding-left: 3.5rem;}
 .modal .fancybox-close-small {color: #ffffff;border-left: 1px solid #ffffff;}
-.modal .fancybox-close-small:hover {color: #ffb38e;}
+.modal .fancybox-close-small:hover {color: #ffaf88;}
 .fancybox-slide--html .fancybox-close-small {top: 6px;right: 6px;width: 40px;height: 40px;padding: 0;}
 @media (max-width: 374.98px) {
 .fancybox-close-small {width: 34px;height: 30px;}
@@ -388,7 +388,7 @@ h6 {font-size: 0.875rem;}
 .dropdown__label.active {background-color: #ffaf88;}
 a.dropdown__label:hover {color: #ffffff;background-color: #ffaf88;}
 .dropdown__close {width: 50px;color: #ffffff;background-color: #df5642;position: relative;display: flex;align-items: center;justify-content: center;z-index: 12;transition: all 0.3s ease;}
-.dropdown__close:hover {background-color: #ffb38e;cursor: pointer;}
+.dropdown__close:hover {background-color: #ffaf88;cursor: pointer;}
 .dropdown__close i {transition: all 0.3s ease;}
 .dropdown__close:hover i {transform: rotate(90deg);}
 .dropdown__close:before {content: '';background-color: #ffffff;width: 1px;height: 60%;top: 20%;left: 0;position: absolute;transition: all 0.3s ease;}
@@ -463,14 +463,14 @@ a.dropdown__label:hover {color: #ffffff;background-color: #ffaf88;}
 .addto__buttons .button:nth-child(n) {margin: 1rem 0 0 0;width: 100%;}
 }
 
-/*** Адаптивный Каталог и Меню ffb38e***/
+/*** Адаптивный Каталог и Меню ffaf88***/
 /*[data-content="catalogMenu"] [data-content] {max-height: calc(100vh - 174px);overflow-y: auto;}*/
 [data-content="catalogMenu"] {max-height: 100vh;overflow-y: auto;}
 #catalogMenu .dropdown__label {font-size: 1rem;padding: 0;background-color: #df5642;}
 #catalogMenu .dropdown__label > span {width: 50%;padding: 1rem;text-align: center}
 #catalogMenu .dropdown__label span {vertical-align: middle;transition: all 0.3s ease;display: inline-block;}
 #catalogMenu .dropdown__label span > span {padding: .25rem 1.25rem;}
-#catalogMenu .dropdown__label .active > span, #catalogMenu .dropdown__label span:hover > span {background-color: #ffb38e;}
+#catalogMenu .dropdown__label .active > span, #catalogMenu .dropdown__label span:hover > span {background-color: #ffaf88;}
 /* Меню */
 #addtoMenu ul {margin: 0;padding: 0;list-style: none;}
 #addtoMenu li {padding: .75rem;}
