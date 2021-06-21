@@ -14,8 +14,7 @@
 .productView__price .price__now {font-size: 26px;font-weight: 600;}
 .productView__price .price__old {margin-right: 1rem;font-size: 18px;}
 .productView__articles {margin-bottom: .5rem;color: #c1b1a9;position: absolute;top: 0;right: 0;}
-.productView__campaign {margin-bottom: 2rem;background-color: #ffaf88;color: #ffffff;padding: 1rem 3rem;font-size: 18px;text-align: center;box-shadow: -10px 10px 0px 0px #ffe0d1;display: inline-block;}
-.productView__campaign > span {display: block;}
+.productView__campaign {margin-bottom: 2rem;width: 100%;background-color: #de5642;color: #ffffff;padding: 1rem 3rem;font-size: 18px;text-align: center;box-shadow: -10px 10px 0px 0px #ffe0d1;display: inline-block;}
 .productView__text {margin-bottom: 1rem;}
 /* Модификации */
 .goodsModificationsBlock {display: flex;flex-wrap: wrap;align-items: center;}
@@ -48,6 +47,9 @@
 .productView__notify .add-notify:after {display: none}
 .empty .productView__addto .add-notify {display: inline-block;}
 .empty .productView__addto .add-cart {display: none;}
+@media (min-width: 1200px) {
+.productView__addto .button.quick {flex-grow: 0;}
+}
 @media (max-width: 1199.98px) {
 .empty .productView__addto .button {flex-basis: auto;}
 }
@@ -64,7 +66,8 @@
 }
 @media (max-width: 479.98px) {
 .goodsModificationsProperty {width: 100%;}
-.productView__qty, .productView__links {margin-right: 0;}
+.productView__qty {margin-right: 0;}
+.productView__links {margin-left: 0;}
 .productView__addto .button {flex-basis: 30%;padding: 0;}
 .empty .productView__addto .button {margin-left: 1rem;}
 }
@@ -81,6 +84,9 @@
 .tabs__content {position: relative;padding: 2rem 0;}
 .tabs__content > div {display: none;}
 .tabs__content > .active {display: block;}
+@media (max-width: 991.98px) {
+.productView__tabs {margin-top: 1rem;}
+}
 @media (max-width: 639.98px) {
 .tabs__nav {justify-content: flex-start;}
 }

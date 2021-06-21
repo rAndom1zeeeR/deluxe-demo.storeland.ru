@@ -92,10 +92,6 @@
 				{% ENDIF %}
 				<span class="price__now {CURRENCY_CHAR_CODE}" itemprop="price" content="{GOODS_MOD_PRICE_NOW}" data-price="{GOODS_MOD_PRICE_NOW}">{GOODS_MOD_PRICE_NOW | money_format}</span>
 			</div>
-			<!-- Краткое описание -->
-			{% IF GOODS_DESCRIPTION_SHORT %}
-			<div class="productView__text" itemprop="description">{GOODS_DESCRIPTION_SHORT}</div>
-			{% ENDIF %}
 			<!-- Блок информации по акции действующей на товар, если таковая есть -->
 			{% IF GOODS_MOD_MAX_DISCOUNT_ID %}
 			<div class="productView__campaign">
@@ -103,6 +99,10 @@
 				<span class="productView__campaign-name">&laquo;{GOODS_MOD_MAX_DISCOUNT_CAMPAIGN_NAME}&raquo;</span>
 				<span><strong>{GOODS_MOD_MAX_DISCOUNT}% скидки</strong> до <span class="productView__campaign-date">{GOODS_MOD_MAX_DISCOUNT_EXPIRED_AT | date('d.m.Y')}</span></span>
 			</div>
+			{% ENDIF %}
+			<!-- Краткое описание -->
+			{% IF GOODS_DESCRIPTION_SHORT %}
+			<div class="productView__text" itemprop="description">{GOODS_DESCRIPTION_SHORT}</div>
 			{% ENDIF %}
 			<!-- Модификации -->
 			<form action="{CART_ADD_GOODS_MODIFICATION_URL}" method="post" class="productView__form">
@@ -178,9 +178,16 @@
 								<a href="javascript:void(0)" class="qty__plus unselectable" title="Увеличить"><i class="icon-arrow_up"></i></a>
 							</div>
 						</div>
+						<!-- Уведомить -->
+						<a class="add-notify button" data-fancybox data-src="#fancybox__notify" href="javascript:;"><span>Уведомить</span></a>
+						<!-- Добавление товара в корзину -->
+						<button type="submit" class="add-cart button" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину">
+							<span>В корзину</span>
+						</button>
 						<!-- Быстрая покупка -->
 						<button type="submit" class="add-cart quick button button4" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину">
-							<span>В 1 клик</span></button>
+							<span>В 1 клик</span>
+						</button>
 						<!-- Добавление в избранное и сравнение -->
 						<div class="productView__links {% IF GOODS_MOD_IS_HAS_IN_COMPARE_LIST || GOODS_MOD_IS_HAS_IN_FAVORITES_LIST %}added{% ENDIF %}">
 							<!-- Если в тарифном плане подключен модуль сравнения товаров и он не выключен в настройках магазина -->
@@ -282,11 +289,6 @@
 							><span>В избранное</span></a>
 							{% ENDIF %}
 						</div>
-						<!-- Уведомить -->
-						<a class="add-notify button" data-fancybox data-src="#fancybox__notify" href="javascript:;"><span>Уведомить</span></a>
-						<!-- Добавление товара в корзину -->
-						<button type="submit" class="add-cart button" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину">
-							<span>В корзину</span></button>
 					</div>
 				</div>
 			</form>
