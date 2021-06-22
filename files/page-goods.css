@@ -183,6 +183,7 @@
 .productViewMod .productView__campaign {display: none;}
 .productViewMod .productView__shop {width: 100%;padding: 0;}
 .productViewMod .productView__addto .button {margin: 0 1rem;}
+.productViewMod .productView__links {margin: 0 1rem;}
 .productViewMod .productView__ratings {display: none;margin: 0;width: 100%;}
 .productViewMod .ratings__total {display: none;}
 .productViewMod .ratings__label {display: none;}
