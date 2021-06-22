@@ -9,8 +9,8 @@
 	<meta http-equiv="Content-Language" content="ru" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="format-detection" content="telephone=no" /><!--если вы где-нибудь на странице указали номер телефона в html-коде и не указали в хедере, то смартфон распознает его как телефонный номер и попытается набрать его по клику. -->
-	<link rel="icon" href="{ASSETS_IMAGES_PATH}favicon.ico?design=THEMENAME" type="image/x-icon" />
-	<link rel="shortcut icon" href="{ASSETS_IMAGES_PATH}favicon.ico?design=THEMENAME" type="image/x-icon" />
+	<link rel="icon" href="{ASSETS_IMAGES_PATH}favicon.ico?design=Deluxe" type="image/x-icon" />
+	<link rel="shortcut icon" href="{ASSETS_IMAGES_PATH}favicon.ico?design=Deluxe" type="image/x-icon" />
 	<meta property="og:title" content="{PAGE_TITLE}">
 	<meta property="og:image" content="{% IF MOD_LNAME=goods %}{GOODS_IMAGE_MEDIUM}{% ELSE %}{INDEX_PAGE_URL}design/logo.png{% ENDIF %}">
 	<meta property="og:url" content="{INDEX_PAGE_URL}">
@@ -24,72 +24,72 @@
 	<!-- Подключаемые шрифты -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="/design/icomoon.css?design=THEMENAME" />
+	<link rel="stylesheet" type="text/css" href="/design/icomoon.css?design=Deluxe" />
 	<!-- Основные Стили магазина для всех страниц -->
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}min.css?design=THEMENAME" />
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}jquery.fancybox.min.css?design=THEMENAME" />
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}main.css?design=THEMENAME" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}min.css?design=Deluxe" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}jquery.fancybox.min.css?design=Deluxe" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}main.css?design=Deluxe" />
 	<!-- Страница: Главная и НЕ главная -->
 	{% IF index_page %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-index.css?design=THEMENAME" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-index.css?design=Deluxe" />
 	{% ELSE %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-not-index.css?design=THEMENAME" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-not-index.css?design=Deluxe" />
 	{% ENDIF %}
 	<!-- Страница: Акции -->
 	{% IF MOD_LNAME = discount %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-discount.css?design=THEMENAME" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-discount.css?design=Deluxe" />
 	{% ENDIF %}
 	<!-- Страница: Сравнение -->
 	{% IF MOD_LNAME = compare %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-compare.css?design=THEMENAME" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-compare.css?design=Deluxe" />
 	{% ENDIF %}
 	<!-- Страница: Обратная связь -->
 	{% IF MOD_LNAME = feedback %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-feedback.css?design=THEMENAME" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-feedback.css?design=Deluxe" />
 	{% ENDIF %}
 	<!-- Страница: Новости -->
 	{% IF MOD_LNAME = news %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-news.css?design=THEMENAME" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-news.css?design=Deluxe" />
 	{% ENDIF %}
 	<!-- Страница: ЛК -->
 	{% IF MOD_LNAME = user || MOD_LNAME = feedback %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-user.css?design=THEMENAME" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-user.css?design=Deluxe" />
 	{% ENDIF %}
 	<!-- Стили: Товары -->
 	{% IF index_page || MOD_LNAME = catalog || MOD_LNAME = goods || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = user && ACT=favorites %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-products.css?design=THEMENAME" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-products.css?design=Deluxe" />
 	{% ENDIF %}
 	<!-- Стили: Категории -->
 	{% IF MOD_LNAME = catalog || index_page %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-categories.css?design=THEMENAME" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-categories.css?design=Deluxe" />
 	{% ENDIF %}
 	<!-- Страница: Каталог -->
 	{% IF MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-catalog.css?design=THEMENAME" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-catalog.css?design=Deluxe" />
 	{% ENDIF %}
 	<!-- Страница: Оформление заказа -->
 	{% IF MOD_LNAME = order %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-order.css?design=THEMENAME" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-order.css?design=Deluxe" />
 	{% ENDIF %}
 	<!-- Страница: Корзина -->
 	{% IF MOD_LNAME = cart || MOD_LNAME = order %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-cart.css?design=THEMENAME" />
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-orderfast.css?design=THEMENAME" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-cart.css?design=Deluxe" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-orderfast.css?design=Deluxe" />
 	{% ENDIF %}
 	<!-- Страница: Быстрый заказ -->
 	{% IF index_page || MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = goods || MOD_LNAME = user && ACT=favorites || MOD_LNAME = compare %}
-	<link rel="stylesheet" type="text/css" data-href="{ASSETS_STYLES_PATH}page-orderfast.css?design=THEMENAME" />
+	<link rel="stylesheet" type="text/css" data-href="{ASSETS_STYLES_PATH}page-orderfast.css?design=Deluxe" />
 	{% ENDIF %}
 	<!-- Страница: Товар -->
 	{% IF MOD_LNAME = goods %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-goods.css?design=THEMENAME" />
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-orderfast.css?design=THEMENAME" />
-	<link id="page-orderfast-css" rel="stylesheet" type="text/css" data-href="{ASSETS_STYLES_PATH}page-orderfast.css?design=THEMENAME" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-goods.css?design=Deluxe" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-orderfast.css?design=Deluxe" />
+	<link id="page-orderfast-css" rel="stylesheet" type="text/css" data-href="{ASSETS_STYLES_PATH}page-orderfast.css?design=Deluxe" />
 	{% ELSE %}
-	<link id="page-goods-css" rel="stylesheet" type="text/css" data-href="{ASSETS_STYLES_PATH}page-goods.css?design=THEMENAME" />
+	<link id="page-goods-css" rel="stylesheet" type="text/css" data-href="{ASSETS_STYLES_PATH}page-goods.css?design=Deluxe" />
 	{% ENDIF %}
 	<!-- Скрипты магазина -->
-	<script type="text/javascript" src="{ASSETS_JS_PATH}jquery-3.6.0.min.js?design=THEMENAME"></script>
+	<script type="text/javascript" src="{ASSETS_JS_PATH}jquery-3.6.0.min.js?design=Deluxe"></script>
 	<!-- Дополнительные скрипты -->
 	<script type="text/javascript">
 		// Если отключен JS
@@ -125,7 +125,7 @@
 				display: none;
 			}
 		</style>
-		<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}fix-nojs.css?design=THEMENAME">
+		<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}fix-nojs.css?design=Deluxe">
 	</noscript>
 	
 	<!-- Фон для закрытия всплывающих окон -->
@@ -140,7 +140,7 @@
 				<!-- Логотип -->
 				<div class="logo" itemscope itemtype="http://schema.org/Organization">
 					<a href="{INDEX_PAGE_URL}" title="{SETTINGS_STORE_NAME}" itemprop="url">
-						<img src="{ASSETS_IMAGES_PATH}logo.png?design=THEMENAME" alt="{SETTINGS_STORE_NAME}" itemprop="logo">
+						<img src="{ASSETS_IMAGES_PATH}logo.png?design=Deluxe" alt="{SETTINGS_STORE_NAME}" itemprop="logo">
 						<meta itemprop="name" content="{SETTINGS_STORE_NAME}">
 						<span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress"><meta itemprop="addressLocality" content="{SETTINGS_STORE_REGION}" /></span>
 					</a>
@@ -269,7 +269,7 @@
 									{% IF catalog_full.LAST %}{%FOR out%}</div>{%IFNOT catalog_full.out.LAST%}</div>{%ENDIF%}{%ENDFOR%}
 								{% ENDIF %}
 							{% ENDFOR %}
-							<div class="catalog__banner lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_catalog.jpg?design=THEMENAME">
+							<div class="catalog__banner lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_catalog.jpg?design=Deluxe">
 								<div class="catalog__banner-content">
 									<div class="catalog__banner-inner">
 										<div class="catalog__banner-title">Скидка 30%</div>
@@ -379,7 +379,7 @@
 		<div class="container">
 			<!-- Слайдер -->
 			<div class="slider owl-carousel">
-				<div class="slider__item lozad" data-background-image="{ASSETS_IMAGES_PATH}slide_1.jpg?design=THEMENAME" data-slide="1">
+				<div class="slider__item lozad" data-background-image="{ASSETS_IMAGES_PATH}slide_1.jpg?design=Deluxe" data-slide="1">
 					<div class="slider__content">
 						<div class="slider__inner">
 							<div class="slider__subtitle"><span>Создаем атмосферу праздника</span></div>
@@ -389,7 +389,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="slider__item lozad" data-background-image="{ASSETS_IMAGES_PATH}slide_2.jpg?design=THEMENAME" data-slide="1">
+				<div class="slider__item lozad" data-background-image="{ASSETS_IMAGES_PATH}slide_2.jpg?design=Deluxe" data-slide="1">
 					<div class="slider__content">
 						<div class="slider__inner">
 							<div class="slider__subtitle"><span>Качественные, яркие и мягкие</span></div>
@@ -399,7 +399,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="slider__item lozad" data-background-image="{ASSETS_IMAGES_PATH}slide_3.jpg?design=THEMENAME" data-slide="1">
+				<div class="slider__item lozad" data-background-image="{ASSETS_IMAGES_PATH}slide_3.jpg?design=Deluxe" data-slide="1">
 					<div class="slider__content">
 						<div class="slider__inner">
 							<div class="slider__subtitle"><span>Ивановская распродажа</span></div>
@@ -423,9 +423,9 @@
 				<div class="categories__item" data-id="{catalog_full.ID}">
 					<a href="{catalog_full.URL}" class="categories__image">
 						<noscript>
-						<img class="goods-image-medium" src="{% IF catalog_full.IMAGE_MEDIUM %}{catalog_full.IMAGE_MEDIUM}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=THEMENAME{% ENDIF %}" />
+						<img class="goods-image-medium" src="{% IF catalog_full.IMAGE_MEDIUM %}{catalog_full.IMAGE_MEDIUM}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=Deluxe{% ENDIF %}" />
 						</noscript>
-						<img class="owl-lazy goods-image-medium script__on" data-src="{% IF catalog_full.IMAGE_MEDIUM %}{catalog_full.IMAGE_MEDIUM}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=THEMENAME{% ENDIF %}" />
+						<img class="owl-lazy goods-image-medium script__on" data-src="{% IF catalog_full.IMAGE_MEDIUM %}{catalog_full.IMAGE_MEDIUM}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=Deluxe{% ENDIF %}" />
 					</a>
 					<a href="{catalog_full.URL}" class="categories__name"><span>{catalog_full.NAME}</span></a>
 				</div>
@@ -458,13 +458,13 @@
 									<input type="hidden" name="hash" value="{HASH}" />
 									<input type="hidden" name="form[goods_from]" value="{index_page_goods.GOODS_FROM}" />
 									<input type="hidden" name="form[goods_mod_id]" value="{index_page_goods.MIN_PRICE_NOW_ID}" />
-									<link itemprop="image" href="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}" />
+									<link itemprop="image" href="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=Deluxe{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 									<div class="product__image">
 										<a href="{index_page_goods.URL_MIN_PRICE_NOW | url_amp}" class="product__img" title="{index_page_goods.NAME}" itemprop="url">
 											<noscript>
-												<img class="goods-image-medium" src="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_goods.NAME}" itemprop="image">
+												<img class="goods-image-medium" src="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=Deluxe{% ELSE %}{index_page_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_goods.NAME}" itemprop="image">
 											</noscript>
-											<img class="goods-image-medium lozad script__on" src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" data-src="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_goods.NAME}" itemprop="image">
+											<img class="goods-image-medium lozad script__on" src="{ASSETS_IMAGES_PATH}placeholder.png?design=Deluxe" data-src="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=Deluxe{% ELSE %}{index_page_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_goods.NAME}" itemprop="image">
 										</a>
 										<div class="product__ico">
 											{% IF index_page_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>index_page_goods.MIN_PRICE_NOW %}
@@ -490,7 +490,7 @@
 													data-action-delete-title="Убрать &laquo;{index_page_goods.NAME}&raquo; из Избранного"
 													data-prodname="{index_page_goods.NAME}"
 													data-produrl="{index_page_goods.URL}"
-													data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{index_page_goods.IMAGE_ICON}{% ENDIF %}"
+													data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=Deluxe{% ELSE %}{index_page_goods.IMAGE_ICON}{% ENDIF %}"
 													data-id="{index_page_goods.ID}"
 													data-mod-id="{index_page_goods.MIN_PRICE_NOW_ID}"
 													data-mod-price="{index_page_goods.MIN_PRICE_NOW}"
@@ -512,7 +512,7 @@
 													data-action-delete-title="Убрать &laquo;{index_page_goods.NAME}&raquo; из Избранного"
 													data-prodname="{index_page_goods.NAME}"
 													data-produrl="{index_page_goods.URL}"
-													data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{index_page_goods.IMAGE_ICON}{% ENDIF %}"
+													data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=Deluxe{% ELSE %}{index_page_goods.IMAGE_ICON}{% ENDIF %}"
 													data-id="{index_page_goods.ID}"
 													data-mod-id="{index_page_goods.MIN_PRICE_NOW_ID}"
 													data-mod-price="{index_page_goods.MIN_PRICE_NOW}"
@@ -547,7 +547,7 @@
 													data-action-delete-title="Убрать &laquo;{index_page_goods.NAME}&raquo; из списка сравнения с другими товарами"
 													data-prodname="{index_page_goods.NAME}"
 													data-produrl="{index_page_goods.URL}"
-													data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{index_page_goods.IMAGE_ICON}{% ENDIF %}"
+													data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=Deluxe{% ELSE %}{index_page_goods.IMAGE_ICON}{% ENDIF %}"
 													data-id="{index_page_goods.ID}"
 													data-mod-id="{index_page_goods.MIN_PRICE_NOW_ID}"
 													data-mod-price="{index_page_goods.MIN_PRICE_NOW}"
@@ -569,7 +569,7 @@
 													data-action-delete-title="Убрать &laquo;{index_page_goods.NAME}&raquo; из списка сравнения с другими товарами"
 													data-prodname="{index_page_goods.NAME}"
 													data-produrl="{index_page_goods.URL}"
-													data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{index_page_goods.IMAGE_ICON}{% ENDIF %}"
+													data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=Deluxe{% ELSE %}{index_page_goods.IMAGE_ICON}{% ENDIF %}"
 													data-id="{index_page_goods.ID}"
 													data-mod-id="{index_page_goods.MIN_PRICE_NOW_ID}"
 													data-mod-price="{index_page_goods.MIN_PRICE_NOW}"
@@ -665,13 +665,13 @@
 									<input type="hidden" name="hash" value="{HASH}" />
 									<input type="hidden" name="form[goods_from]" value="{index_page_sale_goods.GOODS_FROM}" />
 									<input type="hidden" name="form[goods_mod_id]" value="{index_page_sale_goods.MIN_PRICE_NOW_ID}" />
-									<link itemprop="image" href="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}" />
+									<link itemprop="image" href="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=Deluxe{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 									<div class="product__image">
 										<a href="{index_page_sale_goods.URL_MIN_PRICE_NOW | url_amp}" class="product__img" title="{index_page_sale_goods.NAME}" itemprop="url">
 											<noscript>
-												<img class="goods-image-medium" src="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_sale_goods.NAME}" itemprop="image">
+												<img class="goods-image-medium" src="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=Deluxe{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_sale_goods.NAME}" itemprop="image">
 											</noscript>
-											<img class="goods-image-medium lozad script__on" src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" data-src="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_sale_goods.NAME}" itemprop="image">
+											<img class="goods-image-medium lozad script__on" src="{ASSETS_IMAGES_PATH}placeholder.png?design=Deluxe" data-src="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=Deluxe{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_sale_goods.NAME}" itemprop="image">
 										</a>
 										<div class="product__ico">
 											{% IF index_page_sale_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>index_page_sale_goods.MIN_PRICE_NOW %}
@@ -697,7 +697,7 @@
 													data-action-delete-title="Убрать &laquo;{index_page_sale_goods.NAME}&raquo; из Избранного"
 													data-prodname="{index_page_sale_goods.NAME}"
 													data-produrl="{index_page_sale_goods.URL}"
-													data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{index_page_sale_goods.IMAGE_ICON}{% ENDIF %}"
+													data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=Deluxe{% ELSE %}{index_page_sale_goods.IMAGE_ICON}{% ENDIF %}"
 													data-id="{index_page_sale_goods.ID}"
 													data-mod-id="{index_page_sale_goods.MIN_PRICE_NOW_ID}"
 													data-mod-price="{index_page_sale_goods.MIN_PRICE_NOW}"
@@ -719,7 +719,7 @@
 													data-action-delete-title="Убрать &laquo;{index_page_sale_goods.NAME}&raquo; из Избранного"
 													data-prodname="{index_page_sale_goods.NAME}"
 													data-produrl="{index_page_sale_goods.URL}"
-													data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{index_page_sale_goods.IMAGE_ICON}{% ENDIF %}"
+													data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=Deluxe{% ELSE %}{index_page_sale_goods.IMAGE_ICON}{% ENDIF %}"
 													data-id="{index_page_sale_goods.ID}"
 													data-mod-id="{index_page_sale_goods.MIN_PRICE_NOW_ID}"
 													data-mod-price="{index_page_sale_goods.MIN_PRICE_NOW}"
@@ -754,7 +754,7 @@
 													data-action-delete-title="Убрать &laquo;{index_page_sale_goods.NAME}&raquo; из списка сравнения с другими товарами"
 													data-prodname="{index_page_sale_goods.NAME}"
 													data-produrl="{index_page_sale_goods.URL}"
-													data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{index_page_sale_goods.IMAGE_ICON}{% ENDIF %}"
+													data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=Deluxe{% ELSE %}{index_page_sale_goods.IMAGE_ICON}{% ENDIF %}"
 													data-id="{index_page_sale_goods.ID}"
 													data-mod-id="{index_page_sale_goods.MIN_PRICE_NOW_ID}"
 													data-mod-price="{index_page_sale_goods.MIN_PRICE_NOW}"
@@ -776,7 +776,7 @@
 													data-action-delete-title="Убрать &laquo;{index_page_sale_goods.NAME}&raquo; из списка сравнения с другими товарами"
 													data-prodname="{index_page_sale_goods.NAME}"
 													data-produrl="{index_page_sale_goods.URL}"
-													data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{index_page_sale_goods.IMAGE_ICON}{% ENDIF %}"
+													data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=Deluxe{% ELSE %}{index_page_sale_goods.IMAGE_ICON}{% ENDIF %}"
 													data-id="{index_page_sale_goods.ID}"
 													data-mod-id="{index_page_sale_goods.MIN_PRICE_NOW_ID}"
 													data-mod-price="{index_page_sale_goods.MIN_PRICE_NOW}"
@@ -875,7 +875,7 @@
 		<div class="container">
 			<div class="inner">
 				<div class="banners__items">
-					<div class="banners__item lozad" data-item="1" data-background-image="{ASSETS_IMAGES_PATH}banner_1.jpg?design=THEMENAME">
+					<div class="banners__item lozad" data-item="1" data-background-image="{ASSETS_IMAGES_PATH}banner_1.jpg?design=Deluxe">
 						<div class="banners__content">
 							<a href="{CATALOG_URL}" class="banners__title">
 								<span><strong>Уютные</strong></span>
@@ -886,7 +886,7 @@
 					</div>
 				</div>
 				<div class="banners__items">
-					<div class="banners__item lozad" data-item="2" data-background-image="{ASSETS_IMAGES_PATH}banner_2.jpg?design=THEMENAME">
+					<div class="banners__item lozad" data-item="2" data-background-image="{ASSETS_IMAGES_PATH}banner_2.jpg?design=Deluxe">
 						<div class="banners__content">
 							<a href="{CATALOG_URL}" class="banners__title">
 								<span><strong>1+1=3</strong></span>
@@ -894,7 +894,7 @@
 							</a>
 						</div>
 					</div>
-					<div class="banners__item lozad" data-item="3" data-background-image="{ASSETS_IMAGES_PATH}banner_3.jpg?design=THEMENAME">
+					<div class="banners__item lozad" data-item="3" data-background-image="{ASSETS_IMAGES_PATH}banner_3.jpg?design=Deluxe">
 						<div class="banners__content">
 							<a href="{CATALOG_URL}" class="banners__title">
 								<span><strong>Набор полотенец</strong></span>
@@ -923,13 +923,13 @@
 						<input type="hidden" name="hash" value="{HASH}" />
 						<input type="hidden" name="form[goods_from]" value="{index_page_favorites_goods.GOODS_FROM}" />
 						<input type="hidden" name="form[goods_mod_id]" value="{index_page_favorites_goods.MIN_PRICE_NOW_ID}" />
-						<link itemprop="image" href="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_favorites_goods.IMAGE_MEDIUM}{% ENDIF %}" />
+						<link itemprop="image" href="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=Deluxe{% ELSE %}{index_page_favorites_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 						<div class="product__image">
 							<a href="{index_page_favorites_goods.URL_MIN_PRICE_NOW | url_amp}" class="product__img" title="{index_page_favorites_goods.NAME}" itemprop="url">
 								<noscript>
-									<img class="goods-image-medium" src="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_favorites_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_favorites_goods.NAME}">
+									<img class="goods-image-medium" src="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=Deluxe{% ELSE %}{index_page_favorites_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_favorites_goods.NAME}">
 								</noscript>
-								<img class="goods-image-medium lozad script__on" src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" data-src="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_favorites_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_favorites_goods.NAME}">
+								<img class="goods-image-medium lozad script__on" src="{ASSETS_IMAGES_PATH}placeholder.png?design=Deluxe" data-src="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=Deluxe{% ELSE %}{index_page_favorites_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_favorites_goods.NAME}">
 							</a>
 							<div class="product__ico">
 								{% IF index_page_favorites_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>index_page_favorites_goods.MIN_PRICE_NOW %}
@@ -955,7 +955,7 @@
 										data-action-delete-title="Убрать &laquo;{index_page_favorites_goods.NAME}&raquo; из Избранного"
 										data-prodname="{index_page_favorites_goods.NAME}"
 										data-produrl="{index_page_favorites_goods.URL}"
-										data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{index_page_favorites_goods.IMAGE_ICON}{% ENDIF %}"
+										data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=Deluxe{% ELSE %}{index_page_favorites_goods.IMAGE_ICON}{% ENDIF %}"
 										data-id="{index_page_favorites_goods.ID}"
 										data-mod-id="{index_page_favorites_goods.MIN_PRICE_NOW_ID}"
 										data-mod-price="{index_page_favorites_goods.MIN_PRICE_NOW}"
@@ -977,7 +977,7 @@
 										data-action-delete-title="Убрать &laquo;{index_page_favorites_goods.NAME}&raquo; из Избранного"
 										data-prodname="{index_page_favorites_goods.NAME}"
 										data-produrl="{index_page_favorites_goods.URL}"
-										data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{index_page_favorites_goods.IMAGE_ICON}{% ENDIF %}"
+										data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=Deluxe{% ELSE %}{index_page_favorites_goods.IMAGE_ICON}{% ENDIF %}"
 										data-id="{index_page_favorites_goods.ID}"
 										data-mod-id="{index_page_favorites_goods.MIN_PRICE_NOW_ID}"
 										data-mod-price="{index_page_favorites_goods.MIN_PRICE_NOW}"
@@ -1012,7 +1012,7 @@
 										data-action-delete-title="Убрать &laquo;{index_page_favorites_goods.NAME}&raquo; из списка сравнения с другими товарами"
 										data-prodname="{index_page_favorites_goods.NAME}"
 										data-produrl="{index_page_favorites_goods.URL}"
-										data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{index_page_favorites_goods.IMAGE_ICON}{% ENDIF %}"
+										data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=Deluxe{% ELSE %}{index_page_favorites_goods.IMAGE_ICON}{% ENDIF %}"
 										data-id="{index_page_favorites_goods.ID}"
 										data-mod-id="{index_page_favorites_goods.MIN_PRICE_NOW_ID}"
 										data-mod-price="{index_page_favorites_goods.MIN_PRICE_NOW}"
@@ -1034,7 +1034,7 @@
 										data-action-delete-title="Убрать &laquo;{index_page_favorites_goods.NAME}&raquo; из списка сравнения с другими товарами"
 										data-prodname="{index_page_favorites_goods.NAME}"
 										data-produrl="{index_page_favorites_goods.URL}"
-										data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{index_page_favorites_goods.IMAGE_ICON}{% ENDIF %}"
+										data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=Deluxe{% ELSE %}{index_page_favorites_goods.IMAGE_ICON}{% ENDIF %}"
 										data-id="{index_page_favorites_goods.ID}"
 										data-mod-id="{index_page_favorites_goods.MIN_PRICE_NOW_ID}"
 										data-mod-price="{index_page_favorites_goods.MIN_PRICE_NOW}"
@@ -1144,9 +1144,9 @@
 				</div>
 				<div class="callback__image">
 					<noscript>
-					<img src="{ASSETS_IMAGES_PATH}callback.jpg?design=THEMENAME" />
+					<img src="{ASSETS_IMAGES_PATH}callback.jpg?design=Deluxe" />
 					</noscript>
-					<img class="lozad script__on" data-src="{ASSETS_IMAGES_PATH}callback.jpg?design=THEMENAME" />
+					<img class="lozad script__on" data-src="{ASSETS_IMAGES_PATH}callback.jpg?design=Deluxe" />
 				</div>
 			</div>
 		</div>
@@ -1159,9 +1159,9 @@
 				<div class="index__left">
 					<div class="index__image">
 						<noscript>
-						<img src="{ASSETS_IMAGES_PATH}index.jpg?design=THEMENAME" />
+						<img src="{ASSETS_IMAGES_PATH}index.jpg?design=Deluxe" />
 						</noscript>
-						<img class="lozad script__on" data-src="{ASSETS_IMAGES_PATH}index.jpg?design=THEMENAME" />
+						<img class="lozad script__on" data-src="{ASSETS_IMAGES_PATH}index.jpg?design=Deluxe" />
 					</div>
 				</div>
 				<div class="index__right">
@@ -1191,13 +1191,13 @@
 						<input type="hidden" name="hash" value="{HASH}" />
 						<input type="hidden" name="form[goods_from]" value="{index_page_new_goods.GOODS_FROM}" />
 						<input type="hidden" name="form[goods_mod_id]" value="{index_page_new_goods.MIN_PRICE_NOW_ID}" />
-						<link itemprop="image" href="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=THEMENAME{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}" />
+						<link itemprop="image" href="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=Deluxe{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 						<div class="product__image">
 							<a href="{index_page_new_goods.URL_MIN_PRICE_NOW | url_amp}" class="product__img" title="{index_page_new_goods.NAME}" itemprop="url">
 								<noscript>
-									<img class="goods-image-medium" src="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_new_goods.NAME}" itemprop="image">
+									<img class="goods-image-medium" src="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=Deluxe{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_new_goods.NAME}" itemprop="image">
 								</noscript>
-								<img class="goods-image-medium lozad script__on" src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" data-src="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_new_goods.NAME}" itemprop="image">
+								<img class="goods-image-medium lozad script__on" src="{ASSETS_IMAGES_PATH}placeholder.png?design=Deluxe" data-src="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=Deluxe{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_new_goods.NAME}" itemprop="image">
 							</a>
 							<div class="product__ico">
 								{% IF index_page_new_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>index_page_new_goods.MIN_PRICE_NOW %}
@@ -1223,7 +1223,7 @@
 										data-action-delete-title="Убрать &laquo;{index_page_new_goods.NAME}&raquo; из Избранного"
 										data-prodname="{index_page_new_goods.NAME}"
 										data-produrl="{index_page_new_goods.URL}"
-										data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{index_page_new_goods.IMAGE_ICON}{% ENDIF %}"
+										data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=Deluxe{% ELSE %}{index_page_new_goods.IMAGE_ICON}{% ENDIF %}"
 										data-id="{index_page_new_goods.ID}"
 										data-mod-id="{index_page_new_goods.MIN_PRICE_NOW_ID}"
 										data-mod-price="{index_page_new_goods.MIN_PRICE_NOW}"
@@ -1245,7 +1245,7 @@
 										data-action-delete-title="Убрать &laquo;{index_page_new_goods.NAME}&raquo; из Избранного"
 										data-prodname="{index_page_new_goods.NAME}"
 										data-produrl="{index_page_new_goods.URL}"
-										data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{index_page_new_goods.IMAGE_ICON}{% ENDIF %}"
+										data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=Deluxe{% ELSE %}{index_page_new_goods.IMAGE_ICON}{% ENDIF %}"
 										data-id="{index_page_new_goods.ID}"
 										data-mod-id="{index_page_new_goods.MIN_PRICE_NOW_ID}"
 										data-mod-price="{index_page_new_goods.MIN_PRICE_NOW}"
@@ -1280,7 +1280,7 @@
 										data-action-delete-title="Убрать &laquo;{index_page_new_goods.NAME}&raquo; из списка сравнения с другими товарами"
 										data-prodname="{index_page_new_goods.NAME}"
 										data-produrl="{index_page_new_goods.URL}"
-										data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{index_page_new_goods.IMAGE_ICON}{% ENDIF %}"
+										data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=Deluxe{% ELSE %}{index_page_new_goods.IMAGE_ICON}{% ENDIF %}"
 										data-id="{index_page_new_goods.ID}"
 										data-mod-id="{index_page_new_goods.MIN_PRICE_NOW_ID}"
 										data-mod-price="{index_page_new_goods.MIN_PRICE_NOW}"
@@ -1302,7 +1302,7 @@
 										data-action-delete-title="Убрать &laquo;{index_page_new_goods.NAME}&raquo; из списка сравнения с другими товарами"
 										data-prodname="{index_page_new_goods.NAME}"
 										data-produrl="{index_page_new_goods.URL}"
-										data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{index_page_new_goods.IMAGE_ICON}{% ENDIF %}"
+										data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=Deluxe{% ELSE %}{index_page_new_goods.IMAGE_ICON}{% ENDIF %}"
 										data-id="{index_page_new_goods.ID}"
 										data-mod-id="{index_page_new_goods.MIN_PRICE_NOW_ID}"
 										data-mod-price="{index_page_new_goods.MIN_PRICE_NOW}"
@@ -1401,9 +1401,9 @@
 				<div class="news__item">
 					<a class="news__image" href="{news_list_all.URL}" title="Перейти к странице &laquo;{news_list_all.TITLE}&raquo;">
 						<noscript>
-						<img src="{% IF news_list_all.IMG %}{news_list_all.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news_1.jpg?design=THEMENAME{% ENDIF %}" alt="{news_list_all.TITLE}" />
+						<img src="{% IF news_list_all.IMG %}{news_list_all.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news_1.jpg?design=Deluxe{% ENDIF %}" alt="{news_list_all.TITLE}" />
 						</noscript>
-						<img class="owl-lazy script__on" data-src="{% IF news_list_all.IMG %}{news_list_all.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news_1.jpg?design=THEMENAME{% ENDIF %}" alt="{news_list_all.TITLE}" />
+						<img class="owl-lazy script__on" data-src="{% IF news_list_all.IMG %}{news_list_all.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news_1.jpg?design=Deluxe{% ENDIF %}" alt="{news_list_all.TITLE}" />
 					</a>
 					<div class="news__content">
 						<div class="news__inner">
@@ -1432,9 +1432,9 @@
 				<div class="news__item">
 					<a class="news__image" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;">
 						<noscript>
-						<img src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news_1.jpg?design=THEMENAME{% ENDIF %}" alt="{news_list_shop.TITLE}" />
+						<img src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news_1.jpg?design=Deluxe{% ENDIF %}" alt="{news_list_shop.TITLE}" />
 						</noscript>
-						<img class="owl-lazy script__on" data-src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news_1.jpg?design=THEMENAME{% ENDIF %}" alt="{news_list_shop.TITLE}" />
+						<img class="owl-lazy script__on" data-src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news_1.jpg?design=Deluxe{% ENDIF %}" alt="{news_list_shop.TITLE}" />
 					</a>
 					<div class="news__content">
 						<div class="news__inner">
@@ -1463,9 +1463,9 @@
 				<div class="news__item">
 					<a class="news__image" href="{news_list_articles.URL}" title="Перейти к странице &laquo;{news_list_articles.TITLE}&raquo;">
 						<noscript>
-						<img src="{% IF news_list_articles.IMG %}{news_list_articles.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news_1.jpg?design=THEMENAME{% ENDIF %}" alt="{news_list_articles.TITLE}" />
+						<img src="{% IF news_list_articles.IMG %}{news_list_articles.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news_1.jpg?design=Deluxe{% ENDIF %}" alt="{news_list_articles.TITLE}" />
 						</noscript>
-						<img class="owl-lazy script__on" data-src="{% IF news_list_articles.IMG %}{news_list_articles.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news_1.jpg?design=THEMENAME{% ENDIF %}" alt="{news_list_articles.TITLE}" />
+						<img class="owl-lazy script__on" data-src="{% IF news_list_articles.IMG %}{news_list_articles.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news_1.jpg?design=Deluxe{% ENDIF %}" alt="{news_list_articles.TITLE}" />
 					</a>
 					<div class="news__content">
 						<div class="news__inner">
@@ -1494,9 +1494,9 @@
 				<div class="news__item">
 					<a class="news__image" href="{news_list_mass_media.URL}" title="Перейти к странице &laquo;{news_list_mass_media.TITLE}&raquo;">
 						<noscript>
-						<img src="{% IF news_list_mass_media.IMG %}{news_list_mass_media.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news_1.jpg?design=THEMENAME{% ENDIF %}" alt="{news_list_mass_media.TITLE}" />
+						<img src="{% IF news_list_mass_media.IMG %}{news_list_mass_media.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news_1.jpg?design=Deluxe{% ENDIF %}" alt="{news_list_mass_media.TITLE}" />
 						</noscript>
-						<img class="owl-lazy script__on" data-src="{% IF news_list_mass_media.IMG %}{news_list_mass_media.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news_1.jpg?design=THEMENAME{% ENDIF %}" alt="{news_list_mass_media.TITLE}" />
+						<img class="owl-lazy script__on" data-src="{% IF news_list_mass_media.IMG %}{news_list_mass_media.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news_1.jpg?design=Deluxe{% ENDIF %}" alt="{news_list_mass_media.TITLE}" />
 					</a>
 					<div class="news__content">
 						<div class="news__inner">
@@ -1773,7 +1773,7 @@
 			<!-- Баннеры в каталоге -->
 			{% IF MOD_LNAME = catalog %}
 			<div class="products__banners">
-				<a href="{CATALOG_URL}" class="products__banner lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_products_1.jpg?design=THEMENAME">
+				<a href="{CATALOG_URL}" class="products__banner lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_products_1.jpg?design=Deluxe">
 					<div class="products__banner-inner">
 						<div class="products__banner-content">
 							<div class="products__banner-title">Детский текстиль</div>
@@ -1781,7 +1781,7 @@
 						</div>
 					</div>
 				</a>
-				<a href="{CATALOG_URL}" class="products__banner lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_products_2.jpg?design=THEMENAME">
+				<a href="{CATALOG_URL}" class="products__banner lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_products_2.jpg?design=Deluxe">
 					<div class="products__banner-inner">
 						<div class="products__banner-content">
 							<div class="products__banner-title">Подарки</div>
@@ -1910,13 +1910,13 @@
 										<input type="hidden" name="hash" value="{HASH}" />
 										<input type="hidden" name="form[goods_from]" value="{recently_viewed_goods.GOODS_FROM}" />
 										<input type="hidden" name="form[goods_mod_id]" value="{recently_viewed_goods.MIN_PRICE_NOW_ID}" />
-										<link itemprop="image" href="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{recently_viewed_goods.IMAGE_MEDIUM}{% ENDIF %}" />
+										<link itemprop="image" href="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=Deluxe{% ELSE %}{recently_viewed_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 										<div class="product__image">
 											<a href="{recently_viewed_goods.URL_MIN_PRICE_NOW | url_amp}" class="product__img" title="{recently_viewed_goods.NAME}" itemprop="url">
 												<noscript>
-												<img class="goods-image-medium" src="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=fresh{% ELSE %}{recently_viewed_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{recently_viewed_goods.NAME}" itemprop="image">
+												<img class="goods-image-medium" src="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=Deluxe{% ELSE %}{recently_viewed_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{recently_viewed_goods.NAME}" itemprop="image">
 												</noscript>
-												<img class="goods-image-medium lozad script__on" src="{ASSETS_IMAGES_PATH}placeholder.png?design=fresh" data-src="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=fresh{% ELSE %}{recently_viewed_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{recently_viewed_goods.NAME}" itemprop="image">
+												<img class="goods-image-medium lozad script__on" src="{ASSETS_IMAGES_PATH}placeholder.png?design=Deluxe" data-src="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=Deluxe{% ELSE %}{recently_viewed_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{recently_viewed_goods.NAME}" itemprop="image">
 											</a>
 											<div class="product__ico">
 												{% IF recently_viewed_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>recently_viewed_goods.MIN_PRICE_NOW %}
@@ -1966,7 +1966,7 @@
 													data-action-delete-title="Убрать &laquo;{recently_viewed_goods.NAME}&raquo; из Избранного"
 													data-prodname="{recently_viewed_goods.NAME}"
 													data-produrl="{recently_viewed_goods.URL}"
-													data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=fresh{% ELSE %}{recently_viewed_goods.IMAGE_ICON}{% ENDIF %}"
+													data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=Deluxe{% ELSE %}{recently_viewed_goods.IMAGE_ICON}{% ENDIF %}"
 													data-id="{recently_viewed_goods.ID}"
 													data-mod-id="{recently_viewed_goods.MIN_PRICE_NOW_ID}"
 													data-mod-price="{recently_viewed_goods.MIN_PRICE_NOW}"
@@ -1988,7 +1988,7 @@
 													data-action-delete-title="Убрать &laquo;{recently_viewed_goods.NAME}&raquo; из Избранного"
 													data-prodname="{recently_viewed_goods.NAME}"
 													data-produrl="{recently_viewed_goods.URL}"
-													data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=fresh{% ELSE %}{recently_viewed_goods.IMAGE_ICON}{% ENDIF %}"
+													data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=Deluxe{% ELSE %}{recently_viewed_goods.IMAGE_ICON}{% ENDIF %}"
 													data-id="{recently_viewed_goods.ID}"
 													data-mod-id="{recently_viewed_goods.MIN_PRICE_NOW_ID}"
 													data-mod-price="{recently_viewed_goods.MIN_PRICE_NOW}"
@@ -2023,7 +2023,7 @@
 													data-action-delete-title="Убрать &laquo;{recently_viewed_goods.NAME}&raquo; из списка сравнения с другими товарами"
 													data-prodname="{recently_viewed_goods.NAME}"
 													data-produrl="{recently_viewed_goods.URL}"
-													data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=fresh{% ELSE %}{recently_viewed_goods.IMAGE_ICON}{% ENDIF %}"
+													data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=Deluxe{% ELSE %}{recently_viewed_goods.IMAGE_ICON}{% ENDIF %}"
 													data-id="{recently_viewed_goods.ID}"
 													data-mod-id="{recently_viewed_goods.MIN_PRICE_NOW_ID}"
 													data-mod-price="{recently_viewed_goods.MIN_PRICE_NOW}"
@@ -2045,7 +2045,7 @@
 													data-action-delete-title="Убрать &laquo;{recently_viewed_goods.NAME}&raquo; из списка сравнения с другими товарами"
 													data-prodname="{recently_viewed_goods.NAME}"
 													data-produrl="{recently_viewed_goods.URL}"
-													data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=fresh{% ELSE %}{recently_viewed_goods.IMAGE_ICON}{% ENDIF %}"
+													data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=Deluxe{% ELSE %}{recently_viewed_goods.IMAGE_ICON}{% ENDIF %}"
 													data-id="{recently_viewed_goods.ID}"
 													data-mod-id="{recently_viewed_goods.MIN_PRICE_NOW_ID}"
 													data-mod-price="{recently_viewed_goods.MIN_PRICE_NOW}"
@@ -2111,7 +2111,7 @@
 					</form>
 				</div>
 				<div class="callback__image">
-					<img src="{ASSETS_IMAGES_PATH}callback.jpg?design=THEMENAME" />
+					<img src="{ASSETS_IMAGES_PATH}callback.jpg?design=Deluxe" />
 				</div>
 			</div>
 		</div>
@@ -2175,7 +2175,7 @@
 				<!-- Логотип -->
 				<div class="logo" itemscope itemtype="http://schema.org/Organization">
 					<a href="{INDEX_PAGE_URL}" title="{SETTINGS_STORE_NAME}" itemprop="url">
-						<img src="{ASSETS_IMAGES_PATH}logo.png?design=THEMENAME" alt="{SETTINGS_STORE_NAME}" itemprop="logo">
+						<img src="{ASSETS_IMAGES_PATH}logo.png?design=Deluxe" alt="{SETTINGS_STORE_NAME}" itemprop="logo">
 						<meta itemprop="name" content="{SETTINGS_STORE_NAME}">
 						<span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress"><meta itemprop="addressLocality" content="{SETTINGS_STORE_REGION}" /></span>
 					</a>
@@ -2313,7 +2313,7 @@
 				<div class="copyright">
 					<div>&copy;{DATE_YEAR} {SETTINGS_STORE_NAME}. Все права защищены.</div>
 					<div>{SETTINGS_STORE_ORG_NAME}.</div>
-					<div>{COPYRIGHT_FOR_DESIGN_nails}</div>
+					<div>{COPYRIGHT_FOR_DESIGN_DELUXE}</div>
 					<div>{SETTINGS_STORE_HTML_CODE}</div>
 				</div>
 			</div>
@@ -2502,7 +2502,7 @@
 				<div class="addto__items">
 					{% FOR cart_items %}
 					<div class="addto__item" data-id="{cart_items.GOODS_ID}">
-						<a href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}" class="addto__image"><img src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{cart_items.GOODS_IMAGE_ICON}{% ENDIF %}" alt="{cart_items.GOODS_NAME}" class="goods-image-icon" /></a>
+						<a href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}" class="addto__image"><img src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=Deluxe{% ELSE %}{cart_items.GOODS_IMAGE_ICON}{% ENDIF %}" alt="{cart_items.GOODS_NAME}" class="goods-image-icon" /></a>
 						<div class="addto__shop">
 							<!-- Название -->
 							<a href="{cart_items.GOODS_URL}" class="addto__name" title="{cart_items.GOODS_NAME}"><span>{cart_items.GOODS_NAME}</span></a>
@@ -2546,7 +2546,7 @@
 				<div class="addto__items">
 					{% FOR compare_goods %}
 					<div class="addto__item" data-id="{compare_goods.ID}">
-						<a href="{compare_goods.URL}" title="{compare_goods.NAME}" class="addto__image"><img src="{% IF compare_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{compare_goods.IMAGE_ICON}{% ENDIF %}" class="goods-image-icon" /></a>
+						<a href="{compare_goods.URL}" title="{compare_goods.NAME}" class="addto__image"><img src="{% IF compare_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=Deluxe{% ELSE %}{compare_goods.IMAGE_ICON}{% ENDIF %}" class="goods-image-icon" /></a>
 						<div class="addto__shop">
 							<!-- Название -->
 							<a href="{compare_goods.URL}" class="addto__name" title="{compare_goods.NAME}"><span>{compare_goods.NAME}</span></a>
@@ -2581,7 +2581,7 @@
 				<div class="addto__items">
 					{% FOR favorites_goods %}
 					<div class="addto__item" data-id="{favorites_goods.ID}">
-						<a href="{favorites_goods.URL}" title="{favorites_goods.NAME}" class="addto__image"><img src="{% IF favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{favorites_goods.IMAGE_ICON}{% ENDIF %}" class="goods-image-icon" /></a>
+						<a href="{favorites_goods.URL}" title="{favorites_goods.NAME}" class="addto__image"><img src="{% IF favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=Deluxe{% ELSE %}{favorites_goods.IMAGE_ICON}{% ENDIF %}" class="goods-image-icon" /></a>
 						<div class="addto__shop">
 							<!-- Название -->
 							<a href="{favorites_goods.URL}" class="addto__name" title="{favorites_goods.NAME}">{favorites_goods.NAME}</a>
@@ -2754,8 +2754,8 @@
 	document.createElement( "picture" );
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/picturefill/3.0.3/picturefill.min.js" async></script>
-<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME">
-<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}fix-ie.css?design=THEMENAME">
+<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=Deluxe">
+<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}fix-ie.css?design=Deluxe">
 {% ENDIF %}
 
 <!-- В случае их возникновения JS ошибок, отображаем их владельцу магазина для возможности отладки. Покупатели сообщений о JS ошибках не видят -->
@@ -2775,69 +2775,69 @@
 </script>
 <!-- Слайдер. Карусель -->
 {% IF index_page || MOD_LNAME = compare || MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = goods || MOD_LNAME = user && ACT=favorites %}
-<link rel="preload" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=Deluxe" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript>
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME">
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=Deluxe">
 </noscript>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}owl-carousel.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}owl-carousel.js?design=Deluxe"></script>
 {% ENDIF %}
 <!-- Скрипты: Главная  -->
 {% IF MOD_LNAME = feedback || MOD_LNAME = callback %}
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-feedback.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-feedback.js?design=Deluxe"></script>
 {% ENDIF %}
 <!-- Скрипты: Корзина -->
 {% IF MOD_LNAME = cart || MOD_LNAME = order %}
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-cart.js?design=THEMENAME"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-orderfast.js?design=THEMENAME"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}air-datepicker.js?design=THEMENAME"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}debounce.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-cart.js?design=Deluxe"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-orderfast.js?design=Deluxe"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}air-datepicker.js?design=Deluxe"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}debounce.js?design=Deluxe"></script>
 {% ENDIF %}
 <!-- Скрипты: Сравнение -->
 {% IF MOD_LNAME = compare %}
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-compare.js?design=THEMENAME"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-products.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-compare.js?design=Deluxe"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-products.js?design=Deluxe"></script>
 {% ENDIF %}
 <!-- Скрипты: Главная  -->
 {% IF index_page %}
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-index.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-index.js?design=Deluxe"></script>
 {% ENDIF %}
 <!-- Скрипты: Товары, Акции, Поиск -->
 {% IF MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search %}
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-catalog.js?design=THEMENAME"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}jqueryui.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-catalog.js?design=Deluxe"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}jqueryui.js?design=Deluxe"></script>
 {% ENDIF %}
 <!-- Скрипты: Товары -->
 {% IF index_page || MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = goods || MOD_LNAME = user && ACT=favorites %}
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-products.js?design=THEMENAME"></script>
-<script id="air-datepicker-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}air-datepicker.js?design=THEMENAME"></script>
-<script id="page-orderfast-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}page-orderfast.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-products.js?design=Deluxe"></script>
+<script id="air-datepicker-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}air-datepicker.js?design=Deluxe"></script>
+<script id="page-orderfast-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}page-orderfast.js?design=Deluxe"></script>
 {% ENDIF %}
 <!-- Страница: Товар -->
 {% IF MOD_LNAME = goods %}
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-goods.js?design=THEMENAME"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery-star-rating.js?design=THEMENAME"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}air-datepicker.js?design=THEMENAME"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-orderfast.js?design=THEMENAME"></script>
-<script id="page-cart-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}page-cart.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-goods.js?design=Deluxe"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery-star-rating.js?design=Deluxe"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}air-datepicker.js?design=Deluxe"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-orderfast.js?design=Deluxe"></script>
+<script id="page-cart-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}page-cart.js?design=Deluxe"></script>
 {% ELSE %}
-<script id="page-goods-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}page-goods.js?design=THEMENAME"></script>
+<script id="page-goods-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}page-goods.js?design=Deluxe"></script>
 {% ENDIF %}
 <!-- Скрипты магазина-->
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}main.js?design=THEMENAME"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}search.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}main.js?design=Deluxe"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}search.js?design=Deluxe"></script>
 <!-- Уведомления о действиях -->
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}noty.min.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}noty.min.js?design=Deluxe"></script>
 <!-- Маска ввода-->
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery.maskedinput.min.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery.maskedinput.min.js?design=Deluxe"></script>
 <!-- Валидатор форм -->
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery.validate.min.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery.validate.min.js?design=Deluxe"></script>
 <!-- Модальные окна -->
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery.fancybox.min.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery.fancybox.min.js?design=Deluxe"></script>
 <!-- Предзагрузчик изображений -->
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}lozad.min.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}lozad.min.js?design=Deluxe"></script>
 <!-- Определение браузера -->
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}detect.js?design=THEMENAME"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}forall.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}detect.js?design=Deluxe"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}forall.js?design=Deluxe"></script>
 
 <style>
 	#ui-datepicker-div {

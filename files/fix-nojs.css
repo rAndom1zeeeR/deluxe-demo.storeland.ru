@@ -8,9 +8,9 @@
 .nojs .pdt {height: auto;}
 .nojs .pdt .product__items {width: 33.333333%;padding: 0 1rem;}
 .nojs .pdt [id^="pdt__"] {margin: 0 -1rem;}
-.nojs .slider__item:nth-child(1) {background-image: url("{ASSETS_IMAGES_PATH}slide_1.jpg?design=THEMENAME");}
-.nojs .slider__item:nth-child(2) {background-image: url("{ASSETS_IMAGES_PATH}slide_2.jpg?design=THEMENAME");}
-.nojs .slider__item:nth-child(3) {background-image: url("{ASSETS_IMAGES_PATH}slide_3.jpg?design=THEMENAME");}
-.nojs .banners__item[data-item="1"] {background-image: url("{ASSETS_IMAGES_PATH}banner_1.jpg?design=THEMENAME");}
-.nojs .banners__item[data-item="2"] {background-image: url("{ASSETS_IMAGES_PATH}banner_2.jpg?design=THEMENAME");}
-.nojs .banners__item[data-item="3"] {background-image: url("{ASSETS_IMAGES_PATH}banner_3.jpg?design=THEMENAME");}
+.nojs .slider__item:nth-child(1) {background-image: url("{ASSETS_IMAGES_PATH}slide_1.jpg?design=Deluxe");}
+.nojs .slider__item:nth-child(2) {background-image: url("{ASSETS_IMAGES_PATH}slide_2.jpg?design=Deluxe");}
+.nojs .slider__item:nth-child(3) {background-image: url("{ASSETS_IMAGES_PATH}slide_3.jpg?design=Deluxe");}
+.nojs .banners__item[data-item="1"] {background-image: url("{ASSETS_IMAGES_PATH}banner_1.jpg?design=Deluxe");}
+.nojs .banners__item[data-item="2"] {background-image: url("{ASSETS_IMAGES_PATH}banner_2.jpg?design=Deluxe");}
+.nojs .banners__item[data-item="3"] {background-image: url("{ASSETS_IMAGES_PATH}banner_3.jpg?design=Deluxe");}
