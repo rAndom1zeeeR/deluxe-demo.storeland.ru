@@ -22,19 +22,20 @@ function quickOrder(formSelector) {
 		beforeSend: function () {
 			loadFile('page-orderfast', 'css');
 			loadFile('page-orderfast', 'js');
-			loadFile('air-datepicker', 'js');
 			loadFile('page-cart', 'js');
+			loadFile('air-datepicker', 'js');
 		},
 		success: function(data) {
 			$.fancybox.open(data, {
 				keyboard: false,
 				baseClass: "fastOrder",
 				afterShow: function(){
-					var loaded = loadFile('page-orderfast', 'css') && loadFile('page-orderfast', 'js') && loadFile('air-datepicker', 'js')&& loadFile('page-cart', 'js');
+					var loaded = loadFile('page-orderfast', 'css') && loadFile('page-orderfast', 'js') && loadFile('air-datepicker', 'js') && loadFile('page-cart', 'js');
 					if(loaded) {
 						showPass();
 						orderScripts();
 						orderScriptsSelect();
+						orderValid();
 						coupons();
 						preload();
 						$('.fastOrder__form').validate({
@@ -295,6 +296,48 @@ function orderScriptsSelect() {
 		var t = $(this).parent()
 		if($(this).attr('checked')){
 			t.addClass('active')
+		}
+	});
+}
+
+function orderValid() {
+	// Валидация формы на странице оформления заказа
+	$(".total__buttons button, #makeOrder").on('click', function(){
+		console.log('start')
+		var form = $(".fastOrder__form");
+		form.validate({
+			errorPlacement: function(error, element) { }
+		});
+		form.submit();
+		return false;
+	});
+	// Выключение кнопки оформления заказа если не все поля заполнены
+	$(".fastOrder__form [required]").blur(function(){
+		if($('.fastOrder__form').valid()) {
+			$(".total__buttons button").removeClass('disabled');
+			$(".total__buttons button").attr('data-tooltip', 'Оформить заказ');
+			$("#makeOrder").removeClass('disabled');
+			$("#makeOrder").attr('data-tooltip', 'Оформить заказ');
+			console.log('valid')
+		} else {
+			$(".total__buttons button").addClass('disabled');
+			$(".total__buttons button").attr('data-tooltip', 'Заполните все поля');
+			$("#makeOrder").addClass('disabled');
+			$("#makeOrder").attr('data-tooltip', 'Заполните все поля');
+			console.log('no valid')
+		}
+	});
+	// Выключение кнопки оформления заказа если не все поля заполнены
+	$(function(){
+		if($('.fastOrder__form').valid()) {
+			$(".total__buttons button").removeClass('disabled');
+			$(".total__buttons button").attr('data-tooltip', 'Оформить заказ');
+			$("#makeOrder").removeClass('disabled');
+			$("#makeOrder").attr('data-tooltip', 'Оформить заказ');
+			console.log('valid 2')
+		}else{
+			$(".fastOrder__form input, .fastOrder__form textarea, .fastOrder__form select").removeClass('error');
+			console.log('no valid')
 		}
 	});
 }

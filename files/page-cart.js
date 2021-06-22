@@ -92,6 +92,7 @@ function startOrder(){
 			orderScripts();
 			orderScriptsSelect();
 			coupons();
+			orderValid();
 			// Стили для новых селектов
 			$(".form__phone").mask("+7 (999) 999-9999");
 			$("#sites_client_phone").mask("+7 (999) 999-9999");
@@ -102,45 +103,6 @@ function startOrder(){
 				startOrder.show();
 				$('html, body').delay(400).animate({scrollTop : jQuery('#globalOrder').offset().top}, 800);
 				return false;
-			});
-			// Валидация формы на странице оформления заказа
-			$(".total__buttons button, #makeOrder").on('click', function(){
-				console.log('start')
-				var form = $(".fastOrder__form");
-				form.validate({
-					errorPlacement: function(error, element) { }
-				});
-				form.submit();
-				return false;
-			});
-			// Выключение кнопки оформления заказа если не все поля заполнены
-			$(".fastOrder__form [required]").blur(function(){
-				if($('.fastOrder__form').valid()) {
-					$(".total__buttons button").removeClass('disabled');
-					$(".total__buttons button").attr('data-tooltip', 'Оформить заказ');
-					$("#makeOrder").removeClass('disabled');
-					$("#makeOrder").attr('data-tooltip', 'Оформить заказ');
-					console.log('valid')
-				} else {
-					$(".total__buttons button").addClass('disabled');
-					$(".total__buttons button").attr('data-tooltip', 'Заполните все поля');
-					$("#makeOrder").addClass('disabled');
-					$("#makeOrder").attr('data-tooltip', 'Заполните все поля');
-					console.log('no valid')
-				}
-			});
-			// Выключение кнопки оформления заказа если не все поля заполнены
-			$(function(){
-				if($('.fastOrder__form').valid()) {
-					$(".total__buttons button").removeClass('disabled');
-					$(".total__buttons button").attr('data-tooltip', 'Оформить заказ');
-					$("#makeOrder").removeClass('disabled');
-					$("#makeOrder").attr('data-tooltip', 'Оформить заказ');
-					console.log('valid 2')
-				}else{
-					$(".fastOrder__form input, .fastOrder__form textarea, .fastOrder__form select").removeClass('error');
-					console.log('no valid')
-				}
 			});
 		}
 	});

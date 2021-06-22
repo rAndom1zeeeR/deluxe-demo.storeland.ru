@@ -34,6 +34,7 @@ function quickViewMod() {
 					document.quickviewPreload[href] = $(content).getColumnContent();
 					loadFile('page-goods', 'css');
 					loadFile('page-goods', 'js');
+					console.log('loaded')
 				})
 				// Если загрузить страницу не удалось, удаляем отметку о том, что мы подгрузили эту страницу
 				.fail(function() {

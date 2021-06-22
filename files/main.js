@@ -599,7 +599,7 @@ function openMenu() {
     $('#addtoCatalog').hide();
     $('#addtoMenu').show();
     button.removeClass('active');
-    $('.dropdown__label[data-open="menu"]').addClass('active');
+    $('.dropdown__label [data-open="menu"]').addClass('active');
   });
 
   //Открытие каталога
@@ -812,11 +812,11 @@ function loadFile(fileName, ext, cb){
   var $file = $('#' + fileName + '-' + ext);
   var attrName = (ext === 'css') ? 'href' : 'src';
 
-  if(!$file.length){console.error('Файл не найден в разметке и не может быть загружен');return;}
+  if(!$file.length){console.error('Файл ' + fileName + ' не найден в разметке и не может быть загружен');return;}
   // Если файл уже загружен
   if($file.attr(attrName)){
     cb();
-    // console.log('Already loaded');
+    console.log(fileName + '.' + ext, 'Already loaded');
     return (true);
   }
   $file.on('load', cb)

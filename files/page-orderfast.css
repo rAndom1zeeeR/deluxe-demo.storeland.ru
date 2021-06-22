@@ -14,9 +14,9 @@
 .fastOrderForm .form__field input, .fastOrderForm .form__field select, .fields__comment textarea {padding-left: 3.5rem;}
 .fastOrderForm .form__fields label {display: none;}
 .fastOrderForm label.error {display: none !important;}
-.fastOrderForm .form__wantRegister {width: 100%;margin-bottom: 0;}
-.fastOrderForm .form__wantRegister label {display: block;margin: 0;width: calc(100% - 40px)}
-.fastOrderForm .form__WantRegisterPass {margin-top: 1rem;}
+.fastOrderForm .form__fields.form__wantRegister {width: 100%;margin-bottom: 0;}
+.fastOrderForm .form__fields.form__wantRegister label {display: block;margin: 0;width: calc(100% - 40px)}
+.fastOrderForm .form__fields.form__WantRegisterPass {margin-top: 1rem;}
 .fastOrderForm .deliveryConvenientDate:nth-child(1) {width: calc(50% - 1rem);margin-right: 1rem;}
 .fastOrderForm .deliveryConvenientDate:nth-child(2) {width: calc(50% - 1rem);margin-left: 1rem;margin-top: 0;}
 .fastOrderForm .cart__total {display: flex;flex-wrap: wrap;align-items: center;width: 100%;padding: 2rem 0 0 0;margin-top: 0;}

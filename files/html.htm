@@ -2327,7 +2327,7 @@
 			<i class="icon-arrow_up"></i>
 		</div>
 		<!-- Каталог Меню -->
-		<div id="catalogMenu" class="dropdown__content left" data-content="catalogMenu">
+		<div id="catalogMenu" class="dropdown__content" data-content="catalogMenu">
 			<div class="dropdown__title">
 				<div class="dropdown__label">
 					<span class="catalog active" data-open="catalog">
@@ -2809,8 +2809,10 @@
 <!-- Скрипты: Товары -->
 {% IF index_page || MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = goods || MOD_LNAME = user && ACT=favorites %}
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}page-products.js?design=Deluxe"></script>
-<script id="air-datepicker-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}air-datepicker.js?design=Deluxe"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-goods-mod.js?design=Deluxe"></script>
 <script id="page-orderfast-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}page-orderfast.js?design=Deluxe"></script>
+<script id="air-datepicker-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}air-datepicker.js?design=Deluxe"></script>
+<script id="debounce" defer type="text/javascript" data-src="{ASSETS_JS_PATH}debounce.js?design=Deluxe"></script>
 {% ENDIF %}
 <!-- Страница: Товар -->
 {% IF MOD_LNAME = goods %}
@@ -2819,6 +2821,7 @@
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}air-datepicker.js?design=Deluxe"></script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}page-orderfast.js?design=Deluxe"></script>
 <script id="page-cart-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}page-cart.js?design=Deluxe"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}debounce.js?design=Deluxe"></script>
 {% ELSE %}
 <script id="page-goods-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}page-goods.js?design=Deluxe"></script>
 {% ENDIF %}
