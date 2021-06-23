@@ -74,7 +74,6 @@ function priceFilter() {
 			priceInputMax.val( ui.values[ 1 ] );
 			priceSubmitButtonBlock.css('display', 'flex');
 			priceInputsChangeWidthByChars();
-			console.log('page222')
 		}
 	});
 	// При изменении минимального значения цены

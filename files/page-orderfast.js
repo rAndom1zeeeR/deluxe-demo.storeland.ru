@@ -300,10 +300,10 @@ function orderScriptsSelect() {
 	});
 }
 
+// Проверка вводимых данных
 function orderValid() {
 	// Валидация формы на странице оформления заказа
 	$(".total__buttons button, #makeOrder").on('click', function(){
-		console.log('start')
 		var form = $(".fastOrder__form");
 		form.validate({
 			errorPlacement: function(error, element) { }
@@ -318,13 +318,11 @@ function orderValid() {
 			$(".total__buttons button").attr('data-tooltip', 'Оформить заказ');
 			$("#makeOrder").removeClass('disabled');
 			$("#makeOrder").attr('data-tooltip', 'Оформить заказ');
-			console.log('valid')
 		} else {
 			$(".total__buttons button").addClass('disabled');
 			$(".total__buttons button").attr('data-tooltip', 'Заполните все поля');
 			$("#makeOrder").addClass('disabled');
 			$("#makeOrder").attr('data-tooltip', 'Заполните все поля');
-			console.log('no valid')
 		}
 	});
 	// Выключение кнопки оформления заказа если не все поля заполнены
@@ -334,10 +332,8 @@ function orderValid() {
 			$(".total__buttons button").attr('data-tooltip', 'Оформить заказ');
 			$("#makeOrder").removeClass('disabled');
 			$("#makeOrder").attr('data-tooltip', 'Оформить заказ');
-			console.log('valid 2')
 		}else{
 			$(".fastOrder__form input, .fastOrder__form textarea, .fastOrder__form select").removeClass('error');
-			console.log('no valid')
 		}
 	});
 }

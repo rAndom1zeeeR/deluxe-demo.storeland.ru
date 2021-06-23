@@ -175,21 +175,6 @@ function pdtSlider() {
 			1200:{items:3}
 		}
 	});
-	// Табы в товарах
-	$('#pdt .nav__tab').on('click', function (event) {
-		event.preventDefault();
-		var content = $(this).attr('data-content');
-		var parent = $(this).parents('#pdt');
-		console.log(parent)
-		parent.find('[id^="pdt__"]').prepend('<div class="preloader top"><div class="loading"></div></div>');
-		preload();
-		parent.find('.nav__tab').removeClass('active')
-		parent.find('[id^="pdt__"][data-content]').removeClass('active');
-		parent.find('.owl-nav[data-content]').removeClass('active');
-		$(this).addClass('active');
-		parent.find('[id^="pdt__"][data-content="'+ content +'"').addClass('active');
-		parent.find('.owl-nav[data-content="'+ content +'"').addClass('active');
-	});
 
 	// Функция слайдера для Новинок на главной странице
 	var btn = $('#pdt__best').find('.showAll');

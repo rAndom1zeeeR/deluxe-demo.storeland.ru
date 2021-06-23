@@ -816,7 +816,7 @@ function loadFile(fileName, ext, cb){
   // Если файл уже загружен
   if($file.attr(attrName)){
     cb();
-    console.log(fileName + '.' + ext, 'Already loaded');
+    //console.log(fileName + '.' + ext, 'Already loaded');
     return (true);
   }
   $file.on('load', cb)
@@ -855,7 +855,6 @@ function fancyClose(){
   btnClose.hide();
   modalClose.on('click', function (event){
     event.preventDefault();
-    console.log('close')
     $.fancybox.close();
   });
 }
