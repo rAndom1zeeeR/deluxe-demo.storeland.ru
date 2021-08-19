@@ -16,7 +16,7 @@ body {background-color: #ffffff;color: #231803;font-family: 'Nunito', sans-serif
 
 /* Настройки максимальных размеров генерируемых изображений */
 .goods-image-icon {max-width:{SETTINGS_GOODS_IMAGES_SIZE_ICON | divide('2')}px; max-height:{SETTINGS_GOODS_IMAGES_SIZE_ICON | divide('2')}px;}
-.goods-image-icon-square {width:{SETTINGS_GOODS_IMAGES_SIZE_ICON}px;height:{SETTINGS_GOODS_IMAGES_SIZE_ICON}px;} 
+.goods-image-icon-square {width:{SETTINGS_GOODS_IMAGES_SIZE_ICON}px;height:{SETTINGS_GOODS_IMAGES_SIZE_ICON}px;}
 .goods-image-small {max-width:{SETTINGS_GOODS_IMAGES_SIZE_SMALL | divide('2')}px; max-height:{SETTINGS_GOODS_IMAGES_SIZE_SMALL | divide('2')}px;}
 .goods-image-small-square {width:{SETTINGS_GOODS_IMAGES_SIZE_SMALL}px; height:{SETTINGS_GOODS_IMAGES_SIZE_SMALL}px;}
 .goods-image-medium {max-width:{SETTINGS_GOODS_IMAGES_SIZE_MEDIUM | divide('2')}px; max-height:{SETTINGS_GOODS_IMAGES_SIZE_MEDIUM | divide('2')}px;}

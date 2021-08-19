@@ -127,13 +127,13 @@
 		</style>
 		<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}fix-nojs.css?design=Deluxe">
 	</noscript>
-	
+
 	<!-- Фон для закрытия всплывающих окон -->
 	<div id="overlay"></div>
-	
+
 	<!-- Фон в Шапке -->
 	<div id="pre-header"></div>
-	
+
 	<!-- Шапка -->
 	<header id="header">
 		<div class="container">
@@ -246,7 +246,7 @@
 			</div>
 		</div>
 	</header>
-	
+
 	<!-- Меню, Каталог, Поиск, Избр, Срав, ЛК,  -->
 	<div id="menu">
 		<div class="container">
@@ -373,7 +373,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- Главная страница -->
 	{% IF index_page %}
 	<!-- Слайдшоу -->
@@ -414,7 +414,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- Категории -->
 	<section id="catalog">
 		<div class="container">
@@ -436,7 +436,7 @@
 			</div>
 		</div>
 	</section>
-	
+
 	<!-- Товары на главной. Распродажа. -->
 	{% IF index_page_goods_empty=0 || index_page_sale_goods_empty=0 %}
 	<section class="pdt">
@@ -871,7 +871,7 @@
 		</div>
 	</section>
 	{% ENDIF %}
-	
+
 	<!-- Баннеры -->
 	<section id="banners">
 		<div class="container">
@@ -908,7 +908,7 @@
 			</div>
 		</div>
 	</section>
-	
+
 	<!-- Хиты прода. -->
 	{% IF index_page_favorites_goods_empty=0 %}
 	<section id="pdt__best" class="pdt">
@@ -1114,7 +1114,7 @@
 		</div>
 	</section>
 	{% ENDIF %}
-	
+
 	<!-- Обратный звонок -->
 	<section id="callback">
 		<div class="container">
@@ -1153,7 +1153,7 @@
 			</div>
 		</div>
 	</section>
-	
+
 	<!-- Описание на Главной -->
 	<section id="index">
 		<div class="container">
@@ -1175,7 +1175,7 @@
 			</div>
 		</div>
 	</section>
-	
+
 	<!-- Новинки. -->
 	{% IF index_page_new_goods_empty=0 %}
 	<section id="pdt__new" class="pdt">
@@ -1379,7 +1379,7 @@
 		</div>
 	</section>
 	{% ENDIF %}
-	
+
 	<!-- Новости -->
 	{% IF news_list_all_empty=0 || news_list_shop_empty=0 || news_list_articles_empty=0 || news_list_mass_media_empty=0 %}
 	<section id="news">
@@ -1529,9 +1529,9 @@
 		</div>
 	</section>
 	{% ENDIF %}
-	
+
 	{% ELSE %}
-	
+
 	<!-- Если НЕ ГЛАВНАЯ -->
 	<section id="main">
 		<div class="container">
@@ -2082,7 +2082,7 @@
 			</div>
 		</div>
 	</section>
-	
+
 	<!-- Обратный звонок ДУБЛИРОВАННЫЙ -->
 	<section id="callback">
 		<div class="container">
@@ -2113,14 +2113,14 @@
 					</form>
 				</div>
 				<div class="callback__image">
-					<img src="{ASSETS_IMAGES_PATH}callback.jpg?design=Deluxe" />
+					<img class="lozad script__on" data-src="{ASSETS_IMAGES_PATH}callback.jpg?design=Deluxe" />
 				</div>
 			</div>
 		</div>
 	</section>
-	
+
 	{% ENDIF index_page %}
-	
+
 	<!-- Преимушества -->
 	<section id="advantage">
 		<div class="container">
@@ -2155,7 +2155,7 @@
 			</div>
 		</div>
 	</section>
-	
+
 	<!-- Подвал -->
 	<footer id="footer">
 		<div class="container">
@@ -2321,7 +2321,7 @@
 			</div>
 		</div>
 	</footer>
-	
+
 	<!-- Модальные окна -->
 	<noindex>
 		<!-- Наверх -->
@@ -2797,7 +2797,6 @@
 <!-- Скрипты: Сравнение -->
 {% IF MOD_LNAME = compare %}
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}page-compare.js?design=Deluxe"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-products.js?design=Deluxe"></script>
 {% ENDIF %}
 <!-- Скрипты: Главная  -->
 {% IF index_page %}
@@ -2809,7 +2808,7 @@
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}jqueryui.js?design=Deluxe"></script>
 {% ENDIF %}
 <!-- Скрипты: Товары -->
-{% IF index_page || MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = goods || MOD_LNAME = user && ACT=favorites %}
+{% IF index_page || MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = goods || MOD_LNAME = user && ACT=favorites || MOD_LNAME = compare %}
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}page-products.js?design=Deluxe"></script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}page-goods-mod.js?design=Deluxe"></script>
 <script id="page-orderfast-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}page-orderfast.js?design=Deluxe"></script>
@@ -2818,7 +2817,7 @@
 {% ENDIF %}
 <!-- Страница: Товар -->
 {% IF MOD_LNAME = goods %}
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-goods.js?design=Deluxe"></script>
+<script id="page-goods-js" defer type="text/javascript" src="{ASSETS_JS_PATH}page-goods.js?design=Deluxe"></script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery-star-rating.js?design=Deluxe"></script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}air-datepicker.js?design=Deluxe"></script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}page-orderfast.js?design=Deluxe"></script>
