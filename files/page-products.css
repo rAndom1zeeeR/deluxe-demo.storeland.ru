@@ -35,7 +35,7 @@
 .page-favorites .product__item {width: 25%;}
 }
 @media (min-width: 992px) {
-.products__grid .product__addto {opacity: 0;width: 200px;margin: 0 auto;position: absolute;right: 0;left:0;bottom: -3.5rem;}
+.products__grid .product__addto {opacity: 0;width: 100%;max-width: 200px;margin: 0 auto;position: absolute;right: 0;left:0;bottom: -3.5rem;}
 .products__grid .product__item:hover .product__addto {opacity: 1;bottom: .5rem;}
 }
 @media (max-width: 1199.98px) {
