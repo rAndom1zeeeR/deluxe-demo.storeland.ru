@@ -1158,6 +1158,7 @@
 	<section id="index">
 		<div class="container">
 			<div class="inner">
+				{% IFNOT index_page_final_mod_lname = catalog %}
 				<div class="index__left">
 					<div class="index__image">
 						<noscript>
@@ -1172,6 +1173,12 @@
 					</div>
 					<div class="body">{BODY}</div>
 				</div>
+				{% ELSE %}
+				<div class="block__title">
+					<h1 class="title">Каталог товаров</h1>
+				</div>
+				<div class="body">{BODY}</div>
+				{% ENDIF %}
 			</div>
 		</div>
 	</section>

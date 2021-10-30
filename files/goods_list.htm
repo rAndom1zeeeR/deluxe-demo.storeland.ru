@@ -300,7 +300,7 @@
 							</div>
 							<!-- Доступность товара -->
 							<div class="product__available">
-								{% IF goods.MAX_REST_VALUE > 1 %}
+								{% IF goods.MAX_REST_VALUE > 0 %}
 								<div class="available__true">
 									<span class="goodsModRestValue" data-value="{goods.MAX_REST_VALUE}">В наличии {% IF goods.MAX_REST_VALUE > 10 %}много{% ELSE %}мало{% ENDIF %}</span>
 								</div>
