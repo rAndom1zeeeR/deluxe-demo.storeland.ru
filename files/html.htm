@@ -78,13 +78,11 @@
 	{% ENDIF %}
 	<!-- Страница: Быстрый заказ -->
 	{% IF index_page || MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = goods || MOD_LNAME = user && ACT=favorites || MOD_LNAME = compare %}
-	<link rel="stylesheet" type="text/css" data-href="{ASSETS_STYLES_PATH}page-orderfast.css?design=Deluxe" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-orderfast.css?design=Deluxe" />
 	{% ENDIF %}
 	<!-- Страница: Товар -->
 	{% IF MOD_LNAME = goods %}
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-goods.css?design=Deluxe" />
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-orderfast.css?design=Deluxe" />
-	<link id="page-orderfast-css" rel="stylesheet" type="text/css" data-href="{ASSETS_STYLES_PATH}page-orderfast.css?design=Deluxe" />
 	{% ELSE %}
 	<link id="page-goods-css" rel="stylesheet" type="text/css" data-href="{ASSETS_STYLES_PATH}page-goods.css?design=Deluxe" />
 	{% ENDIF %}
@@ -2818,18 +2816,16 @@
 {% IF index_page || MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = goods || MOD_LNAME = user && ACT=favorites || MOD_LNAME = compare %}
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}page-products.js?design=Deluxe"></script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}page-goods-mod.js?design=Deluxe"></script>
-<script id="page-orderfast-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}page-orderfast.js?design=Deluxe"></script>
-<script id="air-datepicker-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}air-datepicker.js?design=Deluxe"></script>
-<script id="debounce" defer type="text/javascript" data-src="{ASSETS_JS_PATH}debounce.js?design=Deluxe"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-orderfast.js?design=Deluxe"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}air-datepicker.js?design=Deluxe"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}debounce.js?design=Deluxe"></script>
+<script id="page-cart-js" defer type="text/javascript" src="{ASSETS_JS_PATH}page-cart.js?design=Deluxe"></script>
 {% ENDIF %}
 <!-- Страница: Товар -->
 {% IF MOD_LNAME = goods %}
 <script id="page-goods-js" defer type="text/javascript" src="{ASSETS_JS_PATH}page-goods.js?design=Deluxe"></script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery-star-rating.js?design=Deluxe"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}air-datepicker.js?design=Deluxe"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-orderfast.js?design=Deluxe"></script>
 <script id="page-cart-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}page-cart.js?design=Deluxe"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}debounce.js?design=Deluxe"></script>
 {% ELSE %}
 <script id="page-goods-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}page-goods.js?design=Deluxe"></script>
 {% ENDIF %}

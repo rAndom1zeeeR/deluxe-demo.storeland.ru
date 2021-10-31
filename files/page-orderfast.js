@@ -20,17 +20,14 @@ function quickOrder(formSelector) {
 		url		  : formBlock.attr('action'),
 		data		: formData,
 		beforeSend: function () {
-			loadFile('page-orderfast', 'css');
-			loadFile('page-orderfast', 'js');
 			loadFile('page-cart', 'js');
-			loadFile('air-datepicker', 'js');
 		},
 		success: function(data) {
 			$.fancybox.open(data, {
 				keyboard: false,
 				baseClass: "fastOrder",
 				afterShow: function(){
-					var loaded = loadFile('page-orderfast', 'css') && loadFile('page-orderfast', 'js') && loadFile('air-datepicker', 'js') && loadFile('page-cart', 'js');
+					var loaded = loadFile('page-cart', 'js');
 					if(loaded) {
 						showPass();
 						orderScripts();
