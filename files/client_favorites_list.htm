@@ -131,7 +131,7 @@
 						  {% IF favorites_goods.COUNT_MODIFICATION > 1 %}
 						  <a class="add-mod" title="Добавить в корзину &laquo;{favorites_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{favorites_goods.URL_MIN_PRICE_NOW}" data-prodname="{favorites_goods.NAME}"><span>Выбрать модификацию</span></a>
 						  {% ELSE %}
-						  <!--a class="add-cart quick button" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={favorites_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={favorites_goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a-->
+						  <!--a class="add-cart quick" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={favorites_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={favorites_goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a-->
 						  <a class="add-cart" title="Добавить в корзину &laquo;{favorites_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={favorites_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={favorites_goods.MIN_PRICE_NOW_ID}"><span>Добавить в корзину</span></a>
 						  {% ENDIF %}
 						  {% ENDIF %}

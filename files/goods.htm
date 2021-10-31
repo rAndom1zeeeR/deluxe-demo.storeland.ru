@@ -185,7 +185,7 @@
 							<span>В корзину</span>
 						</button>
 						<!-- Быстрая покупка -->
-						<button type="submit" class="add-cart quick button button4" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину">
+						<button type="submit" class="add-cart quick button4" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину">
 							<span>В 1 клик</span>
 						</button>
 						<!-- Добавление в избранное и сравнение -->
@@ -630,7 +630,7 @@
 								{% IF related_goods.COUNT_MODIFICATION > 1 %}
 								<a class="add-mod" title="Добавить в корзину &laquo;{related_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{related_goods.URL_MIN_PRICE_NOW}" data-prodname="{related_goods.NAME}"><span>Выбрать модификацию</span></a>
 								{% ELSE %}
-								<!--a class="add-cart quick button" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={related_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={related_goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a-->
+								<!--a class="add-cart quick" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={related_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={related_goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a-->
 								<a class="add-cart" title="Добавить в корзину &laquo;{related_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={related_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={related_goods.MIN_PRICE_NOW_ID}"><span>Добавить в корзину</span></a>
 								{% ENDIF %}
 								{% ENDIF %}
@@ -829,7 +829,7 @@
 								{% IF related_views_goods.COUNT_MODIFICATION > 1 %}
 								<a class="add-mod" title="Добавить в корзину &laquo;{related_views_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{related_views_goods.URL_MIN_PRICE_NOW}" data-prodname="{related_views_goods.NAME}"><span>Выбрать модификацию</span></a>
 								{% ELSE %}
-								<!--a class="add-cart quick button" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={related_views_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={related_views_goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a-->
+								<!--a class="add-cart quick" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={related_views_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={related_views_goods.MIN_PRICE_NOW_ID}"><span>Купить</span></a-->
 								<a class="add-cart" title="Добавить в корзину &laquo;{related_views_goods.NAME}&raquo;" data-tooltipOFF="В корзину" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={related_views_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={related_views_goods.MIN_PRICE_NOW_ID}"><span>Добавить в корзину</span></a>
 								{% ENDIF %}
 								{% ENDIF %}
