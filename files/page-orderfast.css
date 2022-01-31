@@ -1,14 +1,15 @@
 /*** Страница: Быстрый заказ ***/
 #OrderAjaxBlock {margin-bottom: 2rem;}
 #OrderAjaxBlock .fastOrderForm .total__buttons {display: none;}
-#closeOrder {display: none;}
+#closeOrder {display: none;margin-right: 2rem;}
+#startOrder {width: 240px;}
 .fastOrderContent .modal__title {display: block;}
-.fastOrder__login {margin-bottom: 1rem;width: 100%;display: flex;flex-wrap: wrap;align-items: center;justify-content: space-between;}
-.fastOrder__login span {font-size: 16px;}
+.fastOrder__login {margin-bottom: 1.5rem;font-size: 16px;}
+.fastOrder__login a {color: #ffaf88;text-decoration: underline;}
 .fastOrder .fastOrderForm {border: 5px solid #f8e9e6;border-top: 0;padding: 1rem;}
 .fastOrder__form {display: flex;flex-wrap: wrap;justify-content: space-between;}
-.fastOrderForm [order] {width: 100%;margin-bottom: 2rem;}
-.fastOrder__title {margin-bottom: 1.5rem;padding: .25rem 0;border: 1px solid #ecdfd4;border-left: 0;border-right: 0;font-size: 18px;text-align: center;}
+.fastOrderForm [order] {width: 100%;margin-bottom: 2rem;padding: 2rem 1.5rem;background-color: #fff4f2;}
+.fastOrder__title {margin-bottom: 1.5rem;font-size: 18px;font-weight: bold;text-align: center;}
 .fastOrderForm .form__list {display: flex;flex-wrap: wrap;}
 .fastOrderForm .form__fields {width: calc(33.333333% - 2rem);margin: 0 1rem 1rem 1rem;flex-grow: 1;}
 .fastOrderForm .form__field input, .fastOrderForm .form__field select, .fields__comment textarea {padding-left: 3.5rem;}
@@ -25,18 +26,20 @@
 .fastOrderForm .total__buttons {width: 100%;margin: 0;display: block;text-align: center;}
 .fastOrderForm .total__buttons .button + .button {margin-left: 2rem;}
 .fastOrderForm .total__buttons .total__pp {text-align: center;margin-top: 1rem;font-size: 12px;}
-.fastOrderForm .selectBox select {height: 40px;background-color: transparent;}
+.fastOrderForm .selectBox select {height: 40px;background-color: #ffffff;}
+.delivery__zoneSelect {margin-top: 1rem;}
+.order__paymentSelect {width: 100%;}
+.payment__description {margin-top: 1rem;}
 .fastOrderForm .selectBox:after {background-color: #ffffff;}
+.delivery__selects {width: 100%;}
 .delivery__fields {margin-top: 1rem;}
 .delivery__price, .zones__price {margin-left: 0.5rem;font-weight: bold;}
 .zones__price {margin: 0.5rem 0 0 0;display: block;}
 .delivery__price .label {margin-right: 0.5rem;}
 .delivery__description {margin-top: 1rem;}
-.delivery__priceBox {background-color: #df5642;padding: 0.5rem 2rem;display: inline-block;}
 .delivery__zones {margin-top: 1rem;padding-left: 1rem;}
 .delivery__zone {margin-top: 0.5rem;}
 .delivery__zone > div {margin-top: 1rem;}
-.fastOrderForm .delivery {margin-bottom: 0;}
 .order__delivery {display: flex;flex-wrap: wrap;}
 .delivery__option {width: calc(33.333333% - 2rem);margin: 0 1rem 2rem 1rem;background-color: #fff4f2;padding: 1rem;flex-grow: 1;transition: all 0.3s ease;}
 .delivery__option:hover {background-color: #ffaf88;color: #ffffff;}
@@ -47,7 +50,6 @@
 .delivery__option label {width: calc(100% - 4rem);display: inline-block;vertical-align: middle;margin-bottom: 0;}
 .delivery__fields label {width: auto;}
 .delivery__desc {margin-top: 1rem;}
-.fastOrderForm .payment {margin-bottom: 0;}
 .order__payment {width: 100%;display: flex;flex-wrap: wrap;}
 .payment__option {width: calc(33.333333% - 2rem);margin: 0 1rem 2rem 1rem;background-color: #fff4f2;padding: 1rem;transition: all 0.3s ease;}
 .payment__option:hover {background-color: #ffaf88;color: #ffffff;}

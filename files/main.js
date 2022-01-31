@@ -753,6 +753,7 @@ $(document).ready(function(){
   quantity();
   mainnavHeader();
   toTop();
+  footerLinksMore();
   // Стили для новых селектов
   /*$('.select').styler();*/
   // Ленивая загрузка
@@ -858,4 +859,32 @@ function fancyClose(){
     $.fancybox.close();
   });
 }
-fancyClose()
+fancyClose();
+
+
+
+///////////////////////////////////////
+// Функция скрывания категорий и меню в подвале, если больше 5 пунктов.
+///////////////////////////////////////
+function footerLinksMore(){
+	$('.footer__links').each(function(){
+		var t = $(this);
+		// Добавляем кнопку Еще если больше 11 пунктов
+		if(t.find('li').length > 11) {
+			t.append('<li class="show"><a class="footer__links-open" href="javascript:;"><span>Посмотреть все</span></a></li>');
+		}
+		// Действия при нажатии на кнопку Еще
+		t.find('.footer__links-open').on('click', function(){
+			if($(this).hasClass('opened')){
+				$(this).removeClass('opened')
+				t.find('li').removeClass('show')
+				$(this).parent().addClass('show')
+				$(this).find('span').text('Посмотреть все')
+			}else{
+				$(this).addClass('opened')
+				t.find('li').addClass('show')
+				$(this).find('span').text('Скрыть')
+			}
+		});
+	});	
+}

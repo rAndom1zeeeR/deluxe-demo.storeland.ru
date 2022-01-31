@@ -31,7 +31,7 @@
 .qty input {width: 50px;height: 50px;background-color: #fff8ef;margin: 0 .5rem;padding: 0 0.25rem;border: 0;text-align: center;}
 /* Добавить в корзину */
 .productView__addto {display: flex;flex-wrap: wrap;align-items: center;}
-.productView__addto .button {line-height: 48px;margin: 0 1rem 1rem 1rem;flex-grow: 1;}
+.productView__addto button {line-height: 48px;margin: 0 1rem 1rem 1rem;flex-grow: 1;}
 .productView__addto [class^="add-"]:after {display: none;}
 .productView__addto [class^="add-"] span {display: block;}
 /* Добавить в Избр Сравн */

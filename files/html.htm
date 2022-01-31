@@ -2236,7 +2236,7 @@
 						</span>
 					</div>
 					<div class="footer__content">
-						<ul class="mainnav__list" itemscope itemtype="https://schema.org/SiteNavigationElement">
+						<ul class="footer__links mainnav__list" itemscope itemtype="https://schema.org/SiteNavigationElement">
 							{% FOR menu %}
 							{% FOR footer %}
 							{% FOR links %}
@@ -2257,11 +2257,11 @@
 						</span>
 					</div>
 					<div class="footer__content">
-						<ul>
+						<ul class="footer__links">
 							{% FOR catalog_full %}
-							{% IF catalog_full.LEVEL = 0 %}
-							<li><a href="{catalog_full.URL}" title="{catalog_full.NAME}">{catalog_full.NAME}</a></li>
-							{% ENDIF %}
+								{% IF catalog_full.LEVEL = 0 %}
+								<li><a href="{catalog_full.URL}" title="{catalog_full.NAME}">{catalog_full.NAME}</a></li>
+								{% ENDIF %}
 							{% ENDFOR %}
 						</ul>
 					</div>
