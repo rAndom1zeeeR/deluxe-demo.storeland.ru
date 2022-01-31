@@ -29,63 +29,6 @@
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}min.css?design=Deluxe" />
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}jquery.fancybox.min.css?design=Deluxe" />
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}main.css?design=Deluxe" />
-	<!-- Страница: Главная и НЕ главная -->
-	{% IF index_page %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-index.css?design=Deluxe" />
-	{% ELSE %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-not-index.css?design=Deluxe" />
-	{% ENDIF %}
-	<!-- Страница: Акции -->
-	{% IF MOD_LNAME = discount %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-discount.css?design=Deluxe" />
-	{% ENDIF %}
-	<!-- Страница: Сравнение -->
-	{% IF MOD_LNAME = compare %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-compare.css?design=Deluxe" />
-	{% ENDIF %}
-	<!-- Страница: Обратная связь -->
-	{% IF MOD_LNAME = feedback %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-feedback.css?design=Deluxe" />
-	{% ENDIF %}
-	<!-- Страница: Новости -->
-	{% IF MOD_LNAME = news %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-news.css?design=Deluxe" />
-	{% ENDIF %}
-	<!-- Страница: ЛК -->
-	{% IF MOD_LNAME = user || MOD_LNAME = feedback %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-user.css?design=Deluxe" />
-	{% ENDIF %}
-	<!-- Стили: Товары -->
-	{% IF index_page || MOD_LNAME = catalog || MOD_LNAME = goods || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = user && ACT=favorites %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-products.css?design=Deluxe" />
-	{% ENDIF %}
-	<!-- Стили: Категории -->
-	{% IF MOD_LNAME = catalog || index_page %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-categories.css?design=Deluxe" />
-	{% ENDIF %}
-	<!-- Страница: Каталог -->
-	{% IF MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-catalog.css?design=Deluxe" />
-	{% ENDIF %}
-	<!-- Страница: Оформление заказа -->
-	{% IF MOD_LNAME = order %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-order.css?design=Deluxe" />
-	{% ENDIF %}
-	<!-- Страница: Корзина -->
-	{% IF MOD_LNAME = cart || MOD_LNAME = order %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-cart.css?design=Deluxe" />
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-orderfast.css?design=Deluxe" />
-	{% ENDIF %}
-	<!-- Страница: Быстрый заказ -->
-	{% IF index_page || MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = goods || MOD_LNAME = user && ACT=favorites || MOD_LNAME = compare %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-orderfast.css?design=Deluxe" />
-	{% ENDIF %}
-	<!-- Страница: Товар -->
-	{% IF MOD_LNAME = goods %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-goods.css?design=Deluxe" />
-	{% ELSE %}
-	<link id="page-goods-css" rel="stylesheet" type="text/css" data-href="{ASSETS_STYLES_PATH}page-goods.css?design=Deluxe" />
-	{% ENDIF %}
 	<!-- Скрипты магазина -->
 	<script type="text/javascript" src="{ASSETS_JS_PATH}jquery-3.6.0.min.js?design=Deluxe"></script>
 	<!-- Дополнительные скрипты -->
@@ -2788,46 +2731,76 @@
 </noscript>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}owl-carousel.js?design=Deluxe"></script>
 {% ENDIF %}
-<!-- Скрипты: Главная  -->
-{% IF MOD_LNAME = feedback || MOD_LNAME = callback %}
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-feedback.js?design=Deluxe"></script>
-{% ENDIF %}
 <!-- Скрипты: Корзина -->
 {% IF MOD_LNAME = cart || MOD_LNAME = order %}
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-cart.js?design=Deluxe"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-orderfast.js?design=Deluxe"></script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}air-datepicker.js?design=Deluxe"></script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}debounce.js?design=Deluxe"></script>
 {% ENDIF %}
 <!-- Скрипты: Сравнение -->
 {% IF MOD_LNAME = compare %}
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-compare.js?design=Deluxe"></script>
+<script defer type="text/javascript">
+	// Загрузка основных функций шаблона
+	$(document).ready(function(){
+		compare()
+	});
+</script>
 {% ENDIF %}
 <!-- Скрипты: Главная  -->
 {% IF index_page %}
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-index.js?design=Deluxe"></script>
+<script defer type="text/javascript">
+	// Загрузка основных функций шаблона
+	$(document).ready(function(){
+		monthNames();
+		counterDate();
+		slideShow();
+		newsCarousel();
+		pdtCatalog();
+		pdtSlider();
+	});
+</script>
 {% ENDIF %}
 <!-- Скрипты: Товары, Акции, Поиск -->
 {% IF MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search %}
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-catalog.js?design=Deluxe"></script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}jqueryui.js?design=Deluxe"></script>
 {% ENDIF %}
 <!-- Скрипты: Товары -->
 {% IF index_page || MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = goods || MOD_LNAME = user && ACT=favorites || MOD_LNAME = compare %}
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-products.js?design=Deluxe"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-goods-mod.js?design=Deluxe"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-orderfast.js?design=Deluxe"></script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}air-datepicker.js?design=Deluxe"></script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}debounce.js?design=Deluxe"></script>
-<script id="page-cart-js" defer type="text/javascript" src="{ASSETS_JS_PATH}page-cart.js?design=Deluxe"></script>
 {% ENDIF %}
 <!-- Страница: Товар -->
 {% IF MOD_LNAME = goods %}
-<script id="page-goods-js" defer type="text/javascript" src="{ASSETS_JS_PATH}page-goods.js?design=Deluxe"></script>
+<script>	
+	// Загрузка основных функций шаблона
+	$(document).ready(function(){
+		pageGoods();
+		goodsModification();
+		prodQty();
+	});
+</script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery-star-rating.js?design=Deluxe"></script>
-<script id="page-cart-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}page-cart.js?design=Deluxe"></script>
-{% ELSE %}
-<script id="page-goods-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}page-goods.js?design=Deluxe"></script>
+{% ENDIF %}
+<!-- Страница: Каталог -->
+{% IF MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search %}
+<script>
+	// Загрузка основных функций шаблона
+	$(document).ready(function(){
+		catalog();
+		priceFilter();
+		viewed();
+	});
+</script>
+{% ENDIF %}
+<!-- Страница: Корзина -->
+{% IF MOD_LNAME = cart %}
+<script>
+	cartQuantity();
+	// Вызов функции быстрого заказа в корзине
+	$('#startOrder').on('click', function() {
+		startOrder();
+		return false;
+	});
+</script>
 {% ENDIF %}
 <!-- Скрипты магазина-->
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}main.js?design=Deluxe"></script>
