@@ -1588,7 +1588,7 @@ function compare() {
 		autoHeight: true,
 		autoHeightClass: 'owl-height',
 		autoplay: false,
-		autoplayHoverPause: true,
+		autoplayHoverPause: false,
 		smartSpeed: 500,
 		mouseDrag: false,
 		touchDrag: false,

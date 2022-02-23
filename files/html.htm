@@ -164,7 +164,7 @@
 								<a style="display: none;" class="tiktok" href="https://www.tiktok.com/" title="tiktok.com" target="_blank"><i class="icon-tiktok" aria-hidden="true"></i><span>tiktok</span></a>
 								<a style="display: none;" class="odnoklassniki" href="https://www.ok.ru/" title="ok.ru" target="_blank"><i class="icon-odnoklassniki" aria-hidden="true"></i><span>Facebook</span></a>
 								<a class="instagram" href="https://instagram.com/" title="Instagram.com" target="_blank"><i class="icon-instagram"></i><span>Instagram</span></a>
-								<a class="whatsup" href="https://instagram.com/" title="Instagram.com" target="_blank"><i class="icon-whatsapp"></i><span>whatsapp</span></a>
+								<a class="whatsup" href="https://whatsapp.com/" title="whatsapp.com" target="_blank"><i class="icon-whatsapp"></i><span>whatsapp</span></a>
 								<a class="telegram" href="https://www.telegram.com/" title="telegram.com" target="_blank"><i class="icon-telegram" aria-hidden="true"></i><span>telegram</span></a>
 								<a style="display: none;" class="viber" href="https://viber.com/" title="viber.com" target="_blank"><i class="icon-viber" aria-hidden="true"></i><span>viber</span></a>
 							</div>
@@ -2138,9 +2138,9 @@
 						<i style="display: none;" class="icon-qiwi"></i>
 						<i style="display: none;" class="icon-sber"></i>
 						<i class="icon-visa"></i>
-						<i class="icon-walletone"></i>
+						<i class="icon-wallet-one"></i>
 						<i class="icon-webmoney"></i>
-						<i class="icon-yandex"></i>
+						<i class="icon-io"></i>
 					</a>
 				</div>
 			</div>
@@ -2713,28 +2713,15 @@
 <script type="text/javascript" src="{JAVASCRIPT_BUG_HUNTING_URL}"></script>
 {% ENDIF %}
 <!-- ВНИМАНИЕ! Если Вы удалите код ниже, то это повлияет на работу вашего сайта. Пожалуйста ничего не удаляйте без консультации у специалистов. -->
+{% IF FORM_NOTICE %}
 <script async type="text/javascript">
 	// Модальное окно уведомления при отправке сообщения
-	{% IF FORM_NOTICE %}
 	var type = '{% IF FORM_NOTICE_IS_GOOD %}success{% ELSE %}warning{% ENDIF %}';
 	var text = '<div class="noty__addto"><i class="icon-{% IF FORM_NOTICE_IS_GOOD %}check{% ELSE %}warning{% ENDIF %}"></i><div class="noty__message">{FORM_NOTICE | nl2br}</div></div>'
 	setTimeout(function () {
 		notyStart(text, type)
 	},1000);
-	{% ENDIF %}
 </script>
-<!-- Слайдер. Карусель -->
-{% IF index_page || MOD_LNAME = compare || MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = goods || MOD_LNAME = user && ACT=favorites %}
-<link rel="preload" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=Deluxe" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript>
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=Deluxe">
-</noscript>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}owl-carousel.js?design=Deluxe"></script>
-{% ENDIF %}
-<!-- Скрипты: Корзина -->
-{% IF MOD_LNAME = cart || MOD_LNAME = order %}
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}air-datepicker.js?design=Deluxe"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}debounce.js?design=Deluxe"></script>
 {% ENDIF %}
 <!-- Скрипты: Сравнение -->
 {% IF MOD_LNAME = compare %}
@@ -2763,14 +2750,9 @@
 {% IF MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search %}
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}jqueryui.js?design=Deluxe"></script>
 {% ENDIF %}
-<!-- Скрипты: Товары -->
-{% IF index_page || MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = goods || MOD_LNAME = user && ACT=favorites || MOD_LNAME = compare %}
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}air-datepicker.js?design=Deluxe"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}debounce.js?design=Deluxe"></script>
-{% ENDIF %}
 <!-- Страница: Товар -->
 {% IF MOD_LNAME = goods %}
-<script>	
+<script defer type="text/javascript">	
 	// Загрузка основных функций шаблона
 	$(document).ready(function(){
 		pageGoods();
@@ -2782,7 +2764,7 @@
 {% ENDIF %}
 <!-- Страница: Каталог -->
 {% IF MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search %}
-<script>
+<script defer type="text/javascript">
 	// Загрузка основных функций шаблона
 	$(document).ready(function(){
 		catalog();
@@ -2792,15 +2774,28 @@
 </script>
 {% ENDIF %}
 <!-- Страница: Корзина -->
-{% IF MOD_LNAME = cart %}
-<script>
-	cartQuantity();
-	// Вызов функции быстрого заказа в корзине
-	$('#startOrder').on('click', function() {
-		startOrder();
-		return false;
+{% IF MOD_LNAME = cart || MOD_LNAME = order %}
+<script async type="text/javascript">
+	$(document).ready(function(){
+		cartQuantity();
+		// Вызов функции быстрого заказа в корзине
+		$('#startOrder').on('click', function() {
+			startOrder();
+			return false;
+		});
 	});
 </script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}air-datepicker.js?design=THEMENAME"></script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}debounce.js?design=THEMENAME"></script>	
+{% ENDIF %}
+
+<!-- Слайдер. Карусель -->
+{% IF index_page || MOD_LNAME = compare || MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = goods || MOD_LNAME = user && ACT=favorites %}
+<link rel="preload" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=Deluxe" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=Deluxe">
+</noscript>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}owl-carousel.js?design=Deluxe"></script>
 {% ENDIF %}
 <!-- Скрипты магазина-->
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}main.js?design=Deluxe"></script>
