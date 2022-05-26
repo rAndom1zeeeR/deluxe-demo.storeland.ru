@@ -27,7 +27,7 @@ let paths = {
 		dest: baseDir + '/images/dest',
 	},
 	cssOutputName: '*.css',
-	jsOutputName:  'main.js',
+	jsOutputName:  '*.js',
 
 }
 
